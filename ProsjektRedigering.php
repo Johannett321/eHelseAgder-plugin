@@ -40,13 +40,13 @@ function lagFelter($loadedProsjekt) {
     ?>
     <form action = "kategorier<?php if (isset($_GET['editProsjektID'])) echo "?editProsjektID=" . $_GET['editProsjektID']?>" method = "post" id = "minform">  
         <div class = "requiredPart">
-            <h5 class = "mainTitle">Kort om prosjektet</h5>
+            <h3 class = "mainTitle">Kort om prosjektet</h3>
             <label for="pname" class = "labelForInput">Prosjektets navn:</label>
             <input type="text" id="pname" name="pname" placeholder="Digital Hjemmeoppfølging" class = "small_input" value = "<?php echo $loadedProsjekt['projectName']?>">
             <label for="psubtitle" class = "labelForInput">En setning om prosjektet (beskrivende undertittel):</label>
             <input type="text" id="psubtitle" name="psubtitle" placeholder="Et EU prosjekt for å øke livskvalitet for pasienter med kronisk sykdom." class = "small_input" value = "<?php echo $loadedProsjekt['undertittel']?>">
             <div class = "projectLeader" id = "prosjektLederBoks">
-                <h5>Prosjektleder</h5>
+                <h4>Prosjektleder</h4>
                 <label for="pleadername" class = "labelForInput">Fullt navn:</label>
                 <input type="text" id="pleadername" name="pleadername" placeholder="Navn Navnesen" class = "small_input" value = "<?php echo $loadedProsjekt['ledernavn']?>">
                 <label for="pleaderemail" class = "labelForInput">Epost:</label>
@@ -71,72 +71,5 @@ function lagFelter($loadedProsjekt) {
             <input type = "submit" class = "button" id = "submitButton" value = "Videre">
         </center>
     </form>
-    
-    <style>
-            .requiredPart {
-                padding: 20px;
-                background-color: #EEEEEE;
-                border-radius: 10px;
-            }
-
-            .small_input {
-                width: 100%;
-                height: 30px;
-                margin-bottom: 20px;
-            }
-
-            h5 {
-                margin: 0px;
-                padding: 0px;
-            }
-
-            .projectLeader {
-                width: 400px;
-                padding: 20px;
-                margin: 20px;
-                margin-left: 0px;
-                background-color: #AAFFAA;
-                border-radius: 10px;
-            }
-
-            .addCustomField {
-                margin: 20px;
-            }
-            
-            .addInfoButton {
-                border-radius: 200px;
-                padding: 10px;
-                border: none;
-                background-color: #666666; 
-                color: white;
-                font-size: 17px;
-                margin-left:20px;
-            }
-
-            .mainTitle {
-                padding-top: 20px;
-            }
-
-            select {
-                height: 40px;
-                width: 300px;
-                border-radius: 5px;
-                padding: 10px
-            }
-
-            textarea {
-                width: 100%;
-                min-height: 200px;
-                margin-top: 5px;
-                border-radius: 10px;
-                padding: 10px;
-                font-size: 15px;
-            }
-
-            #minform {
-                margin-bottom:30px !important;
-            }
-
-        </style>
     <?php
 }
