@@ -176,7 +176,7 @@ function leggTilInformasjonFelt() {
         /* Internet Explorer */
         -o-animation: fadein 0.5s;
         /* Opera < 12.1 */
-        animation: fadein fadeout 0.5s;
+        animation: fadein 0.5s;
     }
 
     .collapsible textarea {
@@ -416,33 +416,33 @@ function leggTilInformasjonFelt() {
                             $customName = str_replace("\n", '\n', $customName);
 
                             ?>
-                            createCustomCatCol("<?php $customName?>", "<?php$innhold?>");
+                            createCustomCatCol("<?php $customName?>", "<?php $innhold ?>");
                             <?php
                             break;
                         case 2:
                             //leverandører
                             ?>
                             if (!colHasBeenDeletedLocally("cleverandorer")) {
-                                createLeverandorerCol("<?php$innhold?>");
+                                createLeverandorerCol("<?php $innhold ?>");
                             }
                             <?php
                             break;
                         case 3:
                             //Prosjekt-team
                             ?>
-                            createProsjektTeamCol("<?php$innhold?>");
+                            createProsjektTeamCol("<?php $innhold ?>");
                             <?php
                             break;
                         case 4:
                             //Mer informasjon om prosjektet
                             ?>
-                            createMerInfoCol("<?php$innhold?>");
+                            createMerInfoCol("<?php $innhold ?>");
                             <?php
                             break;
                         case 5:
                             //Milepæler
                             ?>
-                            createMilepaelerCol("<?php$innhold?>");
+                            createMilepaelerCol("<?php $innhold ?>");
                             <?php
                             break;
                     }
