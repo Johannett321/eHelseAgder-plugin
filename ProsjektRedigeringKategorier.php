@@ -360,23 +360,18 @@ function leggTilInformasjonFelt() {
             if (categoryChooser.value == 'cleverandorer') {
                 createLeverandorerCol();
                 selectionOptionChanged();
-                saveListOfCollapsibles();
             }else if (categoryChooser.value == 'cprosjektteam') {
                 createProsjektTeamCol();
                 selectionOptionChanged();
-                saveListOfCollapsibles();
             }else if (categoryChooser.value == 'cegenkategori') {
                 createCustomCatCol();
                 selectionOptionChanged();
-                saveListOfCollapsibles();
             }else if (categoryChooser.value == 'cmerinfo') {
                 createMerInfoCol();
                 selectionOptionChanged();
-                saveListOfCollapsibles();
             }else if (categoryChooser.value == 'cmilepaeler') {
                 createMilepaelerCol();
                 selectionOptionChanged();
-                saveListOfCollapsibles();
             }
         });
 
@@ -416,7 +411,9 @@ function leggTilInformasjonFelt() {
                             $customName = str_replace("\n", '\n', $customName);
 
                             ?>
-                            createCustomCatCol("<?php $customName?>", "<?php $innhold ?>");
+                            if (!colHasBeenDeletedLocally("<?php $customName ?>")) {
+                                createCustomCatCol("<?php $customName?>", "<?php $innhold ?>");
+                            }
                             <?php
                             break;
                         case 2:
@@ -430,19 +427,25 @@ function leggTilInformasjonFelt() {
                         case 3:
                             //Prosjekt-team
                             ?>
-                            createProsjektTeamCol("<?php $innhold ?>");
+                            if (!colHasBeenDeletedLocally("cprosjektteam")) {
+                                createProsjektTeamCol("<?php $innhold ?>");
+                            }
                             <?php
                             break;
                         case 4:
                             //Mer informasjon om prosjektet
                             ?>
-                            createMerInfoCol("<?php $innhold ?>");
+                            if (!colHasBeenDeletedLocally("cmerinfo")) {
+                                createMerInfoCol("<?php $innhold ?>");
+                            }
                             <?php
                             break;
                         case 5:
                             //Milepæler
                             ?>
-                            createMilepaelerCol("<?php $innhold ?>");
+                            if (!colHasBeenDeletedLocally("cmilepaeler")) {
+                                createMilepaelerCol("<?php $innhold ?>");
+                            }
                             <?php
                             break;
                     }
@@ -508,12 +511,25 @@ function leggTilInformasjonFelt() {
             removeCollapsibleButton.classList.add('removeCollapsibleButton');
             $(removeCollapsibleButton).click(function (e) {
                 if (confirm("Er du sikker?") == true) {
-                    $(collapsible).animate({opacity: '0%', height: '0px'}, function (){$(collapsible).remove(); selectionOptionChanged();saveListOfCollapsibles();});
+                    $(collapsible).animate({opacity: '0%', height: '0px'}, function (){$(collapsible).remove(); selectionOptionChanged();saveDeletedCollapsible(collapsible.name);});
                 }
             });
 
             collapsible.appendChild(removeCollapsibleButton);
             return collapsible;
+        }
+
+        function saveDeletedCollapsible(name, fieldsToReset) {
+            var deletedCategories = localStorage.getItem("fjernedeCollapsibles");
+            if (deletedCategories == null) deletedCategories = "";
+            if (!deletedCategories == "") {
+                deletedCategories += ";";
+            }
+            deletedCategories += name;
+            localStorage.setItem("fjernedeCollapsibles", deletedCategories);
+            for (var i = 0; i < fieldsToReset.length; i++) {
+                localStorage.removeItem(fieldsToReset[i]);
+            }
         }
 
         function createTextFieldWithLabel(title, name) {
@@ -667,26 +683,6 @@ function leggTilInformasjonFelt() {
                     }
                 }, 300);
             });
-        }
-
-        function saveListOfCollapsibles() {
-            const localsave = "listofcollapsibles"
-            
-            localStorage.setItem("prosjektID", editProsjektID);
-            
-            const listOfCollapsibles = document.getElementsByClassName('collapsible');
-            var listOfCollapsiblesString = "";
-
-            var arrayOfCollapsibles = new Array();
-            for (let i = 0; i < listOfCollapsibles.length; i++) {
-                if (listOfCollapsiblesString != "") {
-                    listOfCollapsiblesString += ";";
-                }
-
-                listOfCollapsiblesString += listOfCollapsibles[i].name;
-            }
-
-            localStorage.setItem(localsave, listOfCollapsiblesString);
         }
 
         function loadListOfCollapsibles() {

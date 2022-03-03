@@ -28,6 +28,7 @@ require 'SQLTool.php';
 require 'ProsjektListe.php';
 require 'ProsjektSide.php';
 require 'CollapsibleManager.php';
+require 'style.php';
 
 error_log("--------------------------------------",0);
 
