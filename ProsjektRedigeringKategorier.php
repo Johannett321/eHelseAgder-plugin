@@ -155,7 +155,7 @@ function leggTilInformasjonFelt() {
                             $customName = str_replace("\n", '\n', $customName);
 
                             ?>
-                            if (!colHasBeenDeletedLocally("<?php $customName ?>")) {
+                            if (!colHasBeenDeletedLocally("cegenkategori" + (customColCounter+1))) {
                                 createCustomCatCol("<?php $customName?>", "<?php $innhold ?>");
                             }
                             <?php
@@ -255,12 +255,29 @@ function leggTilInformasjonFelt() {
             removeCollapsibleButton.classList.add('removeCollapsibleButton');
             $(removeCollapsibleButton).click(function (e) {
                 if (confirm("Er du sikker?") == true) {
-                    $(collapsible).animate({opacity: '0%', height: '0px'}, function (){$(collapsible).remove(); selectionOptionChanged();saveDeletedCollapsible(collapsible.name);});
+                    $(collapsible).animate({opacity: '0%', height: '0px'}, function (){$(collapsible).remove(); selectionOptionChanged();saveDeletedCollapsible(collapsible.name, getFieldsForName(collapsible.name));});
                 }
             });
 
             collapsible.appendChild(removeCollapsibleButton);
             return collapsible;
+        }
+
+        function getFieldsForName(collapsibleName) {
+            switch (collapsibleName) {
+                case "cleverandorer":
+                    return ["cleverandorer_ls", "cleverandorer_ls_time"];
+                    break;
+                case "cleverandorer":
+                    return ["cleverandorer_ls", "cleverandorer_ls_time"];
+                    break;
+                case "cleverandorer":
+                    return ["cleverandorer_ls", "cleverandorer_ls_time"];
+                    break;
+                case "cleverandorer":
+                    return ["cleverandorer_ls", "cleverandorer_ls_time"];
+                    break;
+            }
         }
 
         function saveDeletedCollapsible(name, fieldsToReset) {
@@ -681,6 +698,7 @@ function leggTilInformasjonFelt() {
 
                 peopleInProjectTeam += 1;
                 const person = document.createElement('div');
+                person.name = peopleInProjectTeam;
 
                 const leftSide = document.createElement('div');
                 leftSide.classList.add('personLeftCol');
@@ -703,7 +721,7 @@ function leggTilInformasjonFelt() {
                 removePersonButton.name = "";
                 $(removePersonButton).click(function (e) {
                     if (confirm("Er du sikker?") == true) {
-                        $(person).animate({opacity: '0%', height: '0px'}, function (){$(person).remove();});
+                        $(person).animate({opacity: '0%', height: '0px'}, function (){$(person).remove();personRemoved(person.name);});
                     }
                 });
 
@@ -727,6 +745,27 @@ function leggTilInformasjonFelt() {
                 person.appendChild(rightSide);
 
                 return person;
+            }
+
+            /*TODO:
+            I stedenfor å skrive localStorage.removeItem, kan jeg heller skrive:
+            localStorage.setItem("NAVN", "GONE");
+            deretter kan jeg i delen hvor den loades skrive følgende:
+            for (int i = 0; i  < liste.length; i++)
+            if (liste[i] == "GONE") i -= 1;
+             */
+
+            function personRemoved(personNumber) {
+                peopleInProjectTeam -= 1;
+                localStorage.setItem("prosjektTeamMemberCount", peopleInProjectTeam);
+                localStorage.removeItem("cvtmrolle" + personNumber);
+                localStorage.removeItem("cvtmfulltnavn" + personNumber);
+                localStorage.removeItem("cvtmepost" + personNumber);
+                localStorage.removeItem("cvtmmobil" + personNumber);
+                localStorage.removeItem("cvtmrolle" + personNumber + "_time");
+                localStorage.removeItem("cvtmfulltnavn" + personNumber + "_time");
+                localStorage.removeItem("cvtmepost" + personNumber + "_time");
+                localStorage.removeItem("cvtmmobil" + personNumber + "_time");
             }
 
             collapsible.appendChild(personer);
