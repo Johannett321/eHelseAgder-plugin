@@ -1,84 +1,60 @@
 <style>
+
+/* ProsjektRedigering ––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
     .requiredPart, .sammendragContainer {
-        width: 80%;
+        width: 60%;
         margin-left: auto;
         margin-right: auto;
     }
 
+/* Kort om prosjektet */
     .requiredPart {
+        margin-top: 50px;
+        margin-bottom: 50px;
         padding: 20px;
         background-color: #eef7e9;
         border-radius: 10px;
     }
 
-    .small_input {
+    .requiredPart h3, .requiredPart h4{
+        margin-bottom: 1rem;
+    }
+
+    #minform input[type="text"] {
         height: 30px;
         border-radius: 5px;
-        margin-bottom: 17px;
+        margin: 0.5em;
+        margin-bottom: 17px !important;
         font-size: 14px;
         color: #595959;
         width: 90%;
     }
-
-    .small_input {
-        width: 100%;
-        height: 30px;
-        margin-bottom: 20px;
+    .labelForInput {
+        margin-left: 0.5em;
     }
 
-    h1, h2, h3, h4, h5, h6 {
-        margin: 0px;
-        padding: 0px;
-    }
-
-    h1 {
-        font-size: 3.5rem;
-        font-weight: 700;
-        line-height: 1.138888889;
-    }
-
-    h2 {
-        font-size: 3rem;
-        font-weight: 700;
-    }
-
-    h3 {
-        font-size: 2.5rem;
-        font-weight: 700;
-    }
-
-    h4 {
-        font-size: 2rem;
-        font-weight: 700;
-    }
-
-    h5 {
-        font-size: 1.5rem;
-        font-weight: 400;
-    }
-
-    h6 {
-        font-size: 1rem;
-        letter-spacing: 0.03125em;
-        font-weight: 400;
-    }
-
-    p {
-        line-height: 1.5;
-        margin: 0 0 1em 0;
-        font-size: 0.875rem;
-        font-weight: 400;
-    }
-
+/* Prosjektleder-boks */
     .projectLeader {
         padding: 20px;
-        margin: 20px;
-        margin-left: 0px;
+        margin: 30px 0px 20px 0px;
         border-radius: 10px;
         background-color: #aed1a4;
-        width: 80%;
-        height: 20%;
-    }
+        width: 70%;
+        height: 60%;
+}
+
+/* Sammendrag */
+
+/* ProsjektRedigeringKategorier ––––––––––––––––––––––––––––––––––––––––––––––*/
+
+
+
+
+
+
+
+
 
     .addCustomField {
         margin: 20px;
@@ -117,18 +93,6 @@
         display:none !important;
     }
 
-    .requiredPart, .sammendragContainer {
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .requiredPart {
-        padding: 20px;
-        background-color: #eef7e9;
-        border-radius: 10px;
-    }
-
     .small_input {
         height: 30px;
         border-radius: 5px;
@@ -136,50 +100,6 @@
         font-size: 14px;
         color: #595959;
         width: 90%;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        margin: 0px;
-        padding: 0px;
-    }
-
-    h1 {
-        font-size: 3.5rem;
-        font-weight: 700;
-        line-height: 1.138888889;
-    }
-
-    h2 {
-        font-size: 3rem;
-        font-weight: 700;
-    }
-
-    h3 {
-        font-size: 2.5rem;
-        font-weight: 700;
-    }
-
-    h4 {
-        font-size: 2rem;
-        font-weight: 700;
-    }
-
-    h5 {
-        font-size: 1.5rem;
-        font-weight: 400;
-    }
-
-    h6 {
-        font-size: 1rem;
-        letter-spacing: 0.03125em;
-        font-weight: 400;
-    }
-
-    p {
-        line-height: 1.5;
-        margin: 0 0 1em 0;
-        font-size: 0.875rem;
-        font-weight: 400;
     }
 
     .inlineBlock {
