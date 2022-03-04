@@ -1,3 +1,6 @@
+<?php
+add_action( 'wp', 'addglobalcss' );
+function addglobalcss() {?>
 <style>
 
     /* Progress bar ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
@@ -420,3 +423,6 @@
         }
     }
 </style>
+<?php
+}
+?>

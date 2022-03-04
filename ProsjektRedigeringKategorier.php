@@ -396,6 +396,56 @@ function leggTilInformasjonFelt() {
             });
         }
 
+        function addSpecialSaver(textbox, savedLabel, localsave) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const editProsjektID = urlParams.get('editProsjektID');
+            const prosjektIDFromLocalStorage = localStorage.getItem("prosjektID");
+            var sistLagretStorage = localStorage.getItem(localsave + "_time");
+
+            if (editProsjektID == prosjektIDFromLocalStorage) {
+                if (localStorage.getItem(localsave) != null) {
+                    textbox.value = localStorage.getItem(localsave);
+
+                    if (sistLagretStorage == null) {
+                        savedLabel.innerText = "...";
+                    }else {
+                        savedLabel.innerText = "Hentet utkast fra: " + sistLagretStorage;
+                    }
+                }
+            }else {
+                localStorage.clear();
+            }
+            $(textbox).on("input", function(){
+                const d = new Date();
+                lastKeypress = d.getTime();
+
+                savedLabel.innerText = "...";
+                setTimeout(function() {
+                    var dt = new Date();
+                    if (dt.getTime() > lastKeypress + 250) {
+                        let year = dt.getFullYear();
+                        let month = dt.getMonth() + 1;
+                        let day = dt.getDate();
+
+                        let hours = dt.getHours().toString();
+                        let minutes = dt.getMinutes().toString();
+                        if (minutes.length == 1) {
+                            minutes = "0" + minutes;
+                        }
+                        if (hours.length == 1) {
+                            hours = "0" + hours;
+                        }
+                        var time = hours + ":" + minutes;
+                        var fulltime = day + "." + month + "." + year + " " + hours + ":" + minutes;
+                        savedLabel.innerText = "Sist lagret: " + time;
+                        localStorage.setItem("prosjektID", editProsjektID);
+                        localStorage.setItem(localsave, textbox.value);
+                        localStorage.setItem(localsave + "_time", fulltime);
+                    }
+                }, 300);
+            });
+        }
+
         function addDropdownSaver(dropdown, savedLabel, localsave) {
             const urlParams = new URLSearchParams(window.location.search);
             const editProsjektID = urlParams.get('editProsjektID');
