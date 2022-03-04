@@ -1,17 +1,91 @@
 <style>
 
-/* ProsjektRedigering ––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+    /* Progress bar ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+    .infoBlokk, #steg2 {
+        margin-left: auto;
+        margin-right: auto;
 
+    }
+    .infoBlokk {
+        background:
+                #eff7ea;
+        height: 150px;
+        width: 50%;
+        padding: 30px 40px;
+
+    }
+    #steg2 {
+        display: block;
+        width: 100% !important;
+        text-align: center;
+        margin-top: 3%;
+    }
+    .stegText {
+        font-size: 14px !important;
+        display: inline-block;
+        margin: 0 3.5% 2% 3.5%;
+    }
+    #step1 {
+        text-align: left;
+        font-weight: 600;
+        color: #0B843E;
+
+    }
+    #step2 {
+        text-align: center;
+        color: #8CBE7E;
+
+    }
+    #step3 {
+        text-align: right;
+        color: #8CBE7E;
+
+    }
+    textBox {
+        width: 50% !important;
+    }
+    .material-icons, #infoHead {
+        display: inline-block;
+        vertical-align: middle !important;
+    }
+    .border {
+        border:1px solid #8CBE7E;
+    }
+    .bar {
+        height:20px;
+        width:33%;
+        color:#fff;
+        background-color:#0B843E;
+    }
+
+
+    /* ProsjektRedigering ––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
     .requiredPart, .sammendragContainer {
         width: 60%;
         margin-left: auto;
         margin-right: auto;
     }
 
-/* Kort om prosjektet */
+    #submitButton {
+        background-color: #8ac082;
+        height: 50px;
+        width: 200px;
+        border-radius: 30px;
+        margin-top: 7% !important;
+        padding: 0px !important;
+        text-transform: capitalize;
+        color: #000;
+    }
+    #submitButton:hover {
+        color: #fff;
+        background-color: #0B843E;
+        font-weight: 700;
+    }
+
+    /* Kort om prosjektet */
     .requiredPart {
         margin-top: 50px;
-        margin-bottom: 50px;
+        margin-bottom: 60px;
         padding: 20px;
         background-color: #eef7e9;
         border-radius: 10px;
@@ -30,8 +104,18 @@
         color: #595959;
         width: 90%;
     }
+
     .labelForInput {
         margin-left: 0.5em;
+    }
+
+    .small_input {
+        height: 30px;
+        border-radius: 5px;
+        margin-bottom: 17px;
+        font-size: 14px;
+        color: #595959;
+        width: 90%;
     }
 
 /* Prosjektleder-boks */
@@ -45,6 +129,19 @@
 }
 
 /* Sammendrag */
+
+    #psummary {
+        font-family: Lato;
+        width: 100%;
+        font-size: 14px;
+        color: #595959;
+        margin: 7px 0 0 7px;
+    }
+
+    .sammendragContainer {
+        padding: 20px;
+
+    }
 
 /* ProsjektRedigeringKategorier ––––––––––––––––––––––––––––––––––––––––––––––*/
 
@@ -93,14 +190,7 @@
         display:none !important;
     }
 
-    .small_input {
-        height: 30px;
-        border-radius: 5px;
-        margin-bottom: 17px;
-        font-size: 14px;
-        color: #595959;
-        width: 90%;
-    }
+
 
     .inlineBlock {
         display: inline-block;
@@ -274,6 +364,9 @@
             opacity: 1;
         }
     }
+
+
+/* Nettleser tilpassning –––––––––––––––––––––––––––––––––––––––––––––––––*/
 
     /* Firefox < 16 */
     @-moz-keyframes fadein {
