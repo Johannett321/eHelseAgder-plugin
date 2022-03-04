@@ -38,7 +38,20 @@ function loadProsjekt() {
 
 function lagFelter($loadedProsjekt) {
     ?>
-    <form action = "kategorier<?php if (isset($_GET['editProsjektID'])) echo "?editProsjektID=" . $_GET['editProsjektID']?>" method = "post" id = "minform">  
+    <form action = "kategorier<?php if (isset($_GET['editProsjektID'])) echo "?editProsjektID=" . $_GET['editProsjektID']?>" method = "post" id = "minform">
+
+        <div class="infoBlokk">
+            <textBox id=steg2>
+                <p class="stegText" id="step1">Grunnleggende info</p>
+                <p class="stegText" id="step2">Ekstra kategorier</p>
+                <p class="stegText" id="step3">Forhåndsvisning</p>
+                <div class="border">
+                    <div id="thisBar" class="bar">
+                    </div>
+                </div>
+            </textBox>
+        </div>
+
         <div class = "requiredPart">
             <h3 class = "mainTitle">Kort om prosjektet</h3>
             <label for="pname" class = "labelForInput">Prosjektets navn:</label>
@@ -65,6 +78,18 @@ function lagFelter($loadedProsjekt) {
         <div class = "sammendragContainer">
             <label for = "psummary" class = "labelForInput">Sammendrag</label>
             <textarea id = "psummary" name="psummary" form="minform" maxlength="1700" placeholder="Her kan du skrive en kort tekst om prosjektet"><?php echo $loadedProsjekt['project_text']?></textarea>
+        </div>
+
+        <div class="infoBlokk">
+            <textBox id=steg2>
+                <p class="stegText" id="step1">Grunnleggende info</p>
+                <p class="stegText" id="step2">Ekstra kategorier</p>
+                <p class="stegText" id="step3">Forhåndsvisning</p>
+                <div class="border">
+                    <div id="thisBar" class="bar">
+                    </div>
+                </div>
+            </textBox>
         </div>
 
         <center>
