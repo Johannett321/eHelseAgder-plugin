@@ -10,8 +10,7 @@ function addglobalcss() {?>
 
     }
     .infoBlokk {
-        background:
-                #eff7ea;
+        background: #eff7ea;
         height: 150px;
         width: 50%;
         padding: 30px 40px;
@@ -61,9 +60,8 @@ function addglobalcss() {?>
         background-color:#0B843E;
     }
 
-
     /* ProsjektRedigering ––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-    .requiredPart, .sammendragContainer {
+    .requiredPart, .sammendragContainer, .addCustomField {
         width: 60%;
         margin-left: auto;
         margin-right: auto;
@@ -128,7 +126,6 @@ function addglobalcss() {?>
         border-radius: 10px;
         background-color: #aed1a4;
         width: 70%;
-        height: 60%;
 }
 
 /* Sammendrag */
@@ -146,44 +143,63 @@ function addglobalcss() {?>
 
     }
 
-/* ProsjektRedigeringKategorier ––––––––––––––––––––––––––––––––––––––––––––––*/
+    /* ProsjektRedigeringKategorier ––––––––––––––––––––––––––––––––––––––––––––––*/
+    .addCustomField p {
+        font-size: 14px;
+        margin-top: 1.5em;
+        margin-bottom: 1.5em;
+    }
 
-
-
-
-
-
-
-
-
-    .addCustomField {
-        margin: 20px;
+    #collapsibleChooser {
+        font-family: Lato;
+        font-size: 1.3rem;
+        color: grey;
     }
 
     .addInfoButton {
+        height: 4.5rem;
+        width: 20rem;
+        font-family: Lato;
+        font-size: 14px;
+        padding: 5px;
         border-radius: 200px;
-        padding: 10px;
-        border: none;
-        background-color: #666666;
-        color: white;
-        font-size: 17px;
-        margin-left:20px;
+        border-style: solid;
+        border-width: 1px;
+        background-color: #E6F3DF;
+        color: #0B843E;
+        margin-left: 20px;
     }
+
+    .addInfoButton:hover {
+        border: none;
+        background-color: #0B843E;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    #categoryAlreadyAdded, #categoryAlreadyAdded img{
+        display: inline-block;
+    }
+
+    #categoryAlreadyAdded img {
+        width: 15px;
+        height: 15px;
+        margin-left: 10px;
+        vertical-align: center;
+    }
+
+    #chooseLine {
+        margin-bottom: 7rem;
+    }
+
+
+    /* Collapsibles –––––––––––––––––––––––––––––––––––––––––––––––––––*/
 
     select {
         height: 40px;
         width: 300px;
         border-radius: 5px;
         padding: 10px
-    }
-
-    textarea {
-        width: 100%;
-        min-height: 200px;
-        margin-top: 5px;
-        border-radius: 10px;
-        padding: 10px;
-        font-size: 15px;
     }
 
     #minform {
@@ -193,25 +209,85 @@ function addglobalcss() {?>
         display:none !important;
     }
 
+    .collapsible {
+        background-color: #EFF7EA;
+        padding: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        box-shadow: 2px 2px 10px #555555;
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+
+        -webkit-animation: fadein 0.5s;
+        /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 0.5s;
+        /* Firefox < 16 */
+        -ms-animation: fadein 0.5s;
+        /* Internet Explorer */
+        -o-animation: fadein 0.5s;
+        /* Opera < 12.1 */
+        animation: fadein 0.5s;
+    }
+
+    .collapsible h5 {
+        font-size: 2rem !important;
+    }
+
+    .collapsible h5, .removeCollapsibleButton img {
+        display: inline-block !important;
+    }
+
+    .removeCollapsibleButton {
+        background: none;
+        border: none;
+        float: right;
+        opacity: 80%;
+        transition: 0.1s ease;
+        padding: 0px;
+    }
+
+    .removeCollapsibleButton img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .removeCollapsibleButton:hover {
+        scale: 1.2;
+        opacity: 100%;
+        cursor: pointer;
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 200px;
+        margin-top: 5px;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 1.3rem;
+    }
+
+    .collapsible textarea {
+        width: 100%;
+        min-height: 200px;
+        font-size: 1.4rem;
+        padding: 10px;
+        font-family: Lato;
+        letter-spacing: 0.1px !important;
+        word-spacing: 0.5px !important;
+    }
+
+    /* Milepæler (collapsible) */
+
+
+
+
 
 
     .inlineBlock {
         display: inline-block;
     }
 
-    .addCustomField {
-        margin: 20px;
-    }
-
-    .addInfoButton {
-        border-radius: 200px;
-        padding: 10px;
-        border: none;
-        background-color: #666666;
-        color: white;
-        font-size: 17px;
-        margin-left: 20px;
-    }
 
     #categoryAlreadyAdded {
         font-size: 17px;
@@ -220,10 +296,7 @@ function addglobalcss() {?>
         opacity: 0.3;
     }
 
-    #categoryAlreadyAdded img {
-        width: 20px;
-        height: 20px;
-    }
+
 
     .mainTitle {
         padding-top: 5px;
@@ -244,29 +317,9 @@ function addglobalcss() {?>
         transform: translateX(100vw);
     }
 
-    .collapsible {
-        background-color: #EFF7EA;
-        padding: 20px;
-        margin-top: 20px;
-        box-shadow: 2px 2px 10px #555555;
 
-        -webkit-animation: fadein 0.5s;
-        /* Safari, Chrome and Opera > 12.1 */
-        -moz-animation: fadein 0.5s;
-        /* Firefox < 16 */
-        -ms-animation: fadein 0.5s;
-        /* Internet Explorer */
-        -o-animation: fadein 0.5s;
-        /* Opera < 12.1 */
-        animation: fadein 0.5s;
-    }
 
-    .collapsible textarea {
-        width: 100%;
-        min-height: 200px;
-        font-size: 17px;
-        padding: 10px;
-    }
+
 
     .collapsible .textFieldContainer {
         width: 100%;
@@ -284,27 +337,12 @@ function addglobalcss() {?>
     }
 
     .savedText {
-        color: gray;
+        color: grey;
+        font-size: 14px;
+        font-family: Lato;
     }
 
-    .removeCollapsibleButton {
-        background: none;
-        border: none;
-        float: right;
-        opacity: 80%;
-        transition: 0.1s ease;
-    }
 
-    .removeCollapsibleButton img {
-        width: 30px;
-        height: 30px;
-    }
-
-    .removeCollapsibleButton:hover {
-        scale: 1.1;
-        opacity: 100%;
-        cursor: pointer;
-    }
 
     .addPersonButton {
         margin-top: 20px;
