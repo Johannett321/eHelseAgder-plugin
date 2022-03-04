@@ -92,6 +92,8 @@ function leggTilInformasjonFelt() {
         const categoryAlreadyAdded = document.getElementById('categoryAlreadyAdded');
         const categoryAlreadyAddedText = document.getElementById('categoryAlreadyAddedText');
 
+        const prosjektTeamArray = [];
+
         $("#collapsibleChooser").change(function () {
             selectionOptionChanged();
         });
@@ -293,8 +295,30 @@ function leggTilInformasjonFelt() {
             }
         }
 
-        function createTextFieldWithLabel(title, name) {
-            return createTextFieldWithLabel(title, name, "");
+        function createMultiSaverTextField(title, name, placeholder, fieldContent, arrayWithBrothers, textboxNumber, savedLabel, localSave) {
+            if (fieldContent == null) fieldContent = "";
+
+            const container = document.createElement('div');
+            container.classList.add('textFieldContainer');
+
+            const field = document.createElement('input');
+            field.id = name;
+            field.name = name;
+            field.type = "text";
+            field.value = fieldContent;
+            if (placeholder != null) {
+                field.placeholder = placeholder;
+            }
+
+            addSpecialSaver(arrayWithBrothers,field,textboxNumber,savedLabel,localSave);
+
+            const label = document.createElement('label');
+            label.for = name;
+            label.innerText = title;
+
+            container.appendChild(label);
+            container.appendChild(field);
+            return container;
         }
 
         function createTextFieldWithLabel(title, name, placeholder, fieldContent, savedTextLabel) {
@@ -344,6 +368,13 @@ function leggTilInformasjonFelt() {
             
             collapsibles.appendChild(collapsible);
             scrollToView(collapsible);
+        }
+
+        function localProsjektIDMatchesUrlProsjektID() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const editProsjektID = urlParams.get('editProsjektID');
+            const prosjektIDFromLocalStorage = localStorage.getItem("prosjektID");
+            return editProsjektID === prosjektIDFromLocalStorage;
         }
 
         function addTextSaver(textbox, savedLabel, localsave) {
@@ -396,16 +427,20 @@ function leggTilInformasjonFelt() {
             });
         }
 
-        function addSpecialSaver(textbox, savedLabel, localsave) {
+        function addSpecialSaver(arrayWithBrothers, textbox, textboxNumber, savedLabel, localsave) {
             const urlParams = new URLSearchParams(window.location.search);
             const editProsjektID = urlParams.get('editProsjektID');
             const prosjektIDFromLocalStorage = localStorage.getItem("prosjektID");
             var sistLagretStorage = localStorage.getItem(localsave + "_time");
 
+            arrayWithBrothers[arrayWithBrothers.length] = textbox;
+
             if (editProsjektID == prosjektIDFromLocalStorage) {
                 if (localStorage.getItem(localsave) != null) {
-                    textbox.value = localStorage.getItem(localsave);
-
+                    const currentTextBoxSavedValue = localStorage.getItem(localsave).split(";")[textboxNumber];
+                    if (currentTextBoxSavedValue != null) {
+                        textbox.value = currentTextBoxSavedValue;
+                    }
                     if (sistLagretStorage == null) {
                         savedLabel.innerText = "...";
                     }else {
@@ -421,29 +456,47 @@ function leggTilInformasjonFelt() {
 
                 savedLabel.innerText = "...";
                 setTimeout(function() {
-                    var dt = new Date();
+                    const dt = new Date();
                     if (dt.getTime() > lastKeypress + 250) {
-                        let year = dt.getFullYear();
-                        let month = dt.getMonth() + 1;
-                        let day = dt.getDate();
-
-                        let hours = dt.getHours().toString();
-                        let minutes = dt.getMinutes().toString();
-                        if (minutes.length == 1) {
-                            minutes = "0" + minutes;
-                        }
-                        if (hours.length == 1) {
-                            hours = "0" + hours;
-                        }
-                        var time = hours + ":" + minutes;
-                        var fulltime = day + "." + month + "." + year + " " + hours + ":" + minutes;
-                        savedLabel.innerText = "Sist lagret: " + time;
-                        localStorage.setItem("prosjektID", editProsjektID);
-                        localStorage.setItem(localsave, textbox.value);
-                        localStorage.setItem(localsave + "_time", fulltime);
+                        saveSpecialFields(arrayWithBrothers,savedLabel,localsave);
                     }
                 }, 300);
             });
+        }
+
+        function saveSpecialFields(arrayWithBrothers,savedLabel,localsave) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const editProsjektID = urlParams.get('editProsjektID');
+
+            const dt = new Date();
+            let year = dt.getFullYear();
+            let month = dt.getMonth() + 1;
+            let day = dt.getDate();
+
+            let hours = dt.getHours().toString();
+            let minutes = dt.getMinutes().toString();
+            if (minutes.length == 1) {
+                minutes = "0" + minutes;
+            }
+            if (hours.length == 1) {
+                hours = "0" + hours;
+            }
+            var time = hours + ":" + minutes;
+            var fulltime = day + "." + month + "." + year + " " + hours + ":" + minutes;
+            savedLabel.innerText = "Sist lagret: " + time;
+
+            localStorage.setItem("prosjektID", editProsjektID);
+            localStorage.setItem(localsave + "_time", fulltime);
+            var saveValue = "";
+            for (var i = 0; i < arrayWithBrothers.length; i++) {
+                if (document.body.contains(arrayWithBrothers[i])) {
+                    if (saveValue.length > 0) {
+                        saveValue += ";";
+                    }
+                    saveValue += arrayWithBrothers[i].value;
+                }
+            }
+            localStorage.setItem(localsave, saveValue);
         }
 
         function addDropdownSaver(dropdown, savedLabel, localsave) {
@@ -715,15 +768,27 @@ function leggTilInformasjonFelt() {
 
             const savedTextInfo = getSavedText();
 
-            if (innhold == "") {
-                //Prosjektet blir ikke redigert, så vi laster bare en person slik som i malen
-                const person = createPerson(null, savedTextInfo);
-                personer.appendChild(person);
-            }else {
-                const innholdSplit = innhold.split(";");
-                for (let i = 0; i < innholdSplit.length; i++) {
-                    const person = createPerson(innholdSplit[i], savedTextInfo);
+            const prosjektTeamSavedInfo = localStorage.getItem("prosjektteam");
+            //DENNE MÅ ADDES: && prosjektTeamSavedInfo != null
+            if (localProsjektIDMatchesUrlProsjektID()) {
+                //Vi har lagret en cache på prosjektteamet for dette prosjektet
+                prosjektTeamSavedInfoSplit = prosjektTeamSavedInfo.split(";");
+
+                for (var i = 0; i < prosjektTeamSavedInfoSplit.length; i++) {
+                    const person = createPerson(null, savedTextInfo);
                     personer.appendChild(person);
+                }
+            }else {
+                if (innhold == "") {
+                    //Prosjektet blir ikke redigert, så vi laster bare en person slik som i malen
+                    const person = createPerson(null, savedTextInfo);
+                    personer.appendChild(person);
+                }else {
+                    const innholdSplit = innhold.split(";");
+                    for (let i = 0; i < innholdSplit.length; i++) {
+                        const person = createPerson(innholdSplit[i], savedTextInfo);
+                        personer.appendChild(person);
+                    }
                 }
             }
 
@@ -775,10 +840,12 @@ function leggTilInformasjonFelt() {
                     }
                 });
 
-                const rolleField = createTextFieldWithLabel("Stilling/rolle: ", "cvtmrolle" + peopleInProjectTeam, "Markedskordinator", personInfoSplit[0], savedTextInfo);
-                const fulltNavnField = createTextFieldWithLabel("Fullt navn: ", "cvtmfulltnavn" + peopleInProjectTeam, "Navn Navnesen", personInfoSplit[1], savedTextInfo);
-                const epostField = createTextFieldWithLabel("E-post: ", "cvtmepost" + peopleInProjectTeam, "navn.navnesen@gmail.com", personInfoSplit[2], savedTextInfo);
-                const mobilField = createTextFieldWithLabel("Mobil: ", "cvtmmobil" + peopleInProjectTeam, "902 26 981", personInfoSplit[3], savedTextInfo);
+                const textBoxesIncludingThis = peopleInProjectTeam*4;
+
+                const rolleField = createMultiSaverTextField("Stilling/rolle: ", "cvtmrolle" + peopleInProjectTeam, "Markedskordinator", personInfoSplit[0], prosjektTeamArray, textBoxesIncludingThis-4, savedTextInfo, "prosjektteam");
+                const fulltNavnField = createMultiSaverTextField("Fullt navn: ", "cvtmfulltnavn" + peopleInProjectTeam, "Navn Navnesen", personInfoSplit[1], prosjektTeamArray, textBoxesIncludingThis-3, savedTextInfo, "prosjektteam");
+                const epostField = createMultiSaverTextField("E-post: ", "cvtmepost" + peopleInProjectTeam, "navn.navnesen@gmail.com", personInfoSplit[2], prosjektTeamArray, textBoxesIncludingThis-2, savedTextInfo, "prosjektteam");
+                const mobilField = createMultiSaverTextField("Mobil: ", "cvtmmobil" + peopleInProjectTeam, "902 26 981", personInfoSplit[3], prosjektTeamArray, textBoxesIncludingThis-1, savedTextInfo, "prosjektteam");
 
                 if (peopleInProjectTeam != 1) {
                     const line = document.createElement('hr');
@@ -807,15 +874,7 @@ function leggTilInformasjonFelt() {
 
             function personRemoved(personNumber) {
                 peopleInProjectTeam -= 1;
-                localStorage.setItem("prosjektTeamMemberCount", peopleInProjectTeam);
-                localStorage.removeItem("cvtmrolle" + personNumber);
-                localStorage.removeItem("cvtmfulltnavn" + personNumber);
-                localStorage.removeItem("cvtmepost" + personNumber);
-                localStorage.removeItem("cvtmmobil" + personNumber);
-                localStorage.removeItem("cvtmrolle" + personNumber + "_time");
-                localStorage.removeItem("cvtmfulltnavn" + personNumber + "_time");
-                localStorage.removeItem("cvtmepost" + personNumber + "_time");
-                localStorage.removeItem("cvtmmobil" + personNumber + "_time");
+                saveSpecialFields(prosjektTeamArray,savedTextInfo,"prosjektteam")
             }
 
             collapsible.appendChild(personer);
