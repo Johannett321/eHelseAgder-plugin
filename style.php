@@ -96,7 +96,7 @@ function addglobalcss() {?>
         margin-bottom: 1rem;
     }
 
-    #minform input[type="text"] {
+    #minform input[type="text"], .milepael input[type="text"]{
         height: 30px;
         border-radius: 5px;
         margin: 0.5em;
@@ -214,7 +214,7 @@ function addglobalcss() {?>
         padding: 20px;
         margin-top: 20px;
         margin-bottom: 20px;
-        box-shadow: 2px 2px 10px #555555;
+        box-shadow: 1px 1px 5px #3e6633;
         width: 60%;
         margin-left: auto;
         margin-right: auto;
@@ -232,6 +232,7 @@ function addglobalcss() {?>
 
     .collapsible h5 {
         font-size: 2rem !important;
+        margin-bottom: 20px;
     }
 
     .collapsible h5, .removeCollapsibleButton img {
@@ -261,7 +262,7 @@ function addglobalcss() {?>
     textarea {
         width: 100%;
         min-height: 200px;
-        margin-top: 5px;
+        margin-top: 5px !important;
         border-radius: 10px;
         padding: 10px;
         font-size: 1.3rem;
@@ -278,8 +279,53 @@ function addglobalcss() {?>
     }
 
     /* Milepæler (collapsible) */
+    .milepael button {
+        height: 40px;
+        width: 100%;
+        font-size: 14px;
+        padding: 2px;
+        margin-top: 30px;
+        float: right;
+        border-radius: 10px ;
+        background: repeating-linear-gradient(
+                45deg,
+                #e5e5e5,
+                #e5e5e5 10px,
+                #eef5ec 10px,
+                #f2f2f2 20px
+        );
+        border-style: dashed;
+        border-width: 0.5px;
+        border-color: #698161;
+        color: black;
+    }
+
+    .milepael select {
+        font-size: 1.3rem;
+        color: grey;
+        background-color: #ffffff;
+        margin-left: 7px;
+    }
+
+    .milepael label {
+        margin-top: 20px;
+    }
+
+    .addPersonButton {
+        border-radius: 10px;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .addPersonButton h6 {
+        font-size: 20px !important;
+        font-weight: 700 !important;
+    }
 
 
+
+    /*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+    /*RYDDE UNDER!!!*/
 
 
 
@@ -306,7 +352,8 @@ function addglobalcss() {?>
         height: 40px;
         width: 300px;
         border-radius: 5px;
-        padding: 10px
+        padding: 10px;
+        font-size: 14px;
     }
 
     .collapsible h5 {
@@ -340,6 +387,7 @@ function addglobalcss() {?>
         color: grey;
         font-size: 14px;
         font-family: Lato;
+        margin: 5px;
     }
 
 

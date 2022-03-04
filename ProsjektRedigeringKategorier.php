@@ -613,7 +613,7 @@ function leggTilInformasjonFelt() {
                 scrollToView(nyMilepael);
             });
 
-            const leggTilMilepaelTekst = document.createElement('h5');
+            const leggTilMilepaelTekst = document.createElement('h6');
             leggTilMilepaelTekst.innerText = "Legg til ny milepæl";
 
             leggTilMilepaelKnapp.appendChild(leggTilMilepaelTekst);
@@ -626,6 +626,7 @@ function leggTilInformasjonFelt() {
                 const milepaelInfoSplit = currentMilepaelInfo.split(",");
 
                 const currentMilepael = document.createElement('div');
+                currentMilepael.classList.add("milepael");
 
                 milepaelCounter += 1;
 
@@ -681,7 +682,6 @@ function leggTilInformasjonFelt() {
                 dropdown.appendChild(ongoingOption);
                 dropdown.appendChild(notStartedOption);
 
-                container.appendChild(removeMilepaelButton);
                 container.appendChild(label);
                 container.appendChild(dropdown);
 
@@ -695,6 +695,7 @@ function leggTilInformasjonFelt() {
                 currentMilepael.append(titleField);
                 currentMilepael.append(kontaktpersonField);
                 currentMilepael.append(dateField);
+                currentMilepael.append(removeMilepaelButton);
 
                 return currentMilepael;
             }
@@ -740,7 +741,7 @@ function leggTilInformasjonFelt() {
                 scrollToView(nyPerson);
             });
 
-            const leggTilPersonTekst = document.createElement('h5');
+            const leggTilPersonTekst = document.createElement('h6');
             leggTilPersonTekst.innerText = "Legg til ny person";
 
             leggTilPersonKnapp.appendChild(leggTilPersonTekst);
