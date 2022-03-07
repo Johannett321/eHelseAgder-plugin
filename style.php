@@ -3,6 +3,35 @@ add_action( 'wp', 'addglobalcss' );
 function addglobalcss() {?>
 <style>
 
+    .mainTitle {
+        padding-top: 5px;
+    }
+
+    .inlineBlock {
+        display: inline-block;
+    }
+
+    .savedText {
+        color: grey;
+        font-size: 14px;
+        font-family: Lato;
+        margin: 5px;
+    }
+
+    #categoryAlreadyAdded {
+        font-size: 17px;
+        padding: 10px;
+        margin-left: 20px;
+        opacity: 0.3;
+    }
+
+
+    /* HEADER ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+
+
+
+
     /* Progress bar ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
     .infoBlokk, #steg2 {
         margin-left: auto;
@@ -16,6 +45,7 @@ function addglobalcss() {?>
         padding: 30px 40px;
 
     }
+
     #steg2 {
         display: block;
         width: 100% !important;
@@ -60,6 +90,8 @@ function addglobalcss() {?>
         background-color:#0B843E;
     }
 
+
+
     /* ProsjektRedigering ––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
     .requiredPart, .sammendragContainer, .addCustomField {
         width: 60%;
@@ -96,7 +128,7 @@ function addglobalcss() {?>
         margin-bottom: 1rem;
     }
 
-    #minform input[type="text"], .milepael input[type="text"]{
+    #minform input[type="text"], .milepael input[type="text"], .collapsible input[type="text"]{
         height: 30px;
         border-radius: 5px;
         margin: 0.5em;
@@ -142,6 +174,8 @@ function addglobalcss() {?>
         padding: 20px;
 
     }
+
+
 
     /* ProsjektRedigeringKategorier ––––––––––––––––––––––––––––––––––––––––––––––*/
     .addCustomField p {
@@ -193,6 +227,7 @@ function addglobalcss() {?>
     }
 
 
+
     /* Collapsibles –––––––––––––––––––––––––––––––––––––––––––––––––––*/
 
     select {
@@ -200,6 +235,7 @@ function addglobalcss() {?>
         width: 300px;
         border-radius: 5px;
         padding: 10px
+        font-size: 14px;
     }
 
     #minform {
@@ -259,11 +295,11 @@ function addglobalcss() {?>
         cursor: pointer;
     }
 
-    textarea {
+    .collapsible textarea {
         width: 100%;
         min-height: 200px;
         margin-top: 5px !important;
-        border-radius: 10px;
+        border-radius: 5px;
         padding: 10px;
         font-size: 1.3rem;
     }
@@ -276,6 +312,29 @@ function addglobalcss() {?>
         font-family: Lato;
         letter-spacing: 0.1px !important;
         word-spacing: 0.5px !important;
+    }
+
+    .collapsible h5 {
+        padding-bottom: 10px;
+    }
+
+    .removedCol {
+        transform: translateX(100vw);
+    }
+
+    .collapsible .textFieldContainer {
+        width: 100%;
+    }
+
+    .collapsible .textFieldContainer input {
+        width: 100%;
+    }
+
+    .collapsible hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: #698161;
+        color: #698161;
     }
 
     /* Milepæler (collapsible) */
@@ -322,75 +381,7 @@ function addglobalcss() {?>
         font-weight: 700 !important;
     }
 
-
-
-    /*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-    /*RYDDE UNDER!!!*/
-
-
-
-
-    .inlineBlock {
-        display: inline-block;
-    }
-
-
-    #categoryAlreadyAdded {
-        font-size: 17px;
-        padding: 10px;
-        margin-left: 20px;
-        opacity: 0.3;
-    }
-
-
-
-    .mainTitle {
-        padding-top: 5px;
-    }
-
-    select {
-        height: 40px;
-        width: 300px;
-        border-radius: 5px;
-        padding: 10px;
-        font-size: 14px;
-    }
-
-    .collapsible h5 {
-        padding-bottom: 10px;
-    }
-
-    .removedCol {
-        transform: translateX(100vw);
-    }
-
-
-
-
-
-    .collapsible .textFieldContainer {
-        width: 100%;
-    }
-
-    .collapsible .textFieldContainer input {
-        width: 100%;
-    }
-
-    .collapsible hr {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        background-color: #698161;
-        color: #698161;
-    }
-
-    .savedText {
-        color: grey;
-        font-size: 14px;
-        font-family: Lato;
-        margin: 5px;
-    }
-
-
+    /* Person-collapsible */
 
     .addPersonButton {
         margin-top: 20px;
@@ -436,12 +427,6 @@ function addglobalcss() {?>
         margin-right: auto;
     }
 
-    .collapsibleCustomTitle {
-        width:100%;
-        padding: 10px;
-        font-size: 20px;
-    }
-
     @keyframes fadein {
         from {
             scale: 0.8;
@@ -453,6 +438,7 @@ function addglobalcss() {?>
             opacity: 1;
         }
     }
+
 
 
 /* Nettleser tilpassning –––––––––––––––––––––––––––––––––––––––––––––––––*/
