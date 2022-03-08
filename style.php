@@ -145,7 +145,7 @@ function addglobalcss() {?>
     }
 
 /* Prosjektleder-boks */
-    .projectLeader {
+    .uthevetBoksForm {
         padding: 20px;
         margin: 30px 0px 20px 0px;
         border-radius: 10px;

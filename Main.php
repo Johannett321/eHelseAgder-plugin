@@ -22,31 +22,36 @@ $testVar = "HEIHEI";
 
 require 'AdminPanel.php';
 require 'LoggInn.php';
-require 'ProsjektRedigering.php';
+require 'Prosjekt/OpprettProsjekt/ProsjektRedigering.php';
 require 'OnPluginActivation.php';
 require 'SQLTool.php';
-require 'ProsjektListe.php';
-require 'ProsjektSide.php';
-require 'CollapsibleManager.php';
+require 'Prosjekt/ProsjektListe.php';
+require 'Prosjekt/ProsjektSide.php';
+require 'Prosjekt/CollapsibleManager.php';
 require 'style.php';
+require 'Nyhetsartikkel/OpprettNyhetsartikkel/OpprettNyhetsartikkel.php';
 
 error_log("--------------------------------------",0);
 
-function cPrint($data) {
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
-
-    echo "<script>console.log('" . $output . "');</script>";
-}
-
 function kreverInnlogging() {
     if (htmlspecialchars($_POST["uname"]) == "johannett321" && htmlspecialchars($_POST["password"]) == "julebrus") {
-        cPrint("Riktig innlogging");
+        error_log("RIKTIG INNLOGGING!");
     }else {
         ?>
         <script>alert("Feil innloggingsinfo!");window.location.href = '../logg-inn/';</script>
         <?php
         exit;
     }
+}
+
+function getProsjekterDatabaseRef() {
+    return getFormattedTableName("eha_prosjekter");
+}
+
+function getCollapsiblesDatabaseRef() {
+    return getFormattedTableName("eha_collapsible");
+}
+
+function getNyhetsartiklerDatabaseRef() {
+    return getFormattedTableName("eha_nyhetsartikler");
 }
