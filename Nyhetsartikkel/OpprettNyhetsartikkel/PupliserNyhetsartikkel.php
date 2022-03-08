@@ -14,29 +14,20 @@ function publiserNyhetsartikkel() {
     $formatted_table_name = getNyhetsartiklerDatabaseRef();
 
     global $wpdb;
-    $data = array("publisert" => 1, "project_name" => $_SESSION["pname"], "undertittel" => $_SESSION["psubtitle"], "ledernavn" => $_SESSION["pleadername"], "ledermail" => $_SESSION["pleaderemail"], "ledertlf" => $_SESSION["pleaderphone"], "prosjektstart" => $_SESSION["project_start"], "prosjektslutt" => $_SESSION["project_end"], "kostnadsramme" => $_SESSION["cost"], "project_text" => $_SESSION["psummary"]);
-    $format = array("%d", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s");
-    $projectID = 0;
+    $data = array("tittel"=>$_POST["tittel"],"ingress"=>$_POST["ingress"],"skrevet_av"=>$_POST["skrevet_av"],"dato_skrevet"=>$_POST["dato_skrevet"],"innhold"=>$_POST["psummary"]);
+    $format = array("%s", "%s", "%s", "%s", "%s");
+    $articleID = 0;
 
-    if (isset($_GET['editProsjektID'])) {
-        $prosjektID = $_GET['editProsjektID'];
-        $wpdb->update($formatted_table_name, $data, array("id" => $prosjektID), $format);
-
-        $collapsibleTable = getCollapsiblesDatabaseRef();
-        error_log("Attempting to delete from: " . $collapsibleTable . ", where prosjekt_id => " . intval($prosjektID));
-
-        $wpdb->delete($collapsibleTable, array('prosjekt_id' => intval($prosjektID)), array("%d"));
-        $projectID = intval($prosjektID);
+    if (isset($_GET['editArticleID'])) {
+        $articleID = $_GET['editArticleID'];
+        $wpdb->update($formatted_table_name, $data, array("id" => $articleID), $format);
+        error_log("Oppdaterte nyhetsartikkel med ID: " . $articleID);
     }else {
         $wpdb->insert($formatted_table_name, $data, $format);
-        $projectJustAdded = $wpdb->get_results("SELECT * FROM $formatted_table_name WHERE id = (SELECT MAX(ID) FROM $formatted_table_name)");
-        $projectID = $projectJustAdded[0]->id;
-        error_log("Added project: " . $projectID, 0);
+        $articleJustAdded = $wpdb->get_results("SELECT * FROM $formatted_table_name WHERE id = (SELECT MAX(ID) FROM $formatted_table_name)");
+        $articleID = $articleJustAdded[0]->id;
+        error_log("La til nyhetsartikkel med artikkelID: " . $articleID, 0);
     }
 
-
-
-    lagreCollapsibles($projectID);
-
-    return "Lagret: " . $_SESSION["pname"] . " - " . $collapsibleIDS[0];
+    return "Publiserte nyhetsartikkel: " . $_POST["tittel"];
 }
