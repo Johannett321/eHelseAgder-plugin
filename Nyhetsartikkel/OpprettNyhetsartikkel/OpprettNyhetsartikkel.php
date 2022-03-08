@@ -14,14 +14,6 @@ function sc_opprett_nyhetsartikkel() {
         $postURL = "../../../../wp-json/ehelseagderplugin/api/publiser_nyhetsartikkel";
     }
     ?>
-        <script type = "text/javascript">
-            const x = 0;
-            const y = 5;
-            const z = 10;
-            if (x == 0 && y == 5) {
-                console.log("HEIIII");
-            }
-        </script>
     <form action = "<?php echo $postURL?>" method = "post" id = "minform">
         <div class = "requiredPart">
             <h3 class = "mainTitle">Kort om nyheten</h3>
