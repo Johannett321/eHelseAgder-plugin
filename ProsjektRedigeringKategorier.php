@@ -774,14 +774,28 @@ function leggTilInformasjonFelt() {
             const savedTextInfo = getSavedText();
 
             const prosjektTeamSavedInfo = localStorage.getItem("prosjektteam");
-            //DENNE MÅ ADDES: && prosjektTeamSavedInfo != null
+            <?php error_log("&&") ?>
             if (localProsjektIDMatchesUrlProsjektID()) {
-                //Vi har lagret en cache på prosjektteamet for dette prosjektet
-                prosjektTeamSavedInfoSplit = prosjektTeamSavedInfo.split(";");
+                if (prosjektTeamSavedInfo != null) {
+                    //Vi har lagret en cache på prosjektteamet for dette prosjektet
+                    prosjektTeamSavedInfoSplit = prosjektTeamSavedInfo.split(";");
 
-                for (var i = 0; i < prosjektTeamSavedInfoSplit.length; i++) {
-                    const person = createPerson(null, savedTextInfo);
-                    personer.appendChild(person);
+                    for (var i = 0; i < prosjektTeamSavedInfoSplit.length; i++) {
+                        const person = createPerson(null, savedTextInfo);
+                        personer.appendChild(person);
+                    }
+                }else {
+                    if (innhold == "") {
+                        //Prosjektet blir ikke redigert, så vi laster bare en person slik som i malen
+                        const person = createPerson(null, savedTextInfo);
+                        personer.appendChild(person);
+                    }else {
+                        const innholdSplit = innhold.split(";");
+                        for (let i = 0; i < innholdSplit.length; i++) {
+                            const person = createPerson(innholdSplit[i], savedTextInfo);
+                            personer.appendChild(person);
+                        }
+                    }
                 }
             }else {
                 if (innhold == "") {
