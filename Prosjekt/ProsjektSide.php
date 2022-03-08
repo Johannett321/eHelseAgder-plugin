@@ -5,14 +5,14 @@ add_shortcode( 'prosjektside', 'getprojectpage');
 function getProject($projectID) {
     error_log("Trying to get projects",0);
     global $wpdb;
-    $query = "SELECT * FROM " . getFormattedTableName("eha_prosjekter") . " WHERE id = " . $projectID;
+    $query = "SELECT * FROM " . getProsjekterDatabaseRef() . " WHERE id = " . $projectID;
     error_log("Sending query: " . $query,0);
     return $wpdb->get_results($query);
 }
 
 function getCollapsibles($projectID) {
     global $wpdb;
-    $formatted_table_name = getFormattedTableName("eha_collapsible");
+    $formatted_table_name = getCollapsiblesDatabaseRef();
     return $wpdb->get_results("SELECT * FROM " . $formatted_table_name . " WHERE prosjekt_id = " . $projectID);
 }
 

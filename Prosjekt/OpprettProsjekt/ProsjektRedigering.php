@@ -14,7 +14,7 @@ function startverktoy( $atts ) {
 function loadProsjekt() {
     $prosjektID = $_GET['editProsjektID'];
     error_log("Received projectID: " . $prosjektID, 0);
-    $formatted_table_name = getFormattedTableName("eha_prosjekter");
+    $formatted_table_name = getProsjekterDatabaseRef();
 
     if ($prosjektID != null) {
         global $wpdb;

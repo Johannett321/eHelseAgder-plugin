@@ -43,3 +43,15 @@ function kreverInnlogging() {
         exit;
     }
 }
+
+function getProsjekterDatabaseRef() {
+    return getFormattedTableName("eha_prosjekter");
+}
+
+function getCollapsiblesDatabaseRef() {
+    return getFormattedTableName("eha_collapsible");
+}
+
+function getNyhetsartiklerDatabaseRef() {
+    return getFormattedTableName("eha_nyhetsartikler");
+}

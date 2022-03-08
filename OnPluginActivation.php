@@ -3,11 +3,12 @@
 function install_plugin() {
     create_table_prosjekter();
     create_table_collapsible();
+    create_table_nyhetsartikler();
     return "eHelseAgder+ installert! Vennligst gå inn på wp-admin på nytt";
 }
 
 function create_table_prosjekter() {
-    $formatted_table_name = getFormattedTableName("eha_prosjekter");
+    $formatted_table_name = getProsjekterDatabaseRef();
 
     $sqlCommand = "CREATE TABLE IF NOT EXISTS $formatted_table_name (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
@@ -28,7 +29,7 @@ function create_table_prosjekter() {
 }
 
 function create_table_collapsible() {
-    $formatted_table_name = getFormattedTableName("eha_collapsible");
+    $formatted_table_name = getCollapsiblesDatabaseRef();
 
     $sqlCommand = "CREATE TABLE IF NOT EXISTS $formatted_table_name (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
@@ -40,6 +41,22 @@ function create_table_collapsible() {
         prosjekt_id mediumint(9) NOT NULL,
         PRIMARY KEY (id)
     ) $charset_collate;";
+
+    createTable($formatted_table_name, $sqlCommand);
+}
+
+function create_table_nyhetsartikler() {
+    $formatted_table_name = getNyhetsartiklerDatabaseRef();
+
+    $sqlCommand = "CREATE TABLE IF NOT EXISTS $formatted_table_name (
+        id mediumint(9) NOT NULL AUTO_INCREMENT,
+        tittel varchar(100),
+        ingress varchar(200),
+        skrevet_av varchar (100),
+        dato_skrevet varchar(100),
+        innhold varchar(15000),
+        PRIMARY KEY (id)
+    );";
 
     createTable($formatted_table_name, $sqlCommand);
 }

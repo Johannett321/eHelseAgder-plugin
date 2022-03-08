@@ -141,7 +141,7 @@ function leggTilInformasjonFelt() {
             if (isset($_GET['editProsjektID'])) {
                 error_log("ProsjektID is set");
                 $prosjektID = $_GET['editProsjektID'];
-                $formatted_table_name = getFormattedTableName('eha_collapsible');
+                $formatted_table_name = getFormattedTableName('');
 
                 global $wpdb;
                 $query = "SELECT * FROM " . $formatted_table_name . " WHERE prosjekt_id = " . $prosjektID;
