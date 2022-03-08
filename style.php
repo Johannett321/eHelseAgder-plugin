@@ -25,13 +25,6 @@ function addglobalcss() {?>
         opacity: 0.3;
     }
 
-
-    /* HEADER ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-
-
-
-
-
     /* Progress bar ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
     .infoBlokk, #steg2 {
         margin-left: auto;
@@ -338,7 +331,7 @@ function addglobalcss() {?>
     }
 
     /* Milepæler (collapsible) */
-    .milepael button {
+    .milepael button, .personRightCol button {
         height: 40px;
         width: 100%;
         font-size: 14px;
