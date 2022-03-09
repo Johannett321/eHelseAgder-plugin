@@ -8,7 +8,7 @@ function sc_opprett_nyhetsartikkel() {
     $loadedNyhetsartikkel = getEditingNewsArticle();
 
     $postURL = "";
-    if (isset($_GET['editProsjektID'])) {
+    if (isset($_GET['editArticleID'])) {
         $postURL = "../../../../wp-json/ehelseagderplugin/api/publiser_nyhetsartikkel?editArticleID=" . $_GET['editArticleID'];
     }else {
         $postURL = "../../../../wp-json/ehelseagderplugin/api/publiser_nyhetsartikkel";

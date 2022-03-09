@@ -22,12 +22,12 @@ function publiserNyhetsartikkel() {
         $articleID = $_GET['editArticleID'];
         $wpdb->update($formatted_table_name, $data, array("id" => $articleID), $format);
         error_log("Oppdaterte nyhetsartikkel med ID: " . $articleID);
+        return "Oppdaterte nyhetsartikkel: " . $_POST["tittel"];
     }else {
         $wpdb->insert($formatted_table_name, $data, $format);
         $articleJustAdded = $wpdb->get_results("SELECT * FROM $formatted_table_name WHERE id = (SELECT MAX(ID) FROM $formatted_table_name)");
         $articleID = $articleJustAdded[0]->id;
         error_log("La til nyhetsartikkel med artikkelID: " . $articleID, 0);
+        return "Publiserte nyhetsartikkel: " . $_POST["tittel"];
     }
-
-    return "Publiserte nyhetsartikkel: " . $_POST["tittel"];
 }
