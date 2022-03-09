@@ -1,4 +1,5 @@
 <?php
+include ('SisteArtiklerListe.php');
 
 add_shortcode( 'sc_vis_artikkel', 'sc_vis_artikkel');
 

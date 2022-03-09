@@ -33,6 +33,8 @@ require 'Nyhetsartikkel/OpprettNyhetsartikkel/OpprettNyhetsartikkel.php';
 require 'Nyhetsartikkel/ListNyhetsartikler.php';
 require 'Nyhetsartikkel/VisArtikkel.php';
 
+include 'FacebookTool.php';
+
 error_log("--------------------------------------",0);
 
 function kreverInnlogging() {
