@@ -774,8 +774,7 @@ function leggTilInformasjonFelt() {
             const savedTextInfo = getSavedText();
 
             const prosjektTeamSavedInfo = localStorage.getItem("prosjektteam");
-            <?php error_log("&&") ?>
-            if (localProsjektIDMatchesUrlProsjektID()) {
+            if (localProsjektIDMatchesUrlProsjektID() && prosjektTeamSavedInfo != null) {
                 if (prosjektTeamSavedInfo != null) {
                     //Vi har lagret en cache på prosjektteamet for dette prosjektet
                     prosjektTeamSavedInfoSplit = prosjektTeamSavedInfo.split(";");
@@ -783,18 +782,6 @@ function leggTilInformasjonFelt() {
                     for (var i = 0; i < prosjektTeamSavedInfoSplit.length; i++) {
                         const person = createPerson(null, savedTextInfo);
                         personer.appendChild(person);
-                    }
-                }else {
-                    if (innhold == "") {
-                        //Prosjektet blir ikke redigert, så vi laster bare en person slik som i malen
-                        const person = createPerson(null, savedTextInfo);
-                        personer.appendChild(person);
-                    }else {
-                        const innholdSplit = innhold.split(";");
-                        for (let i = 0; i < innholdSplit.length; i++) {
-                            const person = createPerson(innholdSplit[i], savedTextInfo);
-                            personer.appendChild(person);
-                        }
                     }
                 }
             }else {

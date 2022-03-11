@@ -30,6 +30,10 @@ require 'Prosjekt/ProsjektSide.php';
 require 'Prosjekt/CollapsibleManager.php';
 require 'style.php';
 require 'Nyhetsartikkel/OpprettNyhetsartikkel/OpprettNyhetsartikkel.php';
+require 'Nyhetsartikkel/ListNyhetsartikler.php';
+require 'Nyhetsartikkel/VisArtikkel.php';
+
+include 'FacebookTool.php';
 
 error_log("--------------------------------------",0);
 
