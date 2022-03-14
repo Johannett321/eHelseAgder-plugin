@@ -32,6 +32,8 @@ require 'style.php';
 require 'Nyhetsartikkel/OpprettNyhetsartikkel/OpprettNyhetsartikkel.php';
 require 'Nyhetsartikkel/ListNyhetsartikler.php';
 require 'Nyhetsartikkel/VisArtikkel.php';
+require 'MyCustomStyle.php';
+include "TestFileCanBeDeleted.php";
 
 include 'FacebookTool.php';
 
