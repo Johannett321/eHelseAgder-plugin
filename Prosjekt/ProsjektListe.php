@@ -12,7 +12,6 @@ function getProjects() {
 function getprojectlist() {
     $projects = getProjects();
     ?>
-    <h3>Alle prosjekter: </h3>
         <?php
             foreach ($projects as $currentProject) {
                 ?>
