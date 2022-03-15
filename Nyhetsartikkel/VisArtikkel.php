@@ -15,7 +15,7 @@ function sc_vis_artikkel() {
     $artikkelID = $_GET["artikkelID"];
     $artikkelInfo = getArtikkel($artikkelID);
     ?>
-    <a href = "../../opprett-nyhetsartikkel?editArticleID=<?php echo $artikkelID ?>"><button>Rediger prosjekt</button></a>
+    <a href = "../../opprett-nyhetsartikkel?editArticleID=<?php echo $artikkelID ?>"><button>Rediger artikkel</button></a>
     <h3><?php echo $artikkelInfo[0]->tittel; ?></h3>
     <span><?php echo $artikkelInfo[0]->ingress ?></span>
     <div class = "coverPhoto"></div>
