@@ -22,7 +22,32 @@ function getprojectpage() {
     ?>
         <div class = "topPart">
             <div class = "coverPhoto"></div>
-            <div class = "oppsummert"></div>
+            <div class = "oppsummert">
+                <h4>Kort om prosjektet</h4>
+                <div>
+                    <h5>Prosjektnavn:</h5><span><?php echo $projectInfo[0]->project_name?></span>
+                </div>
+                <div>
+                    <h5>Prosjektleder:</h5><span><?php echo $projectInfo[0]->ledernavn?></span>
+                </div>
+                <div>
+                    <h5>Prosjekteier:</h5>
+                    <div>
+                        <i>Epost: <?php echo $projectInfo[0]->ledermail?></i>
+                        <br>
+                        <i>Mobil: <?php echo $projectInfo[0]->ledertlf?></i>
+                    </div>
+                </div>
+                <div>
+                    <h5>Søkerkommuner/samarbeidspartnere:</h5><span><?php echo $projectInfo[0]->samarbeidspartnere?></span>
+                </div>
+                <div>
+                    <h5>Prosjektstart:</h5><span><?php echo $projectInfo[0]->prosjektstart?></span>
+                </div>
+                <div>
+                    <h5>Prosjektslutt (estimert):</h5><span><?php echo $projectInfo[0]->prosjektslutt?></span>
+                </div>
+            </div>
         </div>
         <center><h3><?php echo $projectInfo[0]->project_name; ?></h3></center>
         <div><?php echo nl2br($projectInfo[0]->project_text); ?></div>

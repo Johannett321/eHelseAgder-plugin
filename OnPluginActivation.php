@@ -19,11 +19,12 @@ function create_table_prosjekter() {
         ledertlf varchar(15),
         prosjektstart varchar(14),
         prosjektslutt varchar(14),
-        kostnadsramme varchar(14),
+        prosjekteierkommuner varchar(40),
+        samarbeidspartnere varchar(40),
         project_text varchar(1700) NOT NULL,
         publisert int(1),
         PRIMARY KEY  (id)
-    ) $charset_collate;";
+    );";
 
     createTable($formatted_table_name, $sqlCommand);
 }
@@ -40,7 +41,7 @@ function create_table_collapsible() {
         fil_id smallint,
         prosjekt_id mediumint(9) NOT NULL,
         PRIMARY KEY (id)
-    ) $charset_collate;";
+    );";
 
     createTable($formatted_table_name, $sqlCommand);
 }

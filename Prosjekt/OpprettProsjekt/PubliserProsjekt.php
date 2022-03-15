@@ -15,7 +15,7 @@ function publiserProsjekt() {
     $formatted_table_name = getProsjekterDatabaseRef();
 
     global $wpdb;
-    $data = array("publisert" => 1, "project_name" => $_SESSION["pname"], "undertittel" => $_SESSION["psubtitle"], "ledernavn" => $_SESSION["pleadername"], "ledermail" => $_SESSION["pleaderemail"], "ledertlf" => $_SESSION["pleaderphone"], "prosjektstart" => $_SESSION["project_start"], "prosjektslutt" => $_SESSION["project_end"], "kostnadsramme" => $_SESSION["cost"], "project_text" => $_SESSION["psummary"]);
+    $data = array("publisert" => 1, "project_name" => $_SESSION["pname"], "undertittel" => $_SESSION["psubtitle"], "ledernavn" => $_SESSION["pleadername"], "ledermail" => $_SESSION["pleaderemail"], "ledertlf" => $_SESSION["pleaderphone"], "prosjektstart" => $_SESSION["project_start"], "prosjektslutt" => $_SESSION["project_end"], "prosjekteierkommuner" => $_SESSION["prosjekteierkommuner"], "samarbeidspartnere" => $_SESSION["samarbeidspartnere"], "project_text" => $_SESSION["psummary"]);
     $format = array("%d", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s");
     $projectID = 0;
 
@@ -39,7 +39,7 @@ function publiserProsjekt() {
 
     lagreCollapsibles($projectID);
 
-    return "Lagret: " . $_SESSION["pname"] . " - " . $collapsibleIDS[0];
+    return "Lagret: " . $_SESSION["pname"];
 }
 
 function lagreCollapsibles($projectID) {

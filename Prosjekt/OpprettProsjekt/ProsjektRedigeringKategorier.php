@@ -15,7 +15,8 @@ function validateFieldsFromPage1() {
     saveFieldToSession("pleaderphone");
     saveFieldToSession("project_start");
     saveFieldToSession("project_end");
-    saveFieldToSession("cost");
+    saveFieldToSession("samarbeidspartnere");
+    saveFieldToSession("prosjekteierkommuner");
     saveFieldToSession("psummary");
 }
 
