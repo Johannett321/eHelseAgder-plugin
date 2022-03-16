@@ -2,19 +2,22 @@
 function addKategorierTools() {
     ?>
     <script type="text/javascript">
+        //TODO her må vi fylle ut hvilke filer som skal slettes dersom en collapsible blir slettet
         function getFieldsForName(collapsibleName) {
             switch (collapsibleName) {
                 case "cleverandorer":
                     return ["cleverandorer_ls", "cleverandorer_ls_time"];
                     break;
-                case "cleverandorer":
-                    return ["cleverandorer_ls", "cleverandorer_ls_time"];
+                case "cmilepaeler":
+                    return ["milepaeler", "milepaeler_time", "cmdropdown1", "cmdropdown1_time",
+                        "cmdropdown2", "cmdropdown2_time", "cmdropdown3", "cmdropdown3_time",
+                        "cmdropdown4", "cmdropdown4_time", "cmdropdown5", "cmdropdown5_time"];
                     break;
-                case "cleverandorer":
-                    return ["cleverandorer_ls", "cleverandorer_ls_time"];
+                case "cprosjektteam":
+                    return ["prosjektteam", "prosjektteam_time"];
                     break;
-                case "cleverandorer":
-                    return ["cleverandorer_ls", "cleverandorer_ls_time"];
+                case "cmerinfo":
+                    return ["cmerinfo_ls", "cmerinfo_ls_time"];
                     break;
             }
         }
@@ -29,6 +32,20 @@ function addKategorierTools() {
                 block: "center",
                 inline: "nearest"
             });
+        }
+
+        const categoryAlreadyAdded = document.getElementById('categoryAlreadyAdded');
+        const categoryAlreadyAddedText = document.getElementById('categoryAlreadyAddedText');
+
+        function selectionOptionChanged() {
+            if (isCategoryAlreadyAdded(categoryChooser.value)) {
+                addCategoryButton.classList.add('hidden');
+                categoryAlreadyAdded.classList.remove('hidden');
+                categoryAlreadyAddedText.innerText = categoryChooser.options[categoryChooser.selectedIndex].text + " lagt til";
+            }else {
+                addCategoryButton.classList.remove('hidden');
+                categoryAlreadyAdded.classList.add('hidden');
+            }
         }
 
         /*

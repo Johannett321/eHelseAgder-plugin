@@ -3,6 +3,7 @@ require 'Tools/ProsjektLoader.php';
 require 'Tools/KategorierTool.php';
 require 'Tools/KategorierSaverTool.php';
 
+include "CategoryCreatorIndex.php";
 include "Collapsibles/LeverandorerCol.php";
 include "Collapsibles/ProsjektTeamCol.php";
 include "Collapsibles/MilepaelerCol.php";
@@ -10,6 +11,12 @@ include "Collapsibles/CustomCatCol.php";
 include "Collapsibles/MerInfoCol.php";
 
 function prosjektRedigeringKategorierJS() {
+    ?>
+    <script type="text/javascript">
+        const categoryChooser = document.getElementById('collapsibleChooser');
+        const addCategoryButton = document.getElementById('addCategoryButton');
+    </script>
+    <?php
     addKategorierTools();
     addKategorierSaverTool();
 
@@ -20,50 +27,22 @@ function prosjektRedigeringKategorierJS() {
     addCustomCatCol();
     addMerInfoCol();
 
+    addCategoryCreatorIndex();
+
     ?>
     <script type="text/javascript">
         (function () {
             const collapsibles = document.getElementById('collapsibles');
-            const categoryChooser = document.getElementById('collapsibleChooser');
-            const addCategoryButton = document.getElementById('addCategoryButton');
-
-            const categoryAlreadyAdded = document.getElementById('categoryAlreadyAdded');
-            const categoryAlreadyAddedText = document.getElementById('categoryAlreadyAddedText');
 
             $("#collapsibleChooser").change(function () {
                 selectionOptionChanged();
             });
 
             addCategoryButton.addEventListener("click", function () {
-                if (categoryChooser.value == 'cleverandorer') {
-                    removeCategoryFromRemovedCollapsibles('cleverandorer');
-                    createLeverandorerCol();
-                    selectionOptionChanged();
-                }else if (categoryChooser.value == 'cprosjektteam') {
-                    createProsjektTeamCol();
-                    selectionOptionChanged();
-                }else if (categoryChooser.value == 'cegenkategori') {
-                    createCustomCatCol();
-                    selectionOptionChanged();
-                }else if (categoryChooser.value == 'cmerinfo') {
-                    createMerInfoCol();
-                    selectionOptionChanged();
-                }else if (categoryChooser.value == 'cmilepaeler') {
-                    createMilepaelerCol();
-                    selectionOptionChanged();
-                }
+                createCollapsibleType(categoryChooser.value);
+                selectionOptionChanged();
+                saveAddedCategory(categoryChooser.value);
             });
-
-            function selectionOptionChanged() {
-                if (isCategoryAlreadyAdded(categoryChooser.value)) {
-                    addCategoryButton.classList.add('hidden');
-                    categoryAlreadyAdded.classList.remove('hidden');
-                    categoryAlreadyAddedText.innerText = categoryChooser.options[categoryChooser.selectedIndex].text + " lagt til";
-                }else {
-                    addCategoryButton.classList.remove('hidden');
-                    categoryAlreadyAdded.classList.add('hidden');
-                }
-            }
 
             <?php
             //Henter prosjektet fra databasen dersom vi redigerer et prosjekt
@@ -71,6 +50,9 @@ function prosjektRedigeringKategorierJS() {
             ?>
 
             //TODO: HER KAN VI LOADE LISTEN MED COLLAPSIBLES SOM ER LAGT TIL PÅ DEN LOKALE SAVEN, OG LAGE DISSE
+
+            loadAddedCollapsibles()
+
         })();
     </script>
     <?php

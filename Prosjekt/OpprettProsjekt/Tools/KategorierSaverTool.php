@@ -15,26 +15,94 @@ function addKategorierSaverTool() {
         function removeCategoryFromRemovedCollapsibles(collapsibleName) {
             var deletedCategories = localStorage.getItem("fjernedeCollapsibles");
             if (deletedCategories == null) deletedCategories = "";
+
+            //Hvis kategorien er listet som en av de slettede kategoriene
             if (deletedCategories.includes(collapsibleName)) {
-                var beforeRemoved = deletedCategories.length;
-                deletedCategories.replace(';' + collapsibleName, '');
-                if  (deletedCategories.length == beforeRemoved) {
-                    deletedCategories.replace(collapsibleName, '');
+                let deletedCategoriesSplit = deletedCategories.split(';');
+                var newDeletedCategoriesString = "";
+
+                //Legge til alle kategorier som ikke er den ønskede kategorien i en string separert med semikolon
+                for (let i = 0; i < deletedCategoriesSplit.length; i++) {
+                    if (deletedCategoriesSplit[i] !== collapsibleName) {
+                        if (newDeletedCategoriesString !== "") {
+                            newDeletedCategoriesString += ";";
+                        }
+                        newDeletedCategoriesString += deletedCategoriesSplit[i];
+                    }
                 }
-                localStorage.setItem("fjernedeCollapsibles", deletedCategories);
+
+                //Sett den nye stringen som listen over fjernede collapsibles
+                if (newDeletedCategoriesString === "") {
+                    localStorage.removeItem("fjernedeCollapsibles");
+                }else {
+                    localStorage.setItem("fjernedeCollapsibles", newDeletedCategoriesString);
+                }
             }
         }
 
         function saveDeletedCollapsible(name, fieldsToReset) {
             var deletedCategories = localStorage.getItem("fjernedeCollapsibles");
             if (deletedCategories == null) deletedCategories = "";
-            if (!deletedCategories == "") {
+            if (deletedCategories !== "") {
                 deletedCategories += ";";
             }
-            deletedCategories += name;
-            localStorage.setItem("fjernedeCollapsibles", deletedCategories);
+            if (!deletedCategories.includes(name)) {
+                deletedCategories += name;
+                localStorage.setItem("fjernedeCollapsibles", deletedCategories);
+            }
+
             for (var i = 0; i < fieldsToReset.length; i++) {
                 localStorage.removeItem(fieldsToReset[i]);
+            }
+
+            removeCategoryFromAddedCategories(name);
+        }
+
+        function removeCategoryFromAddedCategories(collapsibleName) {
+            var addedCategories = localStorage.getItem("opprettedeCollapsibles");
+            if (addedCategories == null) addedCategories = "";
+
+            //Hvis kategorien er listet som en av de opprettede kategoriene
+            if (addedCategories.includes(collapsibleName)) {
+                let addedCategoriesSplit = addedCategories.split(';');
+                var newAddedCategoriesString = "";
+
+                //Legge til alle kategorier som ikke er den ønskede kategorien i en string separert med semikolon
+                for (let i = 0; i < addedCategoriesSplit.length; i++) {
+                    if (addedCategoriesSplit[i] !== collapsibleName) {
+                        if (newAddedCategoriesString !== "") {
+                            newAddedCategoriesString += ";";
+                        }
+                        newAddedCategoriesString += addedCategories[i];
+                    }
+                }
+
+                //Sett den nye stringen som listen over lagt til collapsibles
+                if (newAddedCategoriesString === "") {
+                    localStorage.removeItem("opprettedeCollapsibles");
+                }else {
+                    localStorage.setItem("opprettedeCollapsibles", newAddedCategoriesString);
+                }
+            }
+        }
+
+        function saveAddedCategory(name) {
+            var addedCategories = localStorage.getItem("opprettedeCollapsibles");
+            if (addedCategories == null) addedCategories = "";
+            if (addedCategories !== "") {
+                addedCategories += ";";
+            }
+            if (!addedCategories.includes(name)) {
+                addedCategories += name;
+                localStorage.setItem("opprettedeCollapsibles", addedCategories);
+            }
+        }
+
+        function loadAddedCollapsibles() {
+            let addedCategories = localStorage.getItem("opprettedeCollapsibles");
+            let addedCategoriesSplit = addedCategories.split(";");
+            for (let i = 0; i < addedCategoriesSplit.length; i++) {
+                createCollapsibleType(addedCategoriesSplit[i]);
             }
         }
 
