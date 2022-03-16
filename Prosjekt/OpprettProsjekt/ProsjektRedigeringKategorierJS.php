@@ -52,7 +52,6 @@ function prosjektRedigeringKategorierJS() {
             //TODO: HER KAN VI LOADE LISTEN MED COLLAPSIBLES SOM ER LAGT TIL PÅ DEN LOKALE SAVEN, OG LAGE DISSE
 
             loadAddedCollapsibles()
-
         })();
     </script>
     <?php

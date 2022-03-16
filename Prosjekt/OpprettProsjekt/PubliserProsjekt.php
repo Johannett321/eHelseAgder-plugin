@@ -35,8 +35,6 @@ function publiserProsjekt() {
         error_log("Added project: " . $projectID, 0);
     }
 
-    
-
     lagreCollapsibles($projectID);
 
     return "Lagret: " . $_SESSION["pname"];

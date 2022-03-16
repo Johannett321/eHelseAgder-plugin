@@ -41,7 +41,7 @@ function leggTilInformasjonFelt() {
         $postURL = "../../wp-json/ehelseagderplugin/api/publiser_prosjekt";
     }
     ?>
-    <form action="<?php echo $postURL ?>" method="post">
+    <form action="<?php echo $postURL ?>" method="post" id = "myForm">
         <div class="addCustomField">
             <h4 class="mainTitle">Legg til informasjon om prosjektet <?php echo $_SESSION["pname"] ?>:</h4>
             <p>Under kan du legge til informasjon du ønsker å dele om prosjektet ved hjelp av ulike kategorier. Finner du

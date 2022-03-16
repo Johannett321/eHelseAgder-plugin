@@ -2,6 +2,12 @@
 function addKategorierTools() {
     ?>
     <script type="text/javascript">
+        //Sletter alt i localstorage når man submitter
+        $('#myForm').submit(function() {
+            localStorage.clear();
+            return true; // return false to cancel form action
+        });
+
         //TODO her må vi fylle ut hvilke filer som skal slettes dersom en collapsible blir slettet
         function getFieldsForName(collapsibleName) {
             switch (collapsibleName) {
