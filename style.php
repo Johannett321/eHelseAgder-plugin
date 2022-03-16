@@ -1,8 +1,7 @@
 <?php
-add_action( 'wp', 'addglobalcss' );
+add_shortcode( 'sc_styling', 'addglobalcss' );
 function addglobalcss() {?>
 <style>
-
     .mainTitle {
         padding-top: 5px;
     }
@@ -66,6 +65,7 @@ function addglobalcss() {?>
         color: #8CBE7E;
 
     }
+
     textBox {
         width: 50% !important;
     }

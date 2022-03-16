@@ -20,6 +20,8 @@ $testVar = "HEIHEI";
 //COLLAPSIBLE_MER_INFO=4
 //COLLAPSIBLE_MILEPÆLER=5
 
+$debugMode = false;
+
 require 'AdminPanel.php';
 require 'LoggInn.php';
 require 'Prosjekt/OpprettProsjekt/ProsjektRedigering.php';
@@ -32,8 +34,9 @@ require 'style.php';
 require 'Nyhetsartikkel/OpprettNyhetsartikkel/OpprettNyhetsartikkel.php';
 require 'Nyhetsartikkel/ListNyhetsartikler.php';
 require 'Nyhetsartikkel/VisArtikkel.php';
-include 'MyCustomStyle.php';
-include "TestFileCanBeDeleted.php";
+if ($debugMode) {
+    include 'MyCustomStyle.php';
+}
 
 include 'FacebookTool.php';
 
