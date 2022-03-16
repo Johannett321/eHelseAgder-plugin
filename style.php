@@ -9,6 +9,7 @@ if ($debugMode) {
 }
 
 function addglobalcss() {?>
+
 <style>
     .mainTitle {
         padding-top: 5px;
@@ -100,32 +101,37 @@ function addglobalcss() {?>
         margin-right: auto;
     }
 
+    #submitButton, .addInfoButton {
+        background-color: #0B843E;
+        text-transform: capitalize;
+        color: #fff;
+        transition: all 0.5s;
+    }
+
+    #submitButton:hover, .addInfoButton:hover {
+        color: #fff;
+        background-color: #0B843EBA;
+        font-weight: 700;
+    }
+
     #submitButton {
-        background-color: #8ac082;
         height: 50px;
         width: 200px;
         border-radius: 30px;
         margin-top: 7% !important;
         padding: 0px !important;
-        text-transform: capitalize;
-        color: #000;
-    }
-    #submitButton:hover {
-        color: #fff;
-        background-color: #0B843E;
-        font-weight: 700;
     }
 
     /* Kort om prosjektet */
     .requiredPart {
-        margin-top: 50px;
+        margin-top: 150px;
         margin-bottom: 60px;
         padding: 20px;
         background-color: #eef7e9;
         border-radius: 10px;
     }
 
-    .requiredPart h3, .requiredPart h4{
+    .requiredPart h4{
         margin-bottom: 1rem;
     }
 
@@ -173,6 +179,7 @@ function addglobalcss() {?>
 
     .sammendragContainer {
         padding: 20px;
+        margin-bottom: 100px;
 
     }
 
@@ -197,19 +204,9 @@ function addglobalcss() {?>
         font-family: Lato;
         font-size: 14px;
         padding: 5px;
-        border-radius: 200px;
-        border-style: solid;
+        border-radius: 5px;
         border-width: 1px;
-        background-color: #E6F3DF;
-        color: #0B843E;
         margin-left: 20px;
-    }
-
-    .addInfoButton:hover {
-        border: none;
-        background-color: #0B843E;
-        font-weight: 700;
-        color: #fff;
     }
 
     #categoryAlreadyAdded, #categoryAlreadyAdded img{
