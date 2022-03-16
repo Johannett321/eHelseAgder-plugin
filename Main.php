@@ -20,7 +20,8 @@ $testVar = "HEIHEI";
 //COLLAPSIBLE_MER_INFO=4
 //COLLAPSIBLE_MILEPÆLER=5
 
-$debugMode = false;
+global $debugMode;
+$debugMode = true;
 
 require 'AdminPanel.php';
 require 'LoggInn.php';

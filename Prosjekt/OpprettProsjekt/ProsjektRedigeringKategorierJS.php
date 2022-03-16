@@ -70,7 +70,7 @@ function prosjektRedigeringKategorierJS() {
             shallWeLoadProsjekt();
             ?>
 
-            //TODO: HER KAN VI LOADE LISTEN MED COLLAPSIBLES SOM ER LAGT TIL, OG LAGE DISSE
+            //TODO: HER KAN VI LOADE LISTEN MED COLLAPSIBLES SOM ER LAGT TIL PÅ DEN LOKALE SAVEN, OG LAGE DISSE
         })();
     </script>
     <?php

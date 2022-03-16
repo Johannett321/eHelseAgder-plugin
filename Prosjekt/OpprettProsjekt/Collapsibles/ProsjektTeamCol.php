@@ -27,7 +27,11 @@ function addProsjektTeamCol() {
                     //Vi har lagret en cache på prosjektteamet for dette prosjektet
                     prosjektTeamSavedInfoSplit = prosjektTeamSavedInfo.split(";");
 
-                    for (var i = 0; i < prosjektTeamSavedInfoSplit.length; i++) {
+                    let antallPersoner = 1;
+                    if (prosjektTeamSavedInfoSplit.length > 0) antallPersoner = prosjektTeamSavedInfoSplit.length / 4;
+                    console.log(antallPersoner);
+
+                    for (var i = 0; i < antallPersoner; i++) {
                         const person = createPerson(null, savedTextInfo);
                         personer.appendChild(person);
                     }
@@ -62,8 +66,8 @@ function addProsjektTeamCol() {
 
             function createPerson(personInfo, savedTextInfo) {
                 if (personInfo == null) personInfo = "";
-
                 const personInfoSplit = personInfo.split(",");
+                console.log("Prosjektteam sier: " + personInfo);
 
                 peopleInProjectTeam += 1;
                 const person = document.createElement('div');
@@ -89,6 +93,10 @@ function addProsjektTeamCol() {
                 removePersonButton.id = "";
                 removePersonButton.name = "";
                 $(removePersonButton).click(function (e) {
+                    if (peopleInProjectTeam == 1) {
+                        alert("Kan ikke fjerne alle personene i et prosjektteam. Tips: For å slette prosjekt team kategorien, kan du trykke på 'x' symbolet øverst til høyre av kategorien");
+                        return
+                    }
                     if (confirm("Er du sikker?") == true) {
                         $(person).animate({opacity: '0%', height: '0px'}, function (){$(person).remove();personRemoved(person.name);});
                     }

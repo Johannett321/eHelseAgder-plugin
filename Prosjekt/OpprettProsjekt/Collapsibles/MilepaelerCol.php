@@ -4,27 +4,44 @@ function addMilepaelerCol() {
     ?>
     <script type="text/javascript">
         var milepaelCounter = 0;
+        const milepaelArray = [];
 
         function createMilepaelerCol(innhold) {
             if (innhold == null) innhold = "";
 
             const collapsible = createCollapsibleWithTitle("Milepæler", "cmilepaeler");
             if (collapsible == null) return;
-
             const milepaeler = document.createElement('div');
 
             const savedTextInfo = getSavedText();
 
-            var milepaelerSplit = innhold.split(";");
+            const milepaelSavedInfo = localStorage.getItem("milepaeler");
+            if (localProsjektIDMatchesUrlProsjektID()) {
+                if (milepaelSavedInfo != null) {
+                    //Vi har lagret en cache på milepaeler for dette prosjektet
+                    milepaelerSavedInfoSplit = milepaelSavedInfo.split(";");
 
-            if (innhold.length == 0) {
-                //Vi redigerer ikke et prosjekt, så det er ingen milepaeler å loade
-                const milepael = createMilepael(null, savedTextInfo);
-                milepaeler.append(milepael);
+                    let antallMilepaeler = 1;
+                    if (milepaelerSavedInfoSplit.length > 0) antallMilepaeler = milepaelerSavedInfoSplit.length / 3;
+                    console.log(antallMilepaeler);
+
+                    for (var i = 0; i < antallMilepaeler; i++) {
+                        console.log("Saved info milepaeler: " + savedTextInfo)
+                        const milepael = createMilepael(null, savedTextInfo);
+                        milepaeler.appendChild(milepael);
+                    }
+                }
             }else {
-                for (let i = 0; i < milepaelerSplit.length; i++) {
-                    const milepael = createMilepael(milepaelerSplit[i], savedTextInfo);
-                    milepaeler.append(milepael);
+                if (innhold == "") {
+                    //Prosjektet blir ikke redigert, så vi laster bare en milepael slik som i malen
+                    const milepael = createMilepael(null, savedTextInfo);
+                    milepaeler.appendChild(milepael);
+                }else {
+                    const innholdSplit = innhold.split(";");
+                    for (let i = 0; i < innholdSplit.length; i++) {
+                        const milepael = createMilepael(innholdSplit[i], savedTextInfo);
+                        milepaeler.appendChild(milepael);
+                    }
                 }
             }
 
@@ -48,11 +65,12 @@ function addMilepaelerCol() {
             function createMilepael(currentMilepaelInfo, savedTextInfo) {
                 if (currentMilepaelInfo == null) currentMilepaelInfo = "";
                 const milepaelInfoSplit = currentMilepaelInfo.split(",");
-
-                const currentMilepael = document.createElement('div');
-                currentMilepael.classList.add("milepael");
+                console.log("Milepaeler sier: " + currentMilepaelInfo);
 
                 milepaelCounter += 1;
+                const currentMilepael = document.createElement('div');
+                currentMilepael.classList.add("milepael");
+                currentMilepael.name = milepaelCounter;
 
                 if (milepaelCounter != 1) {
                     const line = document.createElement('hr');
@@ -97,7 +115,7 @@ function addMilepaelerCol() {
                 removeMilepaelButton.innerText = "Fjern milepæl";
                 $(removeMilepaelButton).click(function (e) {
                     if (confirm("Er du sikker?") == true) {
-                        $(currentMilepael).animate({opacity: '0%', height: '0px'}, function (){$(currentMilepael).remove();});
+                        $(currentMilepael).animate({opacity: '0%', height: '0px'}, function (){$(currentMilepael).remove();milepaelRemoved(currentMilepael.name)});
                     }
                 });
 
@@ -111,9 +129,18 @@ function addMilepaelerCol() {
 
                 addDropdownSaver(dropdown, savedTextInfo, "cmdropdown" + milepaelCounter);
 
-                const titleField = createTextFieldWithLabel("Tittel: ", "cmtittel" + milepaelCounter, "Signert avtale", milepaelInfoSplit[0], savedTextInfo);
-                const kontaktpersonField = createTextFieldWithLabel("Kontaktperson: ", "cmcontact" + milepaelCounter, "navn.navnesen@gmail.com", milepaelInfoSplit[2], savedTextInfo);
-                const dateField = createTextFieldWithLabel("Dato: ", "cmdate" + milepaelCounter, "31.10.2022", milepaelInfoSplit[3], savedTextInfo);
+                const textBoxesIncludingThis = milepaelCounter*3;
+
+
+                console.log("Milepaelinfosplit sier:  " + milepaelInfoSplit[0] + ", " + milepaelInfoSplit[1] + ", " + milepaelInfoSplit[2] + ", " + milepaelInfoSplit[3])
+
+                //TODO - SLETT DETTE: title, name, placeholder, fieldContent, arrayWithBrothers, textboxNumber, savedLabel, localSave
+                //TODO - EKSEMPEL: createMultiSaverTextField("Stilling/rolle: ", "cvtmrolle" + peopleInProjectTeam, "Markedskordinator", personInfoSplit[0], prosjektTeamArray, textBoxesIncludingThis-4, savedTextInfo, "prosjektteam");
+                const titleField = createMultiSaverTextField("Tittel: ", "cmtittel" + milepaelCounter, "Signert avtale", milepaelInfoSplit[0], milepaelArray, textBoxesIncludingThis-3, savedTextInfo, "milepaeler");
+                const kontaktpersonField = createMultiSaverTextField("Kontaktperson: ", "cmcontact" + milepaelCounter, "navn.navnesen@gmail.com", milepaelInfoSplit[2], milepaelArray, textBoxesIncludingThis-2, savedTextInfo, "milepaeler");
+                const dateField = createMultiSaverTextField("Dato: ", "cmdate" + milepaelCounter, "31.10.2022", milepaelInfoSplit[3], milepaelArray, textBoxesIncludingThis-1, savedTextInfo, "milepaeler");
+
+
 
                 currentMilepael.append(container);
                 currentMilepael.append(titleField);
@@ -127,6 +154,11 @@ function addMilepaelerCol() {
             collapsible.appendChild(savedTextInfo);
             collapsibles.appendChild(collapsible);
             scrollToView(collapsible);
+
+            function milepaelRemoved(milepaelNumber) {
+                milepaelCounter -= 1;
+                saveSpecialFields(milepaelArray,savedTextInfo,"milepaeler")
+            }
         }
     </script>
     <?php

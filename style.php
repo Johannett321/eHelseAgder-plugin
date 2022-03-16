@@ -1,5 +1,13 @@
 <?php
-add_shortcode( 'sc_styling', 'addglobalcss' );
+
+global $debugMode;
+
+if ($debugMode) {
+    add_action( 'wp', 'addglobalcss' );
+}else {
+    add_shortcode( 'sc_styling', 'addglobalcss' );
+}
+
 function addglobalcss() {?>
 <style>
     .mainTitle {
