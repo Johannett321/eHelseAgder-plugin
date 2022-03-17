@@ -37,10 +37,12 @@ function addKategorierSaverTool() {
                 }else {
                     localStorage.setItem("fjernedeCollapsibles", newDeletedCategoriesString);
                 }
+                saveLocalProsjektID();
             }
         }
 
         function saveDeletedCollapsible(name, fieldsToReset) {
+            //TELEPORT
             var deletedCategories = localStorage.getItem("fjernedeCollapsibles");
             if (deletedCategories == null) deletedCategories = "";
             if (deletedCategories !== "") {
@@ -54,6 +56,8 @@ function addKategorierSaverTool() {
             for (var i = 0; i < fieldsToReset.length; i++) {
                 localStorage.removeItem(fieldsToReset[i]);
             }
+
+            saveLocalProsjektID();
 
             removeCategoryFromAddedCategories(name);
         }
@@ -83,6 +87,8 @@ function addKategorierSaverTool() {
                 }else {
                     localStorage.setItem("opprettedeCollapsibles", newAddedCategoriesString);
                 }
+
+                saveLocalProsjektID();
             }
         }
 
@@ -95,6 +101,7 @@ function addKategorierSaverTool() {
             if (!addedCategories.includes(name)) {
                 addedCategories += name;
                 localStorage.setItem("opprettedeCollapsibles", addedCategories);
+                saveLocalProsjektID();
             }
         }
 
@@ -119,9 +126,42 @@ function addKategorierSaverTool() {
                     //LOAD COLLAPSIBLES
                 }
             }else {
+                console.log("Clearer localstorage fordi local prosjektID ikke matcher prosjektID som vi redigerer")
                 localStorage.clear();
             }
         }
+
+        function localProsjektIDMatchesUrlProsjektID(prosjektIDSpecialSaveLocation) {
+            const urlParams = new URLSearchParams(window.location.search);
+            var editProsjektID = urlParams.get('editProsjektID');
+            var prosjektIDFromLocalStorage = "";
+            if (prosjektIDSpecialSaveLocation == null) {
+                prosjektIDFromLocalStorage = localStorage.getItem("prosjektID");
+            }else {
+                prosjektIDFromLocalStorage = localStorage.getItem(prosjektIDSpecialSaveLocation);
+            }
+
+
+            if (editProsjektID == null) editProsjektID = "";
+            if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "";
+            if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "";
+
+            return editProsjektID === prosjektIDFromLocalStorage;
+        }
+
+        function saveLocalProsjektID() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let prosjektIDSaveLocations = ["prosjektID"];
+            //, "prosjektID_milepaeler", "prosjektID_prosjektteam"
+            let editProsjektID = urlParams.get('editProsjektID');
+            for (let i = 0; i < prosjektIDSaveLocations.length; i++) {
+                localStorage.setItem(prosjektIDSaveLocations[i], editProsjektID);
+            }
+        }
+
+        /*
+        ------------------- SAVERS -------------------
+         */
 
         function getSavedText() {
             const lagretText = document.createElement('span');
@@ -130,18 +170,15 @@ function addKategorierSaverTool() {
             return lagretText;
         }
 
-        function localProsjektIDMatchesUrlProsjektID() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const editProsjektID = urlParams.get('editProsjektID');
-            const prosjektIDFromLocalStorage = localStorage.getItem("prosjektID");
-            return editProsjektID === prosjektIDFromLocalStorage;
-        }
-
         function addTextSaver(textbox, savedLabel, localsave) {
             const urlParams = new URLSearchParams(window.location.search);
-            const editProsjektID = urlParams.get('editProsjektID');
-            const prosjektIDFromLocalStorage = localStorage.getItem("prosjektID");
+            var editProsjektID = urlParams.get('editProsjektID');
+            var prosjektIDFromLocalStorage = localStorage.getItem("prosjektID");
             var sistLagretStorage = localStorage.getItem(localsave + "_time");
+
+            if (editProsjektID == null) editProsjektID = "";
+            if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "";
+            if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "";
 
             console.log("Hi")
             if (editProsjektID == prosjektIDFromLocalStorage) {
@@ -191,11 +228,15 @@ function addKategorierSaverTool() {
 
         function addSpecialSaver(arrayWithBrothers, textbox, textboxNumber, savedLabel, localsave) {
             const urlParams = new URLSearchParams(window.location.search);
-            const editProsjektID = urlParams.get('editProsjektID');
-            const prosjektIDFromLocalStorage = localStorage.getItem("prosjektID_" + localsave);
-            var sistLagretStorage = localStorage.getItem(localsave + "_time");
+            var editProsjektID = urlParams.get('editProsjektID');
+            var prosjektIDFromLocalStorage = localStorage.getItem("prosjektID_" + localsave);
+            let sistLagretStorage = localStorage.getItem(localsave + "_time");
 
             arrayWithBrothers[arrayWithBrothers.length] = textbox;
+
+            if (editProsjektID == null) editProsjektID = "";
+            if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "";
+            if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "";
 
             //TODO: Prøv i morgen:
             //TODO: 1. Legg til milepæl
@@ -217,6 +258,7 @@ function addKategorierSaverTool() {
                     }
                 }
             }else {
+                console.log("Clearer localstorage, ettersom prosjektID ikke matcher det som er lagret i localstorage")
                 localStorage.clear();
             }
 
@@ -272,9 +314,13 @@ function addKategorierSaverTool() {
 
         function addDropdownSaver(dropdown, savedLabel, localsave) {
             const urlParams = new URLSearchParams(window.location.search);
-            const editProsjektID = urlParams.get('editProsjektID');
-            const prosjektIDFromLocalStorage = localStorage.getItem("prosjektID");
-            var sistLagretStorage = localStorage.getItem(localsave + "_time");
+            var editProsjektID = urlParams.get('editProsjektID');
+            var prosjektIDFromLocalStorage = localStorage.getItem("prosjektID_" + localsave);
+            let sistLagretStorage = localStorage.getItem(localsave + "_time");
+
+            if (editProsjektID == null) editProsjektID = "";
+            if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "";
+            if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "";
 
             if (editProsjektID == prosjektIDFromLocalStorage) {
                 if (localStorage.getItem(localsave) != null) {
@@ -287,6 +333,7 @@ function addKategorierSaverTool() {
                     }
                 }
             }else {
+                console.log("Clearer LocalStorage siden vi ikke redigerer samme prosjekt som vi har i LocalStorage")
                 localStorage.clear();
             }
             $(dropdown).on("change", function(){

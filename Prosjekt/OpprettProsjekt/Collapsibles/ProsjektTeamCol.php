@@ -22,7 +22,7 @@ function addProsjektTeamCol() {
             const savedTextInfo = getSavedText();
 
             const prosjektTeamSavedInfo = localStorage.getItem("prosjektteam");
-            if (localProsjektIDMatchesUrlProsjektID()) {
+            if (localProsjektIDMatchesUrlProsjektID("prosjektID_prosjektteam")) {
                 if (prosjektTeamSavedInfo != null) {
                     //Vi har lagret en cache på prosjektteamet for dette prosjektet
                     prosjektTeamSavedInfoSplit = prosjektTeamSavedInfo.split(";");
