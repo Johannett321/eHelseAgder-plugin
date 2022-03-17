@@ -100,6 +100,9 @@ function addKategorierSaverTool() {
 
         function loadAddedCollapsibles() {
             let addedCategories = localStorage.getItem("opprettedeCollapsibles");
+            if (addedCategories == null || addedCategories === "") {
+                return;
+            }
             let addedCategoriesSplit = addedCategories.split(";");
             for (let i = 0; i < addedCategoriesSplit.length; i++) {
                 createCollapsibleType(addedCategoriesSplit[i]);
@@ -189,12 +192,19 @@ function addKategorierSaverTool() {
         function addSpecialSaver(arrayWithBrothers, textbox, textboxNumber, savedLabel, localsave) {
             const urlParams = new URLSearchParams(window.location.search);
             const editProsjektID = urlParams.get('editProsjektID');
-            const prosjektIDFromLocalStorage = localStorage.getItem("prosjektID");
+            const prosjektIDFromLocalStorage = localStorage.getItem("prosjektID_" + localsave);
             var sistLagretStorage = localStorage.getItem(localsave + "_time");
 
             arrayWithBrothers[arrayWithBrothers.length] = textbox;
 
-            if (editProsjektID == prosjektIDFromLocalStorage) {
+            //TODO: Prøv i morgen:
+            //TODO: 1. Legg til milepæl
+            //TODO: 2. Skriv noe i den
+            //TODO: 3. Refresh og sjekk om det er lagret.
+            //TODO: Deretter kan du teste:
+            //TODO: 1. Sørg for at localstorage er tom
+            //TODO: 2. Prøv å refresh. Hvorfor står det ikke noe i "Milepæler" boksen og i "Prosjekt team" Boksen når disse skulle hatt tekst i følge databasen.
+            if (editProsjektID === prosjektIDFromLocalStorage) {
                 if (localStorage.getItem(localsave) != null) {
                     const currentTextBoxSavedValue = localStorage.getItem(localsave).split(";")[textboxNumber];
                     if (currentTextBoxSavedValue != null) {
@@ -209,6 +219,7 @@ function addKategorierSaverTool() {
             }else {
                 localStorage.clear();
             }
+
             $(textbox).on("input", function(){
                 const d = new Date();
                 lastKeypress = d.getTime();
@@ -245,6 +256,7 @@ function addKategorierSaverTool() {
             savedLabel.innerText = "Sist lagret: " + time;
 
             localStorage.setItem("prosjektID", editProsjektID);
+            localStorage.setItem("prosjektID_" + localsave, editProsjektID);
             localStorage.setItem(localsave + "_time", fulltime);
             var saveValue = "";
             for (var i = 0; i < arrayWithBrothers.length; i++) {
