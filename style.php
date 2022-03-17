@@ -152,13 +152,16 @@ function addglobalcss() {?>
 
     /* Last opp bilde ------------------------------------------------------------*/
 
-    .uploadPhoto {
+    .uploadPhoto, .coverPhoto {
         height: 300px;
         background-color: #fbfcfb;
-        border-radius: 18px;
         border: 1px solid #d9ead4 ;
         margin: 0 !important;
+    }
+
+    .uploadPhoto {
         width: 100% !important;
+        border-radius: 18px;
     }
 
     .uploadPhoto h5 {
@@ -524,7 +527,30 @@ function addglobalcss() {?>
 
 
 
-/* Nettleser tilpassning –––––––––––––––––––––––––––––––––––––––––––––––––*/
+    /* Prosjektside ------------------------------------------------------*/
+    .oppsummert {
+
+    }
+
+    .collapsibles .collapsible{
+        border-radius: 8px;
+        height: 60px;
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+
+    .collapsibles .content{
+        margin: 0 auto;
+    }
+
+    .collapsibles {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+
+
+    /* Nettleser tilpassning –––––––––––––––––––––––––––––––––––––––––––––––––*/
 
     /* Firefox < 16 */
     @-moz-keyframes fadein {
