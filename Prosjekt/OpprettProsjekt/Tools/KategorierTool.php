@@ -4,6 +4,7 @@ function addKategorierTools() {
     <script type="text/javascript">
         //Sletter alt i localstorage når man submitter
         $('#myForm').submit(function() {
+            console.log("Clearer localstorage for å publisere prosjekt");
             localStorage.clear();
             return true; // return false to cancel form action
         });

@@ -16,7 +16,7 @@ function addMilepaelerCol() {
             const savedTextInfo = getSavedText();
 
             const milepaelSavedInfo = localStorage.getItem("milepaeler");
-            if (localProsjektIDMatchesUrlProsjektID()) {
+            if (localProsjektIDMatchesUrlProsjektID("prosjektID_milepaeler")) {
                 if (milepaelSavedInfo != null) {
                     //Vi har lagret en cache på milepaeler for dette prosjektet
                     milepaelerSavedInfoSplit = milepaelSavedInfo.split(";");
