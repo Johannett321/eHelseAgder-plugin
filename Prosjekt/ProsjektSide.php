@@ -49,8 +49,8 @@ function getprojectpage() {
                 </div>
             </div>
         </div>
-        <center><h3><?php echo $projectInfo[0]->project_name; ?></h3></center>
-        <div><?php echo nl2br($projectInfo[0]->project_text); ?></div>
+        <center><h1><?php echo $projectInfo[0]->project_name; ?></h1></center>
+        <div class = "projectText"><?php echo nl2br($projectInfo[0]->project_text); ?></div>
         <center><h4 class = "contentTitle">Vil du vite mer?</h4></center>
         <div class = "collapsibles">
             <?php
@@ -71,22 +71,45 @@ function getprojectpage() {
         </div>
         <style>
             .topPart {
-                height: 400px;
+                height: 380px;
                 overflow: hidden;
+                margin-bottom: 100px;
             }
 
             .coverPhoto {
                 float: left;
-                background-color: gray;
                 width: 70%;
                 height: 100%;
+                border-radius: 8px;
             }
 
             .oppsummert {
                 float:right;
-                background-color: green;
-                width: 30%;
+                background-color: #d9ead4;
+                width: 25%;
                 height: 100%;
+                padding: 35px;
+                margin-left: 20px;
+                border-radius: 8px;
+                border: 1px solid #B5DCBB;
+            }
+
+            .oppsummert h4 {
+                margin-bottom: 10px;
+            }
+
+            .oppsummert h5 {
+                margin-top: 13px;
+                margin-right: 10px;
+                font-weight: 700;
+            }
+
+            .oppsummert span, .oppsummert i {
+                font-size: 14px;
+            }
+
+            .oppsummert h5, .oppsummert span {
+                display: inline-block;
             }
 
             .contentTitle {
@@ -163,13 +186,10 @@ function getprojectpage() {
                 cursor: pointer;
                 padding: 18px;
                 width: 100%;
-                border: none;
                 text-align: left;
                 outline: none;
-                font-size: 17px;
-                font-weight:500;
-                margin-top: 2px;
-                margin-bottom: 2px;
+                font-size: 16px;
+                font-weight:400;
             }
 
             /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -184,6 +204,7 @@ function getprojectpage() {
                 overflow: hidden;
                 background-color: #f1f1f1;
                 font-size: 15px;
+                width: 99%;
             }
         </style>
         <script type = "text/javascript">

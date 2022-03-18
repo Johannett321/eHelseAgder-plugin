@@ -21,7 +21,7 @@ $testVar = "HEIHEI";
 //COLLAPSIBLE_MILEPÆLER=5
 
 global $debugMode;
-$debugMode = true;
+$debugMode = false;
 
 require 'AdminPanel.php';
 require 'LoggInn.php';

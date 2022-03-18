@@ -11,9 +11,6 @@ if ($debugMode) {
 function addglobalcss() {?>
 
 <style>
-    .mainTitle {
-        padding-top: 5px;
-    }
 
     .inlineBlock {
         display: inline-block;
@@ -34,69 +31,157 @@ function addglobalcss() {?>
     }
 
     /* Progress bar ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-    .infoBlokk, #steg2 {
+    .infoBlokk, .progressBar {
         margin-left: auto;
         margin-right: auto;
 
     }
-    .infoBlokk {
-        background: #eff7ea;
-        height: 150px;
-        width: 50%;
-        padding: 30px 40px;
 
-    }
-
-    #steg2 {
-        display: block;
-        width: 100% !important;
-        text-align: center;
-        margin-top: 3%;
-    }
-    .stegText {
-        font-size: 14px !important;
+    .infoBlokk .material-icons, .infoBlokk h5 {
         display: inline-block;
-        margin: 0 3.5% 2% 3.5%;
     }
+
+    .infoBlokk h5 {
+        font-weight: 400;
+        margin-left: 7px;
+        line-height: 24px;
+        vertical-align: middle;
+    }
+
+    .infoBlokk p {
+        margin-left: 35px;
+        margin-bottom: 0;
+    }
+
+    .infoBlokk {
+        height: auto;
+        width: 80%;
+        padding: 20px;
+        background-color: #f3f8f2;
+        border-radius: 18px;
+        margin-bottom: 60px;
+        border: 1px solid #e8f2e5;
+    }
+
+    .progressBar {
+        display: block;
+        width: 60%;
+        text-align: center;
+        margin-top: 35px;
+        margin-bottom: 10px;
+    }
+
+    #steg1 .bar {
+        width:33%;
+    }
+
+    #steg2 .bar {
+        width:66%;
+    }
+
+    #steg2 .progressBar {
+        margin-top: 10em;
+        width: 60%;
+    }
+
+    .progressBar .stegText {
+        font-size: 14px;
+        display: inline-block;
+        margin-bottom: 10px;
+        line-height: 20px;
+        margin-left: 0;
+        width: 150px;
+    }
+
     #step1 {
-        text-align: left;
+        float: left;
         font-weight: 600;
         color: #0B843E;
 
     }
+
     #step2 {
-        text-align: center;
-        color: #8CBE7E;
+        color: #B5DCBB;
 
     }
+
+    #steg2 #step2 {
+        font-weight: 600;
+        color: #0B843E;
+    }
+
     #step3 {
-        text-align: right;
-        color: #8CBE7E;
+        float: right;
+        color: #B5DCBB;
 
     }
 
-    textBox {
-        width: 50% !important;
-    }
     .material-icons, #infoHead {
         display: inline-block;
-        vertical-align: middle !important;
+        vertical-align: middle;
     }
+
     .border {
-        border:1px solid #8CBE7E;
+        background-color: #daeddd;
+        width: 90%;
+        margin: 0 auto;
     }
+
     .bar {
-        height:20px;
-        width:33%;
+        height:2.5px;
         color:#fff;
         background-color:#0B843E;
     }
 
+    #bottomProgress {
+        height: 220px;
+        width: 80%;
+        padding: 20px;
+        background-color: unset;
+        border-radius: 18px;
+        margin-top: 100px;
+        border: none;
+    }
+
+    /* Innhold -------------------------------------------------------------------*/
+    .innhold {
+        border: 1px solid #e8f2e5;
+        border-radius: 18px;
+        width: 80%;
+        margin: 0 auto;
+        box-shadow: 5px 5px 2px #e8f2e5;
+        padding: 5em;
+    }
+
+    .projectText {
+        font-size: 20px;
+    }
+
+
+    /* Last opp bilde ------------------------------------------------------------*/
+
+    .uploadPhoto, .coverPhoto {
+        height: 300px;
+        background-color: #fbfcfb;
+        border: 1px solid #d9ead4 ;
+        margin: 0 !important;
+    }
+
+    .uploadPhoto {
+        width: 100% !important;
+        border-radius: 18px;
+    }
+
+    .uploadPhoto h5 {
+        text-align: center;
+        line-height: 300px;
+        vertical-align: middle;
+        color: grey !important;
+    }
 
 
     /* ProsjektRedigering ––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-    .requiredPart, .sammendragContainer, .addCustomField {
-        width: 60%;
+    .requiredPart, .addCustomField, .uploadPhoto, .sammendragContainer {
         margin-left: auto;
         margin-right: auto;
     }
@@ -123,30 +208,33 @@ function addglobalcss() {?>
     }
 
     /* Kort om prosjektet */
-    .requiredPart {
-        margin-top: 150px;
-        margin-bottom: 60px;
-        padding: 20px;
-        background-color: #eef7e9;
-        border-radius: 10px;
+    .requiredPart h3, .sammendragContainer h3, #photoPlaceholder h3 {
+        margin: 20px 0;
     }
 
     .requiredPart h4{
         margin-bottom: 1rem;
     }
 
+    .labelForInput {
+        margin-top: 30px;
+    }
+
+    .requiredPart {
+        padding: 30px;
+        background-color: #f3f8f2;
+        border-radius: 18px;
+        border: 1px solid #e8f2e5;
+        margin-top: 5em;
+    }
+
     #minform input[type="text"], .milepael input[type="text"], .collapsible input[type="text"]{
         height: 30px;
         border-radius: 5px;
-        margin: 0.5em;
-        margin-bottom: 17px !important;
+        margin: 0em;
+        margin-bottom: 17px;
         font-size: 14px;
         color: #595959;
-        width: 90%;
-    }
-
-    .labelForInput {
-        margin-left: 0.5em;
     }
 
     .small_input {
@@ -155,31 +243,59 @@ function addglobalcss() {?>
         margin-bottom: 17px;
         font-size: 14px;
         color: #595959;
-        width: 90%;
+        max-width: 100% !important;
     }
 
 /* Prosjektleder-boks */
     .uthevetBoksForm {
         padding: 20px;
-        margin: 30px 0px 20px 0px;
+        margin: 60px 0;
         border-radius: 10px;
-        background-color: #aed1a4;
+        background-color: #d9ead4;
         width: 70%;
 }
+
+    #prosjLederInputList {
+        list-style-type: none;
+        margin-left: 0;
+    }
+
+    #prosjLederInputList li label, #prosjLederInputList li input {
+        display: inline-block;
+    }
+
+    .uthevetBoksForm li input {
+        width: 70%;
+        margin-bottom: 10px !important;
+    }
+
+    .uthevetBoksForm li label {
+        width: 80px;
+        margin-top: 10px !important;
+    }
+
+    .uthevetBoksForm ul {
+        margin: 0;
+    }
+
+    #prosjLederInputList li {
+        margin-left: 10px;
+    }
 
 /* Sammendrag */
 
     #psummary {
         font-family: Lato;
-        width: 100%;
         font-size: 14px;
         color: #595959;
-        margin: 7px 0 0 7px;
+        margin: 0 !important;
+        max-width: 100%;
+        height: 200px;
     }
 
     .sammendragContainer {
-        padding: 20px;
-        margin-bottom: 100px;
+        padding: 30px;
+        border-radius: 18px;
 
     }
 
@@ -188,42 +304,38 @@ function addglobalcss() {?>
     /* ProsjektRedigeringKategorier ––––––––––––––––––––––––––––––––––––––––––––––*/
     .addCustomField p {
         font-size: 14px;
-        margin-top: 1.5em;
-        margin-bottom: 1.5em;
     }
 
     #collapsibleChooser {
         font-family: Lato;
         font-size: 1.3rem;
         color: grey;
+        background-color: white;
+        border-radius: 8px;
+        height: 40px;
+        width: 70%;
     }
 
     .addInfoButton {
-        height: 4.5rem;
+        height: 40px;
         width: 20rem;
         font-family: Lato;
         font-size: 14px;
         padding: 5px;
-        border-radius: 5px;
+        border-radius: 30px;
         border-width: 1px;
         margin-left: 20px;
     }
 
-    #categoryAlreadyAdded, #categoryAlreadyAdded img{
-        display: inline-block;
-    }
-
-    #categoryAlreadyAdded img {
-        width: 15px;
-        height: 15px;
-        margin-left: 10px;
-        vertical-align: center;
-    }
-
     #chooseLine {
-        margin-bottom: 7rem;
+        margin: 40px auto;
+        border-bottom: 2px solid #e8f2e5;
+        padding: 0 0 30px 0;
     }
 
+    #chooseLine #addCategoryButton {
+        float: right;
+    }
 
 
     /* Collapsibles –––––––––––––––––––––––––––––––––––––––––––––––––––*/
@@ -244,14 +356,11 @@ function addglobalcss() {?>
     }
 
     .collapsible {
-        background-color: #EFF7EA;
         padding: 20px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        box-shadow: 1px 1px 5px #3e6633;
-        width: 60%;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 5em auto;
+        background-color: #f3f8f2;
+        border-radius: 18px;
+        border: 1px solid #e8f2e5;
 
         -webkit-animation: fadein 0.5s;
         /* Safari, Chrome and Opera > 12.1 */
@@ -294,22 +403,13 @@ function addglobalcss() {?>
     }
 
     .collapsible textarea {
-        width: 100%;
+        max-width: 100%;
         min-height: 200px;
+        margin: 0 auto;
         margin-top: 5px !important;
         border-radius: 5px;
         padding: 10px;
         font-size: 1.3rem;
-    }
-
-    .collapsible textarea {
-        width: 100%;
-        min-height: 200px;
-        font-size: 1.4rem;
-        padding: 10px;
-        font-family: Lato;
-        letter-spacing: 0.1px !important;
-        word-spacing: 0.5px !important;
     }
 
     .collapsible h5 {
@@ -374,10 +474,6 @@ function addglobalcss() {?>
         margin-bottom: 10px;
     }
 
-    .addPersonButton h6 {
-        font-size: 20px !important;
-        font-weight: 700 !important;
-    }
 
     /* Person-collapsible */
 
@@ -439,7 +535,30 @@ function addglobalcss() {?>
 
 
 
-/* Nettleser tilpassning –––––––––––––––––––––––––––––––––––––––––––––––––*/
+    /* Prosjektside ------------------------------------------------------*/
+    .oppsummert {
+
+    }
+
+    .collapsibles .collapsible{
+        border-radius: 8px;
+        height: 60px;
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+
+    .collapsibles .content{
+        margin: 0 auto;
+    }
+
+    .collapsibles {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+
+
+    /* Nettleser tilpassning –––––––––––––––––––––––––––––––––––––––––––––––––*/
 
     /* Firefox < 16 */
     @-moz-keyframes fadein {

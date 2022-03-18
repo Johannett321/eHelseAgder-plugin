@@ -229,6 +229,7 @@ function addKategorierSaverTool() {
 
         function addSpecialSaver(arrayWithBrothers, textbox, textboxNumber, savedLabel, localsave) {
             const urlParams = new URLSearchParams(window.location.search);
+          
             var editProsjektID = urlParams.get('editProsjektID');
             var prosjektIDFromLocalStorage = localStorage.getItem("prosjektID_" + localsave);
             let sistLagretStorage = localStorage.getItem(localsave + "_time");
