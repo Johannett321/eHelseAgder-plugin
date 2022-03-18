@@ -92,12 +92,14 @@ function addglobalcss() {?>
         margin-left: 0;
         width: 150px;
     }
+
     #step1 {
         float: left;
         font-weight: 600;
         color: #0B843E;
 
     }
+
     #step2 {
         color: #B5DCBB;
 
@@ -118,11 +120,13 @@ function addglobalcss() {?>
         display: inline-block;
         vertical-align: middle;
     }
+
     .border {
         background-color: #daeddd;
         width: 90%;
         margin: 0 auto;
     }
+
     .bar {
         height:2.5px;
         color:#fff;
@@ -147,6 +151,10 @@ function addglobalcss() {?>
         margin: 0 auto;
         box-shadow: 5px 5px 2px #e8f2e5;
         padding: 5em;
+    }
+
+    .projectText {
+        font-size: 20px;
     }
 
 

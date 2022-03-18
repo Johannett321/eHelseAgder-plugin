@@ -50,7 +50,7 @@ function getprojectpage() {
             </div>
         </div>
         <center><h1><?php echo $projectInfo[0]->project_name; ?></h1></center>
-        <div><?php echo nl2br($projectInfo[0]->project_text); ?></div>
+        <div class = "projectText"><?php echo nl2br($projectInfo[0]->project_text); ?></div>
         <center><h4 class = "contentTitle">Vil du vite mer?</h4></center>
         <div class = "collapsibles">
             <?php
