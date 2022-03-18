@@ -42,7 +42,6 @@ function addKategorierSaverTool() {
         }
 
         function saveDeletedCollapsible(name, fieldsToReset) {
-            //TELEPORT
             var deletedCategories = localStorage.getItem("fjernedeCollapsibles");
             if (deletedCategories == null) deletedCategories = "";
             if (deletedCategories !== "") {
@@ -83,8 +82,10 @@ function addKategorierSaverTool() {
 
                 //Sett den nye stringen som listen over lagt til collapsibles
                 if (newAddedCategoriesString === "") {
+                    console.log("Lagrer opprettedeCollapsibles som: " + newAddedCategoriesString)
                     localStorage.removeItem("opprettedeCollapsibles");
                 }else {
+                    console.log("Lagrer opprettedeCollapsibles som: " + newAddedCategoriesString)
                     localStorage.setItem("opprettedeCollapsibles", newAddedCategoriesString);
                 }
 

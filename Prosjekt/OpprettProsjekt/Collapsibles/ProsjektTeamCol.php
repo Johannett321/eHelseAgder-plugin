@@ -37,7 +37,7 @@ function addProsjektTeamCol() {
                     }
                 }
             }else {
-                if (innhold == "") {
+                if (innhold === "") {
                     //Prosjektet blir ikke redigert, så vi laster bare en person slik som i malen
                     const person = createPerson(null, savedTextInfo);
                     personer.appendChild(person);

@@ -20,12 +20,14 @@ function shallWeLoadProsjekt() {
                 case 1:
                     //Custom kategori
                     $customName = $collapsiblesFound[$i]->egendefinert_navn;
+                    error_log("Found custom name: " . $customName);
                     $customName = str_replace("\r", '', $customName);
                     $customName = str_replace("\n", '\n', $customName);
+                    error_log("Modified custom name: " . $customName);
 
                     ?>
                     if (!colHasBeenDeletedLocally("cegenkategori" + (customColCounter+1))) {
-                    createCustomCatCol("<?php $customName?>", "<?php echo $innhold ?>");
+                    createCustomCatCol("<?php echo $customName?>", "<?php echo $innhold ?>");
                     }
                     <?php
                     break;
