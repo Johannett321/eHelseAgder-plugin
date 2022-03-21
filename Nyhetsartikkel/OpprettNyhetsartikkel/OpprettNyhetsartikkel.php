@@ -3,6 +3,7 @@ add_shortcode( 'sc_opprett_nyhetsartikkel', 'sc_opprett_nyhetsartikkel');
 
 require "PupliserNyhetsartikkel.php";
 require "OpprettNyhetsartikkelTools.php";
+include "SlettNyhetsartikkel.php";
 
 //ShortCode_Opprett_Nyhetsartikkel
 function sc_opprett_nyhetsartikkel() {
@@ -58,6 +59,13 @@ function sc_opprett_nyhetsartikkel() {
             <input type = "submit" class = "button" id = "submitButton" value = "Videre">
         </center>
     </form>
+    <?php
+    if ($loadedNyhetsartikkel != null) {
+        ?>
+        <a href = "../../../wp-json/ehelseagderplugin/api/slett_nyhetsartikkel?articleID=<?php echo $_GET['editArticleID']?>"><button>Slett nyhetsartikkel</button></a>
+        <?php
+    }
+    ?>
     <?php
 }
 
