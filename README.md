@@ -7,7 +7,7 @@ eHelseAgder+ er en plugin laget til Wordpress for nettsiden ehelseagder.no. Nett
 
 ## Pluginens opphav
 eHelseAgder+ har blitt utviklet av Johan Svartdal og Karoline Nielsen.
-Ved spørsmål, kan Johan kontaktes på [johan.svartdal30@gmail.com](targetURL "mailto://johan.svartdal30@gmail.com")
+Ved spørsmål, kan Johan kontaktes på [johan.svartdal30@gmail.com](mailto:johan.svartdal30@gmail.com "Åpner mailprogrammet")
 
 ## Copyright
 
