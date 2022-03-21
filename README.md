@@ -10,4 +10,12 @@ eHelseAgder+ har blitt utviklet av Johan Svartdal og Karoline Nielsen.
 Ved spørsmål, kan Johan kontaktes på [johan.svartdal30@gmail.com](mailto:johan.svartdal30@gmail.com "Åpner mailprogrammet")
 
 ## Copyright
+> Nettsiden eHelseAgder.no er utviklet av gruppen NextGen som et
+Bachelorprosjekt. Nettsidens innhold eies av Agder fylke,
+Kristiansand Kommune, og Regional Kordineringsgruppe (Agder).
 
+eHelseAgder+ pluginen eies av NextGen, og er ikke tilgjengelig for bruk på
+andre nettsider enn eHelseAgder.no.
+
+***
+Copyright © 2022 NextGen. Alle rettigheter forbeholdes.
