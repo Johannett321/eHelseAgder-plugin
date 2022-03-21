@@ -31,6 +31,7 @@ function sc_vis_artikkel() {
                 <div id = "endretInfo">Endret den <?php echo $artikkelInfo[0]->dato_endret?>, av <?php echo $artikkelInfo[0]->endret_av ?></div>
                 <?php
             }
+            implementFacebookShareButton();
             ?>
             <style>
                 .coverPhoto {
