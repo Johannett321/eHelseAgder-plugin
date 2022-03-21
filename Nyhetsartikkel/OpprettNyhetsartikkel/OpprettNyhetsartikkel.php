@@ -2,6 +2,7 @@
 add_shortcode( 'sc_opprett_nyhetsartikkel', 'sc_opprett_nyhetsartikkel');
 
 require "PupliserNyhetsartikkel.php";
+require "OpprettNyhetsartikkelTools.php";
 
 //ShortCode_Opprett_Nyhetsartikkel
 function sc_opprett_nyhetsartikkel() {
@@ -23,11 +24,29 @@ function sc_opprett_nyhetsartikkel() {
             <input type="text" id="ingress" name="ingress" placeholder="Etter mange måneder med venting, har endelig kontrakten med Min Bedrift AS blitt signert." class = "small_input" value = "<?php echo $loadedNyhetsartikkel->ingress?>">
             <div class = "uthevetBoksForm" id = "kildeboks">
                 <h4>Kildekritikk</h4>
-                <label for="skrevet_av" class = "labelForInput">Skrevet av:</label>
-                <input type="text" id="skrevet_av" name="skrevet_av" placeholder="Navn Navnesen" class = "small_input" value = "<?php echo $loadedNyhetsartikkel->skrevet_av?>">
-                <label for="dato_skrevet" class = "labelForInput">Dato skrevet:</label>
-                <input type="text" id="dato_skrevet" name="dato_skrevet" placeholder="08.10.2019" class = "small_input" value = "<?php echo $loadedNyhetsartikkel->dato_skrevet?>">
+                <?php
+                if ($loadedNyhetsartikkel == null) {
+                    ?>
+                    <label for="skrevet_av" class = "labelForInput">Forfatter/skrevet av:</label>
+                    <input type="text" id="skrevet_av" name="skrevet_av" placeholder="Navn Navnesen" class = "small_input" value = "<?php echo $loadedNyhetsartikkel->skrevet_av?>">
+                    <label for="rolle" class = "labelForInput">Rolle/stilling:</label>
+                    <input type="text" id="rolle" name="rolle" placeholder="Prosjektleder" class = "small_input" maxlength="100" value = "<?php echo $loadedNyhetsartikkel->dato_skrevet?>">
+                    <?php
+                }else {
+                    ?>
+                    <label for="endret_av" class = "labelForInput">Hvem gjør endringer?</label>
+                    <input type="text" id="endret_av" name="endret_av" placeholder="Navn Navnesen" class = "small_input" value = "<?php echo $loadedNyhetsartikkel->endret_av?>">
+                    <?php
+                }
+                ?>
             </div>
+
+            <label for="assignedProjectChooser" class = "labelForInput">Tilhørende prosjekt:</label>
+            <select id="assignedProjectChooserDropdown" name="assignedProjectChooser">
+                <?php
+                loadProjectsAsDropdownOptions($loadedNyhetsartikkel->tilknyttet_prosjekt);
+                ?>
+            </select>
         </div>
 
         <div class = "sammendragContainer">

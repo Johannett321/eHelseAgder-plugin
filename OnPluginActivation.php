@@ -54,7 +54,11 @@ function create_table_nyhetsartikler() {
         tittel varchar(100),
         ingress varchar(200),
         skrevet_av varchar (100),
+        endret_av varchar(100),
+        rolle varchar (100),
         dato_skrevet varchar(100),
+        dato_endret varchar(100),
+        tilknyttet_prosjekt smallint(5),
         innhold varchar(15000),
         PRIMARY KEY (id)
     );";

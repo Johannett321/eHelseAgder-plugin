@@ -1,5 +1,6 @@
 <?php
 include ('SisteArtiklerListe.php');
+require "NyhetsartiklerTools.php";
 
 add_shortcode( 'sc_vis_artikkel', 'sc_vis_artikkel');
 
@@ -21,7 +22,16 @@ function sc_vis_artikkel() {
             <span><?php echo $artikkelInfo[0]->ingress ?></span>
             <div class = "coverPhoto"></div>
             <div class = "artikkelTekst"><?php echo nl2br($artikkelInfo[0]->innhold); ?></div>
-            <div id = "kildeinfo">Publisert <?php echo $artikkelInfo[0]->dato_skrevet?>, av <?php echo $artikkelInfo[0]->skrevet_av ?></div>
+            <div class = "tilknyttetProsjektTekst"><?php echo getTilknyttetProsjektTekst($artikkelInfo[0])?></div>
+            <div id = "kildeinfo">Publisert <?php echo $artikkelInfo[0]->dato_skrevet?>, av <?php echo $artikkelInfo[0]->skrevet_av ?> (<?php echo $artikkelInfo[0]->rolle ?>)</div>
+            <?php
+            $endretAv = $artikkelInfo[0]->endret_av;
+            if ($endretAv != null && $endretAv != "") {
+                ?>
+                <div id = "endretInfo">Endret den <?php echo $artikkelInfo[0]->dato_endret?>, av <?php echo $artikkelInfo[0]->endret_av ?></div>
+                <?php
+            }
+            ?>
             <style>
                 .coverPhoto {
                     float: left;
