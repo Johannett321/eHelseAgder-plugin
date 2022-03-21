@@ -12,11 +12,26 @@ function publiserNyhetsartikkel() {
     session_start();
 
     $formatted_table_name = getNyhetsartiklerDatabaseRef();
+    
+    $dagensDato = date("d.m.Y");
+
 
     global $wpdb;
-    $data = array("tittel"=>$_POST["tittel"],"ingress"=>$_POST["ingress"],"skrevet_av"=>$_POST["skrevet_av"],"dato_skrevet"=>$_POST["dato_skrevet"],"innhold"=>$_POST["psummary"]);
-    $format = array("%s", "%s", "%s", "%s", "%s");
-    $articleID = 0;
+    $data = array("tittel"=>$_POST["tittel"],
+        "ingress"=>$_POST["ingress"],
+        "tilknyttet_prosjekt"=>$_POST["assignedProjectChooser"],
+        "innhold"=>$_POST["psummary"]);
+
+    $format = array("%s", "%s", "%d", "%s");
+
+    if (isset($_GET['editArticleID'])) {
+        $data += array("endret_av"=>$_POST["endret_av"], "dato_endret"=>$dagensDato);
+        $format += array("%s", "%s");
+    }else {
+        $data += array("skrevet_av"=>$_POST["skrevet_av"], "dato_skrevet"=>$dagensDato, "rolle"=>$_POST["rolle"]);
+        $format += array("%s", "%s", "%s");
+    }
+
 
     if (isset($_GET['editArticleID'])) {
         $articleID = $_GET['editArticleID'];
