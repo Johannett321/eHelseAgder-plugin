@@ -8,7 +8,7 @@ eHelseAgder+ er en plugin laget til Wordpress for nettsiden [eHelseAgder.no](htt
 ## Pluginens opphav
 eHelseAgder+ har blitt utviklet av Johan Svartdal og Karoline Nielsen.
 
-Nettsiden [eHelseAgder.no](http://www.ehelseagder.no) er utviklet av gruppen NextGen som et
+Nettsiden [eHelseAgder.no](http://www.ehelseagder.no) har blitt utviklet av gruppen NextGen som et
 Bachelorprosjekt.
 
 ## Kontaktinformasjon
