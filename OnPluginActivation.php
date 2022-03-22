@@ -53,6 +53,7 @@ function create_table_nyhetsartikler() {
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         tittel varchar(100),
         ingress varchar(200),
+        bilde varchar (100),
         skrevet_av varchar (100),
         endret_av varchar(100),
         rolle varchar (100),

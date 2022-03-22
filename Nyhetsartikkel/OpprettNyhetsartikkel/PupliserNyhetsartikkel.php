@@ -32,6 +32,11 @@ function publiserNyhetsartikkel() {
         $format += array("%s", "%s", "%s");
     }
 
+    $fileName = uploadFileAndGetName("bilde");
+    if ($fileName != null) {
+        $data += array("bilde"=>$fileName);
+        $format += array("%s");
+    }
 
     if (isset($_GET['editArticleID'])) {
         $articleID = $_GET['editArticleID'];

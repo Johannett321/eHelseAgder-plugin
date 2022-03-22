@@ -21,7 +21,7 @@ $testVar = "HEIHEI";
 //COLLAPSIBLE_MILEPÆLER=5
 
 global $debugMode;
-$debugMode = false;
+$debugMode = true;
 
 require 'AdminPanel.php';
 require 'LoggInn.php';
@@ -35,6 +35,8 @@ require 'style.php';
 require 'Nyhetsartikkel/OpprettNyhetsartikkel/OpprettNyhetsartikkel.php';
 require 'Nyhetsartikkel/ListNyhetsartikler.php';
 require 'Nyhetsartikkel/VisArtikkel.php';
+require 'UploadFileTool.php';
+
 if ($debugMode) {
     include 'MyCustomStyle.php';
 }
