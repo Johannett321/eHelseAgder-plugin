@@ -15,12 +15,20 @@ function getArtikkel($artikkelID) {
 function sc_vis_artikkel() {
     $artikkelID = $_GET["artikkelID"];
     $artikkelInfo = getArtikkel($artikkelID);
+    $bildeUrl =  $artikkelInfo[0]->bilde;
+
     ?>
         <div class = "artikkel">
             <a href = "../../opprett-nyhetsartikkel?editArticleID=<?php echo $artikkelID ?>"><button>Rediger artikkel</button></a>
             <h3><?php echo $artikkelInfo[0]->tittel; ?></h3>
             <span><?php echo $artikkelInfo[0]->ingress ?></span>
-            <div class = "coverPhoto"></div>
+            <?php
+            if ($artikkelInfo[0]->bilde != null && $artikkelInfo[0]->bilde != "") {
+                ?>
+                <div class = "coverPhoto"><img src = "<?php echo getPhotoUploadUrl() . $bildeUrl ?>"></div>
+                <?php
+            }
+            ?>
             <div class = "artikkelTekst"><?php echo nl2br($artikkelInfo[0]->innhold); ?></div>
             <div class = "tilknyttetProsjektTekst"><?php echo getTilknyttetProsjektTekst($artikkelInfo[0])?></div>
             <div id = "kildeinfo">Publisert <?php echo $artikkelInfo[0]->dato_skrevet?>, av <?php echo $artikkelInfo[0]->skrevet_av ?> (<?php echo $artikkelInfo[0]->rolle ?>)</div>

@@ -23,6 +23,7 @@ $testVar = "HEIHEI";
 global $debugMode;
 $debugMode = true;
 
+require 'UploadFileTool.php';
 require 'AdminPanel.php';
 require 'LoggInn.php';
 require 'Prosjekt/OpprettProsjekt/ProsjektRedigering.php';
@@ -31,17 +32,17 @@ require 'SQLTool.php';
 require 'Prosjekt/ProsjektListe.php';
 require 'Prosjekt/ProsjektSide.php';
 require 'Prosjekt/CollapsibleManager.php';
-require 'style.php';
 require 'Nyhetsartikkel/OpprettNyhetsartikkel/OpprettNyhetsartikkel.php';
 require 'Nyhetsartikkel/ListNyhetsartikler.php';
 require 'Nyhetsartikkel/VisArtikkel.php';
-require 'UploadFileTool.php';
+include 'FacebookTool.php';
 
 if ($debugMode) {
-    include 'MyCustomStyle.php';
+    //Loader en custom css fil under utvikling.
+    wp_enqueue_style("MYCUSTOMDEVCSS", plugins_url() . "/eHelseAgderPlugin/MyCustomStyle.css");
 }
 
-include 'FacebookTool.php';
+wp_enqueue_style("EHELSEAGDERCSS", plugins_url() . "/eHelseAgderPlugin/style.css");
 
 error_log("--------------------------------------",0);
 

@@ -29,9 +29,11 @@ function sc_opprett_nyhetsartikkel() {
             <input type="text" id="tittel" name="tittel" placeholder="Vi har signert kontrakt!" class = "small_input" value = "<?php echo $loadedNyhetsartikkel->tittel?>">
             <label for="ingress" class = "labelForInput">Ingress:</label>
             <input type="text" id="ingress" name="ingress" placeholder="Etter mange måneder med venting, har endelig kontrakten med Min Bedrift AS blitt signert." class = "small_input" value = "<?php echo $loadedNyhetsartikkel->ingress?>">
-            <label for ="bilde" class="labelForInput">Bilde:</label>
+
+            <!-- OPPLASTING AV BILDE -->
+            <label for ="bilde" class="labelForInput">Last opp forsidebilde:</label>
             <input type="file" name = "bilde" accept="image/*" onchange="loadFile(event)">
-            <img id="output"/>
+            <img id="output" src = "<?php echo getPhotoUploadUrl() . $loadedNyhetsartikkel->bilde ?>"/>
             <script>
                 const loadFile = function(event) {
                     const output = document.getElementById('output');
@@ -42,7 +44,7 @@ function sc_opprett_nyhetsartikkel() {
                 };
             </script>
 
-
+            <!-- Kildeboks -->
             <div class = "uthevetBoksForm" id = "kildeboks">
                 <h4>Kildekritikk</h4>
                 <?php

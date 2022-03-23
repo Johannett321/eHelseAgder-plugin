@@ -14,6 +14,7 @@ function create_table_prosjekter() {
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         project_name varchar(100) NOT NULL,
         undertittel varchar(100),
+        bilde varchar(100),
         ledernavn varchar(35),
         ledermail varchar(60),
         ledertlf varchar(15),

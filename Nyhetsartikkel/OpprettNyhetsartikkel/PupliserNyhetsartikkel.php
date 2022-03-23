@@ -35,7 +35,7 @@ function publiserNyhetsartikkel() {
     $fileName = uploadFileAndGetName("bilde");
     if ($fileName != null) {
         $data += array("bilde"=>$fileName);
-        $format += array("%s");
+        array_push($format,"%s");
     }
 
     if (isset($_GET['editArticleID'])) {
