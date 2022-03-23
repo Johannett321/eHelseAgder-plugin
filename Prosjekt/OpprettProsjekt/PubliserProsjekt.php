@@ -15,9 +15,37 @@ function publiserProsjekt() {
     $formatted_table_name = getProsjekterDatabaseRef();
 
     global $wpdb;
-    $data = array("publisert" => 1, "project_name" => $_SESSION["pname"], "undertittel" => $_SESSION["psubtitle"], "ledernavn" => $_SESSION["pleadername"], "ledermail" => $_SESSION["pleaderemail"], "ledertlf" => $_SESSION["pleaderphone"], "prosjektstart" => $_SESSION["project_start"], "prosjektslutt" => $_SESSION["project_end"], "prosjekteierkommuner" => $_SESSION["prosjekteierkommuner"], "samarbeidspartnere" => $_SESSION["samarbeidspartnere"], "project_text" => $_SESSION["psummary"]);
-    $format = array("%d", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s");
-    $projectID = 0;
+    $data = array("publisert" => 1,
+        "project_name" => $_SESSION["pname"],
+        "undertittel" => $_SESSION["psubtitle"],
+        "ledernavn" => $_SESSION["pleadername"],
+        "ledermail" => $_SESSION["pleaderemail"],
+        "ledertlf" => $_SESSION["pleaderphone"],
+        "prosjektstart" => $_SESSION["project_start"],
+        "prosjektslutt" => $_SESSION["project_end"],
+        "prosjekteierkommuner" => $_SESSION["prosjekteierkommuner"],
+        "samarbeidspartnere" => $_SESSION["samarbeidspartnere"],
+        "project_text" => $_SESSION["psummary"]);
+
+    $format = array("%d",
+        "%s",
+        "%s",
+        "%s",
+        "%s",
+        "%s",
+        "%s",
+        "%s",
+        "%s",
+        "%s",
+        "%s");
+
+    if (isset($_SESSION["bilde"]) && $_SESSION["bilde"] != null  && $_SESSION["bilde"] != "") {
+        error_log("Bilde lagt til i prosjekt: " . $_SESSION["bilde"]);
+        $data += array("bilde"=>$_SESSION["bilde"]);
+        array_push($format,"%s");
+    }else {
+        error_log("Fant ikke bilde: " . $_SESSION["bilde"]);
+    }
 
     if (isset($_GET['editProsjektID'])) {
         $prosjektID = $_GET['editProsjektID'];
@@ -29,6 +57,8 @@ function publiserProsjekt() {
         $wpdb->delete($collapsibleTable, array('prosjekt_id' => intval($prosjektID)), array("%d"));
         $projectID = intval($prosjektID);
     }else {
+        print_r($data);
+        print_r($format);
         $wpdb->insert($formatted_table_name, $data, $format);
         $projectJustAdded = $wpdb->get_results("SELECT * FROM $formatted_table_name WHERE id = (SELECT MAX(ID) FROM $formatted_table_name)");
         $projectID = $projectJustAdded[0]->id;

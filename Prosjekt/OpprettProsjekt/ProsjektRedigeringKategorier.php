@@ -1,11 +1,16 @@
 <?php
 
-session_start();
-
 require 'PubliserProsjekt.php';
 require 'ProsjektRedigeringKategorierJS.php';
 
-validateFieldsFromPage1();
+add_shortcode( 'prosjektredigeringkategorier', 'prosjektredigeringkategorier');
+
+function prosjektredigeringkategorier() {
+    //kreverInnlogging();
+    session_start();
+    validateFieldsFromPage1();
+    leggTilInformasjonFelt();
+}
 
 function validateFieldsFromPage1() {
     saveFieldToSession("pname");
@@ -18,23 +23,25 @@ function validateFieldsFromPage1() {
     saveFieldToSession("samarbeidspartnere");
     saveFieldToSession("prosjekteierkommuner");
     saveFieldToSession("psummary");
+    saveImageUploaded();
 }
 
 function saveFieldToSession($fieldToSave) {
     if (isset($_POST[$fieldToSave])) {
+        error_log("-");
+        error_log("Saving field: " . $fieldToSave . " to session.");
         $_SESSION[$fieldToSave] = $_POST[$fieldToSave];
+        error_log("Verification: " . $_SESSION[$fieldToSave]);
     }
 }
 
-add_shortcode( 'prosjektredigeringkategorier', 'prosjektredigeringkategorier');
-
-function prosjektredigeringkategorier( $atts ) {
-    //kreverInnlogging();
-    leggTilInformasjonFelt();
+function saveImageUploaded() {
+    $uploadedFileName = uploadFileAndGetName("bilde");
+    error_log("Lagrer bilde til session: " . $uploadedFileName);
+    $_SESSION["bilde"] = $uploadedFileName;
 }
 
 function leggTilInformasjonFelt() {
-    $postURL = "";
     if (isset($_GET['editProsjektID'])) {
         $postURL = "../../wp-json/ehelseagderplugin/api/publiser_prosjekt?editProsjektID=" . $_GET['editProsjektID'];
     }else {
@@ -42,7 +49,7 @@ function leggTilInformasjonFelt() {
     }
     ?>
     <form action="<?php echo $postURL ?>" method="post" id = "myForm">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
         <div class="infoBlokk">
             <i class="material-icons">info</i>
@@ -55,7 +62,6 @@ function leggTilInformasjonFelt() {
 
         <div class="innhold">
             <div class="addCustomField">
-
                 <div id="chooseLine">
                     <select id="collapsibleChooser" name="collapsibleChooser">
                         <option value="" disabled selected>Velg kategori</option>

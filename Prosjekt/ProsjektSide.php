@@ -19,9 +19,11 @@ function getCollapsibles($projectID) {
 function getprojectpage() {
     $prosjektID = $_GET["prosjektID"];
     $projectInfo = getProject($prosjektID);
+    $bildeUrl =  $projectInfo[0]->bilde;
+
     ?>
         <div class = "topPart">
-            <div class = "coverPhoto"></div>
+            <div class = "coverPhoto"><img src = "<?php echo getPhotoUploadUrl() . $bildeUrl ?>"></div>
             <div class = "oppsummert">
                 <h4>Kort om prosjektet</h4>
                 <div>
@@ -81,6 +83,12 @@ function getprojectpage() {
                 width: 70%;
                 height: 100%;
                 border-radius: 8px;
+            }
+
+            .coverPhoto img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
 
             .oppsummert {

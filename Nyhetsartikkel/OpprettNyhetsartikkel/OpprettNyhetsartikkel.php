@@ -5,24 +5,46 @@ require "PupliserNyhetsartikkel.php";
 require "OpprettNyhetsartikkelTools.php";
 include "SlettNyhetsartikkel.php";
 
-//ShortCode_Opprett_Nyhetsartikkel
 function sc_opprett_nyhetsartikkel() {
     $loadedNyhetsartikkel = getEditingNewsArticle();
 
-    $postURL = "";
     if (isset($_GET['editArticleID'])) {
         $postURL = "../../../../wp-json/ehelseagderplugin/api/publiser_nyhetsartikkel?editArticleID=" . $_GET['editArticleID'];
     }else {
         $postURL = "../../../../wp-json/ehelseagderplugin/api/publiser_nyhetsartikkel";
     }
     ?>
-    <form action = "<?php echo $postURL?>" method = "post" id = "minform">
+
+    <?php
+    if ($loadedNyhetsartikkel != null) {
+        ?>
+        <a href = "../../../wp-json/ehelseagderplugin/api/slett_nyhetsartikkel?articleID=<?php echo $_GET['editArticleID']?>"><button>Slett nyhetsartikkel</button></a>
+        <?php
+    }
+    ?>
+    <form action = "<?php echo $postURL?>" method = "post" id = "minform" enctype="multipart/form-data">
         <div class = "requiredPart">
             <h3 class = "mainTitle">Kort om nyheten</h3>
             <label for="tittel" class = "labelForInput">Tittel:</label>
             <input type="text" id="tittel" name="tittel" placeholder="Vi har signert kontrakt!" class = "small_input" value = "<?php echo $loadedNyhetsartikkel->tittel?>">
             <label for="ingress" class = "labelForInput">Ingress:</label>
             <input type="text" id="ingress" name="ingress" placeholder="Etter mange måneder med venting, har endelig kontrakten med Min Bedrift AS blitt signert." class = "small_input" value = "<?php echo $loadedNyhetsartikkel->ingress?>">
+
+            <!-- OPPLASTING AV BILDE -->
+            <label for ="bilde" class="labelForInput">Last opp forsidebilde:</label>
+            <input type="file" name = "bilde" accept="image/*" onchange="loadFile(event)">
+            <img id="output" src = "<?php echo getPhotoUploadUrl() . $loadedNyhetsartikkel->bilde ?>"/>
+            <script>
+                const loadFile = function(event) {
+                    const output = document.getElementById('output');
+                    output.src = URL.createObjectURL(event.target.files[0]);
+                    output.onload = function() {
+                        URL.revokeObjectURL(output.src) // free memory
+                    }
+                };
+            </script>
+
+            <!-- Kildeboks -->
             <div class = "uthevetBoksForm" id = "kildeboks">
                 <h4>Kildekritikk</h4>
                 <?php
@@ -59,13 +81,6 @@ function sc_opprett_nyhetsartikkel() {
             <input type = "submit" class = "button" id = "submitButton" value = "Videre">
         </center>
     </form>
-    <?php
-    if ($loadedNyhetsartikkel != null) {
-        ?>
-        <a href = "../../../wp-json/ehelseagderplugin/api/slett_nyhetsartikkel?articleID=<?php echo $_GET['editArticleID']?>"><button>Slett nyhetsartikkel</button></a>
-        <?php
-    }
-    ?>
     <?php
 }
 
