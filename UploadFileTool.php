@@ -11,7 +11,6 @@ function uploadFileAndGetName($uploadButtonName) {
         $filename = generateRandomString(20).".".$extension;
 
         $tempname = $_FILES[$uploadButtonName]["tmp_name"];
-        //TODO: Få den til å ikke lagre på en lokal adresse
         $folder = $imageUploadsPath.$filename;
 
         if (move_uploaded_file($tempname, $folder)) {
