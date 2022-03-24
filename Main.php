@@ -25,7 +25,7 @@ $debugMode = true;
 
 require 'UploadFileTool.php';
 require 'AdminPanel.php';
-require 'LoggInn.php';
+require 'Login/LoggInn.php';
 require 'Prosjekt/OpprettProsjekt/ProsjektRedigering.php';
 require 'OnPluginActivation.php';
 require 'SQLTool.php';
@@ -45,17 +45,6 @@ if ($debugMode) {
 wp_enqueue_style("EHELSEAGDERCSS", plugins_url() . "/eHelseAgderPlugin/style.css");
 
 error_log("--------------------------------------",0);
-
-function kreverInnlogging() {
-    if (htmlspecialchars($_POST["uname"]) == "johannett321" && htmlspecialchars($_POST["password"]) == "julebrus") {
-        error_log("RIKTIG INNLOGGING!");
-    }else {
-        ?>
-        <script>alert("Feil innloggingsinfo!");window.location.href = '../logg-inn/';</script>
-        <?php
-        exit;
-    }
-}
 
 function getProsjekterDatabaseRef() {
     return getFormattedTableName("eha_prosjekter");

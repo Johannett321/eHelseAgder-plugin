@@ -6,7 +6,7 @@ require 'ProsjektRedigeringKategorierJS.php';
 add_shortcode( 'prosjektredigeringkategorier', 'prosjektredigeringkategorier');
 
 function prosjektredigeringkategorier() {
-    //kreverInnlogging();
+    requiresLogin();
     session_start();
     validateFieldsFromPage1();
     leggTilInformasjonFelt();
