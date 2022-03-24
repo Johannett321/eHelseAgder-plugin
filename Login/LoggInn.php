@@ -17,7 +17,9 @@ function sc_loginform( $atts ) {
         showLoginError($_GET['errorMessage']);
     }
 
+    error_log("Checking if user is logged in...");
     if (userIsLoggedIn()) {
+        error_log("User is logged in, redirecting to front page, and not showing login page.");
         wp_redirect("../");
         return;
     }
