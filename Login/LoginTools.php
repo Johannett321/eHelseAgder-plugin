@@ -36,11 +36,12 @@ function showLoginError($errorMessage) {
     <?php
 }
 
-function requiresLogin() {
+function userIsNotLoggedInWithThrowback() {
     if (!userIsLoggedIn()) {
         wp_redirect("../../../../../../../logg-inn?errorMessage=Denne siden krever innlogging");
-        exit;
+        return false;
     }
+    return true;
 }
 
 function jsonRequiresLogin() {
