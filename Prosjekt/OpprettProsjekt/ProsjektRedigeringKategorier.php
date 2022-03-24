@@ -6,9 +6,11 @@ require 'ProsjektRedigeringKategorierJS.php';
 add_shortcode( 'prosjektredigeringkategorier', 'prosjektredigeringkategorier');
 
 function prosjektredigeringkategorier() {
+    /*
     if (userIsNotLoggedInWithThrowback()) {
         return;
     }
+    */
     session_start();
     validateFieldsFromPage1();
     leggTilInformasjonFelt();
