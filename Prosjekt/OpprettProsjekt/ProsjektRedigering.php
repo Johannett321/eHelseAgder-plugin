@@ -6,7 +6,7 @@ require 'ProsjektRedigeringKategorier.php';
 add_shortcode( 'prosjektredigeringsverktoy', 'startverktoy');
 
 function startverktoy( $atts ) {
-    //kreverInnlogging();
+    requiresLogin();
     $loadedProsjekt = loadProsjekt();
     lagFelter($loadedProsjekt);
 }
