@@ -43,5 +43,8 @@ function requiresLogin() {
 }
 
 function jsonRequiresLogin() {
-
+    if (!userIsLoggedIn()) {
+        wp_redirect("../../../../../../../logg-inn?errorMessage=Denne siden krever innlogging");
+        exit;
+    }
 }
