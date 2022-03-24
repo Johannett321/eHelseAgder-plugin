@@ -23,6 +23,9 @@ $testVar = "HEIHEI";
 global $debugMode;
 $debugMode = true;
 
+global $runningOnLocalHost;
+$runningOnLocalHost = true;
+
 require 'UploadFileTool.php';
 require 'AdminPanel.php';
 require 'Login/LoggInn.php';

@@ -6,9 +6,9 @@ include 'LoginChecker.php';
 add_shortcode( 'sc_loginform', 'sc_loginform');
 
 function sc_loginform( $atts ) {
-    global $debugMode;
+    global $runningOnLocalHost;
 
-    if (!useHTTPS() && !$debugMode) {
+    if (!useHTTPS() && !$runningOnLocalHost) {
         showLoginError("Du besøker ikke nettsiden på riktig måte. Vennligst besøk nettsiden via denne linken: https://www.ehelseagder.no");
         return;
     }
