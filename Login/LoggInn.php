@@ -6,6 +6,7 @@ include 'LoginChecker.php';
 add_shortcode( 'sc_loginform', 'sc_loginform');
 
 function sc_loginform( $atts ) {
+    session_start();
     global $runningOnLocalHost;
 
     if (!useHTTPS() && !$runningOnLocalHost) {
@@ -13,15 +14,15 @@ function sc_loginform( $atts ) {
         return;
     }
 
-    if (isset($_GET['errorMessage'])) {
-        showLoginError($_GET['errorMessage']);
-    }
-
     error_log("Checking if user is logged in...");
     if (userIsLoggedIn()) {
         error_log("User is logged in, redirecting to front page, and not showing login page.");
         wp_redirect("../");
         return;
+    }
+
+    if (isset($_GET['errorMessage'])) {
+        showLoginError($_GET['errorMessage']);
     }
 
     ?>
