@@ -44,6 +44,8 @@ function userSignedInSuccessfully() {
 }
 
 function userIsLoggedIn() {
+    error_log("STEP 5");
     session_start();
+    error_log("STEP 6");
     return isset($_SESSION["UserIsLoggedIn"]) && $_SESSION["UserIsLoggedIn"];
 }

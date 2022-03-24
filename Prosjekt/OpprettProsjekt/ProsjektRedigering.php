@@ -7,6 +7,7 @@ add_shortcode( 'prosjektredigeringsverktoy', 'startverktoy');
 
 function startverktoy( $atts ) {
     requiresLogin();
+    error_log("STEP 7");
     $loadedProsjekt = loadProsjekt();
     lagFelter($loadedProsjekt);
 }
