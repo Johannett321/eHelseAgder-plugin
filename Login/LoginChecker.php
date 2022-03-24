@@ -44,6 +44,10 @@ function userSignedInSuccessfully() {
 }
 
 function userIsLoggedIn() {
-    session_start();
+    try {
+        session_start();
+    }catch (Exception $e) {
+        //IGNORE
+    }
     return $_SESSION["UserIsLoggedIn"];
 }
