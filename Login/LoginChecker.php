@@ -34,12 +34,6 @@ function redirectUserBackToLogin($message) {
 }
 
 function userSignedInSuccessfully() {
-    error_log("A user has signed in successfully! Attempting to start session cache");
-    $session = session_start();
-    if (!$session) {
-        error_log("ERROR: Feilet med å starte session!");
-    }
-
     error_log("UserIsLoggedInValue before update: " . $_SESSION["UserIsLoggedIn"]);
     $_SESSION["UserIsLoggedIn"] = "true";
     error_log("UserIsLoggedInValue after update: " . $_SESSION["UserIsLoggedIn"]);
@@ -51,12 +45,6 @@ function userSignedInSuccessfully() {
 }
 
 function userIsLoggedIn() {
-    error_log("Starter session storage");
-    $session = session_start();
-    if (!$session) {
-        error_log("ERROR: Feilet med å starte session!");
-    }
-
     $userIsLoggedInExists = isset($_SESSION["UserIsLoggedIn"]);
     $userIsLoggedInValue = $_SESSION["UserIsLoggedIn"];
 
