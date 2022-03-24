@@ -6,7 +6,9 @@ require "OpprettNyhetsartikkelTools.php";
 include "SlettNyhetsartikkel.php";
 
 function sc_opprett_nyhetsartikkel() {
-    requiresLogin();
+    if (userIsNotLoggedInWithThrowback()) {
+        return;
+    }
 
     $loadedNyhetsartikkel = getEditingNewsArticle();
 
