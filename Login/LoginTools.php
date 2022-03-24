@@ -37,16 +37,24 @@ function showLoginError($errorMessage) {
 }
 
 function userIsNotLoggedInWithThrowback() {
+    error_log("Checking if user is logged in with throwback...");
     if (!userIsLoggedIn()) {
+        error_log("User is NOT logged in, redirecting user to login page with message 'Denne siden krever innlogging'");
         wp_redirect("../../../../../../../logg-inn?errorMessage=Denne siden krever innlogging");
+        error_log("Method 'userIsNotLoggedInWithThrowback()' now returning true");
         return true;
     }
+    error_log("Method 'userIsNotLoggedInWithThrowback()' now returning false");
     return false;
 }
 
 function jsonRequiresLogin() {
+    error_log("jsonRequiresLogin: Checking if user is logged in with throwback...");
     if (!userIsLoggedIn()) {
+        error_log("User is NOT logged in, redirecting user to login page with message 'Denne siden krever innlogging'");
         wp_redirect("../../../../../../../logg-inn?errorMessage=Denne siden krever innlogging");
+        error_log("Exiting script...");
         exit;
     }
+    error_log("jsonRequiresLogin: User was logged in!");
 }

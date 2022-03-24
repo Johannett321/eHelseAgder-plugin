@@ -34,18 +34,42 @@ function redirectUserBackToLogin($message) {
 }
 
 function userSignedInSuccessfully() {
-    error_log("A user has signed in successfully!");
+    error_log("A user has signed in successfully! Attempting to start session cache");
+    $session = session_start();
+    if (!$session) {
+        error_log("ERROR: Feilet med å starte session!");
+    }
 
-    session_start();
+    error_log("UserIsLoggedInValue before update: " . $_SESSION["UserIsLoggedIn"]);
     $_SESSION["UserIsLoggedIn"] = "true";
+    error_log("UserIsLoggedInValue after update: " . $_SESSION["UserIsLoggedIn"]);
 
+    error_log("Attempting to redirect user to front page");
     wp_redirect("../../../");
+    error_log("User should now have been redirected. Exiting script...");
     exit;
 }
 
 function userIsLoggedIn() {
-    error_log("STEP 5");
-    session_start();
-    error_log("STEP 6");
-    return isset($_SESSION["UserIsLoggedIn"]) && $_SESSION["UserIsLoggedIn"] == "true";
+    error_log("Starter session storage");
+    $session = session_start();
+    if (!$session) {
+        error_log("ERROR: Feilet med å starte session!");
+    }
+
+    $userIsLoggedInExists = isset($_SESSION["UserIsLoggedIn"]);
+    $userIsLoggedInValue = $_SESSION["UserIsLoggedIn"];
+
+    if (!$userIsLoggedInExists) {
+        error_log("Notable: 'UserIsLoggedIn' eksisterer ikke, og funskjonen 'userIsLoggedIn()' returnerer derfor false");
+        return false;
+    }
+
+    if ($userIsLoggedInValue == "true") {
+        error_log("Riktig: 'UserIsLoggedIn' == 'true', og funskjonen 'userIsLoggedIn()' returnerer derfor true");
+        return true;
+    }else {
+        error_log("Notable: 'UserIsLoggedIn' != 'true', og funskjonen 'userIsLoggedIn()' returnerer derfor false");
+        return false;
+    }
 }
