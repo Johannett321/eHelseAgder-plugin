@@ -37,7 +37,7 @@ function userSignedInSuccessfully() {
     error_log("A user has signed in successfully!");
 
     session_start();
-    $_SESSION["UserIsLoggedIn"] = true;
+    $_SESSION["UserIsLoggedIn"] = "true";
 
     wp_redirect("../../../");
     exit;
@@ -47,5 +47,5 @@ function userIsLoggedIn() {
     error_log("STEP 5");
     session_start();
     error_log("STEP 6");
-    return isset($_SESSION["UserIsLoggedIn"]) && $_SESSION["UserIsLoggedIn"];
+    return isset($_SESSION["UserIsLoggedIn"]) && $_SESSION["UserIsLoggedIn"] == "true";
 }
