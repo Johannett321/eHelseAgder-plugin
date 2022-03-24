@@ -25,24 +25,34 @@
 
 .infoBlokk .material-icons, .infoBlokk h5 {
     display: inline-block;
+    margin: 0;
+    margin-bottom: 10px;
 }
 
-.infoBlokk h5 {
+.infoBlokk h5, .infoBlokk h4 {
     font-weight: 400;
     margin-left: 7px;
+    margin-right: 7px;
     line-height: 24px;
     vertical-align: middle;
+    display: inline-block;
 }
 
+.infoBlokk h4 {
+    font-size: 1.8rem !important;
+    margin: 0 0 10px 0;
+}
 .infoBlokk p {
     margin-left: 35px;
     margin-bottom: 0;
+    font-size: 16px;
+    text-transform: capitalize !important;
 }
 
 .infoBlokk {
     height: auto;
     width: 80%;
-    padding: 20px;
+    padding: 30px;
     background-color: #f3f8f2;
     border-radius: 18px;
     margin-bottom: 60px;
@@ -71,7 +81,6 @@
 }
 
 .progressBar .stegText {
-    font-size: 14px;
     display: inline-block;
     margin-bottom: 10px;
     line-height: 20px;
@@ -121,22 +130,21 @@
 
 #bottomProgress {
     height: 220px;
-    width: 80%;
     padding: 20px;
     background-color: unset;
     border-radius: 18px;
-    margin-top: 100px;
+    margin-top: 50px;
     border: none;
 }
 
 /* Innhold -------------------------------------------------------------------*/
 .innhold {
-    border: 1px solid #e8f2e5;
+    border: 1px solid #cde7d1;
     border-radius: 18px;
-    width: 80%;
     margin: 0 auto;
-    box-shadow: 5px 5px 2px #e8f2e5;
+    box-shadow: 5px 5px 10px #cde7d1;
     padding: 5em;
+    width: 80%;
 }
 
 .projectText {
@@ -148,32 +156,39 @@
 
 .uploadPhoto, .coverPhoto {
     height: 300px;
-    background-color: #fbfcfb;
-    border: 1px solid #d9ead4 ;
     margin: 0 !important;
 }
 
-.uploadPhoto {
-    width: 100% !important;
-    border-radius: 18px;
+.uploadPhoto h5, .uploadPhoto .material-icons {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    width: 110px;
+    color: #0B843E !important;
     cursor: pointer;
 }
 
 .uploadPhoto h5 {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 180px;
-    width: 110px;
-    color: grey !important;
+    margin: 150px auto;
+    text-decoration: underline;
+}
+
+.uploadPhoto .material-icons {
+    margin: 130px auto;
 }
 
 .uploadPhoto #output {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+#output {
+    border: 1px solid #d9ead4;
+    width: 100% !important;
+    border-radius: 18px;
+    background-color: #fbfcfb;
 }
 
 
@@ -207,6 +222,10 @@
 /* Kort om prosjektet */
 .requiredPart h3, .sammendragContainer h3, #photoPlaceholder h3 {
     margin: 20px 0;
+}
+
+#photoPlaceholder h3 {
+    margin-top: 0;
 }
 
 .requiredPart h4{
@@ -300,7 +319,7 @@
 
 /* ProsjektRedigeringKategorier ––––––––––––––––––––––––––––––––––––––––––––––*/
 .addCustomField p {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 #collapsibleChooser {
@@ -321,7 +340,6 @@
     padding: 5px;
     border-radius: 30px;
     border-width: 1px;
-    margin-left: 20px;
 }
 
 #chooseLine {
@@ -552,6 +570,10 @@ select {
     width: 60%;
     margin: 0 auto;
 }
+
+/* Opprett nyhetsartikkel ––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+
 
 
 
