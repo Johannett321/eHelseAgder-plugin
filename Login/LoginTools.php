@@ -37,12 +37,11 @@ function showLoginError($errorMessage) {
 }
 
 function requiresLogin() {
-    error_log("STEP 1");
     if (!userIsLoggedIn()) {
-        error_log("STEP 2");
-        //wp_redirect("../../../../../../../logg-inn?errorMessage=Denne siden krever innlogging");
-        error_log("STEP 3");
+        wp_redirect("../../../../../../../logg-inn?errorMessage=Denne siden krever innlogging");
     }
+}
 
-    error_log("STEP 4");
+function jsonRequiresLogin() {
+
 }
