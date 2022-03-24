@@ -18,7 +18,7 @@ function sc_loginform( $atts ) {
     }
 
     if (userIsLoggedIn()) {
-        wp_redirect("../../../");
+        wp_redirect("../");
         return;
     }
 
