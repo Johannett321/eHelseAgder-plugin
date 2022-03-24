@@ -45,5 +45,5 @@ function userSignedInSuccessfully() {
 
 function userIsLoggedIn() {
     session_start();
-    return $_SESSION["UserIsLoggedIn"];
+    return isset($_SESSION["UserIsLoggedIn"]) && $_SESSION["UserIsLoggedIn"];
 }
