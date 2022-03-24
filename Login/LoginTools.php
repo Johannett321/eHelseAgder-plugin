@@ -39,9 +39,9 @@ function showLoginError($errorMessage) {
 function userIsNotLoggedInWithThrowback() {
     if (!userIsLoggedIn()) {
         wp_redirect("../../../../../../../logg-inn?errorMessage=Denne siden krever innlogging");
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
 function jsonRequiresLogin() {
