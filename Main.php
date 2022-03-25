@@ -28,7 +28,7 @@ $runningOnLocalHost = true;
 
 require 'UploadFileTool.php';
 require 'AdminPanel.php';
-require 'Login/LoggInn.php';
+require 'Login/LoggInnSide.php';
 require 'Prosjekt/OpprettProsjekt/ProsjektRedigering.php';
 require 'OnPluginActivation.php';
 require 'SQLTool.php';

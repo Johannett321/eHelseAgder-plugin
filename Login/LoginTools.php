@@ -24,6 +24,10 @@ function useHTTPS() {
         || $_SERVER['SERVER_PORT'] == 443;
 }
 
+/**
+ * Genererer en HTML blokk med en egendefinert errormelding
+ * @param $errorMessage
+ */
 function showLoginError($errorMessage) {
     ?>
     <div class = "infoBlokk">
@@ -36,25 +40,34 @@ function showLoginError($errorMessage) {
     <?php
 }
 
-function userIsNotLoggedInWithThrowback() {
-    error_log("Checking if user is logged in with throwback...");
-    if (!userIsLoggedIn()) {
-        error_log("User is NOT logged in, redirecting user to login page with message 'Denne siden krever innlogging'");
-        wp_redirect("../../../../../../../logg-inn?errorMessage=Denne siden krever innlogging");
-        error_log("Method 'userIsNotLoggedInWithThrowback()' now returning true");
-        return true;
-    }
-    error_log("Method 'userIsNotLoggedInWithThrowback()' now returning false");
-    return false;
+/**
+ * Reserverer URL'en slik at man må logge inn for å kunne se denne siden.
+ * @param $pageTitle
+ */
+function securePageWithLogin($pageTitle) {
+    error_log("Adding " . $pageTitle . " to list of pages requiring login");
+    global $pagesRequireLogin;
+    $pagesRequireLogin[sizeof($pagesRequireLogin)] = $pageTitle;
 }
 
-function jsonRequiresLogin() {
-    error_log("jsonRequiresLogin: Checking if user is logged in with throwback...");
-    if (!userIsLoggedIn()) {
-        error_log("User is NOT logged in, redirecting user to login page with message 'Denne siden krever innlogging'");
-        wp_redirect("../../../../../../../logg-inn?errorMessage=Denne siden krever innlogging");
-        error_log("Exiting script...");
-        exit;
+
+add_action('init', 'checkIfPageRequiresLogin');
+/**
+ * Sjekker om siden man besøker krever login. Dersom den gjør det, blir brukeren redirecta til login siden.
+ * Det er derfor viktig at denne kjører før headeren blir sendt.
+ */
+function checkIfPageRequiresLogin() {
+    global $pagesRequireLogin;
+    $pageTitle = $_SERVER[REQUEST_URI];
+    $pageTitle = strtolower($pageTitle);
+    $pageTitle = substr($pageTitle, 1, strlen($pageTitle)-2);
+    error_log("Sjekker om siden krever innlogging: " . $pageTitle);
+
+    for ($i = 0; $i < sizeof($pagesRequireLogin); $i++) {
+        if (strtolower($pagesRequireLogin[$i]) == $pageTitle) {
+            error_log("Brukeren forsøker å besøke en side som krever innlogging");
+            wp_redirect("../../../logg-inn");
+            exit;
+        }
     }
-    error_log("jsonRequiresLogin: User was logged in!");
 }

@@ -43,21 +43,3 @@ function userSignedInSuccessfully() {
     error_log("User should now have been redirected. Exiting script...");
     exit;
 }
-
-function userIsLoggedIn() {
-    $userIsLoggedInExists = isset($_SESSION["UserIsLoggedIn"]);
-    $userIsLoggedInValue = $_SESSION["UserIsLoggedIn"];
-
-    if (!$userIsLoggedInExists) {
-        error_log("Notable: 'UserIsLoggedIn' eksisterer ikke, og funskjonen 'userIsLoggedIn()' returnerer derfor false");
-        return false;
-    }
-
-    if ($userIsLoggedInValue == "true") {
-        error_log("Riktig: 'UserIsLoggedIn' == 'true', og funskjonen 'userIsLoggedIn()' returnerer derfor true");
-        return true;
-    }else {
-        error_log("Notable: 'UserIsLoggedIn' != 'true', og funskjonen 'userIsLoggedIn()' returnerer derfor false");
-        return false;
-    }
-}

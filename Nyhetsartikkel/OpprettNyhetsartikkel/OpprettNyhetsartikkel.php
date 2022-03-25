@@ -5,14 +5,9 @@ require "PupliserNyhetsartikkel.php";
 require "OpprettNyhetsartikkelTools.php";
 include "SlettNyhetsartikkel.php";
 
-function sc_opprett_nyhetsartikkel() {
-    //session_start();
-    /*
-    if (userIsNotLoggedInWithThrowback()) {
-        return;
-    }
-    */
+securePageWithLogin('opprett-nyhetsartikkel');
 
+function sc_opprett_nyhetsartikkel() {
     $loadedNyhetsartikkel = getEditingNewsArticle();
 
     if (isset($_GET['editArticleID'])) {
