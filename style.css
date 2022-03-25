@@ -5,18 +5,11 @@
 .savedText {
     color: grey;
     font-size: 14px;
-    font-family: Lato;
+    font-family: Lato, sans-serif;
     margin: 5px;
 }
 
-#categoryAlreadyAdded {
-    font-size: 17px;
-    padding: 10px;
-    margin-left: 20px;
-    opacity: 0.3;
-}
-
-/* Progress bar ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+    /* Progress bar ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .infoBlokk, .progressBar {
     margin-left: auto;
     margin-right: auto;
@@ -46,7 +39,6 @@
     margin-left: 35px;
     margin-bottom: 0;
     font-size: 16px;
-    text-transform: capitalize !important;
 }
 
 .infoBlokk {
@@ -139,10 +131,10 @@
 
 /* Innhold -------------------------------------------------------------------*/
 .innhold {
-    border: 1px solid #cde7d1;
+    border: 1px solid #d9ead4;
     border-radius: 18px;
     margin: 0 auto;
-    box-shadow: 5px 5px 10px #cde7d1;
+    box-shadow: 5px 5px 10px #d9ead4;
     padding: 5em;
     width: 80%;
 }
@@ -301,7 +293,7 @@
 /* Sammendrag */
 
 #psummary {
-    font-family: Lato;
+    font-family: Lato, sans-serif;
     font-size: 14px;
     color: #595959;
     margin: 0 !important;
@@ -322,34 +314,71 @@
     font-size: 16px;
 }
 
-#collapsibleChooser {
-    font-family: Lato;
-    font-size: 1.3rem;
-    color: grey;
-    background-color: white;
-    border-radius: 8px;
+#collapsibleChooser, .textFieldContainer select {
+    position: relative;
+    font-family: Lato, sans-serif;
+    font-size: 1.5rem;
+    background-color: #ffffff;
     height: 40px;
-    width: 70%;
+    width: 50%;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+#collapsibleChooser:hover, .textFieldContainer select:hover {
+    border: 2px solid #0B843E;
 }
 
 .addInfoButton {
-    height: 40px;
     width: 20rem;
-    font-family: Lato;
+    font-family: Lato, sans-serif;
     font-size: 14px;
-    padding: 5px;
+    padding: 3px;
     border-radius: 30px;
     border-width: 1px;
 }
 
-#chooseLine {
-    margin: 40px auto;
-    border-bottom: 2px solid #e8f2e5;
-    padding: 0 0 30px 0;
+.addInfoButton i {
+    margin-right: 10px;
+    margin-bottom: 3px;
+    line-height: 0;
 }
 
-#chooseLine #addCategoryButton {
-    float: right;
+.addInfoButton p {
+    font-size: 14px;
+    margin: 6.5px;
+    line-height: 0;
+    padding: 0;
+    text-transform: none;
+}
+
+.addInfoButton i, .addInfoButton p {
+    display: inline-block;
+}
+
+#chooseLine {
+    margin: 40px auto;
+    border-bottom: 1px solid #D6EBCA;
+    padding: 0 0 70px 0;
+    height: 40px;
+}
+
+#addCategoryButton {
+    padding: 10px 4px;
+    margin-left: 20px;
+}
+
+#categoryAlreadyAdded {
+    color: #0B843E;
+    margin-left: 20px;
+    height: 40px;
+}
+
+#categoryAlreadyAdded h5 {
+    font-size: 14px;
+    margin: 0;
 }
 
 
@@ -391,6 +420,7 @@ select {
 .collapsible h5 {
     font-size: 2rem !important;
     margin-bottom: 20px;
+    font-weight: 700 !important;
 }
 
 .collapsible h5, .removeCollapsibleButton img {
@@ -451,32 +481,35 @@ select {
 }
 
 /* Milepæler (collapsible) */
-.milepael button, .personRightCol button {
+.milepael button, .addPerson button {
     height: 40px;
     width: 100%;
     font-size: 14px;
     padding: 2px;
-    margin-top: 30px;
-    float: right;
+    margin-top: 20px;
     border-radius: 10px ;
     background: repeating-linear-gradient(
             45deg,
-            #e5e5e5,
-            #e5e5e5 10px,
-            #eef5ec 10px,
-            #f2f2f2 20px
+            rgba(237, 204, 197, 0.6),
+            rgba(237, 204, 197, 0.6) 10px,
+            rgba(243, 221, 216, 0.6) 10px,
+            rgba(243, 221, 216, 0.6) 20px
     );
-    border-style: dashed;
+    border-style: solid;
     border-width: 0.5px;
-    border-color: #698161;
-    color: black;
+    border-color: #edccc5;
+    color: #330000;
 }
-
-.milepael select {
-    font-size: 1.3rem;
-    color: grey;
-    background-color: #ffffff;
-    margin-left: 7px;
+.milepael button:hover, .addPerson button:hover {
+    opacity: 1;
+    background: repeating-linear-gradient(
+            45deg,
+            #edccc5,
+            #edccc5 10px,
+            #f3ddd8 10px,
+            #f3ddd8 20px
+    );
+    color: black;
 }
 
 .milepael label {
@@ -484,18 +517,25 @@ select {
 }
 
 .addPersonButton {
-    border-radius: 10px;
+    border-radius: 8px;
     font-size: 18px;
     margin-bottom: 10px;
+    width: 100%;
+    background-color: #d9ead4;;
+}
+
+.addPersonButton:hover {
+    background-color: #bbd9b2;
 }
 
 
 /* Person-collapsible */
 
-.addPersonButton {
-    margin-top: 20px;
-    width: 100%;
-    background-color: #D0E6C8;
+.addPerson, .milepael {
+    background-color: #d9ead4;
+    border-radius: 10px;
+    padding: 3.5rem;
+    margin-bottom: 3rem;
 }
 
 .addPersonButton h5 {
@@ -506,9 +546,9 @@ select {
 .personLeftCol {
     display: table-cell;
     margin: 0em;
-    padding: 1em;
     height: auto;
     vertical-align: middle;
+    padding-right: 1em;
 }
 
 .personLeftCol h5 {
@@ -521,7 +561,7 @@ select {
     width: 100%;
     display: table-cell;
     margin: 0em;
-    padding: 1em;
+    padding-left: 1em;
     height: auto;
     vertical-align: middle;
 }
@@ -546,6 +586,10 @@ select {
         scale: 1;
         opacity: 1;
     }
+}
+
+.addPerson hr {
+    border-color: #d9ead4;
 }
 
 
@@ -575,6 +619,14 @@ select {
 
 
 
+/* Logg inn side –––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+#loginBox {
+    width: 30%;
+}
+
+#loginBox .button {
+    margin: 0 auto;
+}
 
 
 /* Nettleser tilpassning –––––––––––––––––––––––––––––––––––––––––––––––––*/

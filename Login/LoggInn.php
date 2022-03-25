@@ -27,13 +27,15 @@ function sc_loginform( $atts ) {
 
     ?>
     <form action = "../wp-json/ehelseagderplugin/api/login" method = "post">
-        <div class = "requiredPart">
+        <div class = "requiredPart" id = "loginBox">
             <h3 class = "mainTitle">Logg inn</h3>
-            <label for="username">Brukernavn:</label><br>
+            <label for="username">Brukernavn:</label>
             <input type="text" class = "small_input" id="username" name="username" placeholder="Brukernavn"><br>
-            <label for="password">Passord:</label><br>
+            <label for="password">Passord:</label>
             <input type="password" class = "small_input" id="password" name="password" placeholder="Passord"><br>
-            <input type = "submit" class = "button" id = "submitButton" value = "Logg inn">
+            <center>
+                <input type = "submit" class = "button" id = "submitButton" value = "Logg inn">
+            </center>
         </div>
     </form>
     <?php
