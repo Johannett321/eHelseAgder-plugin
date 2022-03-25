@@ -9,7 +9,7 @@ function rest_add_publiser_nyhetsartikkel() {
 }
 
 function publiserNyhetsartikkel() {
-    jsonRequiresLogin();
+    //jsonRequiresLogin();
     session_start();
 
     $formatted_table_name = getNyhetsartiklerDatabaseRef();

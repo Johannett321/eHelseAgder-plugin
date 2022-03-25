@@ -6,10 +6,12 @@ require "OpprettNyhetsartikkelTools.php";
 include "SlettNyhetsartikkel.php";
 
 function sc_opprett_nyhetsartikkel() {
-    session_start();
+    //session_start();
+    /*
     if (userIsNotLoggedInWithThrowback()) {
         return;
     }
+    */
 
     $loadedNyhetsartikkel = getEditingNewsArticle();
 

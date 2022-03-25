@@ -6,10 +6,11 @@ require 'ProsjektRedigeringKategorier.php';
 add_shortcode( 'prosjektredigeringsverktoy', 'startverktoy');
 
 function startverktoy( $atts ) {
+    /*
     if (userIsNotLoggedInWithThrowback()) {
         return;
     }
-    error_log("STEP 7");
+    */
     $loadedProsjekt = loadProsjekt();
     lagFelter($loadedProsjekt);
 }
