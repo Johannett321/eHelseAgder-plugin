@@ -33,7 +33,9 @@ function lagFelter($loadedProsjekt) {
 
         <div class="infoBlokk">
             <i class="material-icons">info</i>
-            <h5>Denne prosessen skjer i tre steg. For å gå videre til neste steg trykker du "videre" nederst på siden.</h5>
+            <h5>Denne prosessen skjer i tre steg. For å gå videre til neste steg trykker du </h5>
+            <h4>videre</h4>
+            <h5>nederst på siden.</h5>
             <br>
             <textBox class="progressBar" id="steg1">
                 <p class="stegText" id="step1">Grunnleggende info</p>
@@ -52,7 +54,10 @@ function lagFelter($loadedProsjekt) {
             <div id="photoPlaceholder">
                 <h3>Velg forsidebilde</h3>
                 <div class="uploadPhoto" id = "uploadPhotoButton">
-                    <h5>Velg bilde</h5>
+                    <div>
+                        <h5>Last opp bilde</h5>
+                        <i class="material-icons">upload</i>
+                    </div>
                     <img id="output" src = "<?php echo getPhotoUploadUrl() . $loadedProsjekt->bilde ?>"/>
                     <input class = "hidden" type="file" name = "bilde" accept="image/*" onchange="loadFile(event)" id = "actualUploadButton">
 
@@ -83,12 +88,12 @@ function lagFelter($loadedProsjekt) {
                 <div class = "uthevetBoksForm" id = "prosjektLederBoks">
                     <h4>Prosjektleder</h4>
                     <ul id="prosjLederInputList">
-                    <li><label for="pleadername" class = "labelForInput">Fullt navn</label>
-                    <input type="text" id="pleadername" name="pleadername" placeholder="Navn Navnesen" class = "small_input" maxlength="35" value = "<?php echo $loadedProsjekt->ledernavn ?>"></li>
-                    <li><label for="pleaderemail" class = "labelForInput">Epost</label>
-                    <input type="text" id="pleaderemail" name="pleaderemail" placeholder="navn.navnesen@gmail.com" class = "small_input" maxlength="60" value = "<?php echo $loadedProsjekt->ledermail ?>"></li>
-                    <li><label for="pleaderphone" class = "labelForInput">Mobil</label>
-                    <input type="text" id="pleaderphone" name="pleaderphone" placeholder="40640382" class = "small_input" maxlength="15" value = "<?php echo $loadedProsjekt->ledertlf ?>"></li>
+                        <li><label for="pleadername" class = "labelForInput">Fullt navn</label>
+                            <input type="text" id="pleadername" name="pleadername" placeholder="Navn Navnesen" class = "small_input" maxlength="35" value = "<?php echo $loadedProsjekt->ledernavn ?>"></li>
+                        <li><label for="pleaderemail" class = "labelForInput">Epost</label>
+                            <input type="text" id="pleaderemail" name="pleaderemail" placeholder="navn.navnesen@gmail.com" class = "small_input" maxlength="60" value = "<?php echo $loadedProsjekt->ledermail ?>"></li>
+                        <li><label for="pleaderphone" class = "labelForInput">Mobil</label>
+                            <input type="text" id="pleaderphone" name="pleaderphone" placeholder="40640382" class = "small_input" maxlength="15" value = "<?php echo $loadedProsjekt->ledertlf ?>"></li>
                     </ul>
                 </div>
                 <label for="prosjekteierkommuner" class = "labelForInput">Prosjekteierkommune(r)</label>
@@ -106,22 +111,24 @@ function lagFelter($loadedProsjekt) {
                 <label for = "psummary" class = "labelForInput"><h3>Sammendrag</h3></label>
                 <textarea id = "psummary" name="psummary" form="minform" maxlength="1700" placeholder="Her kan du skrive en kort tekst om prosjektet"><?php echo $loadedProsjekt->project_text ?></textarea>
             </div>
-            <div class="infoBlokk" id="bottomProgress">
-                <textBox class="progressBar" id="steg1">
-                    <p class="stegText" id="step1">Grunnleggende info</p>
-                    <p class="stegText" id="step2">Ekstra kategorier</p>
-                    <p class="stegText" id="step3">Forhåndsvisning</p>
-                    <div class="border">
-                        <div id="thisBar" class="bar">
-                        </div>
+
+        </div>
+        <div class="infoBlokk" id="bottomProgress">
+            <textBox class="progressBar" id="steg1">
+                <p class="stegText" id="step1">Grunnleggende info</p>
+                <p class="stegText" id="step2">Ekstra kategorier</p>
+                <p class="stegText" id="step3">Forhåndsvisning</p>
+                <div class="border">
+                    <div id="thisBar" class="bar">
                     </div>
-                    <br>
-                    <center>
-                        <input type = "submit" class = "button" id = "submitButton" value = "Videre">
-                    </center>
-                </textBox>
-            </div>
+                </div>
+                <br>
+                <center>
+                    <input type = "submit" class = "button" id = "submitButton" value = "Videre">
+                </center>
+            </textBox>
         </div>
     </form>
+
     <?php
 }

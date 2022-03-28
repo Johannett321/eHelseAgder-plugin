@@ -5,18 +5,11 @@
 .savedText {
     color: grey;
     font-size: 14px;
-    font-family: Lato;
+    font-family: Lato, sans-serif;
     margin: 5px;
 }
 
-#categoryAlreadyAdded {
-    font-size: 17px;
-    padding: 10px;
-    margin-left: 20px;
-    opacity: 0.3;
-}
-
-/* Progress bar ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+    /* Progress bar ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .infoBlokk, .progressBar {
     margin-left: auto;
     margin-right: auto;
@@ -25,24 +18,33 @@
 
 .infoBlokk .material-icons, .infoBlokk h5 {
     display: inline-block;
+    margin: 0;
+    margin-bottom: 10px;
 }
 
-.infoBlokk h5 {
+.infoBlokk h5, .infoBlokk h4 {
     font-weight: 400;
     margin-left: 7px;
+    margin-right: 7px;
     line-height: 24px;
     vertical-align: middle;
+    display: inline-block;
 }
 
+.infoBlokk h4 {
+    font-size: 1.8rem !important;
+    margin: 0 0 10px 0;
+}
 .infoBlokk p {
     margin-left: 35px;
     margin-bottom: 0;
+    font-size: 16px;
 }
 
 .infoBlokk {
     height: auto;
     width: 80%;
-    padding: 20px;
+    padding: 30px;
     background-color: #f3f8f2;
     border-radius: 18px;
     margin-bottom: 60px;
@@ -71,7 +73,6 @@
 }
 
 .progressBar .stegText {
-    font-size: 14px;
     display: inline-block;
     margin-bottom: 10px;
     line-height: 20px;
@@ -121,26 +122,28 @@
 
 #bottomProgress {
     height: 220px;
-    width: 80%;
     padding: 20px;
     background-color: unset;
     border-radius: 18px;
-    margin-top: 100px;
+    margin-top: 50px;
     border: none;
 }
 
 /* Innhold -------------------------------------------------------------------*/
 .innhold {
-    border: 1px solid #e8f2e5;
+    border: 1px solid #d9ead4;
     border-radius: 18px;
-    width: 80%;
     margin: 0 auto;
-    box-shadow: 5px 5px 2px #e8f2e5;
+    box-shadow: 5px 5px 10px #d9ead4;
     padding: 5em;
+    width: 80%;
 }
 
 .projectText {
-    font-size: 20px;
+    font-size: 18px;
+    width: 60%;
+    margin: 0 auto;
+    line-height: 1.6;
 }
 
 
@@ -148,32 +151,37 @@
 
 .uploadPhoto, .coverPhoto {
     height: 300px;
-    background-color: #fbfcfb;
-    border: 1px solid #d9ead4 ;
     margin: 0 !important;
 }
 
-.uploadPhoto {
-    width: 100% !important;
-    border-radius: 18px;
+.uploadPhoto h5, .uploadPhoto .material-icons {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    width: 110px;
+    color: #0B843E !important;
     cursor: pointer;
 }
 
 .uploadPhoto h5 {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 180px;
-    width: 110px;
-    color: grey !important;
+    margin: 150px auto;
+    text-decoration: underline;
 }
 
-.uploadPhoto #output {
-    width: 100%;
-    height: 100%;
+.uploadPhoto .material-icons {
+    margin: 130px auto;
+}
+
+#output {
+    height: inherit !important;
     object-fit: cover;
+}
+
+#output, .sammendragContainer textarea {
+    border: 1px solid #dbdbdb;
+    width: 100% !important;
+    border-radius: 5px;
 }
 
 
@@ -183,20 +191,20 @@
     margin-right: auto;
 }
 
-#submitButton, .addInfoButton {
+#submitButton, .addInfoButton, artikkel button {
     background-color: #0B843E;
     text-transform: capitalize;
     color: #fff;
     transition: all 0.5s;
 }
 
-#submitButton:hover, .addInfoButton:hover {
+#submitButton:hover, .addInfoButton:hover, artikkel button:hover {
     color: #fff;
     background-color: #0B843EBA;
     font-weight: 700;
 }
 
-#submitButton {
+#submitButton, artikkel button {
     height: 50px;
     width: 200px;
     border-radius: 30px;
@@ -205,8 +213,12 @@
 }
 
 /* Kort om prosjektet */
-.requiredPart h3, .sammendragContainer h3, #photoPlaceholder h3 {
-    margin: 20px 0;
+.requiredPart h3, .sammendragContainer h3, #photoPlaceholder h3, .innhold h3 {
+    margin: 5px 0;
+}
+
+#photoPlaceholder h3 {
+    margin-top: 0;
 }
 
 .requiredPart h4{
@@ -215,6 +227,7 @@
 
 .labelForInput {
     margin-top: 30px;
+    font-size: unset !important;
 }
 
 .requiredPart {
@@ -230,7 +243,7 @@
     border-radius: 5px;
     margin: 0em;
     margin-bottom: 17px;
-    font-size: 14px;
+    font-size: 16px;
     color: #595959;
 }
 
@@ -238,19 +251,13 @@
     height: 30px;
     border-radius: 5px;
     margin-bottom: 17px;
-    font-size: 14px;
+    font-size: 16px;
     color: #595959;
     max-width: 100% !important;
 }
 
 /* Prosjektleder-boks */
-.uthevetBoksForm {
-    padding: 20px;
-    margin: 60px 0;
-    border-radius: 10px;
-    background-color: #d9ead4;
-    width: 70%;
-}
+
 
 #prosjLederInputList {
     list-style-type: none;
@@ -282,8 +289,8 @@
 /* Sammendrag */
 
 #psummary {
-    font-family: Lato;
-    font-size: 14px;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
     color: #595959;
     margin: 0 !important;
     max-width: 100%;
@@ -291,7 +298,7 @@
 }
 
 .sammendragContainer {
-    padding: 30px;
+    /*padding: 30px;*/
     border-radius: 18px;
 
 }
@@ -300,50 +307,76 @@
 
 /* ProsjektRedigeringKategorier ––––––––––––––––––––––––––––––––––––––––––––––*/
 .addCustomField p {
-    font-size: 14px;
+    font-size: 16px;
 }
 
-#collapsibleChooser {
-    font-family: Lato;
-    font-size: 1.3rem;
-    color: grey;
-    background-color: white;
-    border-radius: 8px;
+#collapsibleChooser, .textFieldContainer select, select {
+    position: relative;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    background-color: #ffffff;
     height: 40px;
-    width: 70%;
+    width: 50%;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 0 1.8rem;
+}
+
+#collapsibleChooser:hover, .textFieldContainer select:hover, select:hover {
+    border: 2px solid #0B843E;
 }
 
 .addInfoButton {
-    height: 40px;
     width: 20rem;
-    font-family: Lato;
-    font-size: 14px;
-    padding: 5px;
+    font-family: Lato, sans-serif;
+    padding: 3px;
     border-radius: 30px;
     border-width: 1px;
-    margin-left: 20px;
+}
+
+.addInfoButton i {
+    margin-right: 4px;
+    margin-bottom: 3px;
+    line-height: 0;
+}
+
+.addInfoButton p {
+    font-size: 16px;
+    margin: 6.5px;
+    line-height: 0;
+    padding: 0;
+    text-transform: none;
+}
+
+.addInfoButton i, .addInfoButton p {
+    display: inline-block;
 }
 
 #chooseLine {
     margin: 40px auto;
-    border-bottom: 2px solid #e8f2e5;
-    padding: 0 0 30px 0;
+    border-bottom: 1px solid #D6EBCA;
+    padding: 0 0 70px 0;
+    height: 40px;
 }
 
-#chooseLine #addCategoryButton {
-    float: right;
+#addCategoryButton {
+    padding: 10px 4px;
+    margin-left: 20px;
+}
+
+#categoryAlreadyAdded {
+    color: #0B843E;
+    margin-left: 20px;
+    height: 40px;
+}
+
+#categoryAlreadyAdded h5 {
+    font-size: 16px;
+    margin: 0;
 }
 
 
 /* Collapsibles –––––––––––––––––––––––––––––––––––––––––––––––––––*/
-
-select {
-    height: 40px;
-    width: 300px;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 14px;
-}
 
 #minform {
     margin-bottom:30px !important;
@@ -352,7 +385,7 @@ select {
     display:none !important;
 }
 
-.collapsible {
+.innhold .collapsible {
     padding: 20px;
     margin: 5em auto;
     background-color: #f3f8f2;
@@ -373,6 +406,7 @@ select {
 .collapsible h5 {
     font-size: 2rem !important;
     margin-bottom: 20px;
+    font-weight: 700 !important;
 }
 
 .collapsible h5, .removeCollapsibleButton img {
@@ -433,32 +467,35 @@ select {
 }
 
 /* Milepæler (collapsible) */
-.milepael button, .personRightCol button {
+.milepael button, .addPerson button {
     height: 40px;
     width: 100%;
-    font-size: 14px;
+    font-size: 16px;
     padding: 2px;
-    margin-top: 30px;
-    float: right;
+    margin-top: 20px;
     border-radius: 10px ;
     background: repeating-linear-gradient(
             45deg,
-            #e5e5e5,
-            #e5e5e5 10px,
-            #eef5ec 10px,
-            #f2f2f2 20px
+            #d8d8d8,
+            #dfdfdf 10px,
+            rgba(240, 224, 228, 0.6) 10px,
+            rgba(240, 224, 228, 0.3) 20px
     );
-    border-style: dashed;
+    border-style: solid;
     border-width: 0.5px;
-    border-color: #698161;
-    color: black;
+    border-color: lightgrey;
+    color: #330000;
 }
-
-.milepael select {
-    font-size: 1.3rem;
-    color: grey;
-    background-color: #ffffff;
-    margin-left: 7px;
+.milepael button:hover, .addPerson button:hover {
+    opacity: 1;
+    background: repeating-linear-gradient(
+            45deg,
+            rgba(200, 200, 200, 0.7),
+            rgba(200, 200, 200, 0.4) 10px,
+            rgba(234, 212, 217, 0.9) 10px,
+            rgba(234, 212, 217, 0.6) 20px
+    );
+    color: black;
 }
 
 .milepael label {
@@ -466,18 +503,25 @@ select {
 }
 
 .addPersonButton {
-    border-radius: 10px;
+    border-radius: 8px;
     font-size: 18px;
     margin-bottom: 10px;
+    width: 100%;
+    background-color: #d9ead4;;
+}
+
+.addPersonButton:hover {
+    background-color: #bbd9b2;
 }
 
 
 /* Person-collapsible */
 
-.addPersonButton {
-    margin-top: 20px;
-    width: 100%;
-    background-color: #D0E6C8;
+.addPerson, .milepael {
+    background-color: #d9ead4;
+    border-radius: 10px;
+    padding: 3.5rem;
+    margin-bottom: 3rem;
 }
 
 .addPersonButton h5 {
@@ -488,9 +532,9 @@ select {
 .personLeftCol {
     display: table-cell;
     margin: 0em;
-    padding: 1em;
     height: auto;
     vertical-align: middle;
+    padding-right: 1em;
 }
 
 .personLeftCol h5 {
@@ -503,7 +547,7 @@ select {
     width: 100%;
     display: table-cell;
     margin: 0em;
-    padding: 1em;
+    padding-left: 1em;
     height: auto;
     vertical-align: middle;
 }
@@ -530,12 +574,13 @@ select {
     }
 }
 
+.addPerson hr {
+    border-color: #d9ead4;
+}
+
 
 
 /* Prosjektside ------------------------------------------------------*/
-.oppsummert {
-
-}
 
 .collapsibles .collapsible{
     border-radius: 8px;
@@ -553,6 +598,186 @@ select {
     margin: 0 auto;
 }
 
+.topPart {
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 100px;
+}
+
+.coverPhoto {
+    float: left;
+    width: 70%;
+    height: inherit;
+    border-radius: 8px;
+    border: 1px solid lightgrey;
+}
+
+.coverPhoto img {
+    width: 100%;
+    height: inherit;
+    object-fit: cover;
+}
+
+.oppsummert {
+    float:right;
+    background-color: #d9ead4;
+    width: 28%;
+    height: inherit;
+    padding: 35px;
+    padding-right: 10px;
+    margin-left: 20px;
+    border-radius: 8px;
+    border: 1px solid #B5DCBB;
+}
+
+.oppsummert h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.oppsummert h5 {
+    margin-top: 7%;
+    margin-bottom: 0;
+    margin-right: 10px;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+}
+
+.oppsummert span, .oppsummert i {
+    font-size: 16px;
+    margin-top: 0;
+}
+
+.oppsummert h5, .oppsummert span {
+    display: inline-block;
+}
+
+.contentTitle {
+    margin-top: 100px;
+}
+
+.collapsibles {
+    margin-top: 20px;
+}
+
+th {
+    min-height: 20px;
+    background-color: #D6EBCA;
+    padding:10px;
+}
+
+td {
+    height: 50px;
+    background-color:#E7F0E2;
+    padding:10px;
+}
+
+table {
+    width:100%;
+}
+
+.redBlob {
+    background-color: #E24545;
+}
+
+.greenBlob {
+    background-color: #8CBE7E;
+}
+
+.yellowBlob {
+    background-color: #EBE15C;
+}
+
+.blob {
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.inliner {
+    float: left;
+    padding: 1em;
+    width: 49%;
+    text-align: center;
+}
+
+.inliner img {
+    width: 100px;
+}
+
+.textFields h5 {
+    text-transform: none;
+    margin: 0px;
+}
+.textFields h6 {
+    text-transform: none;
+    margin: 0px;
+}
+.textFields p {
+    margin: 0px;
+    max-width:100%;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+#displayCol {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    font-weight:400;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, #displayCol:hover {
+    background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+    font-size: 16px;
+    width: 99%;
+}
+
+/* Opprett nyhetsartikkel ––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+.innhold h3 {
+    margin: 0;
+}
+
+.innhold h4 {
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+/* Vis nyhetsartikkel ––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+.artikkel {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.nyhetTittel, .artikkel button {
+    display: inline-block;
+}
+
+
+/* Logg inn side –––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+#loginBox {
+    width: 30%;
+}
+
+#loginBox .button {
+    margin: 0 auto;
+}
 
 
 /* Nettleser tilpassning –––––––––––––––––––––––––––––––––––––––––––––––––*/

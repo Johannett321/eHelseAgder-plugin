@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH') ) {
 //COLLAPSIBLE_MILEPÆLER=5
 
 global $debugMode;
-$debugMode = true;
+$debugMode = false;
 
 global $runningOnLocalHost;
 $runningOnLocalHost = true;

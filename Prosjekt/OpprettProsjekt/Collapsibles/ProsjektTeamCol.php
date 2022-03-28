@@ -72,6 +72,7 @@ function addProsjektTeamCol() {
                 peopleInProjectTeam += 1;
                 const person = document.createElement('div');
                 person.name = peopleInProjectTeam;
+                person.classList.add('addPerson');
 
                 const leftSide = document.createElement('div');
                 leftSide.classList.add('personLeftCol');
@@ -118,10 +119,10 @@ function addProsjektTeamCol() {
                 rightSide.appendChild(fulltNavnField);
                 rightSide.appendChild(epostField);
                 rightSide.appendChild(mobilField);
-                rightSide.appendChild(removePersonButton);
 
                 person.appendChild(leftSide);
                 person.appendChild(rightSide);
+                person.appendChild(removePersonButton);
 
                 return person;
             }

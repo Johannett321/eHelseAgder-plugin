@@ -30,7 +30,7 @@ function sc_vis_artikkel() {
                 <?php
             }
             ?>
-            <h3><?php echo $artikkelInfo[0]->tittel; ?></h3>
+            <h2 class = "nyhetTittel"><?php echo $artikkelInfo[0]->tittel; ?></h2>
             <span><?php echo $artikkelInfo[0]->ingress ?></span>
             <?php
             if ($artikkelInfo[0]->bilde != null && $artikkelInfo[0]->bilde != "") {
