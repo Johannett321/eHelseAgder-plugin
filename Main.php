@@ -22,7 +22,7 @@ global $debugMode;
 $debugMode = false;
 
 global $runningOnLocalHost;
-$runningOnLocalHost = false;
+$runningOnLocalHost = true;
 
 include 'PageMessages.php';
 require 'UploadFileTool.php';
