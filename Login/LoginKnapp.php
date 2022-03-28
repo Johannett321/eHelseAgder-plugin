@@ -2,6 +2,7 @@
 add_shortcode("sc_login_knapp", "sc_login_knapp");
 
 function sc_login_knapp() {
+    //TODO få login knappen til å fungere, og vise logg ut når man skal logge ut igjen.
     ?>
     <div class=button>
         Logg inn
