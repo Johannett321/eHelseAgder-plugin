@@ -36,7 +36,7 @@ function sc_opprett_nyhetsartikkel() {
                     <h5>Last opp bilde</h5>
                     <i class="material-icons">upload</i>
                 </div>
-                <input class = "hidden" type="file" name = "bilde" accept="image/*" onchange="loadFile(event)">
+                <input class = "hidden" type="file" name = "bilde" accept="image/*" onchange="loadFile(event)" id = "actualUploadButton">
                 <img id="output" src = "<?php echo getPhotoUploadUrl() . $loadedNyhetsartikkel->bilde ?>"/>
                 <script>
                     const loadFile = function(event) {
@@ -46,6 +46,12 @@ function sc_opprett_nyhetsartikkel() {
                             URL.revokeObjectURL(output.src) // free memory
                         }
                     };
+
+                    const uploadPhotoButton = document.getElementById('uploadPhotoButton');
+
+                    uploadPhotoButton.onclick = function () {
+                        document.getElementById('actualUploadButton').click();
+                    }
                 </script>
             </div>
 
