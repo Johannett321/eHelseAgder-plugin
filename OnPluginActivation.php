@@ -1,10 +1,26 @@
 <?php
 
 function install_plugin() {
+    error_log("------- REINSTALLERING AV PLUGIN -------");
+    dropAllTables();
     create_table_prosjekter();
     create_table_collapsible();
     create_table_nyhetsartikler();
-    return "eHelseAgder+ installert! Vennligst gå inn på wp-admin på nytt";
+    wp_redirect("../../../wp-admin/admin.php?page=prosjekter&message=Ferdig! Pluginen er innstallert på nytt!");
+    exit;
+}
+
+function dropAllTables() {
+    $tables[0] = getProsjekterDatabaseRef();
+    $tables[1] = getNyhetsartiklerDatabaseRef();
+    $tables[2] = getCollapsiblesDatabaseRef();
+
+    for ($i  = 0; $i < sizeof($tables); $i++) {
+        error_log("Sletter SQL tabell: " . $tables[$i]);
+        $sqlCommand = "DROP TABLE IF EXISTS $tables[$i]";
+        global $wpdb;
+        $wpdb->query($sqlCommand);
+    }
 }
 
 function create_table_prosjekter() {
@@ -62,6 +78,7 @@ function create_table_nyhetsartikler() {
         dato_endret varchar(100),
         tilknyttet_prosjekt smallint(5),
         innhold varchar(15000),
+        publisert smallint,
         PRIMARY KEY (id)
     );";
 

@@ -8,6 +8,7 @@ include "SlettNyhetsartikkel.php";
 securePageWithLogin('opprett-nyhetsartikkel');
 
 function sc_opprett_nyhetsartikkel() {
+    error_log("Redigerer nå opprett nyhetsartikkel");
     $loadedNyhetsartikkel = getEditingNewsArticle();
 
     if (isset($_GET['editArticleID'])) {

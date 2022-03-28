@@ -5,12 +5,9 @@ require 'ProsjektRedigeringKategorier.php';
 //add_action( 'rest_api_init', 'add_post_receiver');
 add_shortcode( 'prosjektredigeringsverktoy', 'startverktoy');
 
+securePageWithLogin('opprett-prosjekt');
+
 function startverktoy( $atts ) {
-    /*
-    if (userIsNotLoggedInWithThrowback()) {
-        return;
-    }
-    */
     $loadedProsjekt = loadProsjekt();
     lagFelter($loadedProsjekt);
 }

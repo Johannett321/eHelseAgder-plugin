@@ -12,8 +12,6 @@ if ( ! defined( 'ABSPATH') ) {
     exit;
 }
 
-$testVar = "HEIHEI";
-
 //COLLAPSIBLE_EGENDEFINERT=1
 //COLLAPSIBLE_LEVERANDØRER=2
 //COLLAPSIBLE_PROJECT_TEAM=3
@@ -26,6 +24,7 @@ $debugMode = true;
 global $runningOnLocalHost;
 $runningOnLocalHost = true;
 
+include 'PageMessages.php';
 require 'UploadFileTool.php';
 require 'AdminPanel.php';
 require 'Login/LoggInnSide.php';
@@ -38,7 +37,9 @@ require 'Prosjekt/CollapsibleManager.php';
 require 'Nyhetsartikkel/OpprettNyhetsartikkel/OpprettNyhetsartikkel.php';
 require 'Nyhetsartikkel/ListNyhetsartikler.php';
 require 'Nyhetsartikkel/VisArtikkel.php';
+
 include 'FacebookTool.php';
+include 'Login/LoginKnapp.php';
 
 if ($debugMode) {
     //Loader en custom css fil under utvikling.

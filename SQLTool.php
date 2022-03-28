@@ -8,7 +8,7 @@ function getFormattedTableName($tableName) {
 }
 
 function createTable($formatted_table_name, $sqlCommand) {
-    error_log("Oppretter database...",0);
+    error_log("Opretter SQL tabell: " . $formatted_table_name);
 
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php');
     dbDelta( $sqlCommand );

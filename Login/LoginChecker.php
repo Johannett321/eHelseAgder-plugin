@@ -38,8 +38,21 @@ function userSignedInSuccessfully() {
     $_SESSION["UserIsLoggedIn"] = "true";
     error_log("UserIsLoggedInValue after update: " . $_SESSION["UserIsLoggedIn"]);
 
-    error_log("Attempting to redirect user to front page");
-    wp_redirect("../../../");
-    error_log("User should now have been redirected. Exiting script...");
+    error_log("Checking if prevpage is set");
+    if (isset($_GET["prevpage"])) {
+        global $runningOnLocalHost;
+        if ($runningOnLocalHost) {
+            $prevPage = "http://localhost:8888" . $_GET["prevpage"];
+            error_log("Redirecting user to previous page: " . $prevPage);
+            wp_redirect($prevPage);
+        }else {
+            wp_redirect("https://www.ehelseagder.no" . $_GET["prevPage"]);
+        }
+        error_log("User should now have been redirected. Exiting script...");
+    }else {
+        error_log("Attempting to redirect user to front page");
+        wp_redirect("../../../");
+        error_log("User should now have been redirected. Exiting script...");
+    }
     exit;
 }

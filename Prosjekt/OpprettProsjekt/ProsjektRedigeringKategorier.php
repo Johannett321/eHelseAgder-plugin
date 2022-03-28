@@ -5,6 +5,8 @@ require 'ProsjektRedigeringKategorierJS.php';
 
 add_shortcode( 'prosjektredigeringkategorier', 'prosjektredigeringkategorier');
 
+securePageWithLogin('prosjektredigering/kategorier');
+
 function prosjektredigeringkategorier() {
     /*
     if (userIsNotLoggedInWithThrowback()) {

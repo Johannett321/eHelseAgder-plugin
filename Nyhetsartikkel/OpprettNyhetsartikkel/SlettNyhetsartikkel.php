@@ -9,6 +9,8 @@ function rest_add_slett_nyhetsartikkel() {
 }
 
 function slettNyhetsartikkel() {
+    session_start();
+    jsonRequiresLogin();
     $articleID = $_GET['articleID'];
     global $wpdb;
     $wpdb->delete(getNyhetsartiklerDatabaseRef(), array("id"=>$articleID), array("%d"));

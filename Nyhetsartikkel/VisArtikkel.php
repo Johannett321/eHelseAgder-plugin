@@ -17,9 +17,19 @@ function sc_vis_artikkel() {
     $artikkelInfo = getArtikkel($artikkelID);
     $bildeUrl =  $artikkelInfo[0]->bilde;
 
+    if (isset($_GET['message'])) {
+        showCompleteMessage($_GET['message']);
+    }
+
     ?>
         <div class = "artikkel">
-            <a href = "../../opprett-nyhetsartikkel?editArticleID=<?php echo $artikkelID ?>"><button>Rediger artikkel</button></a>
+            <?php
+            if (userIsLoggedIn()) {
+                ?>
+                <a href = "../../opprett-nyhetsartikkel?editArticleID=<?php echo $artikkelID ?>"><button>Rediger artikkel</button></a>
+                <?php
+            }
+            ?>
             <h3><?php echo $artikkelInfo[0]->tittel; ?></h3>
             <span><?php echo $artikkelInfo[0]->ingress ?></span>
             <?php

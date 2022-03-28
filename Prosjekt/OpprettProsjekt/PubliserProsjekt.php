@@ -10,8 +10,8 @@ function add_publiser_prosjekt_receiver(){
 }
 
 function publiserProsjekt() {
-    //jsonRequiresLogin();
     session_start();
+    jsonRequiresLogin();
 
     $formatted_table_name = getProsjekterDatabaseRef();
 

@@ -8,7 +8,7 @@ function sc_list_nyhetsartikler() {
 
 function getNyheterList() {
     global $wpdb;
-    $query = "SELECT * FROM " . getNyhetsartiklerDatabaseRef();
+    $query = "SELECT * FROM " . getNyhetsartiklerDatabaseRef() . " WHERE publisert = 1";
     return $wpdb->get_results($query);
 }
 
