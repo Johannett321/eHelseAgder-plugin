@@ -60,7 +60,7 @@ function leggTilInformasjonFelt() {
         <div class="infoBlokk">
             <i class="material-icons">info</i>
             <h5 class="mainTitle">Legg til informasjon om prosjektet <?php echo $_SESSION["pname"] ?></h5>
-            <p>Under kan du legge til informasjon du ønsker å dele om prosjektet ved hjelp av ulike kategorier. Finner du
+            <br><br><p>Under kan du legge til informasjon du ønsker å dele om prosjektet ved hjelp av ulike kategorier. Finner du
                 ikke kategorien du leter etter kan du velge «legg til egen kategori» for å definere kategori selv. Den nye kategorien vil dukke opp under. </p>
         </div>
 

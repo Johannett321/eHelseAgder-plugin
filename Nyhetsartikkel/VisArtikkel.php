@@ -26,12 +26,15 @@ function sc_vis_artikkel() {
             <?php
             if (userIsLoggedIn()) {
                 ?>
-                <a href = "../../opprett-nyhetsartikkel?editArticleID=<?php echo $artikkelID ?>"><button>Rediger artikkel</button></a>
+                <head>
+                    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+                </head>
+                <a href = "../../opprett-nyhetsartikkel?editArticleID=<?php echo $artikkelID ?>"><button>Rediger nyhetsartikkel<span class = "material-icons">edit</span></button></a>
                 <?php
             }
             ?>
             <h2 class = "nyhetTittel"><?php echo $artikkelInfo[0]->tittel; ?></h2>
-            <span><?php echo $artikkelInfo[0]->ingress ?></span>
+            <span class = "ingress">– <?php echo $artikkelInfo[0]->ingress ?></span>
             <?php
             if ($artikkelInfo[0]->bilde != null && $artikkelInfo[0]->bilde != "") {
                 ?>
@@ -41,6 +44,7 @@ function sc_vis_artikkel() {
             ?>
             <div class = "artikkelTekst"><?php echo nl2br($artikkelInfo[0]->innhold); ?></div>
             <div class = "tilknyttetProsjektTekst"><?php echo getTilknyttetProsjektTekst($artikkelInfo[0])?></div>
+            <hr class="devider">
             <div id = "kildeinfo">Publisert <?php echo $artikkelInfo[0]->dato_skrevet?>, av <?php echo $artikkelInfo[0]->skrevet_av ?> (<?php echo $artikkelInfo[0]->rolle ?>)</div>
             <?php
             $endretAv = $artikkelInfo[0]->endret_av;
@@ -53,7 +57,7 @@ function sc_vis_artikkel() {
             ?>
             <style>
                 .coverPhoto {
-                    float: left;
+                    float: right;
                     background-color: gray;
                     width: 250px;
                     height: 150px;

@@ -22,6 +22,9 @@ function getprojectpage() {
     $bildeUrl =  $projectInfo[0]->bilde;
 
     ?>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
         <div class = "topPart">
             <div class = "coverPhoto"><img src = "<?php echo getPhotoUploadUrl() . $bildeUrl ?>"></div>
             <div class = "oppsummert">
@@ -61,9 +64,9 @@ function getprojectpage() {
                 for ($i = 0; $i < sizeof($collapsibles); $i++) {
                     error_log("Collapsible found", 0);
                     ?>
-                    <button type="button" class="collapsible"><?php 
+                    <button type="button" class="collapsible"><?php
                         echo getCollapsibleName($collapsibles[$i]->collapsible_type, $collapsibles[$i]->egendefinert_navn);
-                    ?></button>
+                    ?><span class="material-icons">expand_more</span></button>
                     <div class="content">
                         <p><?php echo getHtmlContentForCollapsible($collapsibles[$i]);?></p>
                     </div>

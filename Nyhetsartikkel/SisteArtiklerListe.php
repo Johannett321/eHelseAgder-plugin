@@ -18,22 +18,18 @@ function loadSisteNyhetsartikler() {
         ?>
         <a href = <?php echo "vis-artikkel?artikkelID=" . $currentNyhet->id; ?>>
             <div class = "artikkelKort">
-                <h5><?php echo $currentNyhet->tittel; ?></h5>
-                <p><?php echo $currentNyhet->ingress; ?></p>
-                <div><?php echo $currentNyhet->dato_skrevet; ?></div>
+                <div class="photoSmall">
+                    <!-- photo placeholder -->
+                </div>
+                <div class="artikkelkorttekst">
+                    <h5><?php echo $currentNyhet->tittel; ?></h5>
+                    <p><?php echo $currentNyhet->ingress; ?></p>
+                    <div id="additInfo">Publisert: <?php echo $currentNyhet->dato_skrevet; ?></div>
+                </div>
             </div>
         </a>
         <?php
     }
     ?>
-    <style>
-        .artikkelKort {
-            background-color: #CCCCCC;
-            padding: 10px;
-            margin: 10px 0px;
-            border-radius: 20px;
-            box-shadow: 0px 2px 5px #898F9C;
-        }
-    </style>
     <?php
 }

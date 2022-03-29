@@ -9,7 +9,7 @@
     margin: 5px;
 }
 
-    /* Progress bar ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/* Progress bar ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .infoBlokk, .progressBar {
     margin-left: auto;
     margin-right: auto;
@@ -19,7 +19,6 @@
 .infoBlokk .material-icons, .infoBlokk h5 {
     display: inline-block;
     margin: 0;
-    margin-bottom: 10px;
 }
 
 .infoBlokk h5, .infoBlokk h4 {
@@ -33,7 +32,6 @@
 
 .infoBlokk h4 {
     font-size: 1.8rem !important;
-    margin: 0 0 10px 0;
 }
 .infoBlokk p {
     margin-left: 35px;
@@ -191,24 +189,24 @@
     margin-right: auto;
 }
 
-#submitButton, .addInfoButton, artikkel button {
+#submitButton, .addInfoButton, .artikkel button {
     background-color: #0B843E;
     text-transform: capitalize;
     color: #fff;
     transition: all 0.5s;
 }
 
-#submitButton:hover, .addInfoButton:hover, artikkel button:hover {
+#submitButton:hover, .addInfoButton:hover, .artikkel button:hover {
     color: #fff;
     background-color: #0B843EBA;
     font-weight: 700;
 }
 
-#submitButton, artikkel button {
+#submitButton, .artikkel button {
     height: 50px;
     width: 200px;
     border-radius: 30px;
-    margin-top: 7% !important;
+    margin-top: 7%;
     padding: 0px !important;
 }
 
@@ -582,11 +580,18 @@
 
 /* Prosjektside ------------------------------------------------------*/
 
-.collapsibles .collapsible{
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
     border-radius: 8px;
-    height: 60px;
     margin-top: 5px;
     margin-bottom: 0;
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
 }
 
 .collapsibles .content{
@@ -600,22 +605,27 @@
 
 .topPart {
     height: auto;
+    max-height: 500px;
     overflow: hidden;
     margin-bottom: 100px;
 }
 
 .coverPhoto {
-    float: left;
     width: 70%;
-    height: inherit;
-    border-radius: 8px;
-    border: 1px solid lightgrey;
+}
+
+.coverPhoto, .oppsummert {
+    display: inline-block;
+    height: inherit !important;
 }
 
 .coverPhoto img {
+    float: left;
     width: 100%;
-    height: inherit;
+    height: 450px !important;
     object-fit: cover;
+    border-radius: 8px !important;
+    border: 1px solid #B5DCBB !important;
 }
 
 .oppsummert {
@@ -656,24 +666,40 @@
     margin-top: 100px;
 }
 
+/* Collapsibles display*/
+
 .collapsibles {
     margin-top: 20px;
 }
 
+.collapsible span.material-icons {
+    float: right;
+    vertical-align: middle;
+}
+
+.collapsibles button {
+    line-height: 24px;
+}
+
+/*Milepæler table */
+
 th {
     min-height: 20px;
     background-color: #D6EBCA;
-    padding:10px;
+    padding:15px !important;
+    border-bottom: 1px solid black !important;
+    font-size: 16px !important;
 }
 
 td {
     height: 50px;
     background-color:#E7F0E2;
-    padding:10px;
+    padding: 15px !important;
+    font-size: 14px !important;
 }
 
-table {
-    width:100%;
+.blob {
+    margin-right: 5px;
 }
 
 .redBlob {
@@ -694,57 +720,79 @@ table {
     border-radius: 20px;
     display: inline-block;
 }
+.content table {
+    border-collapse: separate;
+    border-radius: 8px !important;
+    border: 1px solid black;
+    margin: 10px 0;
+}
+
+.content table * {
+    border: 0 solid transparent;
+}
+/* Collapsible prosjekt-team (display) */
 
 .inliner {
-    float: left;
-    padding: 1em;
-    width: 49%;
-    text-align: center;
+    height: 100px;
+    margin: 50px 0;
+    padding: 0 20px;
 }
 
-.inliner img {
+.inliner img, .textFields {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.content .inliner img {
     width: 100px;
+    height: inherit;
+    border-radius: 50%;
+    margin-right: 50px;
+    background-color: lightblue; /*Temporary!!!*/
 }
 
-.textFields h5 {
-    text-transform: none;
-    margin: 0px;
-}
-.textFields h6 {
-    text-transform: none;
-    margin: 0px;
-}
-.textFields p {
-    margin: 0px;
-    max-width:100%;
+.textFields {
+    height: inherit;
+    max-width: 100%;
+    width: auto;
 }
 
-/* Style the button that is used to open and close the collapsible content */
-#displayCol {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    text-align: left;
-    outline: none;
+.content .textFields h5 {
+    margin-top: 0;
+    margin-bottom: 7px;
+    font-weight: 700;
+}
+.content .textFields h6 {
+    margin: 0px !important;
     font-size: 16px;
-    font-weight:400;
+}
+.content .textFields p {
+    margin: 0px;
+    font-size: 14px;
+    font-style: italic;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, #displayCol:hover {
+.active, .collapsibles .collapsible:hover {
     background-color: #ccc;
+}
+
+.active span.material-icons {
+    rotate: 180deg;
 }
 
 /* Style the collapsible content. Note: hidden by default */
 .content {
-    padding: 0 18px;
+    padding: 20px 25px;
     display: none;
     overflow: hidden;
     background-color: #f1f1f1;
-    font-size: 16px;
     width: 99%;
+}
+
+.collapsibles .content p {
+    font-size: 16px;
+    margin-bottom: 5px;
 }
 
 /* Opprett nyhetsartikkel ––––––––––––––––––––––––––––––––––––––––––––––––*/
@@ -754,7 +802,6 @@ table {
 }
 
 .innhold h4 {
-    margin-top: 50px;
     margin-bottom: 10px;
 }
 
@@ -767,6 +814,127 @@ table {
 
 .nyhetTittel, .artikkel button {
     display: inline-block;
+}
+
+.nyhetTittel {
+    margin: 10px;
+    margin-bottom: 30px;
+}
+
+.artikkel button {
+    float: right;
+    height: 30px;
+    margin: 10px 0;
+    font-size: 14px;
+    text-transform: none;
+}
+
+.artikkel .material-icons {
+    font-size: 14px;
+    margin-bottom: 3px;
+    margin-left: 5px;
+}
+
+.ingress {
+    display: block;
+    width: 100%;
+    font-style: italic;
+}
+
+.tilknyttetProsjektTekst {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.artikkelTekst {
+    margin: 50px 0;
+}
+
+.artikkel .devider {
+    size: 1px;
+    width: 100%;
+    color: #8CBE7E;
+    margin: 20px 0;
+    margin-top: 50px;
+}
+
+#kildeinfo {
+    font-size: 14px;
+}
+
+#kildeinfo, .facebook-deleknapp {
+    display: inline-block;
+}
+
+.facebook-deleknapp {
+    width: 180px;
+    height: 30px;
+    padding: 6px 0;
+    font-size: 14px;
+    border-radius: 50px;
+    box-shadow: 0px 2px 5px #898F9C;
+    text-align: center;
+    background-color: #4267B2;
+    color: white;
+    transition-duration: 0.2s;
+    float: right;
+}
+
+.facebook-deleknapp:hover {
+    transform: scale(1.04);
+    box-shadow: 0px 5px 5px lightsteelblue;
+    background-color: #274279;
+    font-weight: 700;
+}
+
+/* Alle nyheter ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+.artikkelKort {
+    width: 60%;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #84C58ED4;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px #d9ead4;
+}
+
+.artikkelKort:hover {
+    background-color: #f3f8f2;
+}
+
+.artikkelkorttekst {
+    width: 70%;
+}
+
+.artikkelkorttekst, .photoSmall {
+    display: inline-block;
+}
+
+.photoSmall {
+    float: right;
+    height: 111.5px;
+    border-radius: 8px;
+    width: 27%;
+    background-color: lightgrey;
+    color: transparent;
+}
+
+.artikkelKort h5 {
+    margin: 0 0 8px 0;
+    font-weight: 700 !important;
+}
+
+.artikkelKort p {
+    font-size: 16px;
+    color: black;
+    text-align: justify;
+}
+
+#additInfo {
+    font-size: 14px;
+    color: #0B843E;
+    text-align: right;
 }
 
 
