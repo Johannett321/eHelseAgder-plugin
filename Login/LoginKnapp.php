@@ -5,7 +5,7 @@ function sc_login_knapp() {
     //TODO få login knappen til å fungere, og vise logg ut når man skal logge ut igjen.
     ?>
     <div class=button>
-        Logg inn
+        <?php if (userIsLoggedIn()){echo "Logg ut";}else{echo "Logg inn";}?>
     </div>
     <style>
         .button {
