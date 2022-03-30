@@ -79,6 +79,7 @@ function create_table_nyhetsartikler() {
         tilknyttet_prosjekt smallint(5),
         innhold varchar(15000),
         publisert smallint,
+        antall_lesere int,
         PRIMARY KEY (id)
     );";
 

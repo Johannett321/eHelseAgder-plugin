@@ -1,4 +1,6 @@
 <?php
+include "AarsSide.php";
+
 add_shortcode( 'sc_nyhetsarkiv', 'sc_nyhetsarkiv');
 
 function sc_nyhetsarkiv() {
@@ -40,7 +42,7 @@ function loadNyhetsartikler() {
                 if ($articleCounter > 4) {
                     ?>
                     <center>
-                        <a href = ""><button>Alle nyheter fra <?php echo $i?></button></a>
+                        <a href = "aarstall?year=<?php echo $i ?>"><button>Alle nyheter fra <?php echo $i?></button></a>
                     </center>
                     <?php
                 }
@@ -67,23 +69,5 @@ function loadNyhetsartikler() {
         }
     </script>
 
-    <?php
-}
-
-function createShortArticle($article) {
-    ?>
-    <a href = <?php echo "vis-artikkel?artikkelID=" . $article->id; ?>>
-        <div class = "artikkelKort">
-            <div class="photoSmall">
-                <!-- photo placeholder -->
-                <img src = "<?php echo getPhotoUploadUrl() . $article->bilde ?>"/>
-            </div>
-            <div class="artikkelkorttekst">
-                <h5><?php echo $article->tittel; ?></h5>
-                <p><?php echo $article->ingress; ?></p>
-                <div id="additInfo">Publisert: <?php echo $article->dato_skrevet; ?></div>
-            </div>
-        </div>
-    </a>
     <?php
 }

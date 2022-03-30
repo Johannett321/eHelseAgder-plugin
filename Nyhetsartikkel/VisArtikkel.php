@@ -13,6 +13,10 @@ function getArtikkel($artikkelID) {
 }
 
 function sc_vis_artikkel() {
+    if (!isset($_GET["artikkelID"])) {
+        showErrorMessage("Denne siden ble ikke lastet inn riktig");
+        return;
+    }
     $artikkelID = $_GET["artikkelID"];
     $artikkelInfo = getArtikkel($artikkelID);
     $bildeUrl =  $artikkelInfo[0]->bilde;
@@ -65,4 +69,5 @@ function sc_vis_artikkel() {
             </style>
         </div>
     <?php
+    increaseArticleReadCount(intval($artikkelID));
 }

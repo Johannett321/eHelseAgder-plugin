@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Genererer en HTML blokk med en egendefinert errormelding
+ * Genererer en HTML blokk med en egendefinert completemelding
  * @param string Meldingen som skal vises
  */
 function showCompleteMessage($message) {
@@ -10,6 +10,22 @@ function showCompleteMessage($message) {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <span class="material-icons">
             done
+        </span>
+        <h5><?php echo $message ?></h5>
+    </div>
+    <?php
+}
+
+/**
+ * Genererer en HTML blokk med en egendefinert errormelding
+ * @param string Meldingen som skal vises
+ */
+function showErrorMessage($message) {
+    ?>
+    <div class = "infoBlokk">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <span class="material-icons">
+            error
         </span>
         <h5><?php echo $message ?></h5>
     </div>
