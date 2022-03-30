@@ -35,7 +35,7 @@ require 'Prosjekt/ProsjektListe.php';
 require 'Prosjekt/ProsjektSide.php';
 require 'Prosjekt/CollapsibleManager.php';
 require 'Nyhetsartikkel/OpprettNyhetsartikkel/OpprettNyhetsartikkel.php';
-require 'Nyhetsartikkel/ListNyhetsartikler.php';
+require 'Nyhetsartikkel/NyhetsArkiv.php';
 require 'Nyhetsartikkel/VisArtikkel.php';
 
 include 'FacebookTool.php';
