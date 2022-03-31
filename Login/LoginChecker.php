@@ -40,15 +40,9 @@ function userSignedInSuccessfully() {
 
     error_log("Checking if prevpage is set");
     if (isset($_GET["prevpage"])) {
-        global $runningOnLocalHost;
-        if ($runningOnLocalHost) {
-            $prevPage = "http://localhost:8888" . $_GET["prevpage"];
-            error_log("Redirecting user to previous page: " . $prevPage);
-            wp_redirect($prevPage);
-        }else {
-            wp_redirect("https://www.ehelseagder.no" . $_GET["prevPage"]);
-        }
-        error_log("User should now have been redirected. Exiting script...");
+        $prevPage = get_site_url() . $_GET["prevpage"];
+        error_log("Redirecting user to previous page: " . $prevPage);
+        wp_redirect($prevPage);
     }else {
         error_log("Attempting to redirect user to front page");
         wp_redirect("../../../");

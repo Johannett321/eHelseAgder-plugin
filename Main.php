@@ -21,9 +21,6 @@ if ( ! defined( 'ABSPATH') ) {
 global $debugMode;
 $debugMode = false;
 
-global $runningOnLocalHost;
-$runningOnLocalHost = false;
-
 require 'Tools/Tools.php';
 include 'Tools/PageMessages.php';
 require 'Tools/UploadFileTool.php';

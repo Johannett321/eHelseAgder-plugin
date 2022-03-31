@@ -6,11 +6,11 @@ include 'LoginChecker.php';
 add_shortcode( 'sc_loginform', 'sc_loginform');
 
 function sc_loginform( $atts ) {
-    global $runningOnLocalHost;
-
-    if (!useHTTPS() && !$runningOnLocalHost) {
-        showLoginError("Du besøker ikke nettsiden på riktig måte. Vennligst besøk nettsiden via denne linken: https://www.ehelseagder.no");
-        return;
+    if (!strpos(get_site_url(), "localhost")) {
+        if (!useHTTPS()) {
+            showLoginError("Du besøker ikke nettsiden på riktig måte. Vennligst besøk nettsiden via denne linken: https://www.ehelseagder.no");
+            return;
+        }
     }
 
     if (isset($_GET['errorMessage'])) {

@@ -4,9 +4,11 @@ add_shortcode("sc_login_knapp", "sc_login_knapp");
 function sc_login_knapp() {
     //TODO få login knappen til å fungere, og vise logg ut når man skal logge ut igjen.
     ?>
-    <div class=button>
-        <?php if (userIsLoggedIn()){echo "Logg ut";}else{echo "Logg inn";}?>
-    </div>
+    <a href = "<?php echo get_site_url() ?>/logg-inn">
+        <div class=button>
+            <?php if (userIsLoggedIn()){echo "Logg ut";}else{echo "Logg inn";}?>
+        </div>
+    </a>
     <style>
         .button {
             background: white;
