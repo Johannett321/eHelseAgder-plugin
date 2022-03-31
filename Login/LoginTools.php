@@ -1,4 +1,24 @@
 <?php
+
+add_action( 'rest_api_init', 'rest_add_signout');
+
+function rest_add_signout() {
+    register_rest_route( 'ehelseagderplugin/api', '/logg_ut', array(
+        'methods' => 'GET',
+        'callback' => 'signOutUser',
+    ));
+}
+
+/**
+ * Logger ut brukeren og redirigerer brukeren tilbake til logg-inn siden.
+ */
+function signOutUser() {
+    session_start();
+    $_SESSION["UserIsLoggedIn"] = null;
+    wp_redirect("../../../../../logg-inn?errorMessage=Du er nå logget ut!");
+    exit;
+}
+
 function validateLoginFields() {
     if (!isset($_POST['username']) || strlen($_POST['username']) > 255 || !preg_match('/^[a-zA-Z- ]+$/', $_POST['username'])) {
         return "Brukernavn er feil formatert";
@@ -21,7 +41,8 @@ function validateLoginInfo() {
 }
 
 /**
- * @return bool
+ * Sjekker om siden blir lastet via en HTTPS connection.
+ * @return bool True dersom det er HTTPS
  */
 function useHTTPS() {
     return

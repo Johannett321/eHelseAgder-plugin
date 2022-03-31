@@ -18,9 +18,6 @@ if ( ! defined( 'ABSPATH') ) {
 //COLLAPSIBLE_MER_INFO=4
 //COLLAPSIBLE_MILEPÆLER=5
 
-global $debugMode;
-$debugMode = false;
-
 require 'Tools/Tools.php';
 include 'Tools/PageMessages.php';
 require 'Tools/UploadFileTool.php';
@@ -39,7 +36,8 @@ require 'Nyhetsartikkel/VisArtikkel.php';
 include 'Tools/FacebookTool.php';
 include 'Login/LoginKnapp.php';
 
-if ($debugMode) {
+if (debugModeIsOn()) {
+    error_log("WARNING: DEBUG MODE IS ON!");
     //Loader en custom css fil under utvikling.
     wp_enqueue_style("MYCUSTOMDEVCSS", plugins_url() . "/eHelseAgderPlugin/MyCustomStyle.css");
 }

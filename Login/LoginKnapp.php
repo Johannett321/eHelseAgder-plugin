@@ -2,9 +2,14 @@
 add_shortcode("sc_login_knapp", "sc_login_knapp");
 
 function sc_login_knapp() {
-    //TODO få login knappen til å fungere, og vise logg ut når man skal logge ut igjen.
+    $loginButtonHref = get_site_url();
+    if (userIsLoggedIn()) {
+        $loginButtonHref .= "/wp-json/ehelseagderplugin/api/logg_ut";
+    }else {
+        $loginButtonHref .= "/logg-inn";
+    }
     ?>
-    <a href = "<?php echo get_site_url() ?>/logg-inn">
+    <a href = "<?php echo $loginButtonHref ?>">
         <div class=button>
             <?php if (userIsLoggedIn()){echo "Logg ut";}else{echo "Logg inn";}?>
         </div>
