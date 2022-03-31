@@ -19,18 +19,19 @@ if ( ! defined( 'ABSPATH') ) {
 //COLLAPSIBLE_MILEPÆLER=5
 
 global $debugMode;
-$debugMode = true;
+$debugMode = false;
 
 global $runningOnLocalHost;
-$runningOnLocalHost = true;
+$runningOnLocalHost = false;
 
-include 'PageMessages.php';
-require 'UploadFileTool.php';
+require 'Tools/Tools.php';
+include 'Tools/PageMessages.php';
+require 'Tools/UploadFileTool.php';
 require 'AdminPanel.php';
 require 'Login/LoggInnSide.php';
 require 'Prosjekt/OpprettProsjekt/ProsjektRedigering.php';
 require 'OnPluginActivation.php';
-require 'SQLTool.php';
+require 'Tools/SQLTool.php';
 require 'Prosjekt/ProsjektListe.php';
 require 'Prosjekt/ProsjektSide.php';
 require 'Prosjekt/CollapsibleManager.php';
@@ -38,7 +39,7 @@ require 'Nyhetsartikkel/OpprettNyhetsartikkel/OpprettNyhetsartikkel.php';
 require 'Nyhetsartikkel/NyhetsArkiv.php';
 require 'Nyhetsartikkel/VisArtikkel.php';
 
-include 'FacebookTool.php';
+include 'Tools/FacebookTool.php';
 include 'Login/LoginKnapp.php';
 
 if ($debugMode) {

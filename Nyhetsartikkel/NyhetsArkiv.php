@@ -25,7 +25,7 @@ function loadNyhetsartikler() {
                 <?php
                 global $wpdb;
                 $query = "SELECT * FROM " . getNyhetsartiklerDatabaseRef() .
-                    " WHERE dato_skrevet > '" . $i . "-01-01'" .
+                    " WHERE dato_skrevet >= '" . $i . "-01-01'" .
                     " AND dato_skrevet < '" . ($i+1) . "-01-01'" .
                     " LIMIT 5";
 

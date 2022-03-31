@@ -37,7 +37,7 @@ function createShortArticle($article) {
             <div class="artikkelkorttekst">
                 <h5><?php echo $article->tittel; ?></h5>
                 <p><?php echo $article->ingress; ?></p>
-                <div id="additInfo">Publisert: <?php echo $article->dato_skrevet; ?></div>
+                <div id="additInfo">Publisert: <?php echo getDisplayDateFormat($article->dato_skrevet); ?></div>
             </div>
         </div>
     </a>

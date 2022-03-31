@@ -48,13 +48,13 @@ function sc_vis_artikkel() {
             ?>
             <div class = "artikkelTekst"><?php echo nl2br($artikkelInfo[0]->innhold); ?></div>
             <div class = "tilknyttetProsjektTekst"><?php echo getTilknyttetProsjektTekst($artikkelInfo[0])?></div>
-            <hr class="devider">
-            <div id = "kildeinfo">Publisert <?php echo $artikkelInfo[0]->dato_skrevet?>, av <?php echo $artikkelInfo[0]->skrevet_av ?> (<?php echo $artikkelInfo[0]->rolle ?>)</div>
+            <hr class="divider">
+            <div id = "kildeinfo">Publisert <?php echo getDisplayDateFormat($artikkelInfo[0]->dato_skrevet)?>, av <?php echo $artikkelInfo[0]->skrevet_av ?> (<?php echo $artikkelInfo[0]->rolle ?>)</div>
             <?php
             $endretAv = $artikkelInfo[0]->endret_av;
             if ($endretAv != null && $endretAv != "") {
                 ?>
-                <div id = "endretInfo">Endret den <?php echo $artikkelInfo[0]->dato_endret?>, av <?php echo $artikkelInfo[0]->endret_av ?></div>
+                <div id = "endretInfo">Endret den <?php echo getDisplayDateFormat($artikkelInfo[0]->dato_endret)?>, av <?php echo $artikkelInfo[0]->endret_av ?></div>
                 <?php
             }
             implementFacebookShareButton();
