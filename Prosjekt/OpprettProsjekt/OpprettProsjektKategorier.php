@@ -1,7 +1,7 @@
 <?php
 
 require 'PubliserProsjekt.php';
-require 'ProsjektRedigeringKategorierJS.php';
+require 'OpprettProsjektKategorierJS.php';
 
 add_shortcode( 'prosjektredigeringkategorier', 'prosjektredigeringkategorier');
 

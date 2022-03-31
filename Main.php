@@ -23,7 +23,7 @@ include 'Tools/PageMessages.php';
 require 'Tools/UploadFileTool.php';
 require 'AdminPanel.php';
 require 'Login/LoggInnSide.php';
-require 'Prosjekt/OpprettProsjekt/ProsjektRedigering.php';
+require 'Prosjekt/OpprettProsjekt/OpprettProsjekt.php';
 require 'OnPluginActivation.php';
 require 'Tools/SQLTool.php';
 require 'Prosjekt/ProsjektListe.php';
