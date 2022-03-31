@@ -68,7 +68,8 @@ function publiserProsjekt() {
 
     lagreCollapsibles($projectID);
 
-    return "Lagret: " . $_SESSION["pname"];
+    wp_redirect("../../../../../../prosjektside?prosjektID=" . $projectID);
+    exit;
 }
 
 function lagreCollapsibles($projectID) {

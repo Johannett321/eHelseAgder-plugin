@@ -5,7 +5,7 @@ require 'OpprettProsjektKategorierJS.php';
 
 add_shortcode( 'prosjektredigeringkategorier', 'prosjektredigeringkategorier');
 
-securePageWithLogin('prosjektredigering/kategorier');
+securePageWithLogin('opprett-prosjekt/kategorier');
 
 function prosjektredigeringkategorier() {
     /*

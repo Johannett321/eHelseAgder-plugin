@@ -2,7 +2,6 @@
 
 require 'OpprettProsjektKategorier.php';
 
-//add_action( 'rest_api_init', 'add_post_receiver');
 add_shortcode( 'prosjektredigeringsverktoy', 'startverktoy');
 
 securePageWithLogin('opprett-prosjekt');

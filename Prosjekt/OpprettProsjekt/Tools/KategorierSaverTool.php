@@ -181,7 +181,6 @@ function addKategorierSaverTool() {
             if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "";
             if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "";
 
-            console.log("Hi")
             if (editProsjektID == prosjektIDFromLocalStorage) {
                 if (localStorage.getItem(localsave) != null) {
                     textbox.value = localStorage.getItem(localsave);
@@ -193,6 +192,7 @@ function addKategorierSaverTool() {
                     }
                 }
             }else {
+                savedLabel.innerText = "Hentet kategorien fra prosjektet";
                 localStorage.clear();
                 console.log("Cleared localstorage, because we are not on the same project")
             }
