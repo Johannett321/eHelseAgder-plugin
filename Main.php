@@ -20,6 +20,7 @@ if ( ! defined( 'ABSPATH') ) {
 
 require 'Tools/Tools.php';
 include 'Tools/PageMessages.php';
+require 'Tools/JavascriptCheckerTool.php';
 require 'Tools/UploadFileTool.php';
 require 'AdminPanel.php';
 require 'Login/LoggInnSide.php';
@@ -45,15 +46,3 @@ if (debugModeIsOn()) {
 wp_enqueue_style("EHELSEAGDERCSS", plugins_url() . "/eHelseAgderPlugin/style.css");
 
 error_log("--------------------------------------",0);
-
-function getProsjekterDatabaseRef() {
-    return getFormattedTableName("eha_prosjekter");
-}
-
-function getCollapsiblesDatabaseRef() {
-    return getFormattedTableName("eha_collapsible");
-}
-
-function getNyhetsartiklerDatabaseRef() {
-    return getFormattedTableName("eha_nyhetsartikler");
-}

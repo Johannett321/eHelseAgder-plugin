@@ -12,8 +12,10 @@ function install_plugin() {
 
 function dropAllTables() {
     $tables[0] = getProsjekterDatabaseRef();
-    $tables[1] = getNyhetsartiklerDatabaseRef();
-    $tables[2] = getCollapsiblesDatabaseRef();
+    $tables[1] = getDraftProsjekterDatabaseRef();
+    $tables[2] = getNyhetsartiklerDatabaseRef();
+    $tables[3] = getDraftNyhetsartiklerDatabaseRef();
+    $tables[4] = getCollapsiblesDatabaseRef();
 
     for ($i  = 0; $i < sizeof($tables); $i++) {
         error_log("Sletter SQL tabell: " . $tables[$i]);
@@ -24,8 +26,11 @@ function dropAllTables() {
 }
 
 function create_table_prosjekter() {
-    $formatted_table_name = getProsjekterDatabaseRef();
+    createProsjekterTable(getProsjekterDatabaseRef());
+    createProsjekterTable(getDraftProsjekterDatabaseRef());
+}
 
+function createProsjekterTable($formatted_table_name) {
     $sqlCommand = "CREATE TABLE IF NOT EXISTS $formatted_table_name (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         project_name varchar(100) NOT NULL,
@@ -47,8 +52,11 @@ function create_table_prosjekter() {
 }
 
 function create_table_collapsible() {
-    $formatted_table_name = getCollapsiblesDatabaseRef();
+    createCollapsibleTable(getCollapsiblesDatabaseRef());
+    createCollapsibleTable(getDraftCollapsibleDatabaseRef());
+}
 
+function createCollapsibleTable($formatted_table_name) {
     $sqlCommand = "CREATE TABLE IF NOT EXISTS $formatted_table_name (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         egendefinert_navn varchar(65),
@@ -64,8 +72,12 @@ function create_table_collapsible() {
 }
 
 function create_table_nyhetsartikler() {
-    $formatted_table_name = getNyhetsartiklerDatabaseRef();
+    createNyhetsArtiklerTable(getNyhetsartiklerDatabaseRef());
 
+    createNyhetsArtiklerTable(getDraftNyhetsartiklerDatabaseRef());
+}
+
+function createNyhetsArtiklerTable($formatted_table_name) {
     $sqlCommand = "CREATE TABLE IF NOT EXISTS $formatted_table_name (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         tittel varchar(100),

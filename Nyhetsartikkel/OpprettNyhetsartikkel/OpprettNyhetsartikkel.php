@@ -12,9 +12,9 @@ function sc_opprett_nyhetsartikkel() {
     $loadedNyhetsartikkel = getEditingNewsArticle();
 
     if (isset($_GET['editArticleID'])) {
-        $postURL = "../../../../wp-json/ehelseagderplugin/api/publiser_nyhetsartikkel?editArticleID=" . $_GET['editArticleID'];
+        $postURL = "../../../../wp-json/ehelseagderplugin/api/lagre_utkast_nyhetsartikkel?editArticleID=" . $_GET['editArticleID'];
     }else {
-        $postURL = "../../../../wp-json/ehelseagderplugin/api/publiser_nyhetsartikkel";
+        $postURL = "../../../../wp-json/ehelseagderplugin/api/lagre_utkast_nyhetsartikkel";
     }
     ?>
 

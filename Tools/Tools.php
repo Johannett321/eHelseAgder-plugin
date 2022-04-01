@@ -23,7 +23,47 @@ function debugModeIsOn() {
     return $config['debug_mode'];
 }
 
+/**
+ * Sjekker om running_on_localhost er på i config arrayet.
+ * @return mixed
+ */
 function runningOnLocalHost() {
     global $config;
     return $config['running_on_localhost'];
+}
+
+/**
+ * Tar brukeren endten til en visningside av prosjekt/nyhet eller til draften for dette.
+ * @param $redirectAddress string adressen til siden inkludert articleID eller projectID.
+ * @param $message string dersom en melding skal vises på toppen av siden når den laster inn.
+ * @param $popupTitle string dersom en popup boks skal vises med en tekst.
+ * @param $popupMessage string dersom en popup boks skal vises med en tekst.
+ * @param $draft boolean om dette er en draft eller ikke.
+ */
+function redirectUserToPageOrPreview($redirectAddress, $message, $popupTitle, $popupMessage, $draft) {
+    if ($message != null) {
+        $redirectAddress .= "&message=" . $message;
+    }
+
+    if ($popupTitle != null) {
+        $redirectAddress .= "&popupT=" . $popupTitle;
+        $redirectAddress .= "&popupM=" . $popupMessage;
+    }
+
+    if ($draft) {
+        $redirectAddress .= "&draft=true";
+    }
+    wp_redirect($redirectAddress);
+    exit;
+}
+
+/**
+ * Leser GET parametere for å finne ut om draft parameteren er true.
+ * @return bool Returnerer true dersom man ser på en draft.
+ */
+function lookingAtDraft() {
+    if (isset($_GET['draft']) && $_GET['draft'] == "true") {
+        return true;
+    }
+    return false;
 }

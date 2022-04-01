@@ -19,8 +19,12 @@ function getTilknyttetProsjektTekst($artikkelInfo) {
     $query = "SELECT * FROM " . getProsjekterDatabaseRef() . " WHERE id = " . $tilknyttetProsjekt;
     $projectInfo = $wpdb->get_results($query);
 
-    return "Besøk gjerne <a href = 'www.google.com'>" . $projectInfo[0]->project_name . "</a> sin prosjektside for mer informasjon.";
-
+    if (sizeof($projectInfo) > 0) {
+        //TODO Få linken til å fungere
+        return "Besøk gjerne <a href = 'www.google.com'>" . $projectInfo[0]->project_name . "</a> sin prosjektside for mer informasjon.";
+    }else {
+        return "";
+    }
 }
 
 /**
@@ -54,4 +58,34 @@ function increaseArticleReadCount($prosjektID) {
     $antallLesere = $result[0]->antall_lesere;
     $antallLesere += 1;
     $wpdb->update(getNyhetsartiklerDatabaseRef(), array("antall_lesere"=>$antallLesere), array("id"=>$prosjektID));
+}
+
+/**
+ * Sletter draft tabellen som allerede eksisterer, og oppretter en ny draft tabell
+ */
+function prepareNyhetsartiklerDraftsTable() {
+    global $wpdb;
+    $wpdb->query("DROP TABLE " . getDraftNyhetsartiklerDatabaseRef());
+    createNyhetsArtiklerTable(getDraftNyhetsartiklerDatabaseRef());
+}
+
+/**
+ * Genererer en unik nyhetsid som er lik antall rader i nyhetsartikkel databasen.
+ * @return int Den unike iden
+ */
+function generateNewsArticleID() {
+    global $wpdb;
+    $result = $wpdb->get_results("SELECT id FROM " . getNyhetsartiklerDatabaseRef());
+    return sizeof($result)+1;
+}
+
+/**
+ * Sjekker databasen om artikkelen eksisterer.
+ * @param $articleID int Artikkeliden som skal sjekkes
+ * @return bool Returnerer true dersom den eksisterer.
+ */
+function articleExists($articleID) {
+    global $wpdb;
+    $result = $wpdb->get_results("SELECT id FROM " . getNyhetsartiklerDatabaseRef() . " WHERE id = " . $articleID);
+    return sizeof($result) > 0;
 }

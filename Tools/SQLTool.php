@@ -14,6 +14,30 @@ function createTable($formatted_table_name, $sqlCommand) {
     dbDelta( $sqlCommand );
 }
 
+function getProsjekterDatabaseRef() {
+    return getFormattedTableName("eha_prosjekter");
+}
+
+function getDraftProsjekterDatabaseRef() {
+    return getFormattedTableName("eha_prosjekter_utkast");
+}
+
+function getCollapsiblesDatabaseRef() {
+    return getFormattedTableName("eha_collapsible");
+}
+
+function getDraftCollapsibleDatabaseRef() {
+    return getFormattedTableName("eha_collapsible_utkast");
+}
+
+function getNyhetsartiklerDatabaseRef() {
+    return getFormattedTableName("eha_nyhetsartikler");
+}
+
+function getDraftNyhetsartiklerDatabaseRef() {
+    return getFormattedTableName("eha_nyhetsartikler_utkast");
+}
+
 /*----------- LAGRE NOE I DATABASEN ---------------
 function insertIntoTable($formatted_table_name, $columns_and_value) {
     global $wpdb;

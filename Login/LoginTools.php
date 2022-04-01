@@ -106,6 +106,9 @@ function checkIfPageRequiresLogin() {
     }
 }
 
+/**
+ * Gjør akkurat det funksjonen sier.
+ */
 function redirectToLoginAndExit() {
     wp_redirect("../../../logg-inn?prevpage=" . $_SERVER["REQUEST_URI"]);
     exit;

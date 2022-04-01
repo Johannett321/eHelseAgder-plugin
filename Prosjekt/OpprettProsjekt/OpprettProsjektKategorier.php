@@ -44,14 +44,18 @@ function saveFieldToSession($fieldToSave) {
 function saveImageUploaded() {
     $uploadedFileName = uploadFileAndGetName("bilde");
     error_log("Lagrer bilde til session: " . $uploadedFileName);
-    $_SESSION["bilde"] = $uploadedFileName;
+    if ($uploadedFileName != null) {
+        $_SESSION["bilde"] = $uploadedFileName;
+    }else {
+        $_SESSION["bilde"] = null;
+    }
 }
 
 function leggTilInformasjonFelt() {
     if (isset($_GET['editProsjektID'])) {
-        $postURL = "../../wp-json/ehelseagderplugin/api/publiser_prosjekt?editProsjektID=" . $_GET['editProsjektID'];
+        $postURL = "../../wp-json/ehelseagderplugin/api/lagre_utkast_prosjekt?editProsjektID=" . $_GET['editProsjektID'];
     }else {
-        $postURL = "../../wp-json/ehelseagderplugin/api/publiser_prosjekt";
+        $postURL = "../../wp-json/ehelseagderplugin/api/lagre_utkast_prosjekt";
     }
     ?>
     <form action="<?php echo $postURL ?>" method="post" id = "myForm">

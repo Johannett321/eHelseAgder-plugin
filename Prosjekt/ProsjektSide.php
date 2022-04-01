@@ -3,29 +3,43 @@
 add_shortcode( 'prosjektside', 'getprojectpage');
 
 function getProject($projectID) {
-    error_log("Trying to get projects",0);
+    $database = getProsjekterDatabaseRef();
+    if (lookingAtDraft()) {
+        $database = getDraftProsjekterDatabaseRef();
+    }
+
     global $wpdb;
-    $query = "SELECT * FROM " . getProsjekterDatabaseRef() . " WHERE id = " . $projectID;
-    error_log("Sending query: " . $query,0);
+    $query = "SELECT * FROM " . $database . " WHERE id = " . $projectID;
     return $wpdb->get_results($query);
 }
 
 function getCollapsibles($projectID) {
+    $database = getCollapsiblesDatabaseRef();
+    if (lookingAtDraft()) {
+        $database = getDraftCollapsibleDatabaseRef();
+    }
     global $wpdb;
-    $formatted_table_name = getCollapsiblesDatabaseRef();
-    return $wpdb->get_results("SELECT * FROM " . $formatted_table_name . " WHERE prosjekt_id = " . $projectID);
+    return $wpdb->get_results("SELECT * FROM " . $database . " WHERE prosjekt_id = " . $projectID);
 }
 
 function getprojectpage() {
     $prosjektID = $_GET["prosjektID"];
     $projectInfo = getProject($prosjektID);
     $bildeUrl =  $projectInfo[0]->bilde;
+
+    if (isset($_GET['message'])) {
+        showCompleteMessage($_GET['message']);
+    }
+
+    if (isset($_GET['popupT'])) {
+        createPopupBox($_GET['popupT'], $_GET['popupM']);
+    }
     ?>
     <head>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
     <?php
-    if (userIsLoggedIn()) {
+    if (userIsLoggedIn() && !lookingAtDraft()) {
         ?>
         <head>
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -100,4 +114,28 @@ function getprojectpage() {
         }
     </script>
     <?php
+    if (lookingAtDraft()) {
+        ?>
+        <br/>
+        <button type="button" id = "backButton">Tilbake</button>
+        <button type="button" id = "publishButton">Publiser</button>
+        <script type="text/javascript">
+            const backButton = document.getElementById('backButton');
+            const publishButton = document.getElementById('publishButton');
+
+            backButton.onclick = function () {
+                window.history.go(-1)
+            }
+
+            publishButton.onclick = function () {
+                if (confirm("Er du sikker på at du vil publisere prosjektet?")) {
+                    console.log("Clearer localstorage for å publisere prosjekt");
+                    localStorage.clear();
+
+                    location.href = "../../../../wp-json/ehelseagderplugin/api/publiser_prosjekt?prosjektID=<?php echo $_GET['prosjektID'] ?>";
+                }
+            }
+        </script>
+        <?php
+    }
 }

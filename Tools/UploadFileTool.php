@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Flytter et bilde som er lastet opp til wp-content/uploads/minebilder/ med et tilfeldig navn.
+ * @param $uploadButtonName string navnet på knappen som laster opp bilde.
+ * @return string|null Returnerer path til bildet dersom det ble suksessfult lastet opp, ellers null.
+ */
 function uploadFileAndGetName($uploadButtonName) {
     $imageUploadsPath = "wp-content/uploads/minebilder/";
 

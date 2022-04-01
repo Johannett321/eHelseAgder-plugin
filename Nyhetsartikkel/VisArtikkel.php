@@ -6,8 +6,14 @@ add_shortcode( 'sc_vis_artikkel', 'sc_vis_artikkel');
 
 function getArtikkel($artikkelID) {
     error_log("Trying to get projects",0);
+
+    $database = getNyhetsartiklerDatabaseRef();
+    if (lookingAtDraft()) {
+        $database = getDraftNyhetsartiklerDatabaseRef();
+    }
+
     global $wpdb;
-    $query = "SELECT * FROM " . getNyhetsartiklerDatabaseRef() . " WHERE id = " . $artikkelID;
+    $query = "SELECT * FROM " . $database . " WHERE id = " . $artikkelID;
     error_log("Sending query: " . $query,0);
     return $wpdb->get_results($query);
 }
@@ -24,50 +30,80 @@ function sc_vis_artikkel() {
     if (isset($_GET['message'])) {
         showCompleteMessage($_GET['message']);
     }
+    if (isset($_GET['popupT'])) {
+        createPopupBox($_GET['popupT'], $_GET['popupM']);
+    }
 
     ?>
-        <div class = "artikkel">
-            <?php
-            if (userIsLoggedIn()) {
-                ?>
-                <head>
-                    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-                </head>
-                <a href = "../../opprett-nyhetsartikkel?editArticleID=<?php echo $artikkelID ?>"><button>Rediger nyhetsartikkel<span class = "material-icons">edit</span></button></a>
-                <?php
-            }
+    <div class = "artikkel">
+        <?php
+        if (userIsLoggedIn() && !lookingAtDraft()) {
             ?>
-            <h2 class = "nyhetTittel"><?php echo $artikkelInfo[0]->tittel; ?></h2>
-            <span class = "ingress">– <?php echo $artikkelInfo[0]->ingress ?></span>
+            <head>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+            </head>
+            <a href = "../../opprett-nyhetsartikkel?editArticleID=<?php echo $artikkelID ?>"><button>Rediger nyhetsartikkel<span class = "material-icons">edit</span></button></a>
             <?php
-            if ($artikkelInfo[0]->bilde != null && $artikkelInfo[0]->bilde != "") {
-                ?>
-                <div class = "coverPhoto"><img src = "<?php echo getPhotoUploadUrl() . $bildeUrl ?>"></div>
-                <?php
-            }
+        }
+        ?>
+        <h2 class = "nyhetTittel"><?php echo $artikkelInfo[0]->tittel; ?></h2>
+        <span class = "ingress">– <?php echo $artikkelInfo[0]->ingress ?></span>
+        <?php
+        if ($artikkelInfo[0]->bilde != null && $artikkelInfo[0]->bilde != "") {
             ?>
-            <div class = "artikkelTekst"><?php echo nl2br($artikkelInfo[0]->innhold); ?></div>
-            <div class = "tilknyttetProsjektTekst"><?php echo getTilknyttetProsjektTekst($artikkelInfo[0])?></div>
-            <hr class="divider">
-            <div id = "kildeinfo">Publisert <?php echo getDisplayDateFormat($artikkelInfo[0]->dato_skrevet)?>, av <?php echo $artikkelInfo[0]->skrevet_av ?> (<?php echo $artikkelInfo[0]->rolle ?>)</div>
+            <div class = "coverPhoto"><img src = "<?php echo getPhotoUploadUrl() . $bildeUrl ?>"></div>
             <?php
-            $endretAv = $artikkelInfo[0]->endret_av;
-            if ($endretAv != null && $endretAv != "") {
-                ?>
-                <div id = "endretInfo">Endret den <?php echo getDisplayDateFormat($artikkelInfo[0]->dato_endret)?>, av <?php echo $artikkelInfo[0]->endret_av ?></div>
-                <?php
-            }
+        }
+        ?>
+        <div class = "artikkelTekst"><?php echo nl2br($artikkelInfo[0]->innhold); ?></div>
+        <div class = "tilknyttetProsjektTekst"><?php echo getTilknyttetProsjektTekst($artikkelInfo[0])?></div>
+        <hr class="divider">
+        <div id = "kildeinfo">Publisert <?php echo getDisplayDateFormat($artikkelInfo[0]->dato_skrevet)?>, av <?php echo $artikkelInfo[0]->skrevet_av ?> (<?php echo $artikkelInfo[0]->rolle ?>)</div>
+        <?php
+        $endretAv = $artikkelInfo[0]->endret_av;
+        if ($endretAv != null && $endretAv != "") {
+            ?>
+            <div id = "endretInfo">Endret den <?php echo getDisplayDateFormat($artikkelInfo[0]->dato_endret)?>, av <?php echo $artikkelInfo[0]->endret_av ?></div>
+            <?php
+        }
+        if (!lookingAtDraft()) {
             implementFacebookShareButton();
-            ?>
-            <style>
-                .coverPhoto {
-                    float: right;
-                    background-color: gray;
-                    width: 250px;
-                    height: 150px;
-                }
-            </style>
-        </div>
+        }
+        ?>
+        <style>
+            .coverPhoto {
+                float: right;
+                background-color: gray;
+                width: 250px;
+                height: 150px;
+            }
+        </style>
+    </div>
     <?php
-    increaseArticleReadCount(intval($artikkelID));
+    if (lookingAtDraft()) {
+        ?>
+        <br/>
+        <button type="button" id = "backButton">Tilbake</button>
+        <button type="button" id = "publishButton">Publiser</button>
+        <script type="text/javascript">
+            const backButton = document.getElementById('backButton');
+            const publishButton = document.getElementById('publishButton');
+
+            backButton.onclick = function () {
+                window.history.go(-1)
+            }
+
+            publishButton.onclick = function () {
+                if (confirm("Er du sikker på at du vil publisere nyhetsartikkelen?")) {
+                    console.log("Clearer localstorage for å publisere prosjekt");
+                    localStorage.clear();
+
+                    location.href = "../../../../wp-json/ehelseagderplugin/api/publiser_nyhetsartikkel?articleID=<?php echo $_GET['artikkelID'] ?>";
+                }
+            }
+        </script>
+        <?php
+    }else {
+        increaseArticleReadCount(intval($artikkelID));
+    }
 }

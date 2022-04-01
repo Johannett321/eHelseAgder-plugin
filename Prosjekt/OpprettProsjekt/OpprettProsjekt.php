@@ -1,6 +1,7 @@
 <?php
 
 require 'OpprettProsjektKategorier.php';
+require 'OpprettProsjektTools.php';
 
 add_shortcode( 'prosjektredigeringsverktoy', 'startverktoy');
 
@@ -128,6 +129,5 @@ function lagFelter($loadedProsjekt) {
             </textBox>
         </div>
     </form>
-
     <?php
 }
