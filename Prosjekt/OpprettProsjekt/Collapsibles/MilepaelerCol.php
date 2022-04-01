@@ -127,18 +127,36 @@ function addMilepaelerCol() {
                 container.appendChild(label);
                 container.appendChild(dropdown);
 
-                addDropdownSaver(dropdown, savedTextInfo, "cmdropdown" + milepaelCounter);
+                addDropdownSaver(dropdown, savedTextInfo, "cmdropdown" + milepaelCounter, "milepaeler");
 
                 const textBoxesIncludingThis = milepaelCounter*3;
 
+                const titleField = createMultiSaverTextField("Tittel: ",
+                    "cmtittel" + milepaelCounter,
+                    "Signert avtale",
+                    milepaelInfoSplit[0],
+                    milepaelArray,
+                    textBoxesIncludingThis-3,
+                    savedTextInfo,
+                    "milepaeler");
 
-                console.log("Milepaelinfosplit sier:  " + milepaelInfoSplit[0] + ", " + milepaelInfoSplit[1] + ", " + milepaelInfoSplit[2] + ", " + milepaelInfoSplit[3])
+                const kontaktpersonField = createMultiSaverTextField("Kontaktperson: ",
+                    "cmcontact" + milepaelCounter,
+                    "navn.navnesen@gmail.com",
+                    milepaelInfoSplit[2],
+                    milepaelArray,
+                    textBoxesIncludingThis-2,
+                    savedTextInfo,
+                    "milepaeler");
 
-                //TODO - SLETT DETTE: title, name, placeholder, fieldContent, arrayWithBrothers, textboxNumber, savedLabel, localSave
-                //TODO - EKSEMPEL: createMultiSaverTextField("Stilling/rolle: ", "cvtmrolle" + peopleInProjectTeam, "Markedskordinator", personInfoSplit[0], prosjektTeamArray, textBoxesIncludingThis-4, savedTextInfo, "prosjektteam");
-                const titleField = createMultiSaverTextField("Tittel: ", "cmtittel" + milepaelCounter, "Signert avtale", milepaelInfoSplit[0], milepaelArray, textBoxesIncludingThis-3, savedTextInfo, "milepaeler");
-                const kontaktpersonField = createMultiSaverTextField("Kontaktperson: ", "cmcontact" + milepaelCounter, "navn.navnesen@gmail.com", milepaelInfoSplit[2], milepaelArray, textBoxesIncludingThis-2, savedTextInfo, "milepaeler");
-                const dateField = createMultiSaverTextField("Dato: ", "cmdate" + milepaelCounter, "31.10.2022", milepaelInfoSplit[3], milepaelArray, textBoxesIncludingThis-1, savedTextInfo, "milepaeler");
+                const dateField = createMultiSaverTextField("Dato: ",
+                    "cmdate" + milepaelCounter,
+                    "31.10.2022",
+                    milepaelInfoSplit[3],
+                    milepaelArray,
+                    textBoxesIncludingThis-1,
+                    savedTextInfo,
+                    "milepaeler");
 
 
 

@@ -180,6 +180,8 @@ function lagreCustomCollapsibles($projectID) {
     $shouldContinue = true;
     $counter = 0;
 
+    $attemptsLeft = 20;
+
     while($shouldContinue) {
         $counter += 1;
         if (isset($_POST["cvcustomtitle" . $counter])) {
@@ -188,7 +190,11 @@ function lagreCustomCollapsibles($projectID) {
             error_log("Added custom collapsible: " . $_POST["cvcustomtitle" . $counter], 0);
         }else {
             error_log("No more items, returning...", 0);
-            $shouldContinue = false;
+
+            $attemptsLeft -= 1;
+            if ($attemptsLeft <= 0) {
+                $shouldContinue = false;
+            }
         }
     }
 }

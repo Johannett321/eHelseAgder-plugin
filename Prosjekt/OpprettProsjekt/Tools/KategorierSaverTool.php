@@ -99,7 +99,7 @@ function addKategorierSaverTool() {
             if (addedCategories !== "") {
                 addedCategories += ";";
             }
-            if (!addedCategories.includes(name)) {
+            if (!addedCategories.includes(name) || name === "cegenkategori") {
                 addedCategories += name;
                 localStorage.setItem("opprettedeCollapsibles", addedCategories);
                 saveLocalProsjektID();
@@ -314,20 +314,28 @@ function addKategorierSaverTool() {
             localStorage.setItem(localsave, saveValue);
         }
 
-        function addDropdownSaver(dropdown, savedLabel, localsave) {
+        function addDropdownSaver(arrayWithBrothers, dropdown, savedLabel, localsave) {
             const urlParams = new URLSearchParams(window.location.search);
+
+            console.log("prosjektID_" + localsave);
             var editProsjektID = urlParams.get('editProsjektID');
             var prosjektIDFromLocalStorage = localStorage.getItem("prosjektID_" + localsave);
             let sistLagretStorage = localStorage.getItem(localsave + "_time");
+
+            //arrayWithBrothers[arrayWithBrothers.length] = textbox;
 
             if (editProsjektID == null) editProsjektID = "";
             if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "";
             if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "";
 
-            if (editProsjektID == prosjektIDFromLocalStorage) {
+            if (editProsjektID === prosjektIDFromLocalStorage) {
                 if (localStorage.getItem(localsave) != null) {
-                    dropdown.value = localStorage.getItem(localsave);
-
+                    /*
+                    const currentTextBoxSavedValue = localStorage.getItem(localsave).split(";")[textboxNumber];
+                    if (currentTextBoxSavedValue != null) {
+                        dropdown.value =  localStorage.getItem(localsave);
+                    }
+                    */
                     if (sistLagretStorage == null) {
                         savedLabel.innerText = "...";
                     }else {

@@ -105,12 +105,43 @@ function addProsjektTeamCol() {
 
                 const textBoxesIncludingThis = peopleInProjectTeam*4;
 
-                const rolleField = createMultiSaverTextField("Stilling/rolle: ", "cvtmrolle" + peopleInProjectTeam, "Markedskordinator", personInfoSplit[0], prosjektTeamArray, textBoxesIncludingThis-4, savedTextInfo, "prosjektteam");
-                const fulltNavnField = createMultiSaverTextField("Fullt navn: ", "cvtmfulltnavn" + peopleInProjectTeam, "Navn Navnesen", personInfoSplit[1], prosjektTeamArray, textBoxesIncludingThis-3, savedTextInfo, "prosjektteam");
-                const epostField = createMultiSaverTextField("E-post: ", "cvtmepost" + peopleInProjectTeam, "navn.navnesen@gmail.com", personInfoSplit[2], prosjektTeamArray, textBoxesIncludingThis-2, savedTextInfo, "prosjektteam");
-                const mobilField = createMultiSaverTextField("Mobil: ", "cvtmmobil" + peopleInProjectTeam, "902 26 981", personInfoSplit[3], prosjektTeamArray, textBoxesIncludingThis-1, savedTextInfo, "prosjektteam");
+                const rolleField = createMultiSaverTextField("Stilling/rolle: ",
+                    "cvtmrolle" + peopleInProjectTeam,
+                    "Markedskordinator",
+                    personInfoSplit[0],
+                    prosjektTeamArray,
+                    textBoxesIncludingThis-4,
+                    savedTextInfo,
+                    "prosjektteam");
 
-                if (peopleInProjectTeam != 1) {
+                const fulltNavnField = createMultiSaverTextField("Fullt navn: ",
+                    "cvtmfulltnavn" + peopleInProjectTeam,
+                    "Navn Navnesen",
+                    personInfoSplit[1],
+                    prosjektTeamArray,
+                    textBoxesIncludingThis-3,
+                    savedTextInfo,
+                    "prosjektteam");
+
+                const epostField = createMultiSaverTextField("E-post: ",
+                    "cvtmepost" + peopleInProjectTeam,
+                    "navn.navnesen@gmail.com",
+                    personInfoSplit[2],
+                    prosjektTeamArray,
+                    textBoxesIncludingThis-2,
+                    savedTextInfo,
+                    "prosjektteam");
+
+                const mobilField = createMultiSaverTextField("Mobil: ",
+                    "cvtmmobil" + peopleInProjectTeam,
+                    "902 26 981",
+                    personInfoSplit[3],
+                    prosjektTeamArray,
+                    textBoxesIncludingThis-1,
+                    savedTextInfo,
+                    "prosjektteam");
+
+                if (peopleInProjectTeam !== 1) {
                     const line = document.createElement('hr');
                     person.appendChild(line);
                 }
