@@ -1,5 +1,5 @@
 <?php
-add_action('init', 'javascriptMustBeEnabledInfo');
+add_action('wp', 'javascriptMustBeEnabledInfo');
 
 function javascriptMustBeEnabledInfo() {
     ?>

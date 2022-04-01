@@ -56,13 +56,13 @@ function sc_opprett_nyhetsartikkel() {
             </div>
 
                 <label for="tittel" class = "labelForInput">Tittel:</label>
-                <input type="text" id="tittel" name="tittel" placeholder="Vi har signert kontrakt!" class = "small_input" value = "<?php echo $loadedNyhetsartikkel->tittel?>">
+                <input type="text" id="tittel" name="tittel" placeholder="Vi har signert kontrakt!" class = "small_input" maxlength="100" value = "<?php echo $loadedNyhetsartikkel->tittel?>">
                 <label for="ingress" class = "labelForInput">Ingress:</label>
-                <input type="text" id="ingress" name="ingress" placeholder="Etter mange måneder med venting, har endelig kontrakten med Min Bedrift AS blitt signert." class = "small_input" value = "<?php echo $loadedNyhetsartikkel->ingress?>">
+                <input type="text" id="ingress" name="ingress" placeholder="Etter mange måneder med venting, har endelig kontrakten med Min Bedrift AS blitt signert." class = "small_input" maxlength="200" value = "<?php echo $loadedNyhetsartikkel->ingress?>">
 
                 <div class = "sammendragContainer">
                     <label for = "psummary" class = "labelForInput">Innhold</label>
-                    <textarea id = "psummary" name="psummary" form="minform" maxlength="1700" placeholder="Her kan du skrive selve artikkelen"><?php echo $loadedNyhetsartikkel->innhold?></textarea>
+                    <textarea id = "psummary" name="psummary" form="minform" maxlength="3400" placeholder="Her kan du skrive selve artikkelen"><?php echo $loadedNyhetsartikkel->innhold?></textarea>
                 </div>
 
                 <!-- Kildeboks -->
@@ -71,14 +71,14 @@ function sc_opprett_nyhetsartikkel() {
                     if ($loadedNyhetsartikkel == null) {
                         ?>
                         <label for="skrevet_av" class = "labelForInput">Forfatter/skrevet av:</label>
-                        <input type="text" id="skrevet_av" name="skrevet_av" placeholder="Navn Navnesen" class = "small_input" value = "<?php echo $loadedNyhetsartikkel->skrevet_av?>">
+                        <input type="text" id="skrevet_av" name="skrevet_av" placeholder="Navn Navnesen" class = "small_input" maxlength="100" value = "<?php echo $loadedNyhetsartikkel->skrevet_av?>">
                         <label for="rolle" class = "labelForInput">Rolle/stilling:</label>
                         <input type="text" id="rolle" name="rolle" placeholder="Prosjektleder" class = "small_input" maxlength="100" value = "<?php echo $loadedNyhetsartikkel->dato_skrevet?>">
                         <?php
                     }else {
                         ?>
                         <label for="endret_av" class = "labelForInput">Hvem gjør endringer?</label>
-                        <input type="text" id="endret_av" name="endret_av" placeholder="Navn Navnesen" class = "small_input" value = "<?php echo $loadedNyhetsartikkel->endret_av?>">
+                        <input type="text" id="endret_av" name="endret_av" placeholder="Navn Navnesen" class = "small_input" maxlength="100" value = "<?php echo $loadedNyhetsartikkel->endret_av?>">
                         <?php
                     }
                     ?>
