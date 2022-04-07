@@ -39,7 +39,7 @@ function createPopupBox($title, $message) {
         <div class = "popupBox">
             <h3><?php echo $title ?></h3>
             <p><?php echo $message ?></p>
-            <button type="button" id = "closePopupButton">Den er god!</button>
+            <button type="button" id = "closePopupButton">Til forhåndsvisning</button>
         </div>
     </div>
 
@@ -56,42 +56,5 @@ function createPopupBox($title, $message) {
             document.body.classList.remove("noscroll");
         }
     </script>
-
-    <style>
-        .popupHolder {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 5;
-        }
-
-        .popupBox {
-            position: fixed;
-            max-width: 700px;
-            height: fit-content;
-            padding: 20px;
-
-            top: 50%;
-            left: 50%;
-            right: 0;
-            bottom: 0;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-
-            border-radius: 20px;
-            background-color: white;
-            color: black;
-        }
-
-        .noscroll {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-    </style>
     <?php
 }

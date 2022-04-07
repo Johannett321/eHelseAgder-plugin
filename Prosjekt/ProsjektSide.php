@@ -44,7 +44,7 @@ function getprojectpage() {
         <head>
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         </head>
-        <a href = "../../opprett-prosjekt?editProsjektID=<?php echo $prosjektID ?>"><button>Rediger prosjekt<span class = "material-icons">edit</span></button></a>
+        <a href = "../../opprett-prosjekt?editProsjektID=<?php echo $prosjektID ?>"><button class="editButton" id="editButtonProsj">Rediger prosjekt<span class = "material-icons">edit</span></button></a>
         <?php
     }
     ?>
@@ -117,25 +117,41 @@ function getprojectpage() {
     if (lookingAtDraft()) {
         ?>
         <br/>
-        <button type="button" id = "backButton">Tilbake</button>
-        <button type="button" id = "publishButton">Publiser</button>
-        <script type="text/javascript">
-            const backButton = document.getElementById('backButton');
-            const publishButton = document.getElementById('publishButton');
+        <div class="infoBlokk" id="bottomProgress">
+            <textBox class="progressBar" id="steg3">
+                <p class="stegText" id="step1">Grunnleggende info</p>
+                <p class="stegText" id="step2">Ekstra kategorier</p>
+                <p class="stegText" id="step3">Forhåndsvisning</p>
+                <div class="border">
+                    <div id="thisBar" class="bar">
+                    </div>
+                </div>
+                <br>
 
-            backButton.onclick = function () {
-                window.history.go(-1)
-            }
+                <button type="button" id = "backButton">Tilbake</button>
+                <button type="button" id = "publishButton">Publiser</button>
+                <script type="text/javascript">
+                    const backButton = document.getElementById('backButton');
+                    const publishButton = document.getElementById('publishButton');
 
-            publishButton.onclick = function () {
-                if (confirm("Er du sikker på at du vil publisere prosjektet?")) {
-                    console.log("Clearer localstorage for å publisere prosjekt");
-                    localStorage.clear();
+                    backButton.onclick = function () {
+                        window.history.go(-1)
+                    }
 
-                    location.href = "../../../../wp-json/ehelseagderplugin/api/publiser_prosjekt?prosjektID=<?php echo $_GET['prosjektID'] ?>";
-                }
-            }
-        </script>
+                    publishButton.onclick = function () {
+                        if (confirm("Er du sikker på at du vil publisere prosjektet?")) {
+                            console.log("Clearer localstorage for å publisere prosjekt");
+                            localStorage.clear();
+
+                            location.href = "../../../../wp-json/ehelseagderplugin/api/publiser_prosjekt?prosjektID=<?php echo $_GET['prosjektID'] ?>";
+                        }
+                    }
+                </script>
+            </textBox>
+
+        </div>
+
+
         <?php
     }
 }
