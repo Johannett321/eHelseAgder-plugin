@@ -57,7 +57,7 @@ function lagreNyhetsUtkast() {
         array_push($format,"%s", "%s", "%s", "%d");
     }
 
-    $fileName = uploadFileAndGetName("bilde");
+    $fileName = uploadImageAndGetName("bilde");
     if ($fileName != null) {
         $data += array("bilde"=>$fileName);
         array_push($format,"%s");

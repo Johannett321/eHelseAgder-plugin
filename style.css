@@ -9,6 +9,22 @@
     margin: 5px;
 }
 
+.inputBoxAsText {
+    background-color: transparent;
+    border: 0;
+    outline-width: 0;
+    color: black !important;
+}
+
+.inputBoxAsText:focus {
+    border: 0 !important;
+    outline-width: 0 !important;
+}
+
+.removeFileButton:hover {
+    cursor: pointer;
+}
+
 /* Progress bar ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .infoBlokk, .progressBar {
     margin-left: auto;
@@ -862,29 +878,40 @@ td {
     font-size: 14px;
 }
 
-#kildeinfo, .facebook-deleknapp {
+#kildeinfo, .deleknapp {
     display: inline-block;
 }
 
-.facebook-deleknapp {
-    width: 180px;
+.deleknapp {
     height: 30px;
-    padding: 6px 0;
+    padding: 6px 20px;
+    margin: 0px 5px;
     font-size: 14px;
     border-radius: 50px;
     box-shadow: 0px 2px 5px #898F9C;
     text-align: center;
-    background-color: #4267B2;
     color: white;
     transition-duration: 0.2s;
-    float: right;
+    float: left;
 }
 
-.facebook-deleknapp:hover {
+.deleknapp:hover {
     transform: scale(1.04);
     box-shadow: 0px 5px 5px lightsteelblue;
     background-color: #274279;
     font-weight: 700;
+}
+
+#facebookShareButton {
+    background-color: #4267B2;
+}
+
+#linkedinShareButton {
+    background-color: #0077b5;
+}
+
+#twitterShareButton {
+    background-color: #1DA1F2;
 }
 
 /* Alle nyheter ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/

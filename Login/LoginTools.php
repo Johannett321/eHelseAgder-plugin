@@ -73,7 +73,11 @@ function showLoginError($errorMessage) {
 function securePageWithLogin($pageTitle) {
     error_log("Adding " . $pageTitle . " to list of pages requiring login");
     global $pagesRequireLogin;
-    $pagesRequireLogin[sizeof($pagesRequireLogin)] = $pageTitle;
+    if ($pagesRequireLogin != null) {
+        $pagesRequireLogin[sizeof($pagesRequireLogin)] = $pageTitle;
+    }else {
+        $pagesRequireLogin[0] = $pageTitle;
+    }
 }
 
 

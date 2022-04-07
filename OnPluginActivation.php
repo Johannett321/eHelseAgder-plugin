@@ -6,6 +6,7 @@ function install_plugin() {
     create_table_prosjekter();
     create_table_collapsible();
     create_table_nyhetsartikler();
+    create_table_arrangementer();
     wp_redirect("../../../wp-admin/admin.php?page=prosjekter&message=Ferdig! Pluginen er innstallert på nytt!");
     exit;
 }
@@ -16,6 +17,8 @@ function dropAllTables() {
     $tables[2] = getNyhetsartiklerDatabaseRef();
     $tables[3] = getDraftNyhetsartiklerDatabaseRef();
     $tables[4] = getCollapsiblesDatabaseRef();
+    $tables[5] = getArrangementerDatabaseRef();
+    $tables[6] = getDraftArrangementerDatabaseRef();
 
     for ($i  = 0; $i < sizeof($tables); $i++) {
         error_log("Sletter SQL tabell: " . $tables[$i]);
@@ -92,6 +95,34 @@ function createNyhetsArtiklerTable($formatted_table_name) {
         innhold varchar(15000),
         publisert smallint,
         antall_lesere int,
+        PRIMARY KEY (id)
+    );";
+
+    createTable($formatted_table_name, $sqlCommand);
+}
+
+function create_table_arrangementer() {
+    createArrangementerTable(getArrangementerDatabaseRef());
+
+    createArrangementerTable(getDraftArrangementerDatabaseRef());
+}
+
+function createArrangementerTable($formatted_table_name) {
+    $sqlCommand = "CREATE TABLE IF NOT EXISTS $formatted_table_name (
+        id mediumint(9) NOT NULL AUTO_INCREMENT,
+        tittel varchar(100),
+        kort_besk varchar(200),
+        bilde varchar (100),
+        start_dato date,
+        slutt_dato date,
+        sted varchar(100),
+        arrangor varchar(100),
+        kontaktperson varchar(100),
+        kontaktperson_mail varchar(100),
+        innhold varchar(15000),
+        pamelding_link varchar(100),
+        vedlegg varchar(2000),
+        publisert smallint,
         PRIMARY KEY (id)
     );";
 

@@ -38,6 +38,14 @@ function getDraftNyhetsartiklerDatabaseRef() {
     return getFormattedTableName("eha_nyhetsartikler_utkast");
 }
 
+function getArrangementerDatabaseRef() {
+    return getFormattedTableName("eha_arrangementer");
+}
+
+function getDraftArrangementerDatabaseRef() {
+    return getFormattedTableName("eha_arrangementer_utkast");
+}
+
 /*----------- LAGRE NOE I DATABASEN ---------------
 function insertIntoTable($formatted_table_name, $columns_and_value) {
     global $wpdb;

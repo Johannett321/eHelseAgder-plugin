@@ -18,7 +18,9 @@ if ( ! defined( 'ABSPATH') ) {
 //COLLAPSIBLE_MER_INFO=4
 //COLLAPSIBLE_MILEPÆLER=5
 
+require 'Tools/Essentials.php';
 require 'Tools/Tools.php';
+
 include 'Tools/PageMessages.php';
 require 'Tools/JavascriptCheckerTool.php';
 require 'Tools/UploadFileTool.php';
@@ -30,11 +32,15 @@ require 'Tools/SQLTool.php';
 require 'Prosjekt/ProsjektListe.php';
 require 'Prosjekt/ProsjektSide.php';
 require 'Prosjekt/CollapsibleManager.php';
+
 require 'Nyhetsartikkel/OpprettNyhetsartikkel/OpprettNyhetsartikkel.php';
 require 'Nyhetsartikkel/NyhetsArkiv.php';
 require 'Nyhetsartikkel/VisArtikkel.php';
 
-include 'Tools/FacebookTool.php';
+require 'Arrangement/OpprettArrangement/OpprettArrangement.php';
+require 'Arrangement/VisArrangement.php';
+
+include 'Tools/SocialMediaTool.php';
 include 'Login/LoginKnapp.php';
 
 if (debugModeIsOn()) {

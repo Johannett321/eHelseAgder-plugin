@@ -32,6 +32,38 @@ function showErrorMessage($message) {
     <?php
 }
 
+/**
+ * Fjerner page messages dersom det er noen.
+ */
+function removePageMessageIfPresent() {
+    if (isset($_GET['message'])) {
+        ?>
+        <script type="text/javascript">
+
+            if (typeof oldDocTitle === 'undefined') {
+                const oldDocTitle = window.location + '';
+                console.log("Old doc: " + oldDocTitle);
+                const parameters = oldDocTitle.split("?")[1] + '';
+                const parametersArray = parameters.split("&");
+                var newDocTitle = "";
+                for (var i = 0; i < parametersArray.length; i++) {
+                    const currentParSplit = parametersArray[i].split("=");
+                    if (currentParSplit[0] === "message") {
+                        newDocTitle = oldDocTitle.replace("message=" + currentParSplit[1],"");
+                        console.log("Replacing: " + "message=" + currentParSplit[1])
+                        break;
+                    }
+                }
+
+                console.log("New doc: " + newDocTitle);
+                window.history.replaceState({}, newDocTitle);
+            }
+        </script>
+        <?php
+        return;
+    }
+}
+
 function createPopupBox($title, $message) {
     ?>
     <div class = "popupHolder" id = "popupHolder">
@@ -42,8 +74,6 @@ function createPopupBox($title, $message) {
             <button type="button" id = "closePopupButton">Den er god!</button>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <script type = "text/javascript">
         const closebutton = document.getElementById("closePopupButton");

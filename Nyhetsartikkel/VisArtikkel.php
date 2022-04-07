@@ -67,7 +67,7 @@ function sc_vis_artikkel() {
             <?php
         }
         if (!lookingAtDraft()) {
-            implementFacebookShareButton();
+            implementAllSMShareButtons();
         }
         ?>
         <style>

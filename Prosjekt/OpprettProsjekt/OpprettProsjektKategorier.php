@@ -42,7 +42,7 @@ function saveFieldToSession($fieldToSave) {
 }
 
 function saveImageUploaded() {
-    $uploadedFileName = uploadFileAndGetName("bilde");
+    $uploadedFileName = uploadImageAndGetName("bilde");
     error_log("Lagrer bilde til session: " . $uploadedFileName);
     if ($uploadedFileName != null) {
         $_SESSION["bilde"] = $uploadedFileName;
@@ -121,7 +121,6 @@ function leggTilInformasjonFelt() {
         </div>
 
     </form>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <?php
 prosjektRedigeringKategorierJS();
 }
