@@ -71,7 +71,6 @@ function showLoginError($errorMessage) {
  * @param $pageTitle
  */
 function securePageWithLogin($pageTitle) {
-    error_log("Adding " . $pageTitle . " to list of pages requiring login");
     global $pagesRequireLogin;
     if ($pagesRequireLogin != null) {
         $pagesRequireLogin[sizeof($pagesRequireLogin)] = $pageTitle;
@@ -93,7 +92,6 @@ function checkIfPageRequiresLogin() {
     $pageTitle = $_SERVER["REQUEST_URI"];
     $pageTitle = strtolower($pageTitle);
     $pageTitle = substr($pageTitle, 1, strlen($pageTitle)-2);
-    error_log("Sjekker om siden krever innlogging: " . $pageTitle);
 
     for ($i = 0; $i < sizeof($pagesRequireLogin); $i++) {
         if (strtolower($pagesRequireLogin[$i]) == $pageTitle) {

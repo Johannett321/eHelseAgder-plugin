@@ -5,8 +5,6 @@ require "NyhetsartiklerTools.php";
 add_shortcode( 'sc_vis_artikkel', 'sc_vis_artikkel');
 
 function getArtikkel($artikkelID) {
-    error_log("Trying to get projects",0);
-
     $database = getNyhetsartiklerDatabaseRef();
     if (lookingAtDraft()) {
         $database = getDraftNyhetsartiklerDatabaseRef();
@@ -26,6 +24,11 @@ function sc_vis_artikkel() {
     $artikkelID = $_GET["artikkelID"];
     $artikkelInfo = getArtikkel($artikkelID);
     $bildeUrl =  $artikkelInfo[0]->bilde;
+
+    if ($artikkelInfo == null) {
+        showErrorMessage("Denne artikkelen eksisterer ikke lenger!");
+        return;
+    }
 
     if (isset($_GET['message'])) {
         showCompleteMessage($_GET['message']);

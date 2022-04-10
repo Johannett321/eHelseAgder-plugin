@@ -24,6 +24,11 @@ function sc_vis_arrangement() {
     $eventInfo = getEvent($eventID);
     $bildeUrl =  $eventInfo[0]->bilde;
 
+    if ($eventInfo == null) {
+        showErrorMessage("Dette arrangementet eksisterer ikke lenger!");
+        return;
+    }
+
     if (isset($_GET['message'])) {
         showCompleteMessage($_GET['message']);
     }

@@ -23,9 +23,19 @@ function getCollapsibles($projectID) {
 }
 
 function getprojectpage() {
+    if (!isset($_GET["prosjektID"])) {
+        showErrorMessage("Denne siden ble ikke lastet inn riktig");
+        return;
+    }
+
     $prosjektID = $_GET["prosjektID"];
     $projectInfo = getProject($prosjektID);
     $bildeUrl =  $projectInfo[0]->bilde;
+
+    if ($projectInfo == null) {
+        showErrorMessage("Dette prosjektet eksisterer ikke lenger!");
+        return;
+    }
 
     if (isset($_GET['message'])) {
         showCompleteMessage($_GET['message']);
@@ -88,7 +98,6 @@ function getprojectpage() {
         $collapsibles = getCollapsibles($prosjektID);
 
         for ($i = 0; $i < sizeof($collapsibles); $i++) {
-            error_log("Collapsible found", 0);
             ?>
             <button type="button" class="collapsible"><?php
                 echo getCollapsibleName($collapsibles[$i]->collapsible_type, $collapsibles[$i]->egendefinert_navn);
