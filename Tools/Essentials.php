@@ -1,4 +1,7 @@
 <?php
+
+include ("CookieTool.php");
+
 add_action('wp', 'add_jquery');
 
 function add_jquery() {

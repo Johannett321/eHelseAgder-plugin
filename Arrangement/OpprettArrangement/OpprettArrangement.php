@@ -6,6 +6,7 @@ require "OpprettArrangementTools.php";
 include "SlettArrangement.php";
 
 securePageWithLogin('opprett-arrangement');
+thisPageRequiresCookies('opprett-arrangement');
 
 function sc_opprett_arrangement() {
     error_log("Redigerer nå opprett nyhetsartikkel");

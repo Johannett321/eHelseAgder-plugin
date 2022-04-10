@@ -6,6 +6,7 @@ require 'OpprettProsjektKategorierJS.php';
 add_shortcode( 'prosjektredigeringkategorier', 'prosjektredigeringkategorier');
 
 securePageWithLogin('opprett-prosjekt/kategorier');
+thisPageRequiresCookies('opprett-prosjekt/kategorier');
 
 function prosjektredigeringkategorier() {
     session_start();

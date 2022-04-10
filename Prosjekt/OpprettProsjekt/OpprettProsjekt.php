@@ -6,6 +6,7 @@ require 'OpprettProsjektTools.php';
 add_shortcode( 'prosjektredigeringsverktoy', 'startverktoy');
 
 securePageWithLogin('opprett-prosjekt');
+thisPageRequiresCookies('opprett-prosjekt');
 
 function startverktoy( $atts ) {
     $loadedProsjekt = loadProsjekt();

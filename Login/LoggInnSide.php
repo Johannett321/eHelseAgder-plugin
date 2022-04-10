@@ -4,6 +4,7 @@ require 'LoginTools.php';
 include 'LoginChecker.php';
 
 add_shortcode( 'sc_loginform', 'sc_loginform');
+thisPageRequiresCookies('logg-inn');
 
 function sc_loginform( $atts ) {
     if (!strpos(get_site_url(), "localhost")) {

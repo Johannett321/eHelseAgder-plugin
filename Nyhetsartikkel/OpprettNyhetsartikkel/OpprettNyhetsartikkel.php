@@ -6,6 +6,7 @@ require "OpprettNyhetsartikkelTools.php";
 include "SlettNyhetsartikkel.php";
 
 securePageWithLogin('opprett-nyhetsartikkel');
+thisPageRequiresCookies('opprett-nyhetsartikkel');
 
 function sc_opprett_nyhetsartikkel() {
     error_log("Redigerer nå opprett nyhetsartikkel");
