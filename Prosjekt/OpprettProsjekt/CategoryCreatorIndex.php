@@ -17,6 +17,9 @@ function addCategoryCreatorIndex() {
             }else if (name === 'cmilepaeler') {
                 removeCategoryFromRemovedCollapsibles('cmilepaeler');
                 createMilepaelerCol();
+            }else if (name === 'cnedlastbaredokumenter') {
+                removeCategoryFromRemovedCollapsibles('cnedlastbaredokumenter');
+                createNedlastbareDokumenterCol();
             }
         }
     </script>

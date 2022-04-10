@@ -9,6 +9,7 @@ include "Collapsibles/ProsjektTeamCol.php";
 include "Collapsibles/MilepaelerCol.php";
 include "Collapsibles/CustomCatCol.php";
 include "Collapsibles/MerInfoCol.php";
+include "Collapsibles/NedlastbareDokumenter.php";
 
 function prosjektRedigeringKategorierJS() {
     ?>
@@ -26,14 +27,13 @@ function prosjektRedigeringKategorierJS() {
     addMilepaelerCol();
     addCustomCatCol();
     addMerInfoCol();
+    addNedlastbareDokCol();
 
     addCategoryCreatorIndex();
 
     ?>
     <script type="text/javascript">
         (function () {
-            const collapsibles = document.getElementById('collapsibles');
-
             $("#collapsibleChooser").change(function () {
                 selectionOptionChanged();
             });

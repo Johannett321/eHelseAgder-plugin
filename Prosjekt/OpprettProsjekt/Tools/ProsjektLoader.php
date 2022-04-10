@@ -27,7 +27,7 @@ function shallWeLoadProsjekt() {
 
                     ?>
                     if (!colHasBeenDeletedLocally("cegenkategori" + (customColCounter+1))) {
-                    createCustomCatCol("<?php echo $customName?>", "<?php echo $innhold ?>");
+                        createCustomCatCol("<?php echo $customName?>", "<?php echo $innhold ?>");
                     }
                     <?php
                     break;
@@ -35,8 +35,8 @@ function shallWeLoadProsjekt() {
                     //leverandører
                     ?>
                     if (!colHasBeenDeletedLocally("cleverandorer")) {
-                    console.log("Creating leverandorer col with content: <?php echo $innhold ?>");
-                    createLeverandorerCol("<?php echo $innhold ?>");
+                        console.log("Creating leverandorer col with content: <?php echo $innhold ?>");
+                        createLeverandorerCol("<?php echo $innhold ?>");
                     }
                     <?php
                     break;
@@ -44,7 +44,7 @@ function shallWeLoadProsjekt() {
                     //Prosjekt-team
                     ?>
                     if (!colHasBeenDeletedLocally("cprosjektteam")) {
-                    createProsjektTeamCol("<?php echo $innhold ?>");
+                        createProsjektTeamCol("<?php echo $innhold ?>");
                     }
                     <?php
                     break;
@@ -52,7 +52,7 @@ function shallWeLoadProsjekt() {
                     //Mer informasjon om prosjektet
                     ?>
                     if (!colHasBeenDeletedLocally("cmerinfo")) {
-                    createMerInfoCol("<?php echo $innhold ?>");
+                        createMerInfoCol("<?php echo $innhold ?>");
                     }
                     <?php
                     break;
@@ -60,7 +60,16 @@ function shallWeLoadProsjekt() {
                     //Milepæler
                     ?>
                     if (!colHasBeenDeletedLocally("cmilepaeler")) {
-                    createMilepaelerCol("<?php echo $innhold ?>");
+                        createMilepaelerCol("<?php echo $innhold ?>");
+                    }
+                    <?php
+                    break;
+                case 6:
+                    //Nedlastbare dokumenter
+                    ?>
+                    if (!colHasBeenDeletedLocally("cnedlastbaredokumenter")) {
+                        console.log("Loader nedlastbare dokumenter");
+                        createNedlastbareDokumenterCol("<?php echo $innhold ?>");
                     }
                     <?php
                     break;

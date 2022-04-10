@@ -40,7 +40,7 @@ function uploadFileAndGetName($randomFolderName, $uploadButtonName) {
     $fileUploadsPath = "wp-content/uploads/minefiler/" . $randomFolderName . "/";
 
     //Sjekker om brukeren har lagt til en fil, hvis ikke return null
-    if ($_FILES[$uploadButtonName]["name"] != null && $_FILES[$uploadButtonName]["name"] != "") {
+    if ($_FILES[$uploadButtonName] != null && $_FILES[$uploadButtonName]["name"] != null && $_FILES[$uploadButtonName]["name"] != "") {
         $filename = $_FILES[$uploadButtonName]["name"];
         error_log("Brukeren har lagt ved en fil: " . $filename);
 
@@ -123,7 +123,7 @@ function getMultiFileUploadListHTMLElement($maxFilesAllowed, $loadedFilesFromEdi
 
 
         addFileButton.onclick = function () {
-            createFileUploadBox(false);
+            createFileUploadBox();
         }
 
         function createFileUploadBox() {

@@ -8,11 +8,6 @@ add_shortcode( 'prosjektredigeringkategorier', 'prosjektredigeringkategorier');
 securePageWithLogin('opprett-prosjekt/kategorier');
 
 function prosjektredigeringkategorier() {
-    /*
-    if (userIsNotLoggedInWithThrowback()) {
-        return;
-    }
-    */
     session_start();
     validateFieldsFromPage1();
     leggTilInformasjonFelt();
@@ -58,7 +53,7 @@ function leggTilInformasjonFelt() {
         $postURL = "../../wp-json/ehelseagderplugin/api/lagre_utkast_prosjekt";
     }
     ?>
-    <form action="<?php echo $postURL ?>" method="post" id = "myForm">
+    <form action="<?php echo $postURL ?>" method="post" id = "myForm" enctype="multipart/form-data">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
         <div class="infoBlokk">
@@ -81,7 +76,7 @@ function leggTilInformasjonFelt() {
                         <option value="cmilepaeler">Milepæler</option>
                         <!--<option value="cmål">Mål</option>-->
                         <!--<option value="cmålgruppe">Målgruppe</option>-->
-                        <!--<option value="cnedlastbaredokumenter">Nedlastbare dokumenter</option>-->
+                        <option value="cnedlastbaredokumenter">Nedlastbare dokumenter</option>
                         <option value="cprosjektteam">Prosjekt-team</option>
                         <!--<option value="cforskning">Relevant forskning</option>-->
                         <!--<option value="csamarbeidspartnere">Samarbeidspartnere</option>-->

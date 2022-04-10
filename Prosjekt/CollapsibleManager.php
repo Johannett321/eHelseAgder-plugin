@@ -21,6 +21,9 @@ function getCollapsibleName($collapsibleType, $customName) {
         case 5:
             return "Milepæler";
             break;
+        case 6:
+            return "Nedlastbare dokumenter";
+            break;
     }
 }
 
@@ -32,6 +35,8 @@ function getHtmlContentForCollapsible($collapsible) {
         getMilepaelerCollapsible($collapsible);
     }else if ($collapsible->collapsible_type == 3) {
         getProsjektTeametCollapsible($collapsible);
+    }else if ($collapsible->collapsible_type == 6) {
+        getNedlastbareDokumenterViewCollapsible($collapsible);
     }
 }
 

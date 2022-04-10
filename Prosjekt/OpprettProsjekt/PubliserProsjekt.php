@@ -106,6 +106,7 @@ function lagreCollapsibles($projectID) {
     lagreProsjektTeam($projectID);
     lagreMerInfoOmProsjekt($projectID);
     lagreMilepaeler($projectID);
+    lagreNedlastbareDokumenter($projectID);
 }
 
 function lagreSimpleTekstBoks($projectID, $name, $type) {
@@ -220,6 +221,33 @@ function lagreCustomCollapsibles($projectID) {
                 $shouldContinue = false;
             }
         }
+    }
+}
+
+function lagreNedlastbareDokumenter($projectID){
+    if (!isset($_POST["fil1"]) && $_FILES["fil1"] == null) {
+        error_log("Ingen filer er lastet opp");
+        return;
+    }
+
+    $filesUploaded = "";
+    $folderName = generateRandomString();
+    createFileUploadFolder($folderName);
+    for ($i = 1; $i <= 20; $i++) {
+        $fileName = uploadFileAndGetName($folderName, "fil" . $i);
+        if ($fileName != null) {
+            if ($filesUploaded != "") {
+                $filesUploaded .= ";";
+            }
+            $filesUploaded .= $fileName;
+        }
+    }
+
+    if ($filesUploaded !== "") {
+        global $wpdb;
+        $formatted_table_name = getDraftCollapsibleDatabaseRef();
+        $wpdb->insert($formatted_table_name, array("prosjekt_id" => $projectID, "innhold" =>$filesUploaded, "collapsible_type" => 6), array("%d", "%s", "%d"));
+        error_log("Added nedlastbare dokumenter collapsible!", 0);
     }
 }
 
