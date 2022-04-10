@@ -29,6 +29,10 @@ function check_cookies_not_important() {
     }
 }
 
+/**
+ * Sørger for at en side ikke laster inn dersom man ikke har godkjent cookies. Viser også en stor popup boks på skjermen som må godkjennes dersom man ikke har cookies enabled.
+ * @return void
+ */
 function addImportantCookieConfirmDialog() {
     ?>
     <div class = "cookiesRequired">
@@ -79,6 +83,10 @@ function addImportantCookieConfirmDialog() {
     exit;
 }
 
+/**
+ * Legger til en bar nederst på skjermen dersom man ikke har godkjent cookies, som ber en godkjenne cookies.
+ * @return void
+ */
 function addCookieConfirmDialog() {
     ?>
     <div id="cookieConfirmDialog">
@@ -129,6 +137,11 @@ function addCookieConfirmDialog() {
     <?php
 }
 
+/**
+ * Markerer at en side MÅ bruke cookies, og man får ikke bruke den uten cookies.
+ * @param $pageTitle string navnet på siden som må ha cookies
+ * @return void
+ */
 function thisPageRequiresCookies($pageTitle) {
     error_log("Adding " . $pageTitle . " to list of pages requiring cookies");
     global $pagesRequireCookies;
