@@ -2,7 +2,6 @@
 add_shortcode( 'sc_siste_nyhetsartikler', 'sc_siste_nyhetsartikler');
 
 function sc_siste_nyhetsartikler() {
-    error_log("Trying to get news");
     loadSisteNyhetsartikler();
 }
 

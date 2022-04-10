@@ -3,7 +3,6 @@
 add_shortcode( 'listeoverprosjekter', 'getprojectlist');
 
 function getProjects() {
-    error_log("Trying to get projects",0);
     global $wpdb;
     $query = "SELECT * FROM " . getProsjekterDatabaseRef();
     return $wpdb->get_results($query);

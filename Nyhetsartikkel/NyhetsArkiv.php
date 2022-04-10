@@ -5,7 +5,6 @@ include "NyhetsSok.php";
 add_shortcode( 'sc_nyhetsarkiv', 'sc_nyhetsarkiv');
 
 function sc_nyhetsarkiv() {
-    error_log("Trying to get news");
     loadNyhetsartikler();
 }
 

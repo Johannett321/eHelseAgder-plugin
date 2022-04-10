@@ -2,6 +2,8 @@
 
 function install_plugin() {
     error_log("------- REINSTALLERING AV PLUGIN -------");
+    deleteAllUploads();
+    createUploadsDirectory();
     dropAllTables();
     create_table_prosjekter();
     create_table_collapsible();
@@ -9,6 +11,17 @@ function install_plugin() {
     create_table_arrangementer();
     wp_redirect("../../../wp-admin/admin.php?page=prosjekter&message=Ferdig! Pluginen er innstallert på nytt!");
     exit;
+}
+
+
+function deleteAllUploads(){
+    deleteDir("wp-content/uploads/minefiler/");
+    deleteDir("wp-content/uploads/minebilder/");
+}
+
+function createUploadsDirectory(){
+    mkdir("wp-content/uploads/minefiler");
+    mkdir("wp-content/uploads/minebilder");
 }
 
 function dropAllTables() {
@@ -45,7 +58,8 @@ function createProsjekterTable($formatted_table_name) {
         prosjektstart varchar(14),
         prosjektslutt varchar(14),
         prosjekteierkommuner varchar(40),
-        samarbeidspartnere varchar(40),
+        sokerkommuner varchar(200),
+        samarbeidspartnere varchar(200),
         project_text varchar(1700) NOT NULL,
         publisert int(1),
         PRIMARY KEY  (id)

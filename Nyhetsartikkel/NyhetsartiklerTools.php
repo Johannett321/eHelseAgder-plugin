@@ -21,7 +21,7 @@ function getTilknyttetProsjektTekst($artikkelInfo) {
 
     if (sizeof($projectInfo) > 0) {
         //TODO Få linken til å fungere
-        return "Besøk gjerne <a href = 'www.google.com'>" . $projectInfo[0]->project_name . "</a> sin prosjektside for mer informasjon.";
+        return "Besøk gjerne <a href = '../../../../se-alle-prosjekter/prosjektside/?prosjektID=" . $tilknyttetProsjekt . "'>" . $projectInfo[0]->project_name . "</a> sin prosjektside for mer informasjon.";
     }else {
         return "";
     }
