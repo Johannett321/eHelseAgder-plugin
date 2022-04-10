@@ -24,6 +24,7 @@ function validateFieldsFromPage1() {
     saveFieldToSession("samarbeidspartnere");
     saveFieldToSession("prosjekteierkommuner");
     saveFieldToSession("psummary");
+    saveFieldToSession("sokerkommuner");
     saveImageUploaded();
 }
 

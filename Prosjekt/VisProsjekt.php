@@ -67,7 +67,10 @@ function getprojectpage() {
                 </div>
             </div>
             <div>
-                <h5>Søkerkommuner/samarbeidspartnere:</h5><span><?php echo $projectInfo[0]->samarbeidspartnere?></span>
+                <h5>Søkerkommuner:</h5><span><?php echo $projectInfo[0]->sokerkommuner?></span>
+            </div>
+            <div>
+                <h5>samarbeidspartnere:</h5><span><?php echo $projectInfo[0]->samarbeidspartnere?></span>
             </div>
             <div>
                 <h5>Prosjektstart:</h5><span><?php echo $projectInfo[0]->prosjektstart?></span>

@@ -244,3 +244,27 @@ function createFileUploadFolder($folderName) {
     error_log("Opprettet mappe: " . $folderName);
     return "wp-content/uploads/minefiler/" . $folderName . "/";
 }
+
+/**
+ * Sletter en mappe og alle filene inni
+ * @param $dirPath string mappen som skal slettes
+ * @return void
+ */
+function deleteDir($dirPath) {
+    if (! is_dir($dirPath)) {
+        error_log("Tried deleting folder: " .  $dirPath . ", but the folder does not exist");
+        return;
+    }
+    if (substr($dirPath, strlen($dirPath) - 1, 1) != '/') {
+        $dirPath .= '/';
+    }
+    $files = glob($dirPath . '*', GLOB_MARK);
+    foreach ($files as $file) {
+        if (is_dir($file)) {
+            deleteDir($file);
+        } else {
+            unlink($file);
+        }
+    }
+    rmdir($dirPath);
+}

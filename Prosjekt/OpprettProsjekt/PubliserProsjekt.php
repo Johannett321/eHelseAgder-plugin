@@ -47,9 +47,11 @@ function lagreProsjektUtkast() {
         "prosjektslutt" => $_SESSION["project_end"],
         "prosjekteierkommuner" => $_SESSION["prosjekteierkommuner"],
         "samarbeidspartnere" => $_SESSION["samarbeidspartnere"],
+        "sokerkommuner" => $_SESSION["sokerkommuner"],
         "project_text" => $_SESSION["psummary"]);
 
     $format = array("%d",
+        "%s",
         "%s",
         "%s",
         "%s",

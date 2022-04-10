@@ -30,7 +30,7 @@ require 'Prosjekt/OpprettProsjekt/OpprettProsjekt.php';
 require 'OnPluginActivation.php';
 require 'Tools/SQLTool.php';
 require 'Prosjekt/ProsjektListe.php';
-require 'Prosjekt/ProsjektSide.php';
+require 'Prosjekt/VisProsjekt.php';
 require 'Prosjekt/CollapsibleManager.php';
 
 require 'Nyhetsartikkel/OpprettNyhetsartikkel/OpprettNyhetsartikkel.php';
