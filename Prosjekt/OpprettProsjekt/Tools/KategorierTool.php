@@ -20,7 +20,6 @@ function addKategorierTools() {
                     return ["cmerinfo_ls", "cmerinfo_ls_time"];
                     break;
                 case "cnedlastbaredokumenter":
-                    //TODO: FYLL UT DENNE!!!!
                     return "";
                     break
             }
