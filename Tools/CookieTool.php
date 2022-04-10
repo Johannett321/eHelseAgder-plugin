@@ -142,7 +142,6 @@ function addCookieConfirmDialog() {
  * @return void
  */
 function thisPageRequiresCookies($pageTitle) {
-    error_log("Adding " . $pageTitle . " to list of pages requiring cookies");
     global $pagesRequireCookies;
     if ($pagesRequireCookies != null) {
         $pagesRequireCookies[sizeof($pagesRequireCookies)] = $pageTitle;
