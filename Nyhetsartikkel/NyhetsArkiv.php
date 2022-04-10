@@ -43,7 +43,7 @@ function loadNyhetsartikler() {
                 if ($articleCounter > 4) {
                     ?>
                     <center>
-                        <a href = "aarstall?year=<?php echo $i ?>"><button>Alle nyheter fra <?php echo $i?></button></a>
+                        <a href = "aarstall?year=<?php echo $i ?>"><button class = "viewMore">Vis alle nyheter fra <?php echo $i?></button></a>
                     </center>
                     <?php
                 }

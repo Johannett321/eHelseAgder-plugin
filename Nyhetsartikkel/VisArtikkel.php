@@ -42,7 +42,7 @@ function sc_vis_artikkel() {
             <head>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
             </head>
-            <a href = "../../opprett-nyhetsartikkel?editArticleID=<?php echo $artikkelID ?>"><button>Rediger nyhetsartikkel<span class = "material-icons">edit</span></button></a>
+            <a href = "../../opprett-nyhetsartikkel?editArticleID=<?php echo $artikkelID ?>"><button class="editButton">Rediger nyhetsartikkel<span class = "material-icons">edit</span></button></a>
             <?php
         }
         ?>
@@ -58,18 +58,20 @@ function sc_vis_artikkel() {
         <div class = "artikkelTekst"><?php echo nl2br($artikkelInfo[0]->innhold); ?></div>
         <div class = "tilknyttetProsjektTekst"><?php echo getTilknyttetProsjektTekst($artikkelInfo[0])?></div>
         <hr class="divider">
-        <div id = "kildeinfo">Publisert <?php echo getDisplayDateFormat($artikkelInfo[0]->dato_skrevet)?>, av <?php echo $artikkelInfo[0]->skrevet_av ?> (<?php echo $artikkelInfo[0]->rolle ?>)</div>
-        <?php
-        $endretAv = $artikkelInfo[0]->endret_av;
-        if ($endretAv != null && $endretAv != "") {
-            ?>
-            <div id = "endretInfo">Endret den <?php echo getDisplayDateFormat($artikkelInfo[0]->dato_endret)?>, av <?php echo $artikkelInfo[0]->endret_av ?></div>
+        <div class="infoBunn">
+            <div id = "kildeinfo">Publisert <?php echo getDisplayDateFormat($artikkelInfo[0]->dato_skrevet)?>, av <?php echo $artikkelInfo[0]->skrevet_av ?> (<?php echo $artikkelInfo[0]->rolle ?>)</div>
             <?php
-        }
-        if (!lookingAtDraft()) {
-            implementAllSMShareButtons();
-        }
-        ?>
+            $endretAv = $artikkelInfo[0]->endret_av;
+            if ($endretAv != null && $endretAv != "") {
+                ?>
+                <div id = "endretInfo">Endret den <?php echo getDisplayDateFormat($artikkelInfo[0]->dato_endret)?>, av <?php echo $artikkelInfo[0]->endret_av ?></div>
+                <?php
+            }
+            if (!lookingAtDraft()) {
+                implementAllSMShareButtons();
+            }
+            ?>
+        </div>
         <style>
             .coverPhoto {
                 float: right;
@@ -83,8 +85,10 @@ function sc_vis_artikkel() {
     if (lookingAtDraft()) {
         ?>
         <br/>
-        <button type="button" id = "backButton">Tilbake</button>
-        <button type="button" id = "publishButton">Publiser</button>
+        <div class = "buttons">
+            <button type="button" id = "backButton">Tilbake</button>
+            <button type="button" id = "publishButton">Publiser</button>
+        </div>
         <script type="text/javascript">
             const backButton = document.getElementById('backButton');
             const publishButton = document.getElementById('publishButton');

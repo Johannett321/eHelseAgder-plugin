@@ -57,9 +57,9 @@ function getMilepaelerCollapsible($collapsible) {
     ?>
         <table>
             <tr>
-                <th>Milepæl</th>
-                <th>Ansvarlig kontaktperson</th> 
-                <th>Dato</th>
+                <th id="milepælTittel">Milepæl</th>
+                <th id="milepælKontakt">Ansvarlig kontaktperson</th>
+                <th id="milepælDato">Dato</th>
             </tr>
             <?php
                 $rows = explode(";", $collapsible->innhold);

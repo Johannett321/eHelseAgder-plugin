@@ -49,7 +49,7 @@ function sc_sok_resultater() {
     $searchFor = $_GET['q'];
 
     ?>
-    <h3>Søkeresultater for <?php echo $searchFor?> <?php if (isset($_GET['year'])) echo " fra " . $_GET['year']?></h3>
+    <h3 id="søkTittel">Søkeresultater for <?php echo $searchFor?> <?php if (isset($_GET['year'])) echo " fra " . $_GET['year']?></h3>
     <?php
     $query = "SELECT * FROM " . getNyhetsartiklerDatabaseRef() . " WHERE " . $_GET['field'] . " LIKE '%" . $searchFor . "%'";
 

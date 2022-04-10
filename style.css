@@ -37,10 +37,14 @@
     margin: 0;
 }
 
+.infoBlokk .material-icons {
+    float: left;
+    font-weight: bold;
+}
+
 .infoBlokk h5, .infoBlokk h4 {
     font-weight: 400;
-    margin-left: 7px;
-    margin-right: 7px;
+    margin: 0 5px;
     line-height: 24px;
     vertical-align: middle;
     display: inline-block;
@@ -58,7 +62,7 @@
 .infoBlokk {
     height: auto;
     width: 80%;
-    padding: 30px;
+    padding: 20px;
     background-color: #f3f8f2;
     border-radius: 18px;
     margin-bottom: 60px;
@@ -79,6 +83,10 @@
 
 #steg2 .bar {
     width:66%;
+}
+
+#steg3 .bar {
+    width: 100%;
 }
 
 #steg2 .progressBar {
@@ -106,7 +114,7 @@
 
 }
 
-#steg2 #step2 {
+#steg2 #step2, #steg3 #step2 {
     font-weight: 600;
     color: #0B843E;
 }
@@ -115,6 +123,11 @@
     float: right;
     color: #B5DCBB;
 
+}
+
+#steg3 #step3 {
+    font-weight: 600;
+    color: #0B843E;
 }
 
 .material-icons, #infoHead {
@@ -163,38 +176,42 @@
 
 /* Last opp bilde ------------------------------------------------------------*/
 
-.uploadPhoto, .coverPhoto {
-    height: 300px;
-    margin: 0 !important;
-}
+
 
 .uploadPhoto h5, .uploadPhoto .material-icons {
     position: absolute;
     text-align: center;
     left: 0;
     right: 0;
-    width: 110px;
     color: #0B843E !important;
     cursor: pointer;
 }
+/*.uploadPhoto:hover h5,*/
+.uploadPhoto:link h5,
+.uploadPhoto:visited h5,
+/*.uploadPhoto:hover .material-icons,*/
+.uploadPhoto:visited .material-icons,
+.uploadPhoto:link .material-icons {
+    opacity: 0;
+}
 
 .uploadPhoto h5 {
-    margin: 150px auto;
+    margin: 200px auto;
     text-decoration: underline;
 }
 
 .uploadPhoto .material-icons {
-    margin: 130px auto;
+    margin: 180px auto;
 }
 
 #output {
-    height: inherit !important;
     object-fit: cover;
 }
 
 #output, .sammendragContainer textarea {
     border: 1px solid #dbdbdb;
-    width: 100% !important;
+    min-width: 100%;
+    height: 419px;
     border-radius: 5px;
 }
 
@@ -205,20 +222,38 @@
     margin-right: auto;
 }
 
-#submitButton, .addInfoButton, .artikkel button {
+#submitButton,
+#backButton,
+#publishButton,
+.addInfoButton,
+.editButton,
+#closePopupButton,
+.viewMore{
     background-color: #0B843E;
     text-transform: capitalize;
     color: #fff;
     transition: all 0.5s;
+    margin: 0 15px;
 }
 
-#submitButton:hover, .addInfoButton:hover, .artikkel button:hover {
+#submitButton:hover,
+#backButton:hover,
+#publishButton:hover,
+.addInfoButton:hover,
+.editButton:hover,
+#closePopupButton:hover,
+.viewMore:hover {
     color: #fff;
     background-color: #0B843EBA;
     font-weight: 700;
 }
 
-#submitButton, .artikkel button {
+#submitButton,
+.editButton,
+#closePopupButton,
+#backButton,
+#publishButton,
+.viewMore{
     height: 50px;
     width: 200px;
     border-radius: 30px;
@@ -594,7 +629,7 @@
 
 
 
-/* Prosjektside ------------------------------------------------------*/
+/* Vis prosjekt -----------------------------------------------------------*/
 
 /* Style the button that is used to open and close the collapsible content */
 .collapsible {
@@ -621,23 +656,28 @@
 
 .topPart {
     height: auto;
-    max-height: 500px;
-    overflow: hidden;
+    overflow: visible;
     margin-bottom: 100px;
+}
+
+.topPart .coverPhoto {
+    margin: 0;
 }
 
 .coverPhoto {
     width: 70%;
+    margin: 20px 0;
+    height: auto !important;
 }
 
-.coverPhoto, .oppsummert {
-    display: inline-block;
-    height: inherit !important;
+@media only screen and (min-width: 1020px) {
+    .coverPhoto, .oppsummert {
+    display: inline-block;}
 }
 
 .coverPhoto img {
     float: left;
-    width: 100%;
+    width: 100% !important;
     height: 450px !important;
     object-fit: cover;
     border-radius: 8px !important;
@@ -647,11 +687,12 @@
 .oppsummert {
     float:right;
     background-color: #d9ead4;
-    width: 28%;
-    height: inherit;
+    max-width: 29%;
+    min-width: 29%;
+    max-height: 450px;
+    overflow: visible;
     padding: 35px;
-    padding-right: 10px;
-    margin-left: 20px;
+    margin-left: 10px;
     border-radius: 8px;
     border: 1px solid #B5DCBB;
 }
@@ -666,11 +707,11 @@
     margin-bottom: 0;
     margin-right: 10px;
     font-weight: 700 !important;
-    font-size: 16px !important;
+    font-size: 14px !important;
 }
 
 .oppsummert span, .oppsummert i {
-    font-size: 16px;
+    font-size: 14px;
     margin-top: 0;
 }
 
@@ -707,6 +748,18 @@ th {
     font-size: 16px !important;
 }
 
+#milepælTittel {
+    width: 20%;
+}
+
+#milepælKontakt {
+    width: auto;
+}
+
+#milepælDato {
+    width: 17%;
+}
+
 td {
     height: 50px;
     background-color:#E7F0E2;
@@ -741,6 +794,8 @@ td {
     border-radius: 8px !important;
     border: 1px solid black;
     margin: 10px 0;
+    min-width: 615px;
+    overflow: auto;
 }
 
 .content table * {
@@ -760,10 +815,10 @@ td {
 }
 
 .content .inliner img {
-    width: 100px;
+    width: auto;
     height: inherit;
     border-radius: 50%;
-    margin-right: 50px;
+    margin-right: 20px;
     background-color: lightblue; /*Temporary!!!*/
 }
 
@@ -801,7 +856,7 @@ td {
 .content {
     padding: 20px 25px;
     display: none;
-    overflow: hidden;
+    overflow: auto;
     background-color: #f1f1f1;
     width: 99%;
 }
@@ -832,20 +887,22 @@ td {
     display: inline-block;
 }
 
+.artikkel button {
+    float: right;
+}
+
 .nyhetTittel {
-    margin: 10px;
     margin-bottom: 30px;
 }
 
-.artikkel button {
-    float: right;
+.editButton {
     height: 30px;
     margin: 10px 0;
     font-size: 14px;
     text-transform: none;
 }
 
-.artikkel .material-icons {
+.editButton .material-icons {
     font-size: 14px;
     margin-bottom: 3px;
     margin-left: 5px;
@@ -857,13 +914,19 @@ td {
     font-style: italic;
 }
 
+.artikkel .coverPhoto {
+    float: none;
+    background-color: unset;
+    width: 100%;
+}
+
 .tilknyttetProsjektTekst {
     font-size: 16px;
     font-weight: 700;
 }
 
 .artikkelTekst {
-    margin: 50px 0;
+    margin: 0 0 50px 0;
 }
 
 .artikkel .divider {
@@ -874,12 +937,13 @@ td {
     margin-top: 50px;
 }
 
-#kildeinfo {
+#kildeinfo, #endretInfo {
     font-size: 14px;
+    color: #898F9C;
 }
 
-#kildeinfo, .deleknapp {
-    display: inline-block;
+#endretInfo {
+    width: auto;
 }
 
 .deleknapp {
@@ -914,16 +978,23 @@ td {
     background-color: #1DA1F2;
 }
 
+.buttons {
+    margin-right: auto;
+    margin-left: auto;
+    width: 464px;
+}
+
 /* Alle nyheter ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 
 .artikkelKort {
     width: 60%;
-    height: auto;
-    margin: 0 auto;
+    height: 150px;
+    margin: 20px auto;
     padding: 20px;
     border: 1px solid #84C58ED4;
     border-radius: 20px;
     box-shadow: 5px 5px 10px #d9ead4;
+    overflow: hidden;
 }
 
 .artikkelKort:hover {
@@ -934,28 +1005,49 @@ td {
     width: 70%;
 }
 
+.artikkelkorttekst p {
+    min-height: 60px;
+}
+
+.collapsibles .artikkelkorttekst {
+    width: 65%;
+}
+
 .artikkelkorttekst, .photoSmall {
     display: inline-block;
 }
 
 .photoSmall {
     float: right;
-    height: 111.5px;
-    border-radius: 8px;
-    width: 27%;
-    background-color: lightgrey;
-    color: transparent;
+    margin: -20px;
+}
+
+.photoSmall img {
+    object-fit: cover !important;
+    height: 150px !important;
+    width: 190px !important;
 }
 
 .artikkelKort h5 {
-    margin: 0 0 8px 0;
+    margin: 0 0 3px 0;
     font-weight: 700 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .artikkelKort p {
-    font-size: 16px;
+    font-size: 14px;
     color: black;
     text-align: justify;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
 }
 
 #additInfo {
@@ -963,6 +1055,37 @@ td {
     color: #0B843E;
     text-align: right;
 }
+
+.viewMore {
+    width: 250px;
+    margin: 30px;
+}
+
+
+/* Søkefunksjon ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+.searchField {
+    width: 60%;
+}
+
+.searchField #dropdown {
+    width: 77%;
+}
+
+.searchField #submitButton {
+    width: 20%;
+    margin-right: 0;
+    margin-top: 20px;
+}
+
+.searchField h3 {
+    margin-bottom: 20px;
+}
+
+#søkTittel {
+    width: 60%;
+}
+
 
 
 /* Logg inn side –––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
@@ -972,6 +1095,72 @@ td {
 
 #loginBox .button {
     margin: 0 auto;
+}
+
+
+/* Popup box –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+.popupBox P {
+    font-size: 18px;
+}
+
+.popupHolder {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+}
+
+#closePopupButton {
+    margin: 0;
+    float: right;
+    text-transform: unset;
+}
+
+.popupBox h3 {
+    margin: 0 0 20px 0;
+}
+
+.popupBox {
+    position: fixed;
+    max-width: 700px;
+    height: fit-content;
+    padding: 40px 30px;
+
+    top: 50%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    border-radius: 20px;
+    border: 1px solid #0B843E;
+    background-color: #84C58E;
+    color: black;
+}
+
+.noscroll {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+/* Nyhets-arkiv ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+/*Årstall-collapsibels*/
+.collapsibles .artikkelKort {
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.collapsibles .artikkelKort:hover {
+    background-color: #f3f8f2;
 }
 
 
@@ -1026,5 +1215,75 @@ td {
     to {
         scale: 1;
         opacity: 1;
+    }
+}
+
+/* Responsivt design. ––––––––––––––––––––––––––––––––––––––––––––––*/
+
+/* Brede skjermer */
+
+@media only screen and (min-width: 1020px) {
+    .oppsummert {min-height: 450px;}
+}
+
+/* Smale skjermer */
+
+@media only screen and (max-width: 1020px) {
+    .coverPhoto {min-width: 100%;}
+    .coverPhoto img {
+        float: unset;
+        max-height: 200px !important;}
+    .oppsummert {
+        margin: 20px auto;
+        min-width: 60%;
+        float: unset;}
+    .oppsummert h5 {margin-top: 1rem;}
+    .inliner img {display: none;}
+    .photoSmall img {display: none}
+    .artikkelkorttekst {min-width: 100%}
+    .artikkelKort {height: auto;}
+}
+
+/* Mobil */
+
+@media only screen and (max-width: 500px) {
+    .oppsummert {
+        margin-left: 0;
+        margin-right: 0;
+        min-width: 100%;}
+    .projectText {
+        margin-left: 0;
+        margin-right: 0;
+        min-width: 100%;
+        font-size: 16px;
+    }
+    .collapsibles {
+        margin-left: 0;
+        margin-right: 0;
+        min-width: 100%;
+    }
+    .topPart {margin-bottom: unset;}
+    .inliner img {display: none;}
+    .inliner {
+        margin-bottom: 20px;
+        margin-top: 10px;
+        padding: 0;
+        height: unset;
+    }
+    .artikkel {min-width: 100%}
+    .nyhetTittel {
+        font-size: 22px !important;
+        margin: 30px 0;
+    }
+    .artikkelKort {min-width: 100%;}
+    .searchField {
+        min-width: 100%;
+        margin-top: 50px;
+        padding: 10px;
+    }
+    .searchField h5 {text-align: center;}
+    .searchField #submitButton {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
