@@ -10,7 +10,6 @@ function check_cookies_very_important() {
     $pageTitle = $_SERVER["REQUEST_URI"];
     $pageTitle = strtolower($pageTitle);
     $pageTitle = substr($pageTitle, 1, strlen($pageTitle)-2);
-    error_log("Sjekker om siden krever cookies: " . $pageTitle);
 
     for ($i = 0; $i < sizeof($pagesRequireCookies); $i++) {
         if (strtolower($pagesRequireCookies[$i]) == $pageTitle) {
@@ -36,7 +35,7 @@ function check_cookies_not_important() {
 function addImportantCookieConfirmDialog() {
     ?>
     <div class = "cookiesRequired">
-        <h2>Siden du forsøker å besøke krever cookies</h2>
+        <h2>Siden du forsøker å besøke krever cookies (informasjonskapsler)</h2>
         <p>
             Ved å trykke 'godkjenn og lukk', godkjenner du at vi kan lagre informasjonskapsler på din enhet for å forbedre din opplevelse av siden
         </p>
@@ -91,7 +90,7 @@ function addCookieConfirmDialog() {
     ?>
     <div id="cookieConfirmDialog">
         <div id = "backgroundColor"></div>
-        <h5>Om cookies</h5>
+        <h5>Om informasjonskapsler (cookies)</h5>
         <p>
             Ved å trykke 'godkjenn og lukk', godkjenner du at vi kan lagre informasjonskapsler på din enhet for å forbedre din opplevelse av siden
         </p>
