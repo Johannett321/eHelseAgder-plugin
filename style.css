@@ -292,7 +292,7 @@
     margin-top: 5em;
 }
 
-#minform input[type="text"], .milepael input[type="text"], .collapsible input[type="text"] {
+#minform input[type="text"], #minform input[type="date"], .milepael input[type="text"], .collapsible input[type="text"] {
     height: 30px;
     border-radius: 5px;
     padding: 3px 5px;

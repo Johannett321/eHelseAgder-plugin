@@ -78,7 +78,7 @@ function sc_opprett_arrangement() {
             <input type = "date" id = "sluttdato" name = "sluttdato" value="<?php echo $sluttDato?>">
 
             <label for="sted" class = "labelForInput">Sted*</label>
-            <input type="text" id="sted" name="sted" placeholder="Kristiansand" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->sted?>"><?php addCharacterCounter("sted");?>
+            <input type="text" id="sted" name="sted" placeholder="Kristiansand" class = "small_input" maxlength="50" value = "<?php echo $loadedArrangement->sted?>"><?php addCharacterCounter("sted");?>
             <label for="arrangor" class = "labelForInput">Arrangør*</label>
             <input type="text" id="arrangor" name="arrangor" placeholder="Kristiansand kommune" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->arrangor?>"><?php addCharacterCounter("arrangor");?>
             <label for="kontaktperson" class = "labelForInput">Kontaktperson*</label>

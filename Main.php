@@ -41,6 +41,7 @@ require 'Nyhetsartikkel/VisArtikkel.php';
 require 'Arrangement/OpprettArrangement/OpprettArrangement.php';
 require 'Arrangement/VisArrangement.php';
 require 'Arrangement/ArrangementerListe.php';
+require 'Arrangement/ArrangementArkiv.php';
 
 include 'Tools/SocialMediaTool.php';
 include 'Login/LoginKnapp.php';
