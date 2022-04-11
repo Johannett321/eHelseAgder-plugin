@@ -59,6 +59,7 @@ function sc_opprett_arrangement() {
             <label for="tittel" class = "labelForInput">Navn på arrangement*</label>
             <input type="text" id="tittel" name="tittel" placeholder="Webinar: Digitale helsetjenester for alle" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->tittel?>"><?php addCharacterCounter("tittel");?>
             <label for="kort_besk" class = "labelForInput">En kort setning om arrangementet*</label>
+            <?php addInfoBox("kortsetning", "Denne setningen skal gi leseren en kort forståelse av hva arrangementet handler om");?>
             <input type="text" id="kort_besk" name="kort_besk" placeholder="Navn navnesen kaster lys på fremtiden for legemidler i et nytt webinar om digital legemiddelhåndtering" class = "small_input" maxlength="200" value = "<?php echo $loadedArrangement->kort_besk?>"><?php addCharacterCounter("kort_besk");?>
 
             <?php
@@ -87,13 +88,14 @@ function sc_opprett_arrangement() {
             <input type="text" id="kontaktmail" name="kontaktmail" placeholder="navn.navnesen@gmail.com" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->kontaktperson_mail?>"><?php addCharacterCounter("kontaktmail");?>
 
             <div class = "sammendragContainer">
-                <label for = "psummary" class = "labelForInput">Innhold</label>
+                <label for = "psummary" class = "labelForInput">Informasjon om arrangementet</label>
+                <?php addInfoBox("informasjonOmArrangementInfo", "Her skriver du informasjon om arrangementet. Om du har et program i eget dokument kan dette lastes opp i feltet for program/andre eksterne vedlegg. Om arrangementet ditt foreløpig ikke har noe påmeldingslink, kan dette være lurt å informere om her");?>
                 <textarea id = "psummary" name="psummary" form="minform" maxlength="3400" placeholder="Her kan du skrive selve artikkelen"><?php echo $loadedArrangement->innhold?></textarea><?php addCharacterCounter("psummary");?>
             </div>
 
             <label for="pamelding" class = "labelForInput">Link til ekstern påmelding</label>
+            <?php addInfoBox("eksternpamelding", "Hvis du ikke enda har noen link til ekstern påmelding, kan dette legges til senere ved å redigere arrangementet og legge til link. Det kan være lurt å legge til informasjon om  dette i «Informasjon om arrangementet». ");?>
             <input type="text" id="pamelding" name="pamelding" placeholder="https://www.ticketmaster.no/event/webinar-dhfa-2033-billetter/614599" class = "small_input" maxlength="500" value = "<?php echo $loadedArrangement->pamelding_link?>"><?php addCharacterCounter("pamelding");?>
-
             <label for = "uploadFiles" class = "labelForInput">Program/andre eksterne vedlegg</label>
             <?php getMultiFileUploadListHTMLElement(5, $loadedArrangement->vedlegg); ?>
         </div>

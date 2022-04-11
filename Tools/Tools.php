@@ -33,6 +33,13 @@ function runningOnLocalHost() {
 }
 
 /**
+ * @return bool returnerer true dersom nettsiden fortsatt er under utvikling
+ */
+function pageIsInDevelopment() {
+    return true;
+}
+
+/**
  * Tar brukeren endten til en visningside av prosjekt/nyhet eller til draften for dette.
  * @param $redirectAddress string adressen til siden inkludert articleID eller projectID.
  * @param $message string dersom en melding skal vises på toppen av siden når den laster inn.

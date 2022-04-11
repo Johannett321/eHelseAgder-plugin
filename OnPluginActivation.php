@@ -9,10 +9,28 @@ function install_plugin() {
     create_table_collapsible();
     create_table_nyhetsartikler();
     create_table_arrangementer();
+    createPluginImages();
     wp_redirect("../../../wp-admin/admin.php?page=prosjekter&message=Ferdig! Pluginen er innstallert på nytt!");
     exit;
 }
 
+function createPluginImages() {
+    mkdir("wp-content/uploads/eHelseAgderPlus");
+
+    // Get array of all source files
+    $files = scandir("wp-content/plugins/eHelseAgderPlugin/images");
+    // Identify directories
+    $source = "wp-content/plugins/eHelseAgderPlugin/images/";
+    $destination = "wp-content/uploads/eHelseAgderPlus/";
+    // Cycle through all source files
+    foreach ($files as $file) {
+        if (in_array($file, array(".",".."))) continue;
+        // If we copied this successfully, mark it for deletion
+        if (!copy($source.$file, $destination.$file)) {
+            error_log("Feilet med å flytte fil: " . $source.$file);
+        }
+    }
+}
 
 function deleteAllUploads(){
     deleteDir("wp-content/uploads/minefiler/");

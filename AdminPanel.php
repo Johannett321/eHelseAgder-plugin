@@ -17,7 +17,7 @@ function prosjekterMenu() {
             ?>
             <div class="innholdsBox">
                 <div class = "centerer">
-                    <img src = "../../../wp-content/uploads/eHelseAgderPluss/PluginLogo.png"/>
+                    <img src = "../../../wp-content/uploads/eHelseAgderPlus/PluginLogo.png"/>
                     <h1>Viktig informasjon!</h1>
                     <form id = "myform" action = "../wp-json/ehelseagderplugin/api/installerPlugin" method ="POST">
                         <p>
@@ -30,6 +30,14 @@ function prosjekterMenu() {
                         <div class="resetContainer">
                             <input id = "slettAltKnapp" type = "button" class = "button" value="Reinstaller plugin"/>
                         </div>
+                        <?php
+                        if (pageIsInDevelopment()) {
+                            ?>
+                            <br/>
+                            <button type="button" id = "enrollButton" class="button">Registrer dev enhet</button>
+                            <?php
+                        }
+                        ?>
                     </form>
                 </div>
                 <div class = "credits">
@@ -132,6 +140,29 @@ function prosjekterMenu() {
                     alert("Skriv 'Slett alt' i boksen over for å bekrefte");
                 }
             }
+
+            <?php
+            if (pageIsInDevelopment()) {
+                ?>
+                const enrollButton = document.getElementById('enrollButton');
+                enrollButton.onclick = function () {
+                    if (confirm("Er du sikker på at du vil registrere denne dev enheten?")) {
+                        setCookie("DevelopmentDeviceEnrolled", "true", 100);
+                        alert("Utviklingsenhet registrert! Du har nå tilgang til nettsiden!");
+
+                        location.reload();
+
+                        function setCookie(cname, cvalue, exdays) {
+                            const d = new Date();
+                            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                            let expires = "expires="+ d.toUTCString();
+                            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                        }
+                    }
+                }
+                <?php
+            }
+            ?>
         </script>
     <?php
 }

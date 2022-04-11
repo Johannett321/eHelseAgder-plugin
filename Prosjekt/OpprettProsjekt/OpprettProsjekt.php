@@ -85,6 +85,7 @@ function lagFelter($loadedProsjekt) {
                 <label for="pname" class = "labelForInput">Prosjektets navn*</label>
                 <input type="text" id="pname" name="pname" placeholder="Digital Hjemmeoppfølging" class = "small_input" maxlength="100" value = "<?php echo $loadedProsjekt->project_name ?>"><?php addCharacterCounter("pname");?>
                 <label for="psubtitle" class = "labelForInput">En setning om prosjektet (beskrivende undertittel)*</label>
+                <?php addInfoBox("subtitleInfo", "Eksempel: Et EU prosjekt for å øke livskvalitet for pasienter med kronisk sykdom");?>
                 <input type="text" id="psubtitle" name="psubtitle" placeholder="Et EU prosjekt for å øke livskvalitet for pasienter med kronisk sykdom." class = "small_input" maxlength="100" value = "<?php echo $loadedProsjekt->undertittel?>"><?php addCharacterCounter("psubtitle");?>
                 <div class = "uthevetBoksForm" id = "prosjektLederBoks">
                     <h4>Prosjektleder</h4>
@@ -112,6 +113,7 @@ function lagFelter($loadedProsjekt) {
 
             <div class = "sammendragContainer">
                 <label for = "psummary" class = "labelForInput"><h3>Sammendrag*</h3></label>
+                <?php addInfoBox("prosjektSammendrag", "Her skriver du en kort forklaring på hva prosjektet går ut på. OBS: Mer informasjon om prosjektet legges til på neste trinn");?>
                 <textarea id = "psummary" name="psummary" form="minform" maxlength="1700" placeholder="Her kan du skrive en kort tekst om prosjektet"><?php echo $loadedProsjekt->project_text ?></textarea><?php addCharacterCounter("psummary");?>
             </div>
 
