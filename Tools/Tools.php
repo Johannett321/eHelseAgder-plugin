@@ -67,3 +67,40 @@ function lookingAtDraft() {
     }
     return false;
 }
+
+/**
+ * Legger til eth HTML element som teller characters i et tekstfelt. Den viser brukeren hvor mange tegn som gjenstår
+ * @param $textFieldID string id'en til html elementet du vil legge til en teller på.
+ * @return void
+ */
+function addCharacterCounter($textFieldID) {
+    ?>
+    <span id ="<?php echo $textFieldID . "counter" ?>" class="inputFieldCounter">0/0</span>
+    <script type="text/javascript">
+        <?php echo $textFieldID . "()"?>
+
+        function <?php echo $textFieldID?>() {
+            const inputField = document.getElementById('<?php echo $textFieldID?>');
+            const inputFieldCounter = document.getElementById('<?php echo $textFieldID . "counter"?>');
+            const fieldMaxLength = inputField.maxLength;
+
+            inputFieldCounter.innerText = inputField.value.length + "/" + fieldMaxLength;
+
+            $(inputField).on("input", function(){
+                inputFieldCounter.innerText = inputField.value.length + "/" + fieldMaxLength;
+            });
+        }
+    </script>
+    <style>
+        .inputFieldCounter {
+            position: sticky;
+            float: right;
+            margin-right: 5px;
+            transform: translate(0, -170%);
+
+            font-size: 15px;
+            color: gray;
+        }
+    </style>
+    <?php
+}

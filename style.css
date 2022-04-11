@@ -287,9 +287,10 @@
     margin-top: 5em;
 }
 
-#minform input[type="text"], .milepael input[type="text"], .collapsible input[type="text"]{
+#minform input[type="text"], .milepael input[type="text"], .collapsible input[type="text"] {
     height: 30px;
     border-radius: 5px;
+    padding: 3px 5px;
     margin: 0em;
     margin-bottom: 17px;
     font-size: 16px;
@@ -319,12 +320,12 @@
 
 .uthevetBoksForm li input {
     width: 70%;
-    margin-bottom: 10px !important;
+    margin-bottom: 17px !important;
 }
 
 .uthevetBoksForm li label {
-    width: 80px;
-    margin-top: 10px !important;
+    width: 90px;
+    margin-top: 0 !important;
 }
 
 .uthevetBoksForm ul {
@@ -341,7 +342,8 @@
     font-family: Lato, sans-serif;
     font-size: 16px;
     color: #595959;
-    margin: 0 !important;
+    margin: 0 0 17px 0 !important;
+    padding: 10px;
     max-width: 100%;
     height: 200px;
 }
