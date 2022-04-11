@@ -13,11 +13,12 @@ function getprojectlist() {
     ?>
         <?php
             foreach ($projects as $currentProject) {
-                ?>
-                    <a href = <?php echo "prosjektside?prosjektID=" . $currentProject->id; ?>>
-                        <h5><?php echo $currentProject->project_name; ?></h5>
-                    </a>
-                <?php
+                createLargeListItem($currentProject->project_name,
+                    $currentProject->undertittel,
+                    "Prosjektstart: " . $currentProject->prosjektstart,
+                    "Prosjekteier: " . $currentProject->prosjekteierkommuner,
+                    $currentProject->bilde,
+                    "http://localhost:8888/se-alle-prosjekter/prosjektside/?prosjektID=" . $currentProject->id);
             }
         ?>
     <?php

@@ -20,6 +20,7 @@ if ( ! defined( 'ABSPATH') ) {
 
 require 'Tools/Essentials.php';
 require 'Tools/Tools.php';
+require 'Tools/CommonHTMLElements.php';
 
 include 'Tools/PageMessages.php';
 require 'Tools/JavascriptCheckerTool.php';
@@ -39,6 +40,7 @@ require 'Nyhetsartikkel/VisArtikkel.php';
 
 require 'Arrangement/OpprettArrangement/OpprettArrangement.php';
 require 'Arrangement/VisArrangement.php';
+require 'Arrangement/ArrangementerListe.php';
 
 include 'Tools/SocialMediaTool.php';
 include 'Login/LoginKnapp.php';

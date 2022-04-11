@@ -25,6 +25,14 @@
     cursor: pointer;
 }
 
+.largeListCard {
+    width: 100%;
+    padding: 5px 20px;
+    border: gray 1px solid !important;
+    border-radius: 20px;
+    margin: 10px 0px !important;
+}
+
 /* Progress bar ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .infoBlokk, .progressBar {
     margin-left: auto;
@@ -175,9 +183,6 @@
 
 
 /* Last opp bilde ------------------------------------------------------------*/
-
-
-
 .uploadPhoto h5, .uploadPhoto .material-icons {
     position: absolute;
     text-align: center;

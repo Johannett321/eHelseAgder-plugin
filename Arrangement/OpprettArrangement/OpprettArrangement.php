@@ -57,9 +57,9 @@ function sc_opprett_arrangement() {
             </div>
 
             <label for="tittel" class = "labelForInput">Navn på arrangement*</label>
-            <input type="text" id="tittel" name="tittel" placeholder="Webinar: Digitale helsetjenester for alle" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->tittel?>">
+            <input type="text" id="tittel" name="tittel" placeholder="Webinar: Digitale helsetjenester for alle" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->tittel?>"><?php addCharacterCounter("tittel");?>
             <label for="kort_besk" class = "labelForInput">En kort setning om arrangementet*</label>
-            <input type="text" id="kort_besk" name="kort_besk" placeholder="Navn navnesen kaster lys på fremtiden for legemidler i et nytt webinar om digital legemiddelhåndtering" class = "small_input" maxlength="200" value = "<?php echo $loadedArrangement->kort_besk?>">
+            <input type="text" id="kort_besk" name="kort_besk" placeholder="Navn navnesen kaster lys på fremtiden for legemidler i et nytt webinar om digital legemiddelhåndtering" class = "small_input" maxlength="200" value = "<?php echo $loadedArrangement->kort_besk?>"><?php addCharacterCounter("kort_besk");?>
 
             <?php
             $dagensDato = date("Y-m-d");
@@ -78,21 +78,21 @@ function sc_opprett_arrangement() {
             <input type = "date" id = "sluttdato" name = "sluttdato" value="<?php echo $sluttDato?>">
 
             <label for="sted" class = "labelForInput">Sted*</label>
-            <input type="text" id="sted" name="sted" placeholder="Kristiansand" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->sted?>">
+            <input type="text" id="sted" name="sted" placeholder="Kristiansand" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->sted?>"><?php addCharacterCounter("sted");?>
             <label for="arrangor" class = "labelForInput">Arrangør*</label>
-            <input type="text" id="arrangor" name="arrangor" placeholder="Kristiansand kommune" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->arrangor?>">
+            <input type="text" id="arrangor" name="arrangor" placeholder="Kristiansand kommune" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->arrangor?>"><?php addCharacterCounter("arrangor");?>
             <label for="kontaktperson" class = "labelForInput">Kontaktperson*</label>
-            <input type="text" id="kontaktperson" name="kontaktperson" placeholder="Navn Navnesen" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->kontaktperson?>">
+            <input type="text" id="kontaktperson" name="kontaktperson" placeholder="Navn Navnesen" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->kontaktperson?>"><?php addCharacterCounter("kontaktperson");?>
             <label for="kontaktmail" class = "labelForInput">E-post til Kontaktperson*</label>
-            <input type="text" id="kontaktmail" name="kontaktmail" placeholder="navn.navnesen@gmail.com" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->kontaktperson_mail?>">
+            <input type="text" id="kontaktmail" name="kontaktmail" placeholder="navn.navnesen@gmail.com" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->kontaktperson_mail?>"><?php addCharacterCounter("kontaktmail");?>
 
             <div class = "sammendragContainer">
                 <label for = "psummary" class = "labelForInput">Innhold</label>
-                <textarea id = "psummary" name="psummary" form="minform" maxlength="3400" placeholder="Her kan du skrive selve artikkelen"><?php echo $loadedArrangement->innhold?></textarea>
+                <textarea id = "psummary" name="psummary" form="minform" maxlength="3400" placeholder="Her kan du skrive selve artikkelen"><?php echo $loadedArrangement->innhold?></textarea><?php addCharacterCounter("psummary");?>
             </div>
 
             <label for="pamelding" class = "labelForInput">Link til ekstern påmelding</label>
-            <input type="text" id="pamelding" name="pamelding" placeholder="https://www.ticketmaster.no/event/webinar-dhfa-2033-billetter/614599" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->pamelding_link?>">
+            <input type="text" id="pamelding" name="pamelding" placeholder="https://www.ticketmaster.no/event/webinar-dhfa-2033-billetter/614599" class = "small_input" maxlength="500" value = "<?php echo $loadedArrangement->pamelding_link?>"><?php addCharacterCounter("pamelding");?>
 
             <label for = "uploadFiles" class = "labelForInput">Program/andre eksterne vedlegg</label>
             <?php getMultiFileUploadListHTMLElement(5, $loadedArrangement->vedlegg); ?>

@@ -134,7 +134,7 @@ function createArrangementerTable($formatted_table_name) {
         kontaktperson varchar(100),
         kontaktperson_mail varchar(100),
         innhold varchar(15000),
-        pamelding_link varchar(100),
+        pamelding_link varchar(500),
         vedlegg varchar(2000),
         publisert smallint,
         PRIMARY KEY (id)
