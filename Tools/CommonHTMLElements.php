@@ -90,3 +90,55 @@ function addCharacterCounter($textFieldID) {
     </style>
     <?php
 }
+
+/**
+ * Legger til en informasjonsknapp på siden, som viser en informasjonsboks når brukeren hovrer musen over knappen
+ * @param $randomID string En tilfeldig id som brukes når javascript skal opprette metodene, uten at det blir konflikter på siden.
+ * @param $innhold string teksten som skal stå i info boksen
+ * @return void
+ */
+function addInfoBox($randomID, $innhold) {
+    ?>
+    <span class="material-icons infoButton" id = "<?php echo $randomID?>infoButton">
+        info
+    </span>
+    <div class = "hovedInfoBox hidden" id = "<?php echo $randomID?>hovedInfoBox">
+        <?php echo $innhold ?>
+    </div>
+
+    <script type="text/javascript">
+        <?php echo $randomID . "()"?>
+
+        function <?php echo $randomID ?>() {
+            const infoButton = document.getElementById('<?php echo $randomID?>infoButton');
+            const hovedInfoBox = document.getElementById('<?php echo $randomID?>hovedInfoBox');
+
+            $(infoButton).mouseenter(function() {
+                hovedInfoBox.classList.remove("hidden");
+            }).mouseleave(function() {
+                hovedInfoBox.classList.add("hidden");
+            });
+        }
+    </script>
+
+    <style>
+        .infoButton {
+            cursor: default;
+        }
+
+        .hovedInfoBox {
+            font-size: 18px;
+
+            position: absolute;
+            padding: 15px;
+            max-width: 300px;
+
+            box-shadow: #444444 2px 2px 10px;
+            border-radius: 10px;
+            background-color: #D6EBCA;
+
+            z-index: 10;
+        }
+    </style>
+    <?php
+}

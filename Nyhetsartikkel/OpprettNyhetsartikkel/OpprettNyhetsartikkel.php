@@ -55,14 +55,14 @@ function sc_opprett_nyhetsartikkel() {
                     }
                 </script>
             </div>
-            <label for="tittel" class = "labelForInput">Tittel:</label>
+            <label for="tittel" class = "labelForInput">Tittel*</label>
             <input type="text" id="tittel" name="tittel" placeholder="Vi har signert kontrakt!" class = "small_input" maxlength="50" value = "<?php echo $loadedNyhetsartikkel->tittel?>"><?php addCharacterCounter("tittel");?>
 
-            <label for="ingress" class = "labelForInput">Ingress:</label>
+            <label for="ingress" class = "labelForInput">Ingress*</label>
             <input type="text" id="ingress" name="ingress" placeholder="Etter mange måneder med venting, har endelig kontrakten med Min Bedrift AS blitt signert." class = "small_input" maxlength="200" value = "<?php echo $loadedNyhetsartikkel->ingress?>"><?php addCharacterCounter("ingress");?>
 
             <div class = "sammendragContainer">
-                <label for = "psummary" class = "labelForInput">Innhold</label>
+                <label for = "psummary" class = "labelForInput">Innhold*</label><?php addInfoBox("innholdInfo", "Her skrives selve nyhetsinnlegget. Hvordan du vil at artikkelen skal bygges opp er opp til deg")?>
                 <textarea id = "psummary" name="psummary" form="minform" maxlength="3400" placeholder="Her kan du skrive selve artikkelen"><?php echo $loadedNyhetsartikkel->innhold?></textarea><?php addCharacterCounter("psummary");?>
             </div>
 
@@ -71,21 +71,23 @@ function sc_opprett_nyhetsartikkel() {
                 <?php
                 if ($loadedNyhetsartikkel == null) {
                     ?>
-                    <label for="skrevet_av" class = "labelForInput">Forfatter/skrevet av:</label>
+                    <label for="skrevet_av" class = "labelForInput">Forfatter/skrevet av*</label>
                     <input type="text" id="skrevet_av" name="skrevet_av" placeholder="Navn Navnesen" class = "small_input" maxlength="40" value = "<?php echo $loadedNyhetsartikkel->skrevet_av?>"><?php addCharacterCounter("skrevet_av");?>
-                    <label for="rolle" class = "labelForInput">Rolle/stilling:</label>
+                    <label for="rolle" class = "labelForInput">Rolle/stilling</label>
                     <input type="text" id="rolle" name="rolle" placeholder="Prosjektleder" class = "small_input" maxlength="40" value = "<?php echo $loadedNyhetsartikkel->rolle?>"><?php addCharacterCounter("rolle");?>
                     <?php
                 }else {
                     ?>
-                    <label for="endret_av" class = "labelForInput">Hvem gjør endringer?</label>
+                    <label for="endret_av" class = "labelForInput">Hvem gjør endringer?*</label>
+                    <?php addInfoBox("endringerFelt", "Her fyller du ut DITT navn, slik at en leser ser hvem som gjorde endringer sist.") ?>
                     <input type="text" id="endret_av" name="endret_av" placeholder="Navn Navnesen" class = "small_input" maxlength="100" value = "<?php echo $loadedNyhetsartikkel->endret_av?>"><?php addCharacterCounter("endret_av");?>
                     <?php
                 }
                 ?>
             </div>
 
-            <label for="assignedProjectChooser" class = "labelForInput">Tilhørende prosjekt:</label>
+            <label for="assignedProjectChooser" class = "labelForInput">Tilhørende prosjekt</label>
+            <?php addInfoBox("prosjekterDropdownInfo", "Her legger du til prosjektet som er tilknyttet nyhetsartikkelen, slik at leser av artikkelen kan trykke seg videre til prosjektet via en link i artikkelen") ?>
             <select id="assignedProjectChooserDropdown" name="assignedProjectChooser">
                 <?php
                 loadProjectsAsDropdownOptions($loadedNyhetsartikkel->tilknyttet_prosjekt);
