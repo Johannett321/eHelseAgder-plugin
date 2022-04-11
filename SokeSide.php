@@ -136,4 +136,10 @@ function sc_sok_resultater() {
             }
             break;
     }
+
+    if ($results == null) {
+        ?>
+        <h5 style = "width: 60%;">Ingen resultater funnet</h5>
+        <?php
+    }
 }
