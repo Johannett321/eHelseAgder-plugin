@@ -2,8 +2,8 @@
 
 include ("CookieTool.php");
 
-add_action('wp', 'add_jquery');
 add_action('wp', 'check_page_in_dev');
+add_action('wp_body_open', 'add_jquery');
 
 /**
  * Legger til JQuery på siden
@@ -20,7 +20,7 @@ function add_jquery() {
 function check_page_in_dev() {
     if (pageIsInDevelopment() && !isset($_COOKIE['DevelopmentDeviceEnrolled'])) {
         ?>
-        <img class = "pageBackground" src = "<?php echo wp_upload_dir()['baseurl'] . "/eHelseAgderPlus/background.png" ?>"/>
+        <img class = "pageBackground" src = "<?php echo wp_upload_dir()['baseurl'] . "/eHelseAgderPlus/background.jpg" ?>"/>
         <div class = "bigMessage">
             <img src = ""/>
             <h2>Under konstruksjon</h2>

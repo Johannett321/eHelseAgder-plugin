@@ -46,12 +46,16 @@ require 'Arrangement/ArrangementArkiv.php';
 include 'Tools/SocialMediaTool.php';
 include 'Login/LoginKnapp.php';
 
-if (debugModeIsOn()) {
-    error_log("WARNING: DEBUG MODE IS ON!");
-    //Loader en custom css fil under utvikling.
-    wp_enqueue_style("MYCUSTOMDEVCSS", plugins_url() . "/eHelseAgderPlugin/MyCustomStyle.css");
-}
+add_action( 'wp_enqueue_scripts', 'enqueue_my_scripts' );
 
-wp_enqueue_style("EHELSEAGDERCSS", plugins_url() . "/eHelseAgderPlugin/style.css");
+function enqueue_my_scripts() {
+    wp_enqueue_style("EHELSEAGDERCSS", plugins_url() . "/eHelseAgderPlugin/style.css");
+
+    if (debugModeIsOn()) {
+        error_log("WARNING: DEBUG MODE IS ON!");
+        //Loader en custom css fil under utvikling.
+        wp_enqueue_style("MYCUSTOMDEVCSS", plugins_url() . "/eHelseAgderPlugin/MyCustomStyle.css");
+    }
+}
 
 error_log("--------------------------------------",0);

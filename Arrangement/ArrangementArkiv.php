@@ -1,6 +1,6 @@
 <?php
 include "AarsSide.php";
-include "NyhetsSok.php";
+//include "NyhetsSok.php";
 
 add_shortcode( 'sc_arrangementarkiv', 'sc_arrangementarkiv');
 

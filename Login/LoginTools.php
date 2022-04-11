@@ -86,7 +86,6 @@ add_action('init', 'checkIfPageRequiresLogin');
  * Det er derfor viktig at denne kjører før headeren blir sendt.
  */
 function checkIfPageRequiresLogin() {
-    session_start();
     global $pagesRequireLogin;
 
     $pageTitle = $_SERVER["REQUEST_URI"];
