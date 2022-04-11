@@ -22,6 +22,8 @@ require 'Tools/Essentials.php';
 require 'Tools/Tools.php';
 require 'Tools/CommonHTMLElements.php';
 
+include "SokeSide.php";
+
 include 'Tools/PageMessages.php';
 require 'Tools/JavascriptCheckerTool.php';
 require 'Tools/UploadFileTool.php';

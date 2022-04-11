@@ -30,6 +30,7 @@ function getTilknyttetProsjektTekst($artikkelInfo) {
 /**
  * Oppretter et lite HTML element med artikkelens tittel, ingress, bilde og når den ble publisert.
  * @param $article array Hele artikkelen.
+ * @deprecated Use createLargeListItem() instead
  */
 function createShortArticle($article) {
     ?>

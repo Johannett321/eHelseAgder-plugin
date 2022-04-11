@@ -92,10 +92,15 @@ function getprojectpage() {
     </div>
     <center><h1><?php echo $projectInfo[0]->project_name; ?></h1></center>
     <div class = "projectText"><?php echo nl2br($projectInfo[0]->project_text); ?></div>
-    <center><h4 class = "contentTitle">Vil du vite mer?</h4></center>
     <div class = "collapsibles" id = "displayCol">
         <?php
         $collapsibles = getCollapsibles($prosjektID);
+
+        if ($collapsibles != null) {
+            ?>
+            <center><h4 class = "contentTitle">Vil du vite mer?</h4></center>
+            <?php
+        }
 
         for ($i = 0; $i < sizeof($collapsibles); $i++) {
             ?>

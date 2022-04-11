@@ -13,7 +13,7 @@
 function createLargeListItem($title, $description, $uElement1, $uElement2, $image, $linkHref) {
     ?>
     <a href = "<?php echo $linkHref?>">
-        <div class = "largeListCard">
+        <div class = "artikkelKort">
             <div class="photoSmall">
                 <img src = "<?php echo getPhotoUploadUrl() . $image ?>"/>
             </div>
