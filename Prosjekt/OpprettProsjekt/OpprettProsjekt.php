@@ -102,7 +102,7 @@ function lagFelter($loadedProsjekt) {
                 <input type="text" id="prosjekteierkommuner" name="prosjekteierkommuner" placeholder="Kristiansand" class = "small_input" maxlength="40" value = "<?php echo $loadedProsjekt->prosjekteierkommuner ?>"><?php addCharacterCounter("prosjekteierkommuner");?>
                 <label for="sokerkommuner" class = "labelForInput">Søkerkommune(r)</label>
                 <input type="text" id="sokerkommuner" name="sokerkommuner" placeholder="Grimstad, Arendal" class = "small_input" maxlength="200" value = "<?php echo $loadedProsjekt->sokerkommuner ?>"><?php addCharacterCounter("sokerkommuner");?>
-                <label for="samarbeidspartnere" class = "labelForInput">samarbeidspartner(e)</label>
+                <label for="samarbeidspartnere" class = "labelForInput">Samarbeidspartner(e)</label>
                 <input type="text" id="samarbeidspartnere" name="samarbeidspartnere" placeholder="Grimstad, Arendal" class = "small_input" maxlength="200" value = "<?php echo $loadedProsjekt->samarbeidspartnere ?>"><?php addCharacterCounter("samarbeidspartnere");?>
                 <label for="project_start" class = "labelForInput">Prosjektstart*</label>
                 <input type="text" id="project_start" name="project_start" placeholder="2025" class = "small_input" maxlength="14" value = "<?php echo $loadedProsjekt->prosjektstart ?>"><?php addCharacterCounter("project_start");?>
