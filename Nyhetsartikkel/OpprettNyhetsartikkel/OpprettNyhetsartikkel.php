@@ -95,9 +95,13 @@ function sc_opprett_nyhetsartikkel() {
             </select>
         </div>
 
-        <center>
-            <input type = "submit" class = "button" id = "submitButton" value = "Videre">
-        </center>
+        <?php
+        if ($loadedNyhetsartikkel == null) {
+            addSubmitButtonWithVerification("minform", array("tittel", "ingress", "psummary", "skrevet_av"), array("rolle"));
+        }else {
+            addSubmitButtonWithVerification("minform", array("tittel", "ingress", "psummary", "endret_av"), array());
+        }
+        ?>
     </form>
     <?php
 }

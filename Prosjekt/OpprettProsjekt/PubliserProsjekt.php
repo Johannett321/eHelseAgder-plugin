@@ -149,9 +149,9 @@ function lagreMilepaeler($projectID) {
                 $milepaeler = $milepaeler . ";";
             }
 
-            $milepaeler = $milepaeler . $_POST["cmtittel" . $counter] . "," .
-            $_POST["milepaeldropdown" . $counter] . "," .
-            $_POST["cmcontact" . $counter] . "," .
+            $milepaeler = $milepaeler . $_POST["cmtittel" . $counter] . "--!--" .
+            $_POST["milepaeldropdown" . $counter] . "--!--" .
+            $_POST["cmcontact" . $counter] . "--!--" .
             $_POST["cmdate" . $counter];
             error_log("La til milepæl: " . $_POST["cmtittel" . $counter], 0);
         }else {
@@ -184,9 +184,9 @@ function lagreProsjektTeam($projectID) {
                 $projectTeamMembers = $projectTeamMembers . ";";
             }
 
-            $projectTeamMembers = $projectTeamMembers . $_POST["cvtmfulltnavn" . $counter] . "," . 
-            $_POST["cvtmrolle" . $counter] . "," .
-            $_POST["cvtmepost" . $counter] . "," .
+            $projectTeamMembers = $projectTeamMembers . $_POST["cvtmfulltnavn" . $counter] . "--!--" .
+            $_POST["cvtmrolle" . $counter] . "--!--" .
+            $_POST["cvtmepost" . $counter] . "--!--" .
             $_POST["cvtmmobil" . $counter];
 
             error_log("Added project team member: " . $_POST["cvtmfulltnavn" . $counter], 0);

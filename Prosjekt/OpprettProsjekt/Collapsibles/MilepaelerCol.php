@@ -64,7 +64,7 @@ function addMilepaelerCol() {
 
             function createMilepael(currentMilepaelInfo, savedTextInfo) {
                 if (currentMilepaelInfo == null) currentMilepaelInfo = "";
-                const milepaelInfoSplit = currentMilepaelInfo.split(",");
+                const milepaelInfoSplit = currentMilepaelInfo.split("--!--");
                 console.log("Milepaeler sier: " + currentMilepaelInfo);
 
                 milepaelCounter += 1;

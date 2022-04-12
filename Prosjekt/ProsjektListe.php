@@ -18,7 +18,7 @@ function getprojectlist() {
                     "Prosjektstart: " . $currentProject->prosjektstart,
                     "Prosjekteier: " . $currentProject->prosjekteierkommuner,
                     $currentProject->bilde,
-                    "http://localhost:8888/se-alle-prosjekter/prosjektside/?prosjektID=" . $currentProject->id);
+                    "se-alle-prosjekter/prosjektside/?prosjektID=" . $currentProject->id);
             }
         ?>
     <?php

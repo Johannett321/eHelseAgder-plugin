@@ -142,3 +142,53 @@ function addInfoBox($randomID, $innhold) {
     </style>
     <?php
 }
+
+function addSubmitButtonWithVerification($formId, $requiredFields, $notRequiredFields) {
+    ?>
+    <button type = "button" class = "button" id = "submitButton" value = "Videre">Videre</button>
+    <script type="text/javascript">
+        const myForm = document.getElementById('<?php echo $formId ?>');
+
+        $('#submitButton').click(function() {
+            verifyFields();
+
+            function verifyFields() {
+                <?php
+                foreach ($requiredFields as $field) {
+                    ?>
+                    if (document.getElementById('<?php echo $field?>').value.length === 0) {
+                        alert("Vennligst fyll ut alle feltene som er markert med *");
+                        return;
+                    }
+                    if (stringContainsIllegalChars(document.getElementById('<?php echo $field?>').value)) {
+                        alert("Du kan ikke bruke tegnene '--!--' eller ';' i teksten du skrev i feltet: <?php echo $field ?>")
+                        return;
+                    }
+                <?php
+                }
+                foreach ($notRequiredFields as $field) {
+                ?>
+                    if (stringContainsIllegalChars(document.getElementById('<?php echo $field?>').value)) {
+                        alert("Du kan ikke bruke tegnene '--!--' eller ';' i teksten du skrev i feltet: <?php echo $field ?>")
+                        return;
+                    }
+                <?php
+                }
+                ?>
+
+                myForm.submit();
+            }
+        });
+
+        function stringContainsIllegalChars(myString) {
+            if (myString.includes(";")) {
+                return true;
+            }
+            if (myString.includes("--!--")) {
+                return true;
+            }
+            return false;
+        }
+    </script>
+    <?php
+}

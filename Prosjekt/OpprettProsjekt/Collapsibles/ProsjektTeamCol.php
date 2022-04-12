@@ -66,7 +66,7 @@ function addProsjektTeamCol() {
 
             function createPerson(personInfo, savedTextInfo) {
                 if (personInfo == null) personInfo = "";
-                const personInfoSplit = personInfo.split(",");
+                const personInfoSplit = personInfo.split("--!--");
                 console.log("Prosjektteam sier: " + personInfo);
 
                 peopleInProjectTeam += 1;

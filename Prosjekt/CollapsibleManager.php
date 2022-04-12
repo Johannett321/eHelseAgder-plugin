@@ -43,7 +43,7 @@ function getHtmlContentForCollapsible($collapsible) {
 function getProsjektTeametCollapsible($collapsible) {
     $people = explode(";", $collapsible->innhold);
     for ($i = 0; $i < sizeof($people); $i++) {
-        $rows = explode(",", $people[$i]);
+        $rows = explode("--!--", $people[$i]);
         ?>
             <div class = "inliner">
                 <img src = "https://www.oseyo.co.uk/wp-content/uploads/2020/05/empty-profile-picture-png-2-2.png"/>
@@ -69,7 +69,7 @@ function getMilepaelerCollapsible($collapsible) {
             <?php
                 $rows = explode(";", $collapsible->innhold);
                 for ($i = 0; $i < sizeof($rows); $i++) {
-                    $rowParams = explode(",", $rows[$i]);
+                    $rowParams = explode("--!--", $rows[$i]);
                     ?>
                     <tr>
                         <td>
