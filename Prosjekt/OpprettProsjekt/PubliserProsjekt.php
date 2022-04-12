@@ -28,7 +28,6 @@ function publiserProsjekt() {
 }
 
 function lagreProsjektUtkast() {
-    session_start();
     jsonRequiresLogin();
 
     prepareProsjekterDraftsTable();
@@ -208,26 +207,29 @@ function lagreCustomCollapsibles($projectID) {
     $counter = 0;
 
     $attemptsLeft = 20;
+    $foundAnyCustomCollapsibles = false;
 
     while($shouldContinue) {
         $counter += 1;
         if (isset($_POST["cvcustomtitle" . $counter])) {
+            $foundAnyCustomCollapsibles = true;
             $formatted_table_name = getDraftCollapsibleDatabaseRef();
             $wpdb->insert($formatted_table_name, array("prosjekt_id" => $projectID, "egendefinert_navn" => $_POST["cvcustomtitle" . $counter], "innhold" => $_POST["cvcustomdesc" . $counter], "collapsible_type" => 1), array("%d", "%s", "%s", "%d"));
             error_log("Added custom collapsible: " . $_POST["cvcustomtitle" . $counter], 0);
         }else {
-            error_log("No more items, returning...", 0);
-
             $attemptsLeft -= 1;
             if ($attemptsLeft <= 0) {
                 $shouldContinue = false;
             }
         }
     }
+    if (!$foundAnyCustomCollapsibles) {
+        error_log("Fant ingen custom collapsibles");
+    }
 }
 
 function lagreNedlastbareDokumenter($projectID){
-    if (!isset($_POST["fil1"]) && $_FILES["fil1"] == null) {
+    if (!isset($_POST["fil1"]) && !array_key_exists("fil1", $_FILES)) {
         error_log("Ingen filer er lastet opp");
         return;
     }
