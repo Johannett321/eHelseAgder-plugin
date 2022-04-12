@@ -57,7 +57,7 @@ function sc_opprett_arrangement() {
             </div>
 
             <label for="tittel" class = "labelForInput">Navn på arrangement*</label>
-            <input type="text" id="tittel" name="tittel" placeholder="Webinar: Digitale helsetjenester for alle" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->tittel?>"><?php addCharacterCounter("tittel");?>
+            <input type="text" id="tittel" name="tittel" placeholder="Webinar: Digitale helsetjenester for alle" class = "small_input" maxlength="55" value = "<?php echo $loadedArrangement->tittel?>"><?php addCharacterCounter("tittel");?>
             <label for="kort_besk" class = "labelForInput">En kort setning om arrangementet*</label>
             <?php addInfoBox("kortsetning", "Denne setningen skal gi leseren en kort forståelse av hva arrangementet handler om");?>
             <input type="text" id="kort_besk" name="kort_besk" placeholder="Navn navnesen kaster lys på fremtiden for legemidler i et nytt webinar om digital legemiddelhåndtering" class = "small_input" maxlength="200" value = "<?php echo $loadedArrangement->kort_besk?>"><?php addCharacterCounter("kort_besk");?>

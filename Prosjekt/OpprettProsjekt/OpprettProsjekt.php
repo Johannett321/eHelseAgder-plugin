@@ -83,7 +83,7 @@ function lagFelter($loadedProsjekt) {
             <div class = "requiredPart">
                 <h3 class = "mainTitle">Kort om prosjektet</h3>
                 <label for="pname" class = "labelForInput">Prosjektets navn*</label>
-                <input type="text" id="pname" name="pname" placeholder="Digital Hjemmeoppfølging" class = "small_input" maxlength="100" value = "<?php echo $loadedProsjekt->project_name ?>"><?php addCharacterCounter("pname");?>
+                <input type="text" id="pname" name="pname" placeholder="Digital Hjemmeoppfølging" class = "small_input" maxlength="55" value = "<?php echo $loadedProsjekt->project_name ?>"><?php addCharacterCounter("pname");?>
                 <label for="psubtitle" class = "labelForInput">En setning om prosjektet (beskrivende undertittel)*</label>
                 <?php addInfoBox("subtitleInfo", "Eksempel: Et EU prosjekt for å øke livskvalitet for pasienter med kronisk sykdom");?>
                 <input type="text" id="psubtitle" name="psubtitle" placeholder="Et EU prosjekt for å øke livskvalitet for pasienter med kronisk sykdom." class = "small_input" maxlength="100" value = "<?php echo $loadedProsjekt->undertittel?>"><?php addCharacterCounter("psubtitle");?>

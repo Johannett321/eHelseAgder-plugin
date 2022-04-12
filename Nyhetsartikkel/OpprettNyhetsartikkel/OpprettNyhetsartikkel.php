@@ -56,7 +56,7 @@ function sc_opprett_nyhetsartikkel() {
                 </script>
             </div>
             <label for="tittel" class = "labelForInput">Tittel*</label>
-            <input type="text" id="tittel" name="tittel" placeholder="Vi har signert kontrakt!" class = "small_input" maxlength="50" value = "<?php echo $loadedNyhetsartikkel->tittel?>"><?php addCharacterCounter("tittel");?>
+            <input type="text" id="tittel" name="tittel" placeholder="Vi har signert kontrakt!" class = "small_input" maxlength="55" value = "<?php echo $loadedNyhetsartikkel->tittel?>"><?php addCharacterCounter("tittel");?>
 
             <label for="ingress" class = "labelForInput">Ingress*</label>
             <input type="text" id="ingress" name="ingress" placeholder="Etter mange måneder med venting, har endelig kontrakten med Min Bedrift AS blitt signert." class = "small_input" maxlength="200" value = "<?php echo $loadedNyhetsartikkel->ingress?>"><?php addCharacterCounter("ingress");?>

@@ -20,7 +20,7 @@ function getDisplayDateFormat($dateString) {
  */
 function debugModeIsOn() {
     global $config;
-    if (array_key_exists("debug_mode", $config)) {
+    if (array_key_exists('debug_mode', $config)) {
         return $config['debug_mode'];
     }else {
         return false;
