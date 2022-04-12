@@ -4,6 +4,13 @@ include ("CookieTool.php");
 
 add_action('wp', 'check_page_in_dev');
 add_action('wp_body_open', 'add_jquery');
+add_action('wp_body_open', 'add_ajaxurl');
+
+function add_ajaxurl() {
+    echo '<script type="text/javascript">
+           var ajaxurl = "' . admin_url('admin-ajax.php') . '";
+         </script>';
+}
 
 /**
  * Legger til JQuery på siden

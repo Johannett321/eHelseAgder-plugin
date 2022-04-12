@@ -29,6 +29,7 @@ require 'Tools/JavascriptCheckerTool.php';
 require 'Tools/UploadFileTool.php';
 require 'AdminPanel.php';
 require 'Login/LoggInnSide.php';
+require 'Login/MinSide.php';
 require 'Prosjekt/OpprettProsjekt/OpprettProsjekt.php';
 require 'OnPluginActivation.php';
 require 'Tools/SQLTool.php';

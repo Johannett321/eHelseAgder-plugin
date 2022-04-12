@@ -4,14 +4,15 @@ add_shortcode("sc_login_knapp", "sc_login_knapp");
 function sc_login_knapp() {
     $loginButtonHref = get_site_url();
     if (userIsLoggedIn()) {
-        $loginButtonHref .= "/wp-json/ehelseagderplugin/api/logg_ut";
+        //$loginButtonHref .= "/wp-json/ehelseagderplugin/api/logg_ut";
+        $loginButtonHref .= "/min-side";
     }else {
         $loginButtonHref .= "/logg-inn";
     }
     ?>
     <a href = "<?php echo $loginButtonHref ?>">
         <div class=button>
-            <?php if (userIsLoggedIn()){echo "Logg ut";}else{echo "Logg inn";}?>
+            <?php if (userIsLoggedIn()){echo "Min side";}else{echo "Logg inn";}?>
         </div>
     </a>
     <style>

@@ -101,7 +101,7 @@ function checkIfPageRequiresLogin() {
             }else {
                 //Brukeren er ikke logget inn
                 error_log("Brukeren forsøker å besøke en side som krever innlogging. Brukeren er IKKE innlogget, og blir omdirigert til login");
-                redirectToLoginAndExit();
+                redirectToLoginAndExit("Denne siden krever innlogging!");
             }
         }
     }
@@ -109,9 +109,14 @@ function checkIfPageRequiresLogin() {
 
 /**
  * Gjør akkurat det funksjonen sier.
+ * @param $message string Meldingen som skal vises
  */
-function redirectToLoginAndExit() {
-    wp_redirect("../../../logg-inn?prevpage=" . $_SERVER["REQUEST_URI"]);
+function redirectToLoginAndExit($message) {
+    $redirectAddress = "../../../logg-inn?prevpage=" . $_SERVER["REQUEST_URI"];
+    if ($message != null) {
+        $redirectAddress .= "&errorMessage=" . $message;
+    }
+    wp_redirect($redirectAddress);
     exit;
 }
 
