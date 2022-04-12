@@ -15,6 +15,7 @@ function install_plugin() {
 }
 
 function createPluginImages() {
+    deleteDir("wp-content/uploads/eHelseAgderPlus/");
     mkdir("wp-content/uploads/eHelseAgderPlus");
 
     // Get array of all source files
