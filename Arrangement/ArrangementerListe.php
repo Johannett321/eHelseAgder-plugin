@@ -9,7 +9,7 @@ function sc_siste_arrangementer_stor_liste() {
             $currentEvent->kort_besk,
             date("d-m-Y", strtotime($currentEvent->start_dato)),
             $currentEvent->sted, $currentEvent->bilde,
-            "arrangementer/vis-arrangement/?eventID=" . $currentEvent->id);
+            "vis-arrangement/?eventID=" . $currentEvent->id);
     }
     ?>
     <a href = "arrangementarkiv/"><button type="button" class="button">Arrangementarkiv</button></a>
