@@ -59,7 +59,13 @@ function getprojectpage() {
     }
     ?>
     <div class = "topPart">
-        <div class = "coverPhoto"><img src = "<?php echo getPhotoUploadUrl() . $bildeUrl ?>"></div>
+        <?php
+        if ($bildeUrl != null) {
+            ?>
+            <div class = "coverPhoto"><img src = "<?php echo getPhotoUploadUrl() . $bildeUrl ?>"></div>
+            <?php
+        }
+        ?>
         <div class = "oppsummert">
             <h4>Kort om prosjektet</h4>
             <div>
@@ -73,21 +79,43 @@ function getprojectpage() {
                 <div>
                     <i>Epost: <?php echo $projectInfo[0]->ledermail?></i>
                     <br>
-                    <i>Mobil: <?php echo $projectInfo[0]->ledertlf?></i>
+                    <?php
+                    if ($projectInfo[0]->ledertlf != null) {
+                        ?>
+                        <i>Mobil: <?php echo $projectInfo[0]->ledertlf?></i>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
-            <div>
-                <h5>Søkerkommuner:</h5><span><?php echo $projectInfo[0]->sokerkommuner?></span>
-            </div>
-            <div>
-                <h5>samarbeidspartnere:</h5><span><?php echo $projectInfo[0]->samarbeidspartnere?></span>
-            </div>
+            <?php
+            if ($projectInfo[0]->sokerkommuner != null) {
+                ?>
+                <div>
+                    <h5>Søkerkommuner:</h5><span><?php echo $projectInfo[0]->sokerkommuner?></span>
+                </div>
+                <?php
+            }
+            if ($projectInfo[0]->samarbeidspartnere != null) {
+                ?>
+                <div>
+                    <h5>Samarbeidspartnere:</h5><span><?php echo $projectInfo[0]->samarbeidspartnere?></span>
+                </div>
+                <?php
+            }
+            ?>
             <div>
                 <h5>Prosjektstart:</h5><span><?php echo $projectInfo[0]->prosjektstart?></span>
             </div>
-            <div>
-                <h5>Prosjektslutt (estimert):</h5><span><?php echo $projectInfo[0]->prosjektslutt?></span>
-            </div>
+            <?php
+            if ($projectInfo[0]->prosjektslutt != null) {
+                ?>
+                <div>
+                    <h5>Prosjektslutt (estimert):</h5><span><?php echo $projectInfo[0]->prosjektslutt?></span>
+                </div>
+                <?php
+            }
+            ?>
         </div>
     </div>
     <center><h1><?php echo $projectInfo[0]->project_name; ?></h1></center>
