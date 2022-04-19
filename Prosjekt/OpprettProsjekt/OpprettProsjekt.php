@@ -126,9 +126,20 @@ function lagFelter($loadedProsjekt) {
                     </div>
                 </div>
                 <br>
-                <center>
-                    <input type = "submit" class = "button" id = "submitButton" value = "Videre">
-                </center>
+                <?php
+                addSubmitButtonWithVerification("minform",
+                    array("pname",
+                    "psubtitle",
+                    "pleadername",
+                    "pleaderemail",
+                    "prosjekteierkommuner",
+                    "project_start",
+                    "psummary"),
+                    array("pleaderphone",
+                    "sokerkommuner",
+                    "samarbeidspartnere",
+                    "project_end"));
+                ?>
             </textBox>
         </div>
     </form>

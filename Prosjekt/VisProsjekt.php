@@ -53,7 +53,13 @@ function getprojectpage() {
     }
     ?>
     <div class = "topPart">
-        <div class = "coverPhoto"><img src = "<?php echo getPhotoUploadUrl() . $bildeUrl ?>"></div>
+        <?php
+        if ($bildeUrl != null) {
+            ?>
+            <div class = "coverPhoto"><img src = "<?php echo getPhotoUploadUrl() . $bildeUrl ?>"></div>
+            <?php
+        }
+        ?>
         <div class = "oppsummert">
             <h4>Kort om prosjektet</h4>
             <div>

@@ -59,7 +59,7 @@ function sc_vis_artikkel() {
         <div class = "tilknyttetProsjektTekst"><?php echo getTilknyttetProsjektTekst($artikkelInfo[0])?></div>
         <hr class="divider">
         <div class="infoBunn">
-            <div id = "kildeinfo">Publisert <?php echo getDisplayDateFormat($artikkelInfo[0]->dato_skrevet)?>, av <?php echo $artikkelInfo[0]->skrevet_av ?> (<?php echo $artikkelInfo[0]->rolle ?>)</div>
+            <div id = "kildeinfo">Publisert <?php echo getDisplayDateFormat($artikkelInfo[0]->dato_skrevet)?>, av <?php echo $artikkelInfo[0]->skrevet_av ?><?php if ($artikkelInfo[0]->rolle != null) echo " (" . $artikkelInfo[0]->rolle . ")" ?></div>
             <?php
             $endretAv = $artikkelInfo[0]->endret_av;
             if ($endretAv != null && $endretAv != "") {

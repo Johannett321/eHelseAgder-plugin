@@ -33,9 +33,14 @@ function createShortArticle($article) {
     ?>
     <a href = "<?php echo "vis-artikkel?artikkelID=" . $article->id; ?>">
         <div class = "artikkelKort">
-            <div class="photoSmall">
-                <img src = "<?php echo getPhotoUploadUrl() . $article->bilde ?>"/>
-            </div>
+            <?php if ($article->bilde != null) {
+                ?>
+                <div class="photoSmall">
+                    <img src = "<?php echo getPhotoUploadUrl() . $article->bilde ?>"/>
+                </div>
+                <?php
+            }
+            ?>
             <div class="artikkelkorttekst">
                 <h5><?php echo $article->tittel; ?></h5>
                 <p><?php echo $article->ingress; ?></p>

@@ -14,9 +14,15 @@ function createLargeListItem($title, $description, $uElement1, $uElement2, $imag
     ?>
     <a href = "<?php echo $linkHref?>">
         <div class = "artikkelKort">
-            <div class="photoSmall">
-                <img src = "<?php echo getPhotoUploadUrl() . $image ?>"/>
-            </div>
+            <?php
+            if ($image != null) {
+                ?>
+                <div class="photoSmall">
+                    <img src = "<?php echo getPhotoUploadUrl() . $image ?>"/>
+                </div>
+                <?php
+            }
+            ?>
             <div class="artikkelkorttekst">
                 <h5><?php echo $title ?></h5>
                 <p><?php echo $description ?></p>

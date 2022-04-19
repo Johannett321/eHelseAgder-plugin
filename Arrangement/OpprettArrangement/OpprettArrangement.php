@@ -87,7 +87,7 @@ function sc_opprett_arrangement() {
             <input type="text" id="kontaktmail" name="kontaktmail" placeholder="navn.navnesen@gmail.com" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->kontaktperson_mail?>"><?php addCharacterCounter("kontaktmail");?>
 
             <div class = "sammendragContainer">
-                <label for = "psummary" class = "labelForInput">Informasjon om arrangementet</label>
+                <label for = "psummary" class = "labelForInput">Informasjon om arrangementet*</label>
                 <?php addInfoBox("informasjonOmArrangementInfo", "Her skriver du informasjon om arrangementet. Om du har et program i eget dokument kan dette lastes opp i feltet for program/andre eksterne vedlegg. Om arrangementet ditt foreløpig ikke har noe påmeldingslink, kan dette være lurt å informere om her");?>
                 <textarea id = "psummary" name="psummary" form="minform" maxlength="3400" placeholder="Her kan du skrive selve artikkelen"><?php echo $loadedArrangement->innhold?></textarea><?php addCharacterCounter("psummary");?>
             </div>
@@ -100,7 +100,9 @@ function sc_opprett_arrangement() {
         </div>
 
         <center>
-            <input type = "submit" class = "button" id = "submitButton" value = "Videre">
+            <?php
+            addSubmitButtonWithVerification("minform", array("tittel", "kort_besk", "sted", "arrangor", "kontaktperson", "kontaktmail", "psummary"), array("pamelding"));
+            ?>
         </center>
     </form>
 
