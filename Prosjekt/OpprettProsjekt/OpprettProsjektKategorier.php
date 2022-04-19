@@ -109,7 +109,7 @@ function leggTilInformasjonFelt() {
                 </div>
                 <br>
                 <center>
-                    <input type = "submit" class = "button" id = "submitButton" value = "Videre">
+                    <input type = "submit" class = "button" id = "submitButton" value = "Fortsett">
                 </center>
             </textBox>
 

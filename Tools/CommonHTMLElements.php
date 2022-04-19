@@ -151,7 +151,7 @@ function addInfoBox($randomID, $innhold) {
 
 function addSubmitButtonWithVerification($formId, $requiredFields, $notRequiredFields) {
     ?>
-    <button type = "button" class = "button" id = "submitButton" value = "Videre">Videre</button>
+    <button type = "button" class = "button" id = "submitButton" value = "Videre">Fortsett</button>
     <script type="text/javascript">
         const myForm = document.getElementById('<?php echo $formId ?>');
 
