@@ -11,8 +11,8 @@ function sc_login_knapp() {
     }
     ?>
     <a href = "<?php echo $loginButtonHref ?>">
-        <div class=button>
-            <?php if (userIsLoggedIn()){echo "Min side";}else{echo "Logg inn";}?>
+        <div class="button" style="font-size: 13px;">
+            <?php if (userIsLoggedIn()){echo "<span class=\"material-icons\" style=\"margin-bottom: 6px\">person</span> Min side";}else{echo "<span class=\"material-icons\" style=\"margin-bottom: 6px\">lock</span> Logg inn";}?>
         </div>
     </a>
     <style>

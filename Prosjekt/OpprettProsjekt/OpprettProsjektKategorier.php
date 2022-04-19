@@ -56,8 +56,6 @@ function leggTilInformasjonFelt() {
     }
     ?>
     <form action="<?php echo $postURL ?>" method="post" id = "myForm" enctype="multipart/form-data">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
         <div class="infoBlokk">
             <i class="material-icons">info</i>
             <h5 class="mainTitle">Legg til informasjon om prosjektet <?php echo $_SESSION["pname"] ?></h5>

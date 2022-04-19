@@ -42,9 +42,6 @@ function sc_vis_artikkel() {
         <?php
         if (userIsLoggedIn() && !lookingAtDraft()) {
             ?>
-            <head>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-            </head>
             <a href = "../../opprett-nyhetsartikkel?editArticleID=<?php echo $artikkelID ?>"><button class="editButton">Rediger nyhetsartikkel<span class = "material-icons">edit</span></button></a>
             <?php
         }

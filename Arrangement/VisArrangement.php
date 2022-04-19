@@ -41,9 +41,6 @@ function sc_vis_arrangement() {
         <?php
         if (userIsLoggedIn() && !lookingAtDraft()) {
             ?>
-            <head>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-            </head>
             <a href = "../../opprett-arrangement?editEventID=<?php echo $eventID ?>"><button>Rediger arrangement<span class = "material-icons">edit</span></button></a>
             <?php
         }

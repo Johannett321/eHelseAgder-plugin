@@ -4,9 +4,6 @@ add_shortcode('sc_opprett_arrangement_knapp','sc_opprett_arrangement_knapp');
 function sc_opprett_arrangement_knapp() {
     if (userIsLoggedIn()) {
         ?>
-        <head>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        </head>
         <a href = "../../opprett-arrangement"><button>Opprett arrangement<span class = "material-icons">add</span></button></a>
         <?php
     }

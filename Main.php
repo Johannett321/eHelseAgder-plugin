@@ -53,6 +53,7 @@ add_action( 'wp_enqueue_scripts', 'enqueue_my_scripts' );
 
 function enqueue_my_scripts() {
     wp_enqueue_style("EHELSEAGDERCSS", plugins_url() . "/eHelseAgderPlugin/style.css");
+    wp_enqueue_style("GoogleMaterialIcons", "https://fonts.googleapis.com/icon?family=Material+Icons");
 
     if (debugModeIsOn()) {
         error_log("WARNING: DEBUG MODE IS ON!");

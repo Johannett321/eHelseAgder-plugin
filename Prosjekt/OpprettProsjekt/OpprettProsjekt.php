@@ -30,8 +30,6 @@ function loadProsjekt() {
 function lagFelter($loadedProsjekt) {
     ?>
     <form action = "kategorier<?php if (isset($_GET['editProsjektID'])) echo "?editProsjektID=" . $_GET['editProsjektID']?>" method = "post" id = "minform" enctype="multipart/form-data">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
         <div class="infoBlokk">
             <i class="material-icons">info</i>
             <h5>Denne prosessen skjer i tre steg. For å gå videre til neste steg trykker du </h5>

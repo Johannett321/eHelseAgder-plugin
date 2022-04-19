@@ -4,9 +4,6 @@ add_shortcode('sc_opprett_nyhetsartikkel_knapp','sc_opprett_nyhetsartikkel_knapp
 function sc_opprett_nyhetsartikkel_knapp() {
     if (userIsLoggedIn()) {
         ?>
-        <head>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        </head>
         <a href = "../../opprett-nyhetsartikkel"><button>Opprett nyhetsartikkel<span class = "material-icons">add</span></button></a>
         <?php
     }

@@ -27,7 +27,6 @@ function sc_opprett_arrangement() {
     }
     ?>
     <form action = "<?php echo $postURL?>" method = "post" id = "minform" enctype="multipart/form-data">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <div class = "innhold">
             <h3 class = "mainTitle">Opprett arrangement</h3>
             <!-- OPPLASTING AV BILDE -->

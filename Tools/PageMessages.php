@@ -7,7 +7,6 @@
 function showCompleteMessage($message) {
     ?>
     <div class = "infoBlokk">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <span class="material-icons">
             done
         </span>
@@ -23,7 +22,6 @@ function showCompleteMessage($message) {
 function showErrorMessage($message) {
     ?>
     <div class = "infoBlokk">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <span class="material-icons">
             error
         </span>

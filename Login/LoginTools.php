@@ -57,7 +57,6 @@ function useHTTPS() {
 function showLoginError($errorMessage) {
     ?>
     <div class = "infoBlokk">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <span class="material-icons">
             warning
         </span>

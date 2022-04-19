@@ -170,7 +170,6 @@ function prosjekterMenu() {
 function showAdminMessage($message) {
     ?>
     <div class = "adminInfo">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <span class="material-icons">
             done
         </span>

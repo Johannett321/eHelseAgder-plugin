@@ -30,12 +30,13 @@ function getprojectpage() {
 
     $prosjektID = $_GET["prosjektID"];
     $projectInfo = getProject($prosjektID);
-    $bildeUrl =  $projectInfo[0]->bilde;
 
     if ($projectInfo == null) {
         showErrorMessage("Dette prosjektet eksisterer ikke lenger!");
         return;
     }
+
+    $bildeUrl =  $projectInfo[0]->bilde;
 
     if (isset($_GET['message'])) {
         showCompleteMessage($_GET['message']);
@@ -44,16 +45,9 @@ function getprojectpage() {
     if (isset($_GET['popupT'])) {
         createPopupBox($_GET['popupT'], $_GET['popupM']);
     }
-    ?>
-    <head>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    </head>
-    <?php
+
     if (userIsLoggedIn() && !lookingAtDraft()) {
         ?>
-        <head>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        </head>
         <a href = "../../opprett-prosjekt?editProsjektID=<?php echo $prosjektID ?>"><button class="editButton" id="editButtonProsj">Rediger prosjekt<span class = "material-icons">edit</span></button></a>
         <?php
     }
@@ -66,28 +60,53 @@ function getprojectpage() {
                 <h5>Prosjektnavn:</h5><span><?php echo $projectInfo[0]->project_name?></span>
             </div>
             <div>
-                <h5>Prosjektleder:</h5><span><?php echo $projectInfo[0]->ledernavn?></span>
-            </div>
-            <div>
-                <h5>Prosjekteier:</h5>
+                <h5>Prosjektleder:</h5>
                 <div>
+                    <i>Navn: <?php echo $projectInfo[0]->ledernavn?></i>
+                    <br>
                     <i>Epost: <?php echo $projectInfo[0]->ledermail?></i>
                     <br>
-                    <i>Mobil: <?php echo $projectInfo[0]->ledertlf?></i>
+                    <?php
+                    if ($projectInfo[0]->ledertlf != null) {
+                        ?>
+                        <i>Mobil: <?php echo $projectInfo[0]->ledertlf?></i>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
             <div>
-                <h5>Søkerkommuner:</h5><span><?php echo $projectInfo[0]->sokerkommuner?></span>
+                <h5>Prosjekteier:</h5><span><?php echo $projectInfo[0]->prosjekteierkommuner?></span>
             </div>
-            <div>
-                <h5>samarbeidspartnere:</h5><span><?php echo $projectInfo[0]->samarbeidspartnere?></span>
-            </div>
+            <?php
+            if ($projectInfo[0]->sokerkommuner != null) {
+                ?>
+                <div>
+                    <h5>Søkerkommuner:</h5><span><?php echo $projectInfo[0]->sokerkommuner?></span>
+                </div>
+                <?php
+            }
+
+            if ($projectInfo[0]->samarbeidspartnere != null) {
+                ?>
+                <div>
+                    <h5>samarbeidspartnere:</h5><span><?php echo $projectInfo[0]->samarbeidspartnere?></span>
+                </div>
+                <?php
+            }
+            ?>
             <div>
                 <h5>Prosjektstart:</h5><span><?php echo $projectInfo[0]->prosjektstart?></span>
             </div>
-            <div>
-                <h5>Prosjektslutt (estimert):</h5><span><?php echo $projectInfo[0]->prosjektslutt?></span>
-            </div>
+            <?php
+            if ($projectInfo[0]->prosjektslutt != null) {
+                ?>
+                <div>
+                    <h5>Prosjektslutt (estimert):</h5><span><?php echo $projectInfo[0]->prosjektslutt?></span>
+                </div>
+                <?php
+            }
+            ?>
         </div>
     </div>
     <center><h1><?php echo $projectInfo[0]->project_name; ?></h1></center>
