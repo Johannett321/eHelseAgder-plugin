@@ -76,6 +76,7 @@ function createProsjekterTable($formatted_table_name) {
         ledertlf varchar(25),
         prosjektstart varchar(24),
         prosjektslutt varchar(24),
+        prosjektstatus int(1),
         prosjekteierkommuner varchar(50),
         sokerkommuner varchar(250),
         samarbeidspartnere varchar(250),

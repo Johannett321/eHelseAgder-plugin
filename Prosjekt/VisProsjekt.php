@@ -113,6 +113,9 @@ function getprojectpage() {
                 <?php
             }
             ?>
+            <div>
+                <h5>Prosjektets status:</h5><span><?php echo getProsjektStatusAsText($projectInfo[0]->prosjektstatus)?></span>
+            </div>
         </div>
     </div>
     <center><h1><?php echo $projectInfo[0]->project_name; ?></h1></center>

@@ -33,6 +33,8 @@ require 'Login/MinSide.php';
 require 'Prosjekt/OpprettProsjekt/OpprettProsjekt.php';
 require 'OnPluginActivation.php';
 require 'Tools/SQLTool.php';
+
+require 'Prosjekt/ProsjekterTools.php';
 require 'Prosjekt/ProsjektListe.php';
 require 'Prosjekt/VisProsjekt.php';
 require 'Prosjekt/CollapsibleManager.php';
