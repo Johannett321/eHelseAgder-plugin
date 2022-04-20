@@ -78,3 +78,39 @@ function lookingAtDraft() {
     }
     return false;
 }
+
+/**
+ * Legger til kode som gjør at collapsibles blir klikkbare og animerte
+ */
+function makeCollapsiblesWork() {
+    ?>
+    <script type = "text/javascript">
+        var coll = document.getElementsByClassName("collapsible");
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    $(content).animate({
+                        height: "0px"
+                    }, 200, function() {
+                        content.style.display = "none";
+                    })
+                } else {
+                    $(content).height(0);
+                    var curHeight = $(content).height();
+                    $(content).css('height', 'auto');
+                    var autoHeight = $(content).height() + 40;
+                    $(content).height(curHeight);
+
+                    content.style.display = "block";
+                    $(content).animate({
+                        height: autoHeight
+                    }, 200);
+                }
+            });
+        }
+    </script>
+    <?php
+}

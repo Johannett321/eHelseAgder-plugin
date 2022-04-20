@@ -12,7 +12,6 @@ function sc_siste_arrangementer_stor_liste() {
             "vis-arrangement/?eventID=" . $currentEvent->id);
     }
     ?>
-    <a href = "arrangementarkiv/"><button type="button" class="button">Arrangementarkiv</button></a>
     <?php
 }
 

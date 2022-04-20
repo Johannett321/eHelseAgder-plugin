@@ -1,14 +1,14 @@
 <?php
 
-add_shortcode( 'listeoverprosjekter', 'getprojectlist');
+add_shortcode( 'sc_aktive_prosjekter', 'sc_aktive_prosjekter');
 
 function getProjects() {
     global $wpdb;
-    $query = "SELECT * FROM " . getProsjekterDatabaseRef();
+    $query = "SELECT * FROM " . getProsjekterDatabaseRef() . " WHERE prosjektstatus = 1 OR prosjektstatus = 2";
     return $wpdb->get_results($query);
 }
 
-function getprojectlist() {
+function sc_aktive_prosjekter() {
     $projects = getProjects();
     ?>
         <?php

@@ -36,6 +36,7 @@ require 'Tools/SQLTool.php';
 
 require 'Prosjekt/ProsjekterTools.php';
 require 'Prosjekt/ProsjektListe.php';
+require 'Prosjekt/ProsjektArkiv.php';
 require 'Prosjekt/VisProsjekt.php';
 require 'Prosjekt/CollapsibleManager.php';
 

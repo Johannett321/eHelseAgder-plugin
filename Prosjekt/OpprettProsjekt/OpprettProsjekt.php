@@ -102,8 +102,8 @@ function lagFelter($loadedProsjekt) {
                 <input type="text" id="sokerkommuner" name="sokerkommuner" placeholder="Grimstad, Arendal" class = "small_input" maxlength="200" value = "<?php echo $loadedProsjekt->sokerkommuner ?>"><?php addCharacterCounter("sokerkommuner");?>
                 <label for="samarbeidspartnere" class = "labelForInput">Samarbeidspartner(e)</label>
                 <input type="text" id="samarbeidspartnere" name="samarbeidspartnere" placeholder="Grimstad, Arendal" class = "small_input" maxlength="200" value = "<?php echo $loadedProsjekt->samarbeidspartnere ?>"><?php addCharacterCounter("samarbeidspartnere");?>
-                <label for="project_start" class = "labelForInput">Prosjektstart*</label>
-                <input type="text" id="project_start" name="project_start" placeholder="2025" class = "small_input" maxlength="14" value = "<?php echo $loadedProsjekt->prosjektstart ?>"><?php addCharacterCounter("project_start");?>
+                <label for="project_start" class = "labelForInput">Prosjektstart*</label><?php addInfoBox("prosjektStartInfo", "Her fyller du ut årstallet som prosjektet starter/startet");?>
+                <input type="text" id="project_start" name="project_start" placeholder="2025" class = "small_input" maxlength="4" value = "<?php echo $loadedProsjekt->prosjektstart ?>"><?php addCharacterCounter("project_start");?>
                 <label for="project_end" class = "labelForInput">Estimert prosjektslutt</label>
                 <input type="text" id="project_end" name="project_end" placeholder="2032" class = "small_input" maxlength="14" value = "<?php echo $loadedProsjekt->prosjektslutt ?>"><?php addCharacterCounter("project_end");?>
 

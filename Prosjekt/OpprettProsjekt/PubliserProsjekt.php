@@ -56,7 +56,7 @@ function lagreProsjektUtkast() {
         "%s",
         "%s",
         "%s",
-        "%s",
+        "%d",
         "%s",
         "%d",
         "%s",
