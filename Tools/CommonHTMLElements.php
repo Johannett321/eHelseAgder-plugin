@@ -83,17 +83,6 @@ function addCharacterCounter($textFieldID) {
             });
         }
     </script>
-    <style>
-        .inputFieldCounter {
-            position: sticky;
-            float: right;
-            margin-right: 5px;
-            transform: translate(0, -170%);
-
-            font-size: 15px;
-            color: gray;
-        }
-    </style>
     <?php
 }
 

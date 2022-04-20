@@ -47,8 +47,7 @@ function getprojectpage() {
     }
 
     if (userIsLoggedIn() && !lookingAtDraft()) {
-        ?>
-        <a href = "../../opprett-prosjekt?editProsjektID=<?php echo $prosjektID ?>"><button class="editButton" id="editButtonProsj">Rediger prosjekt<span class = "material-icons">edit</span></button></a>
+        ?><div class="edit" id="editProsj"><a href = "../../opprett-prosjekt?editProsjektID=<?php echo $prosjektID ?>"><button class="editButton" id="editButtonProsj">Rediger prosjekt<span class = "material-icons">edit</span></button></a></div>
         <?php
     }
     ?>
