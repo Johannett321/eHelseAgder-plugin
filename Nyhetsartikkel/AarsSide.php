@@ -18,10 +18,14 @@ function sc_nyheter_fra_aar() {
 
     $results = $wpdb->get_results($query);
 
-    foreach($results as $result) {
-        createShortArticle($result);
-    }
     ?>
+    <div class = "artikkelKortHolder">
+        <?php
+        foreach ($results as $result) {
+            createShortArticle($result);
+        }
+        ?>
+    </div>
     <?php
 }
 
@@ -49,7 +53,13 @@ function sc_mest_populaere_nyheter() {
     global $wpdb;
     $results = $wpdb->get_results($query);
 
-    foreach($results as $result) {
-        createShortArticle($result);
-    }
+    ?>
+    <div class = "artikkelKortHolder">
+        <?php
+        foreach ($results as $result) {
+            createShortArticle($result);
+        }
+        ?>
+    </div>
+    <?php
 }

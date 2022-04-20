@@ -11,15 +11,17 @@ function getProjects() {
 function sc_aktive_prosjekter() {
     $projects = getProjects();
     ?>
+    <div class = "artikkelKortHolder">
         <?php
-            foreach ($projects as $currentProject) {
-                createLargeListItem($currentProject->project_name,
-                    $currentProject->undertittel,
-                    "Prosjektstart: " . $currentProject->prosjektstart,
-                    "Prosjekteier: " . $currentProject->prosjekteierkommuner,
-                    $currentProject->bilde,
-                    "prosjektside/?prosjektID=" . $currentProject->id);
-            }
+        foreach ($projects as $currentProject) {
+            createLargeListItem($currentProject->project_name,
+                $currentProject->undertittel,
+                "Prosjektstart: " . $currentProject->prosjektstart,
+                "Prosjekteier: " . $currentProject->prosjekteierkommuner,
+                $currentProject->bilde,
+                "prosjektside/?prosjektID=" . $currentProject->id);
+        }
         ?>
+    </div>
     <?php
 }

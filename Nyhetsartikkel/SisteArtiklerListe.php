@@ -13,9 +13,13 @@ function getLastNyheterList() {
 
 function loadSisteNyhetsartikler() {
     $nyheter = getLastNyheterList();
-    foreach ($nyheter as $currentNyhet) {
-        createShortArticle($currentNyhet);
-    }
     ?>
+    <div class = "artikkelKortHolder">
+        <?php
+        foreach ($nyheter as $currentNyhet) {
+            createShortArticle($currentNyhet);
+        }
+        ?>
+    </div>
     <?php
 }

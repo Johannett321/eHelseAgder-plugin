@@ -33,7 +33,7 @@ function loadProsjekter() {
                     <?php echo $i?>
                 </button>
 
-                <div class="content">
+                <div class="content artikkelKortHolder">
                     <?php
                     foreach($results as $result) {
                         $eventCounter++;

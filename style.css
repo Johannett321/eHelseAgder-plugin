@@ -997,7 +997,13 @@ td {
 
 /* Alle nyheter ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 
+.artikkelKortHolder {
+    text-align: center;
+}
+
 .artikkelKort {
+    display: inline-block;
+    text-align: left;
     width: 60%;
     height: 150px;
     margin: 20px auto;

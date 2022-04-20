@@ -99,7 +99,7 @@ function sc_vis_artikkel() {
 
             publishButton.onclick = function () {
                 if (confirm("Er du sikker på at du vil publisere nyhetsartikkelen?")) {
-                    console.log("Clearer localstorage for å publisere prosjekt");
+                    console.log("Clearer localstorage for å publisere nyhetsartikkel");
                     localStorage.clear();
 
                     location.href = "../../../../wp-json/ehelseagderplugin/api/publiser_nyhetsartikkel?articleID=<?php echo $_GET['artikkelID'] ?>";

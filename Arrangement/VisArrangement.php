@@ -126,8 +126,8 @@ function sc_vis_arrangement() {
             }
 
             publishButton.onclick = function () {
-                if (confirm("Er du sikker på at du vil publisere nyhetsartikkelen?")) {
-                    console.log("Clearer localstorage for å publisere prosjekt");
+                if (confirm("Er du sikker på at du vil publisere arrangementet?")) {
+                    console.log("Clearer localstorage for å publisere arrangement");
                     localStorage.clear();
 
                     location.href = "../../../../wp-json/ehelseagderplugin/api/publiser_arrangement?eventID=<?php echo $_GET['eventID'] ?>";

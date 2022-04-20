@@ -33,19 +33,23 @@ function loadNyhetsartikler() {
 
                 error_log("Result length: " . sizeof($results));
 
-                $articleCounter = 0;
-                foreach($results as $result) {
-                    $articleCounter++;
-                    createShortArticle($result);
-                }
-                if ($articleCounter > 4) {
-                    ?>
-                    <center>
-                        <a href = "aarstall?year=<?php echo $i ?>"><button class = "viewMore">Vis alle nyheter fra <?php echo $i?></button></a>
-                    </center>
-                    <?php
-                }
                 ?>
+                <div class = "artikkelKortHolder">
+                    <?php
+                    $articleCounter = 0;
+                    foreach($results as $result) {
+                        $articleCounter++;
+                        createShortArticle($result);
+                    }
+                    if ($articleCounter > 4) {
+                        ?>
+                        <center>
+                            <a href = "aarstall?year=<?php echo $i ?>"><button class = "viewMore">Vis alle nyheter fra <?php echo $i?></button></a>
+                        </center>
+                        <?php
+                    }
+                    ?>
+                </div>
             </div>
             <?php
         }

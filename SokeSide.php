@@ -104,38 +104,44 @@ function sc_sok_resultater() {
     global $wpdb;
     $results = $wpdb->get_results($query);
 
-    switch ($innholdsType) {
-        case 'nyhetsartikler':
-            foreach($results as $result) {
-                createLargeListItem($result->tittel,
-                $result->ingress,
-                getDisplayDateFormat($result->dato_skrevet),
-                $result->skrevet_av,
-                $result->bilde,
-                "alle-nyhetsartikler/vis-artikkel/?artikkelID=" . $result->id);
-            }
-            break;
-        case 'prosjekter':
-            foreach($results as $result) {
-                createLargeListItem($result->project_name,
-                    $result->undertittel,
-                    $result->prosjekteierkommuner,
-                    $result->prosjektstart,
-                    $result->bilde,
-                    "alle-prosjekter/prosjektside/?prosjektID=" . $result->id);
-            }
-            break;
-        case 'arrangementer':
-            foreach($results as $result) {
-                createLargeListItem($result->tittel,
-                    $result->kort_besk,
-                    getDisplayDateFormat($result->start_dato),
-                    $result->sted,
-                    $result->bilde,
-                    "vis-arrangement/?eventID=" . $result->id);
-            }
-            break;
-    }
+    ?>
+    <div class = "artikkelKortHolder">
+        <?php
+        switch ($innholdsType) {
+            case 'nyhetsartikler':
+                foreach($results as $result) {
+                    createLargeListItem($result->tittel,
+                        $result->ingress,
+                        getDisplayDateFormat($result->dato_skrevet),
+                        $result->skrevet_av,
+                        $result->bilde,
+                        "alle-nyhetsartikler/vis-artikkel/?artikkelID=" . $result->id);
+                }
+                break;
+            case 'prosjekter':
+                foreach($results as $result) {
+                    createLargeListItem($result->project_name,
+                        $result->undertittel,
+                        $result->prosjekteierkommuner,
+                        $result->prosjektstart,
+                        $result->bilde,
+                        "alle-prosjekter/prosjektside/?prosjektID=" . $result->id);
+                }
+                break;
+            case 'arrangementer':
+                foreach($results as $result) {
+                    createLargeListItem($result->tittel,
+                        $result->kort_besk,
+                        getDisplayDateFormat($result->start_dato),
+                        $result->sted,
+                        $result->bilde,
+                        "vis-arrangement/?eventID=" . $result->id);
+                }
+                break;
+        }
+        ?>
+    </div>
+    <?php
 
     if ($results == null) {
         ?>
