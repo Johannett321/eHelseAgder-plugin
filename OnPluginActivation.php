@@ -148,6 +148,7 @@ function createArrangementerTable($formatted_table_name) {
         kort_besk varchar(250),
         bilde varchar (150),
         start_dato date,
+        start_klokkeslett varchar(5),
         slutt_dato date,
         sted varchar(150),
         arrangor varchar(150),

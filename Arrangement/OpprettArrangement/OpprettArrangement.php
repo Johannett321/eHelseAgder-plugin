@@ -74,6 +74,10 @@ function sc_opprett_arrangement() {
             ?>
             <label for="startdato" class = "labelForInput">Starter*</label>
             <input type = "date" id = "startdato" name = "startdato" value="<?php echo $startDato?>">
+            <!--start_klokkeslett-->
+            <label for="start_klokkeslett" class = "labelForInput">Klokkeslettet det starter</label>
+            <?php addInfoBox("klokkeslett", "Her velger du klokkeslettet det starter. Dersom dette ikke er bestemt enda, kan du skrive ca. klokkeslett, og skrive i 'Informasjon om arrangementet' at det ikke er bestemt enda.");?>
+            <input type = "time" id = "start_klokkeslett" name = "start_klokkeslett" value="<?php echo $loadedArrangement->start_klokkeslett?>">
             <label for="sluttdato" class = "labelForInput">Slutter*</label>
             <input type = "date" id = "sluttdato" name = "sluttdato" value="<?php echo $sluttDato?>">
 
