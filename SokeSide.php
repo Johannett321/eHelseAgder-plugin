@@ -91,6 +91,9 @@ function sc_sok_resultater() {
         case 'arrangementer':
             $tableName = getArrangementerDatabaseRef();
             break;
+        case 'dokumenter':
+            dokumentSok();
+            return;
     }
 
     $query = "SELECT * FROM " . $tableName . " WHERE " . $_GET['field'] . " LIKE '%" . $searchFor . "%'";
@@ -138,6 +141,28 @@ function sc_sok_resultater() {
                         "vis-arrangement/?eventID=" . $result->id);
                 }
                 break;
+            case 'dokumenter':
+                dokumentSok();
+                break;
+        }
+        ?>
+    </div>
+    <?php
+
+    if ($results == null) {
+        ?>
+        <h5 style = "width: 60%;">Ingen resultater funnet</h5>
+        <?php
+    }
+}
+
+function dokumentSok() {
+    $results = getAllFilesInFolderAndSubfolders("", $_GET['q']);
+    ?>
+    <div class = "artikkelKortHolder">
+        <?php
+        foreach ($results as $result) {
+            createLargeListItem($result['filename'], "...", $result['dateModified'], $result['fileSizeMB'] . " MB", "", getFilesUploadUrl() . $result['path']);
         }
         ?>
     </div>

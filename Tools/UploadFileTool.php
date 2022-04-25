@@ -268,3 +268,38 @@ function deleteDir($dirPath) {
     }
     rmdir($dirPath);
 }
+
+/**
+ * @param $folderPath string path til filteret
+ * @param $filter string [optional] lar deg kun legge til filer som inneholder dette
+ * @return array|false
+ */
+function getAllFilesInFolderAndSubfolders($folderPath, $filter) {
+    $filesToReturn = [];
+    $filesUploadDir = "wp-content/uploads/minefiler/";
+    $elementsFound = scandir($filesUploadDir . $folderPath);
+    for ($i = 0; $i < sizeof($elementsFound); $i++) {
+        if ($elementsFound[$i] == "." || $elementsFound[$i] == ".." || $elementsFound[$i] == "..." || $elementsFound[$i] == ".DS_Store") {
+            continue;
+        }
+        if (is_dir($filesUploadDir. $folderPath . "/" . $elementsFound[$i])) {
+            $foundFilesInSubfolder = getAllFilesInFolderAndSubfolders($folderPath . "/" . $elementsFound[$i], $filter);
+            $filesToReturn = array_merge($filesToReturn, $foundFilesInSubfolder);
+        }else {
+            if ($filter != null && !strpos($elementsFound[$i], $filter)) {
+                continue;
+            }
+            array_push($filesToReturn, getFileInfo($folderPath . "/" . $elementsFound[$i]));
+        }
+    }
+    return $filesToReturn;
+}
+
+function getFileInfo($path) {
+    error_log("Returning file: " . basename($path));
+    $filesUploadDir = "wp-content/uploads/minefiler/";
+    return ["path"=> $path,
+        "filename"=>basename($filesUploadDir . $path),
+        "dateModified"=>date("d-m-Y", filemtime($filesUploadDir . $path)),
+        "fileSizeMB"=>round(filesize($filesUploadDir . $path)/1000/1000, 2)];
+}
