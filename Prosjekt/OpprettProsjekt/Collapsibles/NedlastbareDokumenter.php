@@ -5,6 +5,7 @@ function addNedlastbareDokCol() {
         var numberOfFileUploadButtons = 0;
         var fileList;
         var addFileButton;
+        var addFileButtonText;
         var maxFiler;
 
         function createNedlastbareDokumenterCol(innhold) {
@@ -26,8 +27,11 @@ function addNedlastbareDokCol() {
 
             addFileButton = document.createElement('button');
             addFileButton.id = "addFileButton";
-            addFileButton.innerText = "Legg til fil"
             addFileButton.type = "button";
+
+            addFileButtonText = document.createElement('h6');
+            addFileButtonText.innerText = "Legg til fil";
+            addFileButton.appendChild(addFileButtonText);
 
             fileList = document.createElement('div');
             fileList.id = "fileList";

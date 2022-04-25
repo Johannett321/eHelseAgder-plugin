@@ -61,7 +61,7 @@ function createSmallListItem($title, $description, $bottomElement, $image, $href
 }
 
 /**
- * Legger til eth HTML element som teller characters i et tekstfelt. Den viser brukeren hvor mange tegn som gjenstår
+ * Legger til et HTML element som teller characters i et tekstfelt. Den viser brukeren hvor mange tegn som gjenstår
  * @param $textFieldID string id'en til html elementet du vil legge til en teller på.
  * @return void
  */
