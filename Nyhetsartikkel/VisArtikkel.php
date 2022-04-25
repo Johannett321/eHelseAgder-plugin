@@ -16,6 +16,16 @@ function getArtikkel($artikkelID) {
     return $wpdb->get_results($query);
 }
 
+function addSocialMediaMeta($articleID, $title, $description, $bildeUrl) {
+    ?>
+    <meta property="og:url" content="<?php echo get_site_url()?>/se-alle-nyhetsartikler/vis-artikkel/?artikkelID=<?php echo $articleID?>"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="<?php echo $title?>"/>
+    <meta property="og:description" content="<?php echo $description?>"/>
+    <meta property="og:image" content="<?php echo $bildeUrl?>"/>
+    <?php
+}
+
 function sc_vis_artikkel() {
     if (!isset($_GET["artikkelID"])) {
         showErrorMessage("Denne siden ble ikke lastet inn riktig");
@@ -24,6 +34,8 @@ function sc_vis_artikkel() {
     $artikkelID = $_GET["artikkelID"];
     $artikkelInfo = getArtikkel($artikkelID);
     $bildeUrl =  $artikkelInfo[0]->bilde;
+
+    addSocialMediaMeta($artikkelID, $artikkelInfo[0]->tittel, $artikkelInfo[0]->ingress, getPhotoUploadUrl() . $artikkelInfo[0]->bilde);
 
     if ($artikkelInfo == null) {
         showErrorMessage("Denne artikkelen eksisterer ikke lenger!");
