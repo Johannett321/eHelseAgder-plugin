@@ -74,17 +74,6 @@ function addProsjektTeamCol() {
                 person.name = peopleInProjectTeam;
                 person.classList.add('addPerson');
 
-                const leftSide = document.createElement('div');
-                leftSide.classList.add('personLeftCol');
-
-                const uploadPictureButton = document.createElement('div');
-                uploadPictureButton.classList.add('personProfilBilde');
-                leftSide.appendChild(uploadPictureButton);
-
-                const uploadPictureText = document.createElement('h5');
-                uploadPictureText.innerText = "Last opp bilde"
-                leftSide.appendChild(uploadPictureText);
-
                 const rightSide = document.createElement('div');
                 rightSide.classList.add('personRightCol');
 
@@ -151,7 +140,6 @@ function addProsjektTeamCol() {
                 rightSide.appendChild(epostField);
                 rightSide.appendChild(mobilField);
 
-                person.appendChild(leftSide);
                 person.appendChild(rightSide);
                 person.appendChild(removePersonButton);
 
