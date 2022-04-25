@@ -22,7 +22,17 @@ function sc_opprett_nyhetsartikkel() {
     <?php
     if ($loadedNyhetsartikkel != null) {
         ?>
-        <a href = "../../../wp-json/ehelseagderplugin/api/slett_nyhetsartikkel?articleID=<?php echo $_GET['editArticleID']?>"><button>Slett nyhetsartikkel</button></a>
+        <button id ="deleteArticle">Slett nyhetsartikkel</button>
+        <script type="text/javascript">
+            const deleteArticleButton = document.getElementById('deleteArticle');
+            const deleteArticleLink = "../../../wp-json/ehelseagderplugin/api/slett_nyhetsartikkel?articleID=<?php echo $_GET['editArticleID']?>";
+
+            deleteArticleButton.onclick = function () {
+                if (confirm("Er du sikker på at du vil slette '<?php echo $loadedNyhetsartikkel->tittel?>'?")) {
+                    window.location.href = deleteArticleLink;
+                }
+            }
+        </script>
         <?php
     }
     ?>

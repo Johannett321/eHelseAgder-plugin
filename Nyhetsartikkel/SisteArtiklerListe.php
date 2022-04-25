@@ -12,6 +12,10 @@ function getLastNyheterList() {
 }
 
 function loadSisteNyhetsartikler() {
+    if (isset($_GET['message'])) {
+        showCompleteMessage($_GET['message']);
+    }
+
     $nyheter = getLastNyheterList();
     ?>
     <div class = "artikkelKortHolder">
