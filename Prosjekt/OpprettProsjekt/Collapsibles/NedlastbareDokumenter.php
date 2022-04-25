@@ -22,6 +22,7 @@ function addNedlastbareDokCol() {
 
         function getFileUploadUIHandler(myNetworkFiles, maxFilesAllowed) {
             const uiHandler = document.createElement('div');
+            uiHandler.classList.add('uploadFiles');
 
             addFileButton = document.createElement('button');
             addFileButton.id = "addFileButton";

@@ -115,25 +115,27 @@ function sc_vis_arrangement() {
     if (lookingAtDraft()) {
         ?>
         <br/>
-        <button type="button" id = "backButton">Tilbake</button>
-        <button type="button" id = "publishButton">Publiser</button>
-        <script type="text/javascript">
-            const backButton = document.getElementById('backButton');
-            const publishButton = document.getElementById('publishButton');
+        <div class = "buttons">
+            <button type="button" id = "backButton">Tilbake</button>
+            <button type="button" id = "publishButton">Publiser</button>
+            <script type="text/javascript">
+                const backButton = document.getElementById('backButton');
+                const publishButton = document.getElementById('publishButton');
 
-            backButton.onclick = function () {
-                window.history.go(-1)
-            }
-
-            publishButton.onclick = function () {
-                if (confirm("Er du sikker på at du vil publisere arrangementet?")) {
-                    console.log("Clearer localstorage for å publisere arrangement");
-                    localStorage.clear();
-
-                    location.href = "../../../../wp-json/ehelseagderplugin/api/publiser_arrangement?eventID=<?php echo $_GET['eventID'] ?>";
+                backButton.onclick = function () {
+                    window.history.go(-1)
                 }
-            }
-        </script>
+
+                publishButton.onclick = function () {
+                    if (confirm("Er du sikker på at du vil publisere arrangementet?")) {
+                        console.log("Clearer localstorage for å publisere arrangement");
+                        localStorage.clear();
+
+                        location.href = "../../../../wp-json/ehelseagderplugin/api/publiser_arrangement?eventID=<?php echo $_GET['eventID'] ?>";
+                    }
+                }
+            </script>
+        </div>
         <?php
     }
 }

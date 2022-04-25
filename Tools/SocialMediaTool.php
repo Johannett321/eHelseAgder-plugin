@@ -21,11 +21,12 @@ function implementTwitterInShareButton() {
 
 function implementSingleShareButton($buttonText, $buttonLink, $cssID) {
     removePageMessageIfPresent();
-    ?>
+    ?><div class="deleKnapper">
     <a href="<?php echo $buttonLink ?>" target="_blank" id = "myFacebookShareButtonLink">
         <div class = "deleknapp" id = "<?php echo $cssID ?>">
             <?php echo $buttonText ?>
         </div>
     </a>
+    </div>
     <?php
 }

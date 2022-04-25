@@ -64,6 +64,18 @@ function leggTilInformasjonFelt() {
                 ikke kategorien du leter etter kan du velge «legg til egen kategori» for å definere kategori selv. Den nye kategorien vil dukke opp under. </p>
         </div>
 
+        <div class="infoBlokk" id="topProgress">
+            <textBox class="progressBar" id="steg2">
+                <p class="stegText" id="step1">Grunnleggende info</p>
+                <p class="stegText" id="step2">Ekstra kategorier</p>
+                <p class="stegText" id="step3">Forhåndsvisning</p>
+                <div class="border">
+                    <div id="thisBar" class="bar">
+                    </div>
+                </div>
+            </textBox>
+        </div>
+
         <div class="innhold">
             <h4>Legg til kategori:</h4>
             <div class="addCustomField">
