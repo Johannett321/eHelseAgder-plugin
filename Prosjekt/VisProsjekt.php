@@ -177,10 +177,7 @@ function getprojectpage() {
                     }
                 </script>
             </textBox>
-
         </div>
-
-
         <?php
     }
 }

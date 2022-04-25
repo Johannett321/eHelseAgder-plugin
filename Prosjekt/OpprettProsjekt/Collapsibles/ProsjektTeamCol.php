@@ -54,6 +54,15 @@ function addProsjektTeamCol() {
             leggTilPersonKnapp.classList.add('addPersonButton');
             leggTilPersonKnapp.type = "button";
             leggTilPersonKnapp.addEventListener("click", function () {
+                for(var i = 1; i < 30; i++) {
+                    if (document.getElementById('cvtmfulltnavn'+i) == null) {
+                        break;
+                    }
+                    if (document.getElementById('cvtmfulltnavn'+i).value === "") {
+                        alert("Du må fylle ut navn på alle personene du har lagt til, før du kan legge til flere personer.");
+                        return;
+                    }
+                }
                 const nyPerson = createPerson(null, savedTextInfo);
                 personer.appendChild(nyPerson);
                 scrollToView(nyPerson);
@@ -87,32 +96,32 @@ function addProsjektTeamCol() {
                         alert("Kan ikke fjerne alle personene i et prosjektteam. Tips: For å slette prosjekt team kategorien, kan du trykke på 'x' symbolet øverst til høyre av kategorien");
                         return
                     }
-                    if (confirm("Er du sikker?") == true) {
+                    if (confirm("Er du sikker på at du vil slette medlemmet?") == true) {
                         $(person).animate({opacity: '0%', height: '0px'}, function (){$(person).remove();personRemoved(person.name);});
                     }
                 });
 
                 const textBoxesIncludingThis = peopleInProjectTeam*4;
 
-                const rolleField = createMultiSaverTextField("Stilling/rolle: ",
-                    "cvtmrolle" + peopleInProjectTeam,
-                    "Markedskordinator",
+                const fulltNavnField = createMultiSaverTextField("Fullt navn*",
+                    "cvtmfulltnavn" + peopleInProjectTeam,
+                    "Navn Navnesen",
                     personInfoSplit[0],
                     prosjektTeamArray,
                     textBoxesIncludingThis-4,
                     savedTextInfo,
                     "prosjektteam");
 
-                const fulltNavnField = createMultiSaverTextField("Fullt navn: ",
-                    "cvtmfulltnavn" + peopleInProjectTeam,
-                    "Navn Navnesen",
+                const rolleField = createMultiSaverTextField("Stilling/rolle",
+                    "cvtmrolle" + peopleInProjectTeam,
+                    "Markedskordinator",
                     personInfoSplit[1],
                     prosjektTeamArray,
                     textBoxesIncludingThis-3,
                     savedTextInfo,
                     "prosjektteam");
 
-                const epostField = createMultiSaverTextField("E-post: ",
+                const epostField = createMultiSaverTextField("E-post",
                     "cvtmepost" + peopleInProjectTeam,
                     "navn.navnesen@gmail.com",
                     personInfoSplit[2],
@@ -121,7 +130,7 @@ function addProsjektTeamCol() {
                     savedTextInfo,
                     "prosjektteam");
 
-                const mobilField = createMultiSaverTextField("Mobil: ",
+                const mobilField = createMultiSaverTextField("Mobil",
                     "cvtmmobil" + peopleInProjectTeam,
                     "902 26 981",
                     personInfoSplit[3],
@@ -135,8 +144,8 @@ function addProsjektTeamCol() {
                     person.appendChild(line);
                 }
 
-                rightSide.appendChild(rolleField);
                 rightSide.appendChild(fulltNavnField);
+                rightSide.appendChild(rolleField);
                 rightSide.appendChild(epostField);
                 rightSide.appendChild(mobilField);
 
@@ -157,6 +166,28 @@ function addProsjektTeamCol() {
             function personRemoved(personNumber) {
                 peopleInProjectTeam -= 1;
                 saveSpecialFields(prosjektTeamArray,savedTextInfo,"prosjektteam")
+                correctProsjektTeamFieldNames();
+            }
+
+            function correctProsjektTeamFieldNames() {
+                const prosjektTeamFields = document.getElementsByClassName("addPerson");
+                for (let i = 0; i < prosjektTeamFields.length; i++) {
+                    const correctNumber = i+1;
+                    const fullNameField = prosjektTeamFields[i].getElementsByTagName('input')[0];
+                    const roleField = prosjektTeamFields[i].getElementsByTagName('input')[1];
+                    const eMailField = prosjektTeamFields[i].getElementsByTagName('input')[2];
+                    const phoneField = prosjektTeamFields[i].getElementsByTagName('input')[3];
+
+                    correctIDAndName(fullNameField, "cvtmfulltnavn" + correctNumber)
+                    correctIDAndName(roleField, "cvtmrolle" + correctNumber)
+                    correctIDAndName(eMailField, "cvtmepost" + correctNumber)
+                    correctIDAndName(phoneField, "cvtmmobil" + correctNumber)
+
+                    function correctIDAndName(object, correctValue) {
+                        object.id = correctValue;
+                        object.name = correctValue;
+                    }
+                }
             }
 
             collapsible.appendChild(personer);

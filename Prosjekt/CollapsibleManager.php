@@ -49,9 +49,9 @@ function getProsjektTeametCollapsible($collapsible) {
                 <img src = "https://www.oseyo.co.uk/wp-content/uploads/2020/05/empty-profile-picture-png-2-2.png"/>
                 <div class = "textFields">
                     <h5><?php echo $rows[0]?></h5>
-                    <h6><?php echo $rows[1]?></h6>
-                    <p><?php echo $rows[2]?></p>
-                    <p>mobil: <?php echo $rows[3]?></p>
+                    <h6><?php if ($rows[1] != null ) echo $rows[1]?></h6>
+                    <p><?php if ($rows[2] != null ) echo $rows[2]?></p>
+                    <p><?php if ($rows[3] != null ) echo "Mobil: " . $rows[3]?></p>
                 </div>
             </div>
         <?php

@@ -49,6 +49,16 @@ function addMilepaelerCol() {
             leggTilMilepaelKnapp.classList.add('addPersonButton');
             leggTilMilepaelKnapp.type = "button";
             leggTilMilepaelKnapp.addEventListener("click", function () {
+                for(var i = 1; i < 30; i++) {
+                    if (document.getElementById('cmtittel'+i) == null) {
+                        break;
+                    }
+                    if (document.getElementById('cmtittel'+i).value === "") {
+                        alert("Du må fylle ut tittelen på alle de forrige milepælene, før du kan legge til en ny!");
+                        return;
+                    }
+                }
+
                 const nyMilepael = createMilepael(null, savedTextInfo);
                 milepaeler.appendChild(nyMilepael);
                 scrollToView(nyMilepael);
@@ -108,13 +118,13 @@ function addMilepaelerCol() {
 
                 const label = document.createElement('label');
                 label.for = "milepaeldropdown" + milepaelCounter;
-                label.innerText = "Status: ";
+                label.innerText = "Status*";
 
                 const removeMilepaelButton = document.createElement('button');
                 removeMilepaelButton.type = "button";
                 removeMilepaelButton.innerText = "Fjern milepæl";
                 $(removeMilepaelButton).click(function (e) {
-                    if (confirm("Er du sikker?") == true) {
+                    if (confirm("Er du sikker på at du vil slette milepælen?") == true) {
                         $(currentMilepael).animate({opacity: '0%', height: '0px'}, function (){$(currentMilepael).remove();milepaelRemoved(currentMilepael.name)});
                     }
                 });
@@ -131,7 +141,7 @@ function addMilepaelerCol() {
 
                 const textBoxesIncludingThis = milepaelCounter*3;
 
-                const titleField = createMultiSaverTextField("Tittel: ",
+                const titleField = createMultiSaverTextField("Tittel*",
                     "cmtittel" + milepaelCounter,
                     "Signert avtale",
                     milepaelInfoSplit[0],
@@ -140,7 +150,7 @@ function addMilepaelerCol() {
                     savedTextInfo,
                     "milepaeler");
 
-                const kontaktpersonField = createMultiSaverTextField("Kontaktperson: ",
+                const kontaktpersonField = createMultiSaverTextField("Kontaktperson",
                     "cmcontact" + milepaelCounter,
                     "navn.navnesen@gmail.com",
                     milepaelInfoSplit[2],
@@ -149,7 +159,7 @@ function addMilepaelerCol() {
                     savedTextInfo,
                     "milepaeler");
 
-                const dateField = createMultiSaverTextField("Dato: ",
+                const dateField = createMultiSaverTextField("Dato",
                     "cmdate" + milepaelCounter,
                     "31.10.2022",
                     milepaelInfoSplit[3],
@@ -175,7 +185,29 @@ function addMilepaelerCol() {
 
             function milepaelRemoved(milepaelNumber) {
                 milepaelCounter -= 1;
-                saveSpecialFields(milepaelArray,savedTextInfo,"milepaeler")
+                saveSpecialFields(milepaelArray,savedTextInfo,"milepaeler");
+                correctMilepaelerFieldNames();
+            }
+
+            function correctMilepaelerFieldNames() {
+                const milepaelerFields = document.getElementsByClassName("milepael");
+                for (let i = 0; i < milepaelerFields.length; i++) {
+                    const correctNumber = i+1;
+                    const dropdown = milepaelerFields[i].getElementsByTagName('select')[0];
+                    const tittelField = milepaelerFields[i].getElementsByTagName('input')[0];
+                    const contactPersonField = milepaelerFields[i].getElementsByTagName('input')[1];
+                    const dateField = milepaelerFields[i].getElementsByTagName('input')[2];
+
+                    correctIDAndName(dropdown, "milepaeldropdown" + correctNumber)
+                    correctIDAndName(tittelField, "cmtittel" + correctNumber)
+                    correctIDAndName(contactPersonField, "cmcontact" + correctNumber)
+                    correctIDAndName(dateField, "cmdate" + correctNumber)
+
+                    function correctIDAndName(object, correctValue) {
+                        object.id = correctValue;
+                        object.name = correctValue;
+                    }
+                }
             }
         }
     </script>
