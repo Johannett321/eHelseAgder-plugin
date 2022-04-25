@@ -77,7 +77,7 @@ function leggTilInformasjonFelt() {
         </div>
 
         <div class="innhold">
-            <h4>Legg til kategori:</h4>
+            <h4>Legg til kategori</h4>
             <div class="addCustomField">
                 <div id="chooseLine">
                     <select id="collapsibleChooser" name="collapsibleChooser">
@@ -98,7 +98,7 @@ function leggTilInformasjonFelt() {
                         <option value="cegenkategori" style="font-weight:400;">+ Legg til egen kategori</option>
                     </select>
                     <button id="addCategoryButton" class="addInfoButton" type="button">
-                        <i class="material-icons">add</i><p>Legg til informasjon</p></button>
+                        <i class="material-icons">add</i><p>Legg til kategori</p></button>
                     <div class = "hidden inlineBlock" id = "categoryAlreadyAdded">
                         <i class="material-icons">check</i>
                         <h5 class = "inlineBlock" id = "categoryAlreadyAddedText">Allerede lagt til</h5>

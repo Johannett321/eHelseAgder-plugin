@@ -34,6 +34,7 @@ function prosjektRedigeringKategorierJS() {
     ?>
     <script type="text/javascript">
         (function () {
+            selectionOptionChanged();
             $("#collapsibleChooser").change(function () {
                 selectionOptionChanged();
             });

@@ -41,7 +41,9 @@ function addKategorierTools() {
         const categoryAlreadyAddedText = document.getElementById('categoryAlreadyAddedText');
 
         function selectionOptionChanged() {
-            if (isCategoryAlreadyAdded(categoryChooser.value)) {
+            if (categoryChooser.value === "") {
+                addCategoryButton.classList.add('hidden');
+            }else if (isCategoryAlreadyAdded(categoryChooser.value)) {
                 addCategoryButton.classList.add('hidden');
                 categoryAlreadyAdded.classList.remove('hidden');
                 categoryAlreadyAddedText.innerText = categoryChooser.options[categoryChooser.selectedIndex].text + " lagt til";
