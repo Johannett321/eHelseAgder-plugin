@@ -286,7 +286,7 @@ function getAllFilesInFolderAndSubfolders($folderPath, $filter) {
             $foundFilesInSubfolder = getAllFilesInFolderAndSubfolders($folderPath . "/" . $elementsFound[$i], $filter);
             $filesToReturn = array_merge($filesToReturn, $foundFilesInSubfolder);
         }else {
-            if ($filter != null && !strpos($elementsFound[$i], $filter)) {
+            if ($filter != null && !stripos($elementsFound[$i], $filter)) {
                 continue;
             }
             array_push($filesToReturn, getFileInfo($folderPath . "/" . $elementsFound[$i]));

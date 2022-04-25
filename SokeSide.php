@@ -3,6 +3,7 @@
 add_shortcode('sc_nyhets_sok_widget', 'sc_nyhets_sok_widget');
 add_shortcode('sc_prosjekter_sok_widget', 'sc_prosjekter_sok_widget');
 add_shortcode('sc_arrangementer_sok_widget', 'sc_arrangementer_sok_widget');
+add_shortcode('sc_dokumenter_sok_widget', 'sc_dokumenter_sok_widget');
 
 function sc_nyhets_sok_widget() {
     $searchDropdownOptions = array("Tittel", "Forfatter", "Innhold (Tar lenger tid)");
@@ -25,20 +26,30 @@ function sc_arrangementer_sok_widget() {
     addSearchWidget("arrangementer", $searchDropdownOptions, $searchDropdownOptionsIDs);
 }
 
+function sc_dokumenter_sok_widget() {
+    addSearchWidget("dokumenter", null, null);
+}
+
 function addSearchWidget($nameOfPage, $searchDropdownOptions, $searchDropdownOptionsIDs) {
     ?>
     <form class = "searchField requiredPart" method="POST" id = "myform">
         <h3>Søk i alle <?php echo $nameOfPage ?> <?php if (isset($_GET['year'])) echo "fra " . $_GET['year']?></h3>
         <input type = "text" class = "small_input" id = "searchfield" name = "searchfield" placeholder="Søk"/>
-        <select id = "dropdown">
-            <?php
-            for ($i = 0; $i < sizeof($searchDropdownOptions); $i++) {
-                ?>
-                <option value = "<?php echo $searchDropdownOptionsIDs[$i] ?>"><?php echo $searchDropdownOptions[$i] ?></option>
-                <?php
-            }
+        <?php
+        if ($searchDropdownOptions != null) {
             ?>
-        </select>
+            <select id = "dropdown">
+                <?php
+                for ($i = 0; $i < sizeof($searchDropdownOptions); $i++) {
+                    ?>
+                    <option value = "<?php echo $searchDropdownOptionsIDs[$i] ?>"><?php echo $searchDropdownOptions[$i] ?></option>
+                    <?php
+                }
+                ?>
+            </select>
+            <?php
+        }
+        ?>
         <button type = "button" id = "submitButton" class = "button">Søk</button>
     </form>
 
@@ -53,7 +64,13 @@ function addSearchWidget($nameOfPage, $searchDropdownOptions, $searchDropdownOpt
                 alert("Du må skrive minst 3 bokstaver for å søke")
                 return;
             }
-            form.action = "../../../../../../sok?q=" + searchfield.value + "&field=" + dropdown.value + "&it=<?php echo $nameOfPage?>";
+
+            let field = "";
+            if (dropdown != null) {
+                field = dropdown.value;
+            }
+
+            form.action = "../../../../../../sok?q=" + searchfield.value + "&field=" + field + "&it=<?php echo $nameOfPage?>";
 
             const year = (new URLSearchParams(window.location.search)).get("year");
             if (year != null) {
@@ -162,7 +179,23 @@ function dokumentSok() {
     <div class = "artikkelKortHolder">
         <?php
         foreach ($results as $result) {
-            createLargeListItem($result['filename'], "...", $result['dateModified'], $result['fileSizeMB'] . " MB", "", getFilesUploadUrl() . $result['path']);
+            $fileNameSeparated = explode(".", $result['filename']);
+            $fileType = $fileNameSeparated[sizeof($fileNameSeparated)-1];
+            switch ($fileType) {
+                case "pdf":
+                    $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/pdf.jpg";
+                    break;
+                case "pptx":
+                    $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/powerpoint.jpg";
+                    break;
+                case "docx":
+                    $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/word.jpg";
+                    break;
+                case "xlsx":
+                    $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/excel.jpg";
+                    break;
+            }
+            createLargeListItem($result['filename'], "Trykk her for å laste ned", $result['dateModified'], $result['fileSizeMB'] . " MB", $photoUrl, getFilesUploadUrl() . $result['path']);
         }
         ?>
     </div>
