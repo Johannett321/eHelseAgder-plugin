@@ -1,7 +1,9 @@
 <?php
-function addKategorierSaverTool() {
+function addKategorierSaverTool($onlineRevisionNumber) {
     ?>
     <script type="text/javascript">
+        clearLocalStorageIfWrongProjectOrTooOld(<?php echo $onlineRevisionNumber?>);
+
         function colHasBeenDeletedLocally(colname) {
             var fjernedeCollapsiblesString = localStorage.getItem("fjernedeCollapsibles");
             if (fjernedeCollapsiblesString == null) fjernedeCollapsiblesString = "";
@@ -117,21 +119,6 @@ function addKategorierSaverTool() {
             }
         }
 
-        function loadListOfCollapsibles() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const editProsjektID = urlParams.get('editProsjektID');
-            const prosjektIDFromLocalStorage = localStorage.getItem("prosjektID");
-
-            if (editProsjektID == prosjektIDFromLocalStorage) {
-                if (localStorage.getItem(localsave) != null) {
-                    //LOAD COLLAPSIBLES
-                }
-            }else {
-                console.log("Clearer localstorage fordi local prosjektID ikke matcher prosjektID som vi redigerer")
-                localStorage.clear();
-            }
-        }
-
         function localProsjektIDMatchesUrlProsjektID(prosjektIDSpecialSaveLocation) {
             const urlParams = new URLSearchParams(window.location.search);
             var editProsjektID = urlParams.get('editProsjektID');
@@ -193,8 +180,9 @@ function addKategorierSaverTool() {
                 }
             }else {
                 savedLabel.innerText = "Hentet kategorien fra prosjektet";
-                localStorage.clear();
-                console.log("Cleared localstorage, because we are not on the same project")
+                console.log("Sletter " + localsave + " fra localStorage, fordi denne er lagret for et annet prosjekt.")
+                localStorage.removeItem(localsave + "_time");
+                localStorage.removeItem(localsave);
             }
             $(textbox).on("input", function(){
                 const d = new Date();
@@ -260,8 +248,10 @@ function addKategorierSaverTool() {
                     }
                 }
             }else {
-                console.log("Clearer localstorage, ettersom prosjektID ikke matcher det som er lagret i localstorage")
-                localStorage.clear();
+                console.log("Sletter " + localsave + " fra localStorage, fordi denne er lagret for et annet prosjekt.")
+                localStorage.removeItem(localsave + "_time");
+                localStorage.removeItem(localsave);
+                localStorage.setItem("prosjektID_" + localsave, editProsjektID);
             }
 
             $(textbox).on("input", function(){
@@ -343,8 +333,10 @@ function addKategorierSaverTool() {
                     }
                 }
             }else {
-                console.log("Clearer LocalStorage siden vi ikke redigerer samme prosjekt som vi har i LocalStorage")
-                localStorage.clear();
+                console.log("Sletter " + localsave + " fra localStorage, fordi denne er lagret for et annet prosjekt.")
+                localStorage.removeItem(localsave + "_time");
+                localStorage.removeItem(localsave);
+                localStorage.setItem("prosjektID_" + localsave, editProsjektID);
             }
             $(dropdown).on("change", function(){
                 const d = new Date();
@@ -375,6 +367,29 @@ function addKategorierSaverTool() {
                     }
                 }, 300);
             });
+        }
+
+        function clearLocalStorageIfWrongProjectOrTooOld(onlineRevisionNumber) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const editProsjektID = urlParams.get('editProsjektID');
+            var prosjektIDFromLocalStorage = localStorage.getItem("prosjektID");
+            var localRevisionNumber = localStorage.getItem("revision");
+
+            if (prosjektIDFromLocalStorage !== editProsjektID) {
+                console.log("Clearer localstorage fordi local prosjektID ikke matcher prosjektID som vi redigerer")
+                localStorage.clear();
+                localRevisionNumber = null;
+            }
+
+            if (localRevisionNumber != null) {
+                if (parseInt(onlineRevisionNumber) >= parseInt(localRevisionNumber)) {
+                    console.log("Clearer localstorage fordi noen har redigert online versjonen, og min versjon er derfor utdatert.")
+                    alert("Noen har redigert dette prosjektet etter deg, og din versjon er derfor utdatert.")
+                    localStorage.clear();
+                }
+                localStorage.setItem("revision", "<?php echo $_SESSION['correctLocalRevision']?>");
+                localStorage.setItem("prosjektID", editProsjektID);
+            }
         }
 
     </script>

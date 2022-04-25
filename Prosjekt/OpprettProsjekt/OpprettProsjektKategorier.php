@@ -28,6 +28,16 @@ function validateFieldsFromPage1() {
     saveFieldToSession("psummary");
     saveFieldToSession("sokerkommuner");
     saveImageUploaded();
+    if (isset($_GET['editProsjektID'])) {
+        $currentRevision = getProjectRevision($_GET['editProsjektID']);
+        if ($currentRevision != null) {
+            $_SESSION['correctLocalRevision'] = $currentRevision + 1;
+        }else {
+            $_SESSION['correctLocalRevision'] = 1;
+        }
+    }else {
+        $_SESSION['correctLocalRevision'] = 1;
+    }
 }
 
 function saveFieldToSession($fieldToSave) {
@@ -122,8 +132,15 @@ function leggTilInformasjonFelt() {
                 </div>
                 <br>
                 <center>
+                    <button type="button" id = "backButton">Tilbake</button>
                     <input type = "submit" class = "button" id = "submitButton" value = "Fortsett">
                 </center>
+
+                <script type="text/javascript">
+                    document.getElementById('backButton').onclick = function () {
+                        window.history.go(-1)
+                    }
+                </script>
             </textBox>
 
         </div>

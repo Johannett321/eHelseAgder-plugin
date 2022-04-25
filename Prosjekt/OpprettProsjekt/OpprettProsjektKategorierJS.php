@@ -19,7 +19,12 @@ function prosjektRedigeringKategorierJS() {
     </script>
     <?php
     addKategorierTools();
-    addKategorierSaverTool();
+
+    $editingProjectRevision = "null";
+    if (isset($_GET['editProsjektID'])) {
+        $editingProjectRevision = getProjectRevision($_GET['editProsjektID']);
+    }
+    addKategorierSaverTool($editingProjectRevision);
 
     //Collapsibles
     addLeverandorerCol();

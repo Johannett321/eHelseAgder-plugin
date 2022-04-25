@@ -81,6 +81,7 @@ function createProsjekterTable($formatted_table_name) {
         sokerkommuner varchar(250),
         samarbeidspartnere varchar(250),
         project_text varchar(1750) NOT NULL,
+        revision int(5),
         publisert int(1),
         PRIMARY KEY  (id)
     );";

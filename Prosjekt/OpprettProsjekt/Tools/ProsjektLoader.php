@@ -35,7 +35,6 @@ function shallWeLoadProsjekt() {
                     //leverandører
                     ?>
                     if (!colHasBeenDeletedLocally("cleverandorer")) {
-                        console.log("Creating leverandorer col with content: <?php echo $innhold ?>");
                         createLeverandorerCol("<?php echo $innhold ?>");
                     }
                     <?php

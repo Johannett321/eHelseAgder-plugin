@@ -48,7 +48,8 @@ function lagreProsjektUtkast() {
         "prosjekteierkommuner" => $_SESSION["prosjekteierkommuner"],
         "samarbeidspartnere" => $_SESSION["samarbeidspartnere"],
         "sokerkommuner" => $_SESSION["sokerkommuner"],
-        "project_text" => $_SESSION["psummary"]);
+        "project_text" => $_SESSION["psummary"],
+        "revision"=>$_SESSION["correctLocalRevision"]);
 
     $format = array("%d",
         "%s",
@@ -62,7 +63,8 @@ function lagreProsjektUtkast() {
         "%s",
         "%s",
         "%s",
-        "%s");
+        "%s",
+        "%d");
 
     if (isset($_SESSION["bilde"]) && $_SESSION["bilde"] != null  && $_SESSION["bilde"] != "") {
         error_log("Bilde lagt til i prosjekt: " . $_SESSION["bilde"]);

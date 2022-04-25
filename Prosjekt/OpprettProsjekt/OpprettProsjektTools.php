@@ -26,3 +26,19 @@ function generateProjectID() {
     $result = $wpdb->get_results("SELECT id FROM " . getProsjekterDatabaseRef());
     return sizeof($result)+1;
 }
+
+/**
+ * Henter revision tallet til det offentlige nåværende prosjekt.
+ * @param $prosjektID
+ * @return mixed
+ */
+function getProjectRevision($prosjektID) {
+    global $wpdb;
+    $registeredRevision = $wpdb->query("SELECT revision FROM " . getProsjekterDatabaseRef() . " WHERE id = " . $prosjektID);
+    if ($registeredRevision == null) {
+        $revision = 0;
+    }else {
+        $revision = intval($registeredRevision);
+    }
+    return $revision;
+}
