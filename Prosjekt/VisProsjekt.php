@@ -95,7 +95,7 @@ function getprojectpage() {
             if ($projectInfo[0]->samarbeidspartnere != null) {
                 ?>
                 <div>
-                    <h5>samarbeidspartnere:</h5><span><?php echo $projectInfo[0]->samarbeidspartnere?></span>
+                    <h5>Samarbeidspartnere:</h5><span><?php echo $projectInfo[0]->samarbeidspartnere?></span>
                 </div>
                 <?php
             }
