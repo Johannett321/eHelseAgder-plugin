@@ -2,6 +2,7 @@
 
 add_shortcode( 'sc_logg_ut_knapp', 'sc_logg_ut_knapp');
 add_shortcode( 'sc_pabegynt_prosjekt', 'sc_pabegynt_prosjekt');
+add_shortcode('sc_minside_prosjekter', 'sc_minside_prosjekter');
 add_action( 'wp_ajax_action', 'ajax_hent_prosjektnavn' );
 add_action( 'wp_ajax_nopriv_action', 'ajax_hent_prosjektnavn' );
 
@@ -9,6 +10,12 @@ securePageWithLogin('min-side');
 thisPageRequiresCookies('min-side');
 
 function sc_pabegynt_prosjekt() {
+    if (areWeEditingWithElementor()) {
+        ?>
+        <h6>Dersom brukeren har begynt på et prosjekt, vil det vises her</h6>
+        <?php
+        return;
+    }
     $ajaxurl = admin_url('admin-ajax.php');
     //localStorage.getItem("prosjektID");
     ?>
@@ -45,6 +52,36 @@ function ajax_hent_prosjektnavn() {
 
     echo $prosjekt[0]->project_name;
     wp_die();
+}
+
+function sc_minside_prosjekter() {
+    global $wpdb;
+    $prosjektInfo = $wpdb->get_results("SELECT project_name, id FROM " . getProsjekterDatabaseRef());
+    ?>
+    <table>
+        <?php
+        foreach ($prosjektInfo as $currentProsjekt) {
+            ?>
+            <tr>
+                <td><a href = "../alle-prosjekter/prosjektside/?prosjektID=<?php echo $currentProsjekt->id ?>"><?php echo $currentProsjekt->project_name?></a></td>
+                <td><a href = "../opprett-prosjekt/?editProsjektID=<?php echo $currentProsjekt->id ?>">Rediger</a></td>
+                <td class="deleteButtonProject" id="<?php echo $currentProsjekt->project_name ?>" data-tilhorer="<?php echo $currentProsjekt->id?>" style="cursor: pointer;">Slett</td>
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
+    <script>
+        const deleteButtons = document.getElementsByClassName('deleteButtonProject');
+        for (let i = 0; i < deleteButtons.length; i++) {
+            deleteButtons[i].onclick = function () {
+                if (confirm("Er du sikker på at du vil slette " + deleteButtons[i].id)) {
+                    window.location.href = "../../../wp-json/ehelseagderplugin/api/slett_prosjekt?projectID=" + deleteButtons[i].dataset.tilhorer;
+                }
+            }
+        }
+    </script>
+    <?php
 }
 
 function sc_logg_ut_knapp() {

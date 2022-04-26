@@ -114,3 +114,13 @@ function makeCollapsiblesWork() {
     </script>
     <?php
 }
+
+function areWeEditingWithElementor() {
+    if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
+        error_log("Vi redigerer!");
+        return true;
+    }else {
+        error_log("Vi redigerer ikke!");
+        return false;
+    }
+}

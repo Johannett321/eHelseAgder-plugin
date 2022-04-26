@@ -2,6 +2,7 @@
 
 require 'OpprettProsjektKategorier.php';
 require 'OpprettProsjektTools.php';
+include 'SlettProsjekt.php';
 
 add_shortcode( 'prosjektredigeringsverktoy', 'startverktoy');
 

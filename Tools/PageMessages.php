@@ -1,5 +1,19 @@
 <?php
 
+add_shortcode('sc_message_display', 'sc_message_display');
+
+function sc_message_display() {
+    if (areWeEditingWithElementor()) {
+        showCompleteMessage("Her vil viktige meldinger vises!");
+        return;
+    }
+    if (isset($_GET['message'])) {
+        showCompleteMessage($_GET['message']);
+    }else if (isset($_GET['errorMessage'])) {
+        showErrorMessage($_GET['errorMessage']);
+    }
+}
+
 /**
  * Genererer en HTML blokk med en egendefinert completemelding
  * @param string Meldingen som skal vises
