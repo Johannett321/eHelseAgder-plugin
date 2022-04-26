@@ -21,6 +21,7 @@ function addCustomCatCol() {
             field.type = "text";
             field.placeholder = "Hva skal kategorien hete?"
             field.value = egendefinertNavn;
+            field.maxLength = 75;
 
             //oppdater 'name' feltet når brukeren skriver inn et navn
             $(document).ready(function(){

@@ -376,6 +376,11 @@ function addKategorierSaverTool($onlineRevisionNumber) {
             var localRevisionNumber = localStorage.getItem("revision");
 
             if (prosjektIDFromLocalStorage !== editProsjektID) {
+                if (!confirm("Ved å redigere dette prosjektet, blir de andre utkastene dine overskrevet dersom du har noen. Ønsker du fortsatt å redigere?")) {
+                    history.back();
+                    return;
+                }
+
                 console.log("Clearer localstorage fordi local prosjektID ikke matcher prosjektID som vi redigerer")
                 localStorage.clear();
                 localRevisionNumber = null;
@@ -384,12 +389,15 @@ function addKategorierSaverTool($onlineRevisionNumber) {
             if (localRevisionNumber != null) {
                 if (parseInt(onlineRevisionNumber) >= parseInt(localRevisionNumber)) {
                     console.log("Clearer localstorage fordi noen har redigert online versjonen, og min versjon er derfor utdatert.")
-                    alert("Noen har redigert dette prosjektet etter deg, og din versjon er derfor utdatert.")
+                    alert("Noen har redigert dette prosjektet etter deg, og ditt utkast er derfor utdatert.")
                     localStorage.clear();
                 }
-                localStorage.setItem("revision", "<?php echo $_SESSION['correctLocalRevision']?>");
                 localStorage.setItem("prosjektID", editProsjektID);
+            }else {
+                console.log("Online revision: " + onlineRevisionNumber + " local revision: " + localStorage.getItem("revision"));
             }
+
+            localStorage.setItem("revision", "<?php echo $_SESSION['correctLocalRevision']?>");
         }
 
     </script>

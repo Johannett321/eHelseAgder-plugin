@@ -34,7 +34,7 @@ function generateProjectID() {
  */
 function getProjectRevision($prosjektID) {
     global $wpdb;
-    $registeredRevision = $wpdb->query("SELECT revision FROM " . getProsjekterDatabaseRef() . " WHERE id = " . $prosjektID);
+    $registeredRevision = $wpdb->get_results("SELECT revision FROM " . getProsjekterDatabaseRef() . " WHERE id = " . $prosjektID)[0]->revision;
     if ($registeredRevision == null) {
         $revision = 0;
     }else {
