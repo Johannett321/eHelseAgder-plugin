@@ -46,6 +46,10 @@ function getDraftArrangementerDatabaseRef() {
     return getFormattedTableName("eha_arrangementer_utkast");
 }
 
+function getChangelogDatabaseRef() {
+    return getFormattedTableName("eha_changelog");
+}
+
 /*----------- LAGRE NOE I DATABASEN ---------------
 function insertIntoTable($formatted_table_name, $columns_and_value) {
     global $wpdb;

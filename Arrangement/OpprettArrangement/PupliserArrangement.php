@@ -89,7 +89,12 @@ function publiserArrangement() {
     $eventID = $_GET['eventID'];
 
     global $wpdb;
-    $wpdb->delete(getArrangementerDatabaseRef(), array('id'=>$eventID));
+    $tittel = $wpdb->get_results("SELECT tittel FROM " . getDraftArrangementerDatabaseRef() . " WHERE id = " . $eventID)[0]->tittel;
+    if ($wpdb->delete(getArrangementerDatabaseRef(), array('id'=>$eventID)) == false) {
+        addEventToChangelog("Nytt arrangement ble opprettet", $tittel, "vis-arrangement/?eventID=" . $eventID);
+    }else {
+        addEventToChangelog("Endring i arrangement", $tittel, "vis-arrangement/?eventID=" . $eventID);
+    }
     $wpdb->query("INSERT INTO " . getArrangementerDatabaseRef() . " SELECT * FROM " . getDraftArrangementerDatabaseRef() . " WHERE id = " . $eventID);
 
     gotoViewEvent($eventID, null, null, "Arrangementet ble publisert!", false);

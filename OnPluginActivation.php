@@ -9,6 +9,7 @@ function install_plugin() {
     create_table_collapsible();
     create_table_nyhetsartikler();
     create_table_arrangementer();
+    create_table_changelog();
     createPluginImages();
     wp_redirect("../../../wp-admin/admin.php?page=prosjekter&message=Ferdig! Pluginen er innstallert på nytt!");
     exit;
@@ -51,6 +52,7 @@ function dropAllTables() {
     $tables[4] = getCollapsiblesDatabaseRef();
     $tables[5] = getArrangementerDatabaseRef();
     $tables[6] = getDraftArrangementerDatabaseRef();
+    $tables[7] = getChangelogDatabaseRef();
 
     for ($i  = 0; $i < sizeof($tables); $i++) {
         error_log("Sletter SQL tabell: " . $tables[$i]);
@@ -160,6 +162,23 @@ function createArrangementerTable($formatted_table_name) {
         vedlegg varchar(2050),
         publisert smallint,
         PRIMARY KEY (id)
+    );";
+
+    createTable($formatted_table_name, $sqlCommand);
+}
+
+function create_table_changelog() {
+    createChangelogTable(getChangelogDatabaseRef());
+}
+
+function createChangelogTable($formatted_table_name) {
+    $sqlCommand = "CREATE TABLE IF NOT EXISTS $formatted_table_name (
+        id mediumint(9) NOT NULL AUTO_INCREMENT,
+        tittel varchar(100),
+        beskrivelse varchar(100),
+        href varchar(1000),
+        dato date,
+        PRIMARY KEY  (id)
     );";
 
     createTable($formatted_table_name, $sqlCommand);
