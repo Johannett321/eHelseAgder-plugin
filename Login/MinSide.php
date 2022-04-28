@@ -3,6 +3,8 @@
 add_shortcode( 'sc_logg_ut_knapp', 'sc_logg_ut_knapp');
 add_shortcode( 'sc_pabegynt_prosjekt', 'sc_pabegynt_prosjekt');
 add_shortcode('sc_minside_prosjekter', 'sc_minside_prosjekter');
+add_shortcode('sc_minside_arrangementer', 'sc_minside_arrangementer');
+add_shortcode('sc_minside_nyhetsartikler', 'sc_minside_nyhetsartikler');
 add_action( 'wp_ajax_action', 'ajax_hent_prosjektnavn' );
 add_action( 'wp_ajax_nopriv_action', 'ajax_hent_prosjektnavn' );
 
@@ -57,6 +59,12 @@ function ajax_hent_prosjektnavn() {
 function sc_minside_prosjekter() {
     global $wpdb;
     $prosjektInfo = $wpdb->get_results("SELECT project_name, id FROM " . getProsjekterDatabaseRef());
+    if (sizeof($prosjektInfo) == 0) {
+        ?>
+        <center><h5>Fant ingen prosjekter</h5></center>
+        <?php
+        return;
+    }
     ?>
     <table>
         <?php
@@ -65,18 +73,86 @@ function sc_minside_prosjekter() {
             <tr>
                 <td><a href = "../alle-prosjekter/prosjektside/?prosjektID=<?php echo $currentProsjekt->id ?>"><?php echo $currentProsjekt->project_name?></a></td>
                 <td><a href = "../opprett-prosjekt/?editProsjektID=<?php echo $currentProsjekt->id ?>">Rediger</a></td>
-                <td class="deleteButtonProject" id="<?php echo $currentProsjekt->project_name ?>" data-tilhorer="<?php echo $currentProsjekt->id?>" style="cursor: pointer;">Slett</td>
+                <td class="deleteButtonProject" id="<?php echo $currentProsjekt->project_name ?>" data-tilhorer="<?php echo $currentProsjekt->id?>" data-type="prosjekt" style="cursor: pointer;">Slett</td>
             </tr>
             <?php
         }
         ?>
     </table>
-    <script>
-        const deleteButtons = document.getElementsByClassName('deleteButtonProject');
+    <?php
+}
+
+function sc_minside_arrangementer() {
+    global $wpdb;
+    $arrangementInfo = $wpdb->get_results("SELECT tittel, id FROM " . getArrangementerDatabaseRef() . " ORDER BY id DESC LIMIT 10");
+    if (sizeof($arrangementInfo) == 0) {
+        ?>
+        <center><h5>Fant ingen arrangementer</h5></center>
+        <?php
+        return;
+    }
+    ?>
+    <table>
+        <?php
+        foreach ($arrangementInfo as $currentArrangement) {
+            ?>
+            <tr>
+                <td><a href = "../vis-arrangement/?eventID=<?php echo $currentArrangement->id ?>"><?php echo $currentArrangement->tittel?></a></td>
+                <td><a href = "../opprett-arrangement/?editEventID=<?php echo $currentArrangement->id ?>">Rediger</a></td>
+                <td class="deleteButtons" id="<?php echo $currentArrangement->tittel ?>" data-tilhorer="<?php echo $currentArrangement->id?>" data-type="arrangement" style="cursor: pointer;">Slett</td>
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
+    <?php
+}
+
+function sc_minside_nyhetsartikler() {
+    global $wpdb;
+    $artikkelInfo = $wpdb->get_results("SELECT tittel, id FROM " . getNyhetsartiklerDatabaseRef() . " ORDER BY dato_skrevet DESC LIMIT 10");
+    if (sizeof($artikkelInfo) == 0) {
+        ?>
+        <center><h5>Fant ingen nyhetsartikler</h5></center>
+        <?php
+        return;
+    }
+    ?>
+    <table>
+        <?php
+        foreach ($artikkelInfo as $currentArtikkel) {
+            ?>
+            <tr>
+                <td><a href = "../alle-nyhetsartikler/vis-artikkel/?artikkelID=<?php echo $currentArtikkel->id ?>"><?php echo $currentArtikkel->tittel?></a></td>
+                <td><a href = "../opprett-nyhetsartikkel/?editArticleID=<?php echo $currentArtikkel->id ?>">Rediger</a></td>
+                <td class="deleteButtons" id="<?php echo $currentArtikkel->tittel ?>" data-tilhorer="<?php echo $currentArtikkel->id?>" data-type="nyhetsartikkel" style="cursor: pointer;">Slett</td>
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
+    <?php
+    makeDeleteButtonsFunctional();
+}
+
+function makeDeleteButtonsFunctional() {
+    ?>
+    <script type="text/javascript">
+        const deleteButtons = document.getElementsByClassName('deleteButtons');
         for (let i = 0; i < deleteButtons.length; i++) {
             deleteButtons[i].onclick = function () {
                 if (confirm("Er du sikker på at du vil slette " + deleteButtons[i].id)) {
-                    window.location.href = "../../../wp-json/ehelseagderplugin/api/slett_prosjekt?projectID=" + deleteButtons[i].dataset.tilhorer;
+                    switch (deleteButtons[i].dataset.type) {
+                        case "arrangement":
+                            window.location.href = "../../../wp-json/ehelseagderplugin/api/slett_arrangement?eventID=" + deleteButtons[i].dataset.tilhorer;
+                            break;
+                        case "prosjekt":
+                            window.location.href = "../../../wp-json/ehelseagderplugin/api/slett_prosjekt?projectID=" + deleteButtons[i].dataset.tilhorer;
+                            break
+                        case "nyhetsartikkel":
+                            window.location.href = "../../../wp-json/ehelseagderplugin/api/slett_nyhetsartikkel?articleID=" + deleteButtons[i].dataset.tilhorer;
+                            break
+                    }
                 }
             }
         }

@@ -14,5 +14,5 @@ function slettArrangement() {
     $eventID = $_GET['eventID'];
     global $wpdb;
     $wpdb->delete(getArrangementerDatabaseRef(), array("id"=>$eventID), array("%d"));
-    return "Slettet arrangement id: " . $eventID;
+    redirectUserToPageOrPreview("../../../arrangementer/?s=s", "Arrangementet ble slettet!", null, null, false);
 }

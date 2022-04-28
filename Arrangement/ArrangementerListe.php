@@ -7,6 +7,12 @@ function sc_kommende_arrangementer() {
     <div class = "artikkelKortHolder">
         <?php
         $events = getLastEventsList(5);
+        if (sizeof($events) == 0) {
+            ?>
+            <center><h5>Fant ingen arrangementer</h5></center>
+            <?php
+            return;
+        }
         foreach ($events as $currentEvent) {
             createLargeListItem($currentEvent->tittel,
                 $currentEvent->kort_besk,
@@ -21,7 +27,6 @@ function sc_kommende_arrangementer() {
 
 function getLastEventsList($limit) {
     global $wpdb;
-    //TODO: Få den til å laste inn alt som er i fremtiden limit 5 ASC.
     $dagensDato = date('Y-m-d');
     $query = "SELECT * FROM " . getArrangementerDatabaseRef() . " WHERE start_dato > '" . $dagensDato . "'  ORDER BY start_dato ASC LIMIT " . $limit;
     return $wpdb->get_results($query);
