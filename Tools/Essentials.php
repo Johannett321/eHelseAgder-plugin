@@ -25,11 +25,10 @@ function add_jquery() {
  * Sjekker om siden fortsatt er under utvikling, og evt viser en melding over hele skjermen dersom den er det.
  */
 function check_page_in_dev() {
-    if (pageIsInDevelopment() && !isset($_COOKIE['DevelopmentDeviceEnrolled'])) {
+    if (pageIsInDevelopment() && !userIsEnrolled()) {
         ?>
         <img class = "pageBackground" src = "<?php echo wp_upload_dir()['baseurl'] . "/eHelseAgderPlus/background.jpg" ?>"/>
         <div class = "bigMessage">
-            <img src = ""/>
             <h2>Under konstruksjon</h2>
             <p>
                 eHelse Agder blir for tiden oppdatert. Nettsiden er derfor utilgjengelig for øyeblikket. Nettsiden er forventet ferdig innen juni 2022.
@@ -37,6 +36,26 @@ function check_page_in_dev() {
             <p>
                 Beklager ulempene dette medfører.
             </p>
+            <p><b>Har du tilgang? Skriv passord her:</b></p>
+            <input type = "text" placeholder="Passord" id = "passwordField"/>
+            <button id = "unlockButton">Lås opp</button>
+            <script type="text/javascript">
+                document.getElementById('unlockButton').onclick = function () {
+                    if (document.getElementById('passwordField').value === "<?php echo (date('d')*21)?>") {
+                        setCookie("limitedEnrollment", Date.now()+1000*60*60*3, 1)
+                        location.reload();
+                    }else {
+                        alert("Beklager! Tilgangen er ment for testbrukere. Du kan dessverre ikke se siden for øyeblikket")
+                    }
+
+                    function setCookie(cname, cvalue, exhours) {
+                        const d = new Date();
+                        d.setTime(d.getTime() + (exhours*60*60*1000));
+                        let expires = "expires="+ d.toUTCString();
+                        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                    }
+                }
+            </script>
         </div>
 
         <style>
@@ -76,8 +95,30 @@ function check_page_in_dev() {
                 filter: blur(8px);
                 -webkit-filter: blur(8px);
             }
+
+            #unlockButton {
+
+            }
+
+            #passwordField {
+
+            }
         </style>
         <?php
         exit;
     }
+}
+
+add_action('rest_api_init', 'add_pass_gen');
+
+function add_pass_gen(){
+    register_rest_route( 'ehelseagderplugin/api', '/generatepassword', array(
+        'methods' => 'GET',
+        'callback' => 'generate_password',
+    ));
+}
+
+function generate_password() {
+    echo date('d')*21;
+    exit;
 }

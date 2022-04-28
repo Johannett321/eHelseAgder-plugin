@@ -75,6 +75,23 @@ function pageIsInDevelopment() {
 }
 
 /**
+ * Sjekker om brukeren skal ha tilgang til siden mens den er under utvikling.
+ * @return bool
+ */
+function userIsEnrolled() {
+    if (isset($_COOKIE['DevelopmentDeviceEnrolled'])) {
+        return true;
+    }
+    if (isset($_COOKIE['limitedEnrollment'])) {
+        $milliseconds = round(microtime(true) * 1000);
+        if ($milliseconds < floatval($_COOKIE['limitedEnrollment'])) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
  * Tar brukeren endten til en visningside av prosjekt/nyhet eller til draften for dette.
  * @param $redirectAddress string adressen til siden inkludert articleID eller projectID.
  * @param $message string dersom en melding skal vises på toppen av siden når den laster inn.
