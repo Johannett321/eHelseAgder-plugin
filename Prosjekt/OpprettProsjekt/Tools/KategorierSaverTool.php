@@ -140,7 +140,6 @@ function addKategorierSaverTool($onlineRevisionNumber) {
         function saveLocalProsjektID() {
             const urlParams = new URLSearchParams(window.location.search);
             let prosjektIDSaveLocations = ["prosjektID"];
-            //, "prosjektID_milepaeler", "prosjektID_prosjektteam"
             let editProsjektID = urlParams.get('editProsjektID');
             for (let i = 0; i < prosjektIDSaveLocations.length; i++) {
                 localStorage.setItem(prosjektIDSaveLocations[i], editProsjektID);
@@ -228,13 +227,6 @@ function addKategorierSaverTool($onlineRevisionNumber) {
             if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "";
             if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "";
 
-            //TODO: Prøv i morgen:
-            //TODO: 1. Legg til milepæl
-            //TODO: 2. Skriv noe i den
-            //TODO: 3. Refresh og sjekk om det er lagret.
-            //TODO: Deretter kan du teste:
-            //TODO: 1. Sørg for at localstorage er tom
-            //TODO: 2. Prøv å refresh. Hvorfor står det ikke noe i "Milepæler" boksen og i "Prosjekt team" Boksen når disse skulle hatt tekst i følge databasen.
             if (editProsjektID === prosjektIDFromLocalStorage) {
                 if (localStorage.getItem(localsave) != null) {
                     const currentTextBoxSavedValue = localStorage.getItem(localsave).split(";")[textboxNumber];
@@ -242,12 +234,15 @@ function addKategorierSaverTool($onlineRevisionNumber) {
                         textbox.value = currentTextBoxSavedValue;
                     }
                     if (sistLagretStorage == null) {
-                        savedLabel.innerText = "...";
+                        savedLabel.innerText = "Hentet kategorien fra prosjektet";
                     }else {
                         savedLabel.innerText = "Hentet utkast fra: " + sistLagretStorage;
                     }
+                }else {
+                    savedLabel.innerText = "Hentet kategorien fra prosjektet";
                 }
             }else {
+                savedLabel.innerText = "Hentet kategorien fra prosjektet";
                 console.log("Sletter " + localsave + " fra localStorage, fordi denne er lagret for et annet prosjekt.")
                 localStorage.removeItem(localsave + "_time");
                 localStorage.removeItem(localsave);
@@ -320,19 +315,16 @@ function addKategorierSaverTool($onlineRevisionNumber) {
 
             if (editProsjektID === prosjektIDFromLocalStorage) {
                 if (localStorage.getItem(localsave) != null) {
-                    /*
-                    const currentTextBoxSavedValue = localStorage.getItem(localsave).split(";")[textboxNumber];
-                    if (currentTextBoxSavedValue != null) {
-                        dropdown.value =  localStorage.getItem(localsave);
-                    }
-                    */
                     if (sistLagretStorage == null) {
-                        savedLabel.innerText = "...";
+                        savedLabel.innerText = "Hentet kategorien fra prosjektet";
                     }else {
                         savedLabel.innerText = "Hentet utkast fra: " + sistLagretStorage;
                     }
+                }else {
+                    savedLabel.innerText = "Hentet kategorien fra prosjektet";
                 }
             }else {
+                savedLabel.innerText = "Hentet kategorien fra prosjektet";
                 console.log("Sletter " + localsave + " fra localStorage, fordi denne er lagret for et annet prosjekt.")
                 localStorage.removeItem(localsave + "_time");
                 localStorage.removeItem(localsave);

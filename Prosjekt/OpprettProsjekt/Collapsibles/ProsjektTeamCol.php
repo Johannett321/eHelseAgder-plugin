@@ -155,14 +155,6 @@ function addProsjektTeamCol() {
                 return person;
             }
 
-            /*TODO:
-            I stedenfor å skrive localStorage.removeItem, kan jeg heller skrive:
-            localStorage.setItem("NAVN", "GONE");
-            deretter kan jeg i delen hvor den loades skrive følgende:
-            for (int i = 0; i  < liste.length; i++)
-            if (liste[i] == "GONE") i -= 1;
-             */
-
             function personRemoved(personNumber) {
                 peopleInProjectTeam -= 1;
                 saveSpecialFields(prosjektTeamArray,savedTextInfo,"prosjektteam")

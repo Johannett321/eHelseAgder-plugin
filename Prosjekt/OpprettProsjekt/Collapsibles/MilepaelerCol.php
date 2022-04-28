@@ -32,7 +32,7 @@ function addMilepaelerCol() {
                     }
                 }
             }else {
-                if (innhold == "") {
+                if (innhold === "") {
                     //Prosjektet blir ikke redigert, så vi laster bare en milepael slik som i malen
                     const milepael = createMilepael(null, savedTextInfo);
                     milepaeler.appendChild(milepael);
@@ -101,19 +101,19 @@ function addMilepaelerCol() {
 
                 disabledOption.value = "Velg status";
                 disabledOption.disabled = "disabled";
-                if (currentMilepaelInfo == "") disabledOption.selected = true;
+                if (currentMilepaelInfo === "") disabledOption.selected = true;
                 disabledOption.innerText = "Velg status";
 
                 doneOption.value = "3";
-                if (milepaelInfoSplit[1] == "3") doneOption.selected = true;
+                if (milepaelInfoSplit[1] === "3") doneOption.selected = true;
                 doneOption.innerText = "Ferdig";
 
                 ongoingOption.value = "2";
-                if (milepaelInfoSplit[1] == "2") ongoingOption.selected = true;
+                if (milepaelInfoSplit[1] === "2") ongoingOption.selected = true;
                 ongoingOption.innerText = "Pågående";
 
                 notStartedOption.value = "1";
-                if (milepaelInfoSplit[1] == "1") notStartedOption.selected = true;
+                if (milepaelInfoSplit[1] === "1") notStartedOption.selected = true;
                 notStartedOption.innerText = "Ikke startet";
 
                 const label = document.createElement('label');
