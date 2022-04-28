@@ -59,7 +59,18 @@ function addSearchWidget($nameOfPage, $searchDropdownOptions, $searchDropdownOpt
         const dropdown = document.getElementById("dropdown");
         const form = document.getElementById("myform");
 
+        $(document).ready(function() {
+            $(window).keydown(function(event) {
+                if (event.keyCode === 13) {
+                    submitPressed();
+                }
+            })
+        });
         submitButton.onclick = function () {
+            submitPressed();
+        }
+
+        function submitPressed() {
             if (searchfield.value.length < 3) {
                 alert("Du må skrive minst 3 bokstaver for å søke")
                 return;
@@ -174,7 +185,7 @@ function sc_sok_resultater() {
 }
 
 function dokumentSok() {
-    $results = getAllFilesInFolderAndSubfolders("", $_GET['q']);
+    $results = getAllFilesInFolderAndSubfolders("", $_GET['q'], -1);
     ?>
     <div class = "artikkelKortHolder">
         <?php

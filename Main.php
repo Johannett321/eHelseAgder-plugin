@@ -50,6 +50,8 @@ require 'Arrangement/VisArrangement.php';
 require 'Arrangement/ArrangementerListe.php';
 require 'Arrangement/ArrangementArkiv.php';
 
+include 'Dokument/DokumenterListe.php';
+
 include 'Tools/SocialMediaTool.php';
 include 'Login/LoginKnapp.php';
 

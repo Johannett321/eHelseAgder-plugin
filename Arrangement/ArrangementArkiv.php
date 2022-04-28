@@ -20,11 +20,12 @@ function loadArrangementer() {
     <div class = "collapsibles" id = "displayCol">
         <?php
         for ($i = $startYear; $i <= $endYear; $i++) {
+            error_log($i . " " . $startYear . " " . $endYear);
 
             $query = "SELECT id, tittel, kort_besk, start_dato, bilde FROM " . getArrangementerDatabaseRef() .
-                " WHERE start_dato >= '" . $i . "-01-01'" .
-                " AND start_dato < '" . $i + 1 . "-01-01'" .
-                " ORDER BY start_dato ASC LIMIT 5";
+                " WHERE start_dato >= '" . intval($i) . "-01-01'" .
+                " AND start_dato < '" . (intval($i) + 1) . "-01-01'" .
+                " ORDER BY start_dato ASC LIMIT 3";
 
             $results =  $wpdb->get_results($query);
             $eventCounter = 0;
@@ -44,7 +45,7 @@ function loadArrangementer() {
                             getDisplayDateFormat($result->start_dato),
                             $result->bilde,
                             "vis-arrangement/?eventID=" . $result->id);
-                        if ($eventCounter > 4) {
+                        if ($eventCounter >= 3) {
                             ?>
                             <center>
                                 <a href = "aarstall?year=<?php echo $i ?>"><button class = "viewMore">Vis alle arrangementer fra <?php echo $i?></button></a>

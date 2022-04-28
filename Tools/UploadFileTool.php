@@ -274,16 +274,19 @@ function deleteDir($dirPath) {
  * @param $filter string [optional] lar deg kun legge til filer som inneholder dette
  * @return array|false
  */
-function getAllFilesInFolderAndSubfolders($folderPath, $filter) {
+function getAllFilesInFolderAndSubfolders($folderPath, $filter, $limit) {
     $filesToReturn = [];
     $filesUploadDir = "wp-content/uploads/minefiler/";
     $elementsFound = scandir($filesUploadDir . $folderPath);
     for ($i = 0; $i < sizeof($elementsFound); $i++) {
+        if ($limit != -1 && sizeof($filesToReturn)>=$limit) {
+            break;
+        }
         if ($elementsFound[$i] == "." || $elementsFound[$i] == ".." || $elementsFound[$i] == "..." || $elementsFound[$i] == ".DS_Store") {
             continue;
         }
         if (is_dir($filesUploadDir. $folderPath . "/" . $elementsFound[$i])) {
-            $foundFilesInSubfolder = getAllFilesInFolderAndSubfolders($folderPath . "/" . $elementsFound[$i], $filter);
+            $foundFilesInSubfolder = getAllFilesInFolderAndSubfolders($folderPath . "/" . $elementsFound[$i], $filter, $limit-sizeof($filesToReturn));
             $filesToReturn = array_merge($filesToReturn, $foundFilesInSubfolder);
         }else {
             if ($filter != null && !stripos($elementsFound[$i], $filter)) {
