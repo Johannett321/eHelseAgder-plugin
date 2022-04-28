@@ -246,7 +246,6 @@ function addKategorierSaverTool($onlineRevisionNumber) {
                 console.log("Sletter " + localsave + " fra localStorage, fordi denne er lagret for et annet prosjekt.")
                 localStorage.removeItem(localsave + "_time");
                 localStorage.removeItem(localsave);
-                localStorage.setItem("prosjektID_" + localsave, editProsjektID);
             }
 
             $(textbox).on("input", function(){
@@ -328,7 +327,6 @@ function addKategorierSaverTool($onlineRevisionNumber) {
                 console.log("Sletter " + localsave + " fra localStorage, fordi denne er lagret for et annet prosjekt.")
                 localStorage.removeItem(localsave + "_time");
                 localStorage.removeItem(localsave);
-                localStorage.setItem("prosjektID_" + localsave, editProsjektID);
             }
             $(dropdown).on("change", function(){
                 const d = new Date();
