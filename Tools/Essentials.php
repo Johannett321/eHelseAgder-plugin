@@ -42,7 +42,7 @@ function check_page_in_dev() {
             <script type="text/javascript">
                 document.getElementById('unlockButton').onclick = function () {
                     if (document.getElementById('passwordField').value === "<?php echo (date('d')*21)?>") {
-                        setCookie("limitedEnrollment", Date.now()+1000*60*60*3, 1)
+                        setCookie("limitedEnrollment", Date.now()+1000*60*60*3, 3)
                         location.reload();
                     }else {
                         alert("Beklager! Tilgangen er ment for testbrukere. Du kan dessverre ikke se siden for øyeblikket")
