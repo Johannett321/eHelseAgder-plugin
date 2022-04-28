@@ -1144,6 +1144,42 @@ td {
 }
 
 
+/* Changelog ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+.changelog {
+    height: 100px;
+    width: 100%;
+    padding: 10px 0px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.changelogItem {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.changelogTitle {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.changelog span {
+    height: 20px !important;
+    font-size: 30px !important;
+    vertical-align: unset !important;
+}
+
+.changelog .verticalLine {
+    display: inline-block;
+    height: 100%;
+    width: 1px;
+    background-color: black;
+    opacity: 40%;
+}
+
+
 
 /* Logg inn side –––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 #loginBox {
