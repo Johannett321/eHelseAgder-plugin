@@ -375,15 +375,17 @@ function addKategorierSaverTool($onlineRevisionNumber) {
             var prosjektIDFromLocalStorage = localStorage.getItem("prosjektID");
             var localRevisionNumber = localStorage.getItem("revision");
 
-            if (prosjektIDFromLocalStorage !== editProsjektID) {
-                if (!confirm("Ved å redigere dette prosjektet, blir de andre utkastene dine overskrevet dersom du har noen. Ønsker du fortsatt å redigere?")) {
-                    history.back();
-                    return;
-                }
+            if (prosjektIDFromLocalStorage != null) {
+                if (prosjektIDFromLocalStorage !== editProsjektID) {
+                    if (!confirm("Ved å redigere dette prosjektet, blir de andre utkastene dine overskrevet dersom du har noen. Ønsker du fortsatt å redigere?")) {
+                        history.back();
+                        return;
+                    }
 
-                console.log("Clearer localstorage fordi local prosjektID ikke matcher prosjektID som vi redigerer")
-                localStorage.clear();
-                localRevisionNumber = null;
+                    console.log("Clearer localstorage fordi local prosjektID ikke matcher prosjektID som vi redigerer")
+                    localStorage.clear();
+                    localRevisionNumber = null;
+                }
             }
 
             if (localRevisionNumber != null) {
