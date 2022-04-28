@@ -35,7 +35,7 @@ function sc_nyeste_oppdateringer() {
                 <div class = "changelogItem">
                     <h5><?php echo $changelogItem->tittel ?></h5>
                     <p><?php echo $changelogItem->beskrivelse ?></p>
-                    <div class = "changelogTime"> <?php echo getDisplayTimestampFormat($changelogItem->dato) ?></div>
+                    <div class = "changelogTime"> <?php echo getNoneImportantDisplayTimestampFormat($changelogItem->dato) ?></div>
                 </div>
             </a>
             <?php

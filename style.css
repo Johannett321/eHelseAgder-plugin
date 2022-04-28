@@ -1149,6 +1149,7 @@ td {
 .changelog {
     height: 100px;
     width: 100%;
+    padding: 10px 0px;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;

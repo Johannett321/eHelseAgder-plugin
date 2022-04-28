@@ -14,16 +14,35 @@ function getDisplayDateFormat($dateString) {
     return date_format($date, 'd-m-Y');
 }
 
+/**
+ * Returnerer en dato med tid for stringen med dato som blir gitt som parameter
+ * @param $dateString
+ * @return string
+ */
 function getDisplayTimestampFormat($dateString) {
     error_log("Forsøker å formatere: " . $dateString);
     $date = date_create($dateString);
     return $date->format('d-m-Y H:i');
-    //return date_format(, 'Y-m-d H:i:s');
 }
 
-function getNoneImportantDisplayTimestampFormat() {
-    $dagensDato = date("Y-m-d");
+/**
+ * Returnerer 'i dag', 'i går', eller datoen som blir gitt som parameter
+ * @param $dateString
+ * @return false|string
+ */
+function getNoneImportantDisplayTimestampFormat($dateString) {
+    $current = strtotime(date("Y-m-d"));
+    $dateTime = strtotime($dateString);
 
+    $datediff = $dateTime - $current;
+    $difference = floor($datediff/(60*60*24));
+    if($difference==0) {
+        return 'I dag kl ' . date_create($dateString)->format("H:i");
+    }else if($difference == -1) {
+        return 'I går kl ' . date_create($dateString)->format("H:i");
+    }else {
+        return getDisplayDateFormat($dateString);
+    }
 }
 
 /**
