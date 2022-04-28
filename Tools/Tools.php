@@ -14,6 +14,18 @@ function getDisplayDateFormat($dateString) {
     return date_format($date, 'd-m-Y');
 }
 
+function getDisplayTimestampFormat($dateString) {
+    error_log("Forsøker å formatere: " . $dateString);
+    $date = date_create($dateString);
+    return $date->format('d-m-Y H:i');
+    //return date_format(, 'Y-m-d H:i:s');
+}
+
+function getNoneImportantDisplayTimestampFormat() {
+    $dagensDato = date("Y-m-d");
+
+}
+
 /**
  * Sjekker om debug mode er på i config arrayet.
  * @return mixed

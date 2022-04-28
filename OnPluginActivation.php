@@ -177,7 +177,7 @@ function createChangelogTable($formatted_table_name) {
         tittel varchar(100),
         beskrivelse varchar(100),
         href varchar(1000),
-        dato date,
+        dato timestamp,
         PRIMARY KEY  (id)
     );";
 

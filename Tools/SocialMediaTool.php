@@ -9,6 +9,7 @@ function sc_sharebuttons () {
 function implementAllSMShareButtons() {
     implementTwitterInShareButton();
     implementFacebookShareButton();
+    implementLinkedinShareButton();
 }
 
 function implementFacebookShareButton() {
@@ -17,6 +18,10 @@ function implementFacebookShareButton() {
 
 function implementTwitterInShareButton() {
     implementSingleShareButton("Del på Twitter", "https://twitter.com/intent/tweet?text=" . home_url(add_query_arg(NULL,NULL )), "twitterShareButton");
+}
+
+function implementLinkedinShareButton() {
+    implementSingleShareButton("Del på Linkedin", "https://www.linkedin.com/sharing/share-offsite/?url=" . home_url(add_query_arg(NULL,NULL )), "linkedinShareButton");
 }
 
 function implementSingleShareButton($buttonText, $buttonLink, $cssID) {

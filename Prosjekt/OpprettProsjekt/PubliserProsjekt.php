@@ -20,7 +20,13 @@ function publiserProsjekt() {
 
     global $wpdb;
     $wpdb->delete(getCollapsiblesDatabaseRef(), array('prosjekt_id' => $projectID), array("%d"));
-    $wpdb->delete(getProsjekterDatabaseRef(), array('id'=>$projectID));
+    $tittel = $wpdb->get_results("SELECT project_name FROM " . getDraftProsjekterDatabaseRef() . " WHERE id = " . $projectID)[0]->project_name;
+    if ($wpdb->delete(getProsjekterDatabaseRef(), array('id'=>$projectID)) == false) {
+        addEventToChangelog("Et nytt prosjekt ble opprettet", $tittel, "alle-prosjekter/prosjektside/?prosjektID=" . $projectID);
+    }else {
+        addEventToChangelog("Endring i prosjekt", $tittel, "alle-prosjekter/prosjektside/?prosjektID=" . $projectID);
+    }
+
     $wpdb->query("INSERT INTO " . getProsjekterDatabaseRef() . " SELECT * FROM " . getDraftProsjekterDatabaseRef() . " WHERE id = " . $projectID);
     $wpdb->query("INSERT INTO " . getCollapsiblesDatabaseRef() . " SELECT * FROM " . getDraftCollapsibleDatabaseRef() . " WHERE prosjekt_id = " . $projectID);
 
