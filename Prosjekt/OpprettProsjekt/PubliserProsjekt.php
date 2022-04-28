@@ -125,7 +125,12 @@ function lagreSimpleTekstBoks($projectID, $name, $type) {
 
     if (isset($_POST[$name])) {
         $formatted_table_name = getDraftCollapsibleDatabaseRef();
-        $wpdb->insert($formatted_table_name, array("prosjekt_id" => $projectID, "innhold" => $_POST[$name], "collapsible_type" => $type), array("%d", "%s", "%d"));
+        $wpdb->insert($formatted_table_name,
+            array("prosjekt_id" => $projectID,
+                "innhold" => $_POST[$name],
+                "collapsible_type" => $type,
+                "id"=>generateRandomString(15)),
+            array("%d", "%s", "%d", "%s"));
         error_log("Added " . $name . " collapsible");
     }else {
         error_log($name . " er ikke skrevet om");
@@ -171,7 +176,12 @@ function lagreMilepaeler($projectID) {
     }
 
     $formatted_table_name = getDraftCollapsibleDatabaseRef();
-    $wpdb->insert($formatted_table_name, array("prosjekt_id" => $projectID, "innhold" => $milepaeler, "collapsible_type" => 5), array("%d", "%s", "%s", "%d"));
+    $wpdb->insert($formatted_table_name,
+        array("prosjekt_id" => $projectID,
+            "innhold" => $milepaeler,
+            "collapsible_type" => 5,
+            "id" => generateRandomString(15)),
+        array("%d", "%s", "%d", "%s"));
     error_log("Added custom collapsible: " . $_POST["cvcustomtitle" . $counter], 0);
 }
 
@@ -207,7 +217,12 @@ function lagreProsjektTeam($projectID) {
     }
 
     $formatted_table_name = getDraftCollapsibleDatabaseRef();
-    $wpdb->insert($formatted_table_name, array("prosjekt_id" => $projectID, "innhold" => $projectTeamMembers, "collapsible_type" => 3), array("%d", "%s", "%d"));
+    $wpdb->insert($formatted_table_name,
+        array("prosjekt_id" => $projectID,
+            "innhold" => $projectTeamMembers,
+            "collapsible_type" => 3,
+            "id" => generateRandomString(15)),
+        array("%d", "%s", "%d", "%s"));
 }
 
 function lagreCustomCollapsibles($projectID) {
@@ -224,7 +239,13 @@ function lagreCustomCollapsibles($projectID) {
         if (isset($_POST["cvcustomtitle" . $counter])) {
             $foundAnyCustomCollapsibles = true;
             $formatted_table_name = getDraftCollapsibleDatabaseRef();
-            $wpdb->insert($formatted_table_name, array("prosjekt_id" => $projectID, "egendefinert_navn" => $_POST["cvcustomtitle" . $counter], "innhold" => $_POST["cvcustomdesc" . $counter], "collapsible_type" => 1), array("%d", "%s", "%s", "%d"));
+            $wpdb->insert($formatted_table_name,
+                array("prosjekt_id" => $projectID,
+                    "egendefinert_navn" => $_POST["cvcustomtitle" . $counter],
+                    "innhold" => $_POST["cvcustomdesc" . $counter],
+                    "collapsible_type" => 1,
+                    "id" => generateRandomString(15)),
+                array("%d", "%s", "%s", "%d", "%s"));
             error_log("Added custom collapsible: " . $_POST["cvcustomtitle" . $counter], 0);
         }else {
             $attemptsLeft -= 1;
@@ -260,7 +281,12 @@ function lagreNedlastbareDokumenter($projectID){
     if ($filesUploaded !== "") {
         global $wpdb;
         $formatted_table_name = getDraftCollapsibleDatabaseRef();
-        $wpdb->insert($formatted_table_name, array("prosjekt_id" => $projectID, "innhold" =>$filesUploaded, "collapsible_type" => 6), array("%d", "%s", "%d"));
+        $wpdb->insert($formatted_table_name,
+            array("prosjekt_id" => $projectID,
+                "innhold" =>$filesUploaded,
+                "collapsible_type" => 6,
+                "id" => generateRandomString(15)),
+            array("%d", "%s", "%d", "%s"));
         error_log("Added nedlastbare dokumenter collapsible!", 0);
     }
 }

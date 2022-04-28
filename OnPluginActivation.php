@@ -98,7 +98,7 @@ function create_table_collapsible() {
 
 function createCollapsibleTable($formatted_table_name) {
     $sqlCommand = "CREATE TABLE IF NOT EXISTS $formatted_table_name (
-        id mediumint(9) NOT NULL AUTO_INCREMENT,
+        id varchar(50) NOT NULL,
         egendefinert_navn varchar(75),
         innhold varchar(3450),
         collapsible_type varchar(150),
