@@ -7,7 +7,7 @@ function sc_siste_nyhetsartikler() {
 
 function getLastNyheterList() {
     global $wpdb;
-    $query = "SELECT * FROM " . getNyhetsartiklerDatabaseRef() . " LIMIT 4";
+    $query = "SELECT * FROM " . getNyhetsartiklerDatabaseRef() . " ORDER BY dato_skrevet DESC LIMIT 4";
     return $wpdb->get_results($query);
 }
 

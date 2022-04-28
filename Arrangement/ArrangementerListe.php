@@ -21,6 +21,7 @@ function sc_siste_arrangementer_stor_liste() {
 
 function getLastEventsList($limit) {
     global $wpdb;
-    $query = "SELECT * FROM " . getArrangementerDatabaseRef() . " LIMIT " . $limit;
+    //TODO: Få den til å laste inn alt som er i fremtiden limit 5 ASC.
+    $query = "SELECT * FROM " . getArrangementerDatabaseRef() . " ORDER BY start_dato ASC LIMIT " . $limit;
     return $wpdb->get_results($query);
 }

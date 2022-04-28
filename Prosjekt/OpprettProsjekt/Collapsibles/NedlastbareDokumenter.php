@@ -163,7 +163,11 @@ function getNedlastbareDokumenterViewCollapsible($collapsibleInfo) {
     $filer = explode(";", $collapsibleInfo->innhold);
     for ($i = 0; $i < sizeof($filer); $i++) {
         ?>
-        <a href = "<?php echo getFilesUploadUrl() . $filer[$i] ?>" download><div><?php echo explode("/", $filer[$i])[1] ?></div></a>
+        <div class="dokumentLink">
+            <a href = "<?php echo getFilesUploadUrl() . $filer[$i] ?>" download>
+                <?php echo explode("/", $filer[$i])[1] ?>
+            </a>
+        </div>
         <?php
     }
 }

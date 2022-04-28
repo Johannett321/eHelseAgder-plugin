@@ -22,7 +22,7 @@ function loadProsjekter() {
             $query = "SELECT id, project_name, undertittel, prosjektstart, bilde FROM " . getProsjekterDatabaseRef() .
                 " WHERE prosjektstart >= " . $i .
                 " AND prosjektstart < " . ($i + 1) .
-                " LIMIT 5";
+                " ORDER BY project_name ASC LIMIT 5";
 
             $results =  $wpdb->get_results($query);
             $eventCounter = 0;

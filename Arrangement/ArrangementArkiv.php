@@ -24,7 +24,7 @@ function loadArrangementer() {
             $query = "SELECT id, tittel, kort_besk, start_dato, bilde FROM " . getArrangementerDatabaseRef() .
                 " WHERE start_dato >= '" . $i . "-01-01'" .
                 " AND start_dato < '" . $i + 1 . "-01-01'" .
-                " LIMIT 5";
+                " ORDER BY start_dato ASC LIMIT 5";
 
             $results =  $wpdb->get_results($query);
             $eventCounter = 0;

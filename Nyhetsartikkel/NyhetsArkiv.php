@@ -26,7 +26,7 @@ function loadNyhetsartikler() {
                 $query = "SELECT * FROM " . getNyhetsartiklerDatabaseRef() .
                     " WHERE dato_skrevet >= '" . $i . "-01-01'" .
                     " AND dato_skrevet < '" . ($i+1) . "-01-01'" .
-                    " LIMIT 5";
+                    " ORDER BY dato_skrevet DESC LIMIT 3";
 
                 error_log("Asking: " . $query);
                 $results =  $wpdb->get_results($query);
@@ -41,7 +41,7 @@ function loadNyhetsartikler() {
                         $articleCounter++;
                         createShortArticle($result);
                     }
-                    if ($articleCounter > 4) {
+                    if ($articleCounter > 2) {
                         ?>
                         <center>
                             <a href = "aarstall?year=<?php echo $i ?>"><button class = "viewMore">Vis alle nyheter fra <?php echo $i?></button></a>
