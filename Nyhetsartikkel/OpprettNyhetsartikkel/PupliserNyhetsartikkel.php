@@ -80,9 +80,9 @@ function publiserNyhetsartikkel() {
     global $wpdb;
     $tittel = $wpdb->get_results("SELECT tittel FROM " . getDraftNyhetsartiklerDatabaseRef() . " WHERE id = " . $articleID)[0]->tittel;
     if ($wpdb->delete(getNyhetsartiklerDatabaseRef(), array('id'=>$articleID)) == false) {
-        addEventToChangelog("En nyhetsartikkel ble opprettet", $tittel, "alle-nyhetsartikler/vis-artikkel/?artikkelID=" . $articleID);
+        addEventToChangelog("En nyhetsartikkel ble opprettet", $tittel, "nyheter/vis-artikkel/?artikkelID=" . $articleID);
     }else {
-        addEventToChangelog("Endring i nyhetsartikkel", $tittel, "alle-nyhetsartikler/vis-artikkel/?artikkelID=" . $articleID);
+        addEventToChangelog("Endring i nyhetsartikkel", $tittel, "nyheter/vis-artikkel/?artikkelID=" . $articleID);
     }
     $wpdb->query("INSERT INTO " . getNyhetsartiklerDatabaseRef() . " SELECT * FROM " . getDraftNyhetsartiklerDatabaseRef() . " WHERE id = " . $articleID);
 

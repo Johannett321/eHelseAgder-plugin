@@ -151,7 +151,7 @@ function sc_sok_resultater() {
                         getDisplayDateFormat($result->dato_skrevet),
                         $result->skrevet_av,
                         $result->bilde,
-                        "alle-nyhetsartikler/vis-artikkel/?artikkelID=" . $result->id);
+                        "nyheter/vis-artikkel/?artikkelID=" . $result->id);
                 }
                 break;
             case 'prosjekter':
@@ -161,7 +161,7 @@ function sc_sok_resultater() {
                         $result->prosjekteierkommuner,
                         $result->prosjektstart,
                         $result->bilde,
-                        "alle-prosjekter/prosjektside/?prosjektID=" . $result->id);
+                        "prosjekter/prosjektside/?prosjektID=" . $result->id);
                 }
                 break;
             case 'arrangementer':

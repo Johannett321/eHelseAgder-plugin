@@ -22,9 +22,9 @@ function publiserProsjekt() {
     $wpdb->delete(getCollapsiblesDatabaseRef(), array('prosjekt_id' => $projectID), array("%d"));
     $tittel = $wpdb->get_results("SELECT project_name FROM " . getDraftProsjekterDatabaseRef() . " WHERE id = " . $projectID)[0]->project_name;
     if ($wpdb->delete(getProsjekterDatabaseRef(), array('id'=>$projectID)) == false) {
-        addEventToChangelog("Et nytt prosjekt ble opprettet", $tittel, "alle-prosjekter/prosjektside/?prosjektID=" . $projectID);
+        addEventToChangelog("Et nytt prosjekt ble opprettet", $tittel, "prosjekter/prosjektside/?prosjektID=" . $projectID);
     }else {
-        addEventToChangelog("Endring i prosjekt", $tittel, "alle-prosjekter/prosjektside/?prosjektID=" . $projectID);
+        addEventToChangelog("Endring i prosjekt", $tittel, "prosjekter/prosjektside/?prosjektID=" . $projectID);
     }
 
     $wpdb->query("INSERT INTO " . getProsjekterDatabaseRef() . " SELECT * FROM " . getDraftProsjekterDatabaseRef() . " WHERE id = " . $projectID);
@@ -292,6 +292,6 @@ function lagreNedlastbareDokumenter($projectID){
 }
 
 function gotoViewProject($projectID, $popupTitle, $popupMessage, $message, $draft) {
-    $redirectAddress = "../../../../../alle-prosjekter/prosjektside/?prosjektID=" . $projectID;
+    $redirectAddress = "../../../../../prosjekter/prosjektside/?prosjektID=" . $projectID;
     redirectUserToPageOrPreview($redirectAddress, $message, $popupTitle, $popupMessage, $draft);
 }

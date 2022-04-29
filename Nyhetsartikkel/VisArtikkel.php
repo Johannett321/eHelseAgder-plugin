@@ -18,7 +18,7 @@ function getArtikkel($artikkelID) {
 
 function addSocialMediaMeta($articleID, $title, $description, $bildeUrl) {
     ?>
-    <meta property="og:url" content="<?php echo get_site_url()?>/se-alle-nyhetsartikler/vis-artikkel/?artikkelID=<?php echo $articleID?>"/>
+    <meta property="og:url" content="<?php echo get_site_url()?>/nyheter/vis-artikkel/?artikkelID=<?php echo $articleID?>"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="<?php echo $title?>"/>
     <meta property="og:description" content="<?php echo $description?>"/>

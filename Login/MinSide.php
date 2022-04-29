@@ -73,7 +73,7 @@ function sc_minside_prosjekter() {
         foreach ($prosjektInfo as $currentProsjekt) {
             ?>
             <tr>
-                <td><a href = "../alle-prosjekter/prosjektside/?prosjektID=<?php echo $currentProsjekt->id ?>"><?php echo $currentProsjekt->project_name?></a></td>
+                <td><a href = "../prosjekter/prosjektside/?prosjektID=<?php echo $currentProsjekt->id ?>"><?php echo $currentProsjekt->project_name?></a></td>
                 <td><a href = "../opprett-prosjekt/?editProsjektID=<?php echo $currentProsjekt->id ?>">Rediger</a></td>
                 <td class="deleteButtons" id="<?php echo $currentProsjekt->project_name ?>" data-tilhorer="<?php echo $currentProsjekt->id?>" data-type="prosjekt" style="cursor: pointer;">Slett</td>
             </tr>
@@ -127,7 +127,7 @@ function sc_minside_nyhetsartikler() {
         foreach ($artikkelInfo as $currentArtikkel) {
             ?>
             <tr>
-                <td><a href = "../alle-nyhetsartikler/vis-artikkel/?artikkelID=<?php echo $currentArtikkel->id ?>"><?php echo $currentArtikkel->tittel?></a></td>
+                <td><a href = "../nyheter/vis-artikkel/?artikkelID=<?php echo $currentArtikkel->id ?>"><?php echo $currentArtikkel->tittel?></a></td>
                 <td><a href = "../opprett-nyhetsartikkel/?editArticleID=<?php echo $currentArtikkel->id ?>">Rediger</a></td>
                 <td class="deleteButtons" id="<?php echo $currentArtikkel->tittel ?>" data-tilhorer="<?php echo $currentArtikkel->id?>" data-type="nyhetsartikkel" style="cursor: pointer;">Slett</td>
             </tr>

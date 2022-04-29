@@ -14,5 +14,5 @@ function slettNyhetsartikkel() {
     $articleID = $_GET['articleID'];
     global $wpdb;
     $wpdb->delete(getNyhetsartiklerDatabaseRef(), array("id"=>$articleID), array("%d"));
-    redirectUserToPageOrPreview("../../../se-alle-nyhetsartikler?s=s", "Artikkelen ble slettet!", null, null, false);
+    redirectUserToPageOrPreview("../../../nyheter?s=s", "Artikkelen ble slettet!", null, null, false);
 }

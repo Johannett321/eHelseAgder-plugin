@@ -42,7 +42,7 @@ function loadProsjekter() {
                             $result->undertittel,
                             getDisplayDateFormat($result->prosjektstart),
                             $result->bilde,
-                            "alle-prosjekter/prosjektside/?prosjektID=" . $result->id);
+                            "prosjekter/prosjektside/?prosjektID=" . $result->id);
                         if ($eventCounter > 4) {
                             ?>
                             <center>

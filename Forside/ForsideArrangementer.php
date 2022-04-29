@@ -22,7 +22,7 @@ function loadForsideArrangementer() {
         <?php
         foreach ($arrangementer as $currentArrangement) {
             ?>
-            <a href = "">
+            <a href = "arrangementer/vis-arrangement/?eventID=<?php echo $currentArrangement->id?>">
                 <div class ="arrangement">
                     <h5><?php echo $currentArrangement->tittel ?></h5>
                     <div class = "datoBoks">
