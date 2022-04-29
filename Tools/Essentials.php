@@ -5,6 +5,7 @@ include ("CookieTool.php");
 add_action('wp', 'check_page_in_dev');
 add_action('wp_body_open', 'add_jquery');
 add_action('wp_body_open', 'add_ajaxurl');
+add_action('wp_body_open', 'add_single_field_creepy_character_monitor');
 
 function add_ajaxurl() {
     echo '<script type="text/javascript">
@@ -18,6 +19,67 @@ function add_ajaxurl() {
 function add_jquery() {
     ?>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <?php
+}
+
+/**
+ * Legger til en JS funksjon som kan kalles på for felter som skal beskyttes fra "creepy characters";
+ */
+function add_single_field_creepy_character_monitor() {
+    ?>
+    <script type="text/javascript">
+        function protectTextFieldFromCreepyCharacters(textField) {
+            $(textField).on("input", function(){
+                if (textField.value.includes(";")) {
+                    alert("Du kan ikke bruke dette spesielle tegnet ';'. Det er reservert.");
+                    textField.value = textField.value.replace(";","");
+                }
+                if (textField.value.includes("--!--")) {
+                    alert("Du kan ikke bruke dette spesielle tegnet '--!--'. Det er reservert.");
+                    textField.value = textField.value.replace("--!--","");
+                }
+                if (textField.value.includes("[")) {
+                    alert("Du kan ikke bruke dette spesielle tegnet '['. Det er reservert.");
+                    textField.value = textField.value.replace("[","");
+                }
+                if (textField.value.includes("]")) {
+                    alert("Du kan ikke bruke dette spesielle tegnet ']'. Det er reservert.");
+                    textField.value = textField.value.replace("]","");
+                }
+            });
+        }
+    </script>
+    <?php
+}
+
+/**
+ * Legger til en JS funksjon som kan kalles på for felter som skal beskyttes fra "creepy characters";
+ */
+function addCreepyCharactersMonitorToWholePage() {
+    ?>
+    <script type="text/javascript">
+        const inputs = document.getElementsByTagName("input");
+        for (let i = 0; i < inputs.length; i++) {
+            $(inputs[i]).on("input", function(){
+                if (inputs[i].value.includes(";")) {
+                    alert("Du kan ikke bruke dette spesielle tegnet ';'. Det er reservert.");
+                    inputs[i].value = inputs[i].value.replace(";","");
+                }
+                if (inputs[i].value.includes("--!--")) {
+                    alert("Du kan ikke bruke dette spesielle tegnet '--!--'. Det er reservert.");
+                    inputs[i].value = inputs[i].value.replace("--!--","");
+                }
+                if (inputs[i].value.includes("[")) {
+                    alert("Du kan ikke bruke dette spesielle tegnet '['. Det er reservert.");
+                    inputs[i].value = inputs[i].value.replace("[","");
+                }
+                if (inputs[i].value.includes("]")) {
+                    alert("Du kan ikke bruke dette spesielle tegnet ']'. Det er reservert.");
+                    inputs[i].value = inputs[i].value.replace("]","");
+                }
+            });
+        }
+    </script>
     <?php
 }
 

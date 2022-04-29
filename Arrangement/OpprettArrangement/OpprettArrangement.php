@@ -126,6 +126,8 @@ function sc_opprett_arrangement() {
         }
     </script>
     <?php
+
+    addCreepyCharactersMonitorToWholePage();
 }
 
 function getEditingEvent() {

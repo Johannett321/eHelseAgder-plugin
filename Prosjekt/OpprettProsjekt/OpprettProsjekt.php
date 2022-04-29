@@ -153,4 +153,5 @@ function lagFelter($loadedProsjekt) {
         </div>
     </form>
     <?php
+    addCreepyCharactersMonitorToWholePage();
 }

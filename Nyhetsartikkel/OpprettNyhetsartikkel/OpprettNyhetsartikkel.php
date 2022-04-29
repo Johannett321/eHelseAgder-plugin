@@ -114,6 +114,7 @@ function sc_opprett_nyhetsartikkel() {
         ?>
     </form>
     <?php
+    addCreepyCharactersMonitorToWholePage();
 }
 
 function getEditingNewsArticle() {

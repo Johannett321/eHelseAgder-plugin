@@ -129,26 +129,7 @@ function addKategorierTools() {
             return container;
         }
 
-        function protectTextFieldFromCreepyCharacters(textField) {
-            $(textField).on("input", function(){
-                if (textField.value.includes(";")) {
-                    alert("Du kan ikke bruke dette spesielle tegnet ';'. Det er reservert.");
-                    textField.value = textField.value.replace(";","");
-                }
-                if (textField.value.includes("--!--")) {
-                    alert("Du kan ikke bruke dette spesielle tegnet '--!--'. Det er reservert.");
-                    textField.value = textField.value.replace("--!--","");
-                }
-                if (textField.value.includes("[")) {
-                    alert("Du kan ikke bruke dette spesielle tegnet '['. Det er reservert.");
-                    textField.value = textField.value.replace("[","");
-                }
-                if (textField.value.includes("]")) {
-                    alert("Du kan ikke bruke dette spesielle tegnet ']'. Det er reservert.");
-                    textField.value = textField.value.replace("]","");
-                }
-            });
-        }
+
 
         function createTextFieldWithLabel(title, name, placeholder, fieldContent, savedTextLabel) {
             if (fieldContent == null) fieldContent = "";
