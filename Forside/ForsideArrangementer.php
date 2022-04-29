@@ -7,6 +7,12 @@ function sc_forside_arrangementer() {
 }
 
 function loadForsideArrangementer() {
+    if (areWeEditingWithElementor()) {
+        ?>
+        <center><h5>Her vil arrangementene vises</h5></center>
+        <?php
+        return;
+    }
     global $wpdb;
     $dagensDato = date('Y-m-d');
     $arrangementer = $wpdb->get_results("SELECT * FROM " . getArrangementerDatabaseRef() . "  WHERE start_dato > '" . $dagensDato . "'  ORDER BY start_dato ASC LIMIT 5");
