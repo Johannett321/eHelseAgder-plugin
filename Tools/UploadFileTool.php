@@ -289,7 +289,8 @@ function getAllFilesInFolderAndSubfolders($folderPath, $filter, $limit) {
             $foundFilesInSubfolder = getAllFilesInFolderAndSubfolders($folderPath . "/" . $elementsFound[$i], $filter, $limit-sizeof($filesToReturn));
             $filesToReturn = array_merge($filesToReturn, $foundFilesInSubfolder);
         }else {
-            if ($filter != null && !stripos($elementsFound[$i], $filter)) {
+            if ($filter != null && stripos($elementsFound[$i], $filter) === false) {
+                error_log($filter . " Matcher ikke " . $elementsFound[$i]);
                 continue;
             }
             array_push($filesToReturn, getFileInfo($folderPath . "/" . $elementsFound[$i]));

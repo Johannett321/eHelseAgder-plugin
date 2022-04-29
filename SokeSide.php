@@ -102,6 +102,12 @@ add_shortcode('sc_sok_resultater','sc_sok_resultater');
 
 function sc_sok_resultater() {
     if (areElementorBufferingObjects()) return;
+    if (areWeEditingWithElementor()) {
+        ?>
+        <center><h5>Her vil resultatene fra et søk vises</h5></center>
+        <?php
+        return;
+    }
     //it = innholdstype
     if (!isset($_GET['field']) || !isset($_GET['q']) || !isset($_GET['it'])) {
         showErrorMessage("Siden ble ikke lastet på riktig måte");
