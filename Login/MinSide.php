@@ -22,7 +22,7 @@ function sc_pabegynt_prosjekt() {
     $ajaxurl = admin_url('admin-ajax.php');
     //localStorage.getItem("prosjektID");
     ?>
-    <a id = "pabegyntProsjektLink"><h5 id = "pabegyntProsjekt"></h5></a>
+    <center><a id = "pabegyntProsjektLink"><button id = "pabegyntProsjekt"></button></a></center>
     <script type="text/javascript">
         const pabegyntProsjektLink = document.getElementById('pabegyntProsjektLink');
         const pabegyntProsjekt = document.getElementById('pabegyntProsjekt');
@@ -36,7 +36,7 @@ function sc_pabegynt_prosjekt() {
             });
 
             request.done(function(response) {
-                pabegyntProsjekt.innerText = "Det ser ut som du har et påbegynt prosjekt! Du ble aldri ferdig å redigere " + response + "! Trykk her for å fortsette";
+                pabegyntProsjekt.innerText = "Fortsett å redigere utkast for " + response + "";
                 pabegyntProsjektLink.href = "opprett-prosjekt/?editProsjektID=" + localStorage.getItem("prosjektID");
             });
         }else {
