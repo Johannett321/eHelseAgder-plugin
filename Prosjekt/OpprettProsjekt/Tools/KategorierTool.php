@@ -139,6 +139,14 @@ function addKategorierTools() {
                     alert("Du kan ikke bruke dette spesielle tegnet '--!--'. Det er reservert.");
                     textField.value = textField.value.replace("--!--","");
                 }
+                if (textField.value.includes("[")) {
+                    alert("Du kan ikke bruke dette spesielle tegnet '['. Det er reservert.");
+                    textField.value = textField.value.replace("[","");
+                }
+                if (textField.value.includes("]")) {
+                    alert("Du kan ikke bruke dette spesielle tegnet ']'. Det er reservert.");
+                    textField.value = textField.value.replace("]","");
+                }
             });
         }
 
