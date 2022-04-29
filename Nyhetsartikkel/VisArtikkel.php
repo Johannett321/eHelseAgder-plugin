@@ -27,6 +27,13 @@ function addSocialMediaMeta($articleID, $title, $description, $bildeUrl) {
 }
 
 function sc_vis_artikkel() {
+    if (areElementorBufferingObjects()) return;
+    if (areWeEditingWithElementor()) {
+        ?>
+        <center><h5>Her vil arrangementet man er inne på vises</h5></center>
+        <?php
+        return;
+    }
     if (!isset($_GET["artikkelID"])) {
         showErrorMessage("Denne siden ble ikke lastet inn riktig");
         return;

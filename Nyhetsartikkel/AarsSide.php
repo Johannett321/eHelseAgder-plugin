@@ -21,7 +21,8 @@ function sc_nyheter_fra_aar() {
     global $wpdb;
     $query = "SELECT * FROM " . getNyhetsartiklerDatabaseRef() .
         " WHERE dato_skrevet > '" . $year . "-01-01'" .
-        " AND dato_skrevet < '" . ($year+1) . "-01-01'";
+        " AND dato_skrevet < '" . ($year+1) . "-01-01'" .
+        " ORDER BY dato_skrevet";
 
     $results = $wpdb->get_results($query);
 

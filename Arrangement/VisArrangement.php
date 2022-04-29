@@ -17,6 +17,12 @@ function getEvent($eventID) {
 
 function sc_vis_arrangement() {
     if (areElementorBufferingObjects()) return;
+    if (areWeEditingWithElementor()) {
+        ?>
+        <center><h5>Her vil arrangementet man er inne på vises</h5></center>
+        <?php
+        return;
+    }
     if (!isset($_GET["eventID"])) {
         showErrorMessage("Denne siden ble ikke lastet inn riktig");
         return;

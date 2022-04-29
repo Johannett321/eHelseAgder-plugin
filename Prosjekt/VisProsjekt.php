@@ -1,6 +1,6 @@
 <?php
 
-add_shortcode( 'prosjektside', 'getprojectpage');
+add_shortcode( 'sc_prosjekt_side', 'sc_prosjekt_side');
 
 function getProject($projectID) {
     $database = getProsjekterDatabaseRef();
@@ -22,7 +22,14 @@ function getCollapsibles($projectID) {
     return $wpdb->get_results("SELECT * FROM " . $database . " WHERE prosjekt_id = " . $projectID);
 }
 
-function getprojectpage() {
+function sc_prosjekt_side() {
+    if (areElementorBufferingObjects()) return;
+    if (areWeEditingWithElementor()) {
+        ?>
+        <center><h5>Her vil prosjektet man er inne på vises</h5></center>
+        <?php
+        return;
+    }
     if (!isset($_GET["prosjektID"])) {
         showErrorMessage("Denne siden ble ikke lastet inn riktig");
         return;
