@@ -2,6 +2,19 @@
 
 add_action("admin_menu", "addMenu");
 
+add_action( 'wp_dashboard_setup', 'wpdocs_add_dashboard_widgets' );
+
+function wpdocs_add_dashboard_widgets() {
+    wp_add_dashboard_widget( 'dashboard_widget', 'eHelseAgder+', 'dashboard_widget_function' );
+}
+
+function dashboard_widget_function() {
+    ?>
+    <h1>Velkommen til adminpanelet for eHelseAgder!</h1>
+    <p>Her kan du laste ned admin guiden som beskriver hvordan man gjør en rekke ting i admin panelet.</p>
+    <a href="<?php echo wp_upload_dir()['baseurl'] . "/eHelseAgderPlus/adminguide.pdf"?>" download>Last ned adminguide</a>
+    <?php
+}
 
 function addMenu() {
     add_menu_page("eHelseAgder+", "eHelseAgder+", 4, "prosjekter", "prosjekterMenu");

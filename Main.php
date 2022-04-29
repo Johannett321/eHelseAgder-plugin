@@ -2,7 +2,7 @@
 /*
 Plugin Name: eHelseAgder+
 Plugin URI:
-Description: En spesiallaget plugin for eHelseAgder.no
+Description: En spesiallaget plugin for eHelseAgder.no. IKKE fjern denne pluginen eller deaktiver den! Da vil ikke nettsiden fungere!
 Author: Johan
 Author URI: https://johansvartdal.com
 Version: 1.0.0
