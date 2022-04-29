@@ -3,6 +3,7 @@
 add_shortcode('sc_dokumenter_stor_liste', 'sc_dokumenter_stor_liste');
 
 function sc_dokumenter_stor_liste() {
+    if (areElementorBufferingObjects()) return;
     ?>
     <div class = "artikkelKortHolder">
         <?php

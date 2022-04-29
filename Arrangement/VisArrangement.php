@@ -16,6 +16,7 @@ function getEvent($eventID) {
 }
 
 function sc_vis_arrangement() {
+    if (areElementorBufferingObjects()) return;
     if (!isset($_GET["eventID"])) {
         showErrorMessage("Denne siden ble ikke lastet inn riktig");
         return;

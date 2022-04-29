@@ -2,6 +2,7 @@
 add_shortcode( 'sc_prosjektarkiv', 'sc_prosjektarkiv');
 
 function sc_prosjektarkiv() {
+    if (areElementorBufferingObjects()) return;
     loadProsjekter();
 }
 

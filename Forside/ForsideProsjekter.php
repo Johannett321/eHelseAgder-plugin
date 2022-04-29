@@ -3,6 +3,7 @@
 add_shortcode( 'sc_forside_prosjekter', 'sc_forside_prosjekter');
 
 function sc_forside_prosjekter() {
+    if (areElementorBufferingObjects()) return;
     loadForsideProsjekter();
 }
 

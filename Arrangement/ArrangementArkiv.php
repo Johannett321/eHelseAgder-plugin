@@ -4,6 +4,7 @@ include "AarsSide.php";
 add_shortcode( 'sc_arrangementarkiv', 'sc_arrangementarkiv');
 
 function sc_arrangementarkiv() {
+    if (areElementorBufferingObjects()) return;
     loadArrangementer();
 }
 

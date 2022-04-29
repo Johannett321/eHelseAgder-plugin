@@ -4,6 +4,7 @@ include "AarsSide.php";
 add_shortcode( 'sc_nyhetsarkiv', 'sc_nyhetsarkiv');
 
 function sc_nyhetsarkiv() {
+    if (areElementorBufferingObjects()) return;
     loadNyhetsartikler();
 }
 

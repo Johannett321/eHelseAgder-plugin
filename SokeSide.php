@@ -6,6 +6,7 @@ add_shortcode('sc_arrangementer_sok_widget', 'sc_arrangementer_sok_widget');
 add_shortcode('sc_dokumenter_sok_widget', 'sc_dokumenter_sok_widget');
 
 function sc_nyhets_sok_widget() {
+    if (areElementorBufferingObjects()) return;
     $searchDropdownOptions = array("Tittel", "Forfatter", "Innhold (Tar lenger tid)");
     $searchDropdownOptionsIDs = array("tittel", "skrevet_av", "innhold");
 
@@ -13,6 +14,7 @@ function sc_nyhets_sok_widget() {
 }
 
 function sc_prosjekter_sok_widget() {
+    if (areElementorBufferingObjects()) return;
     $searchDropdownOptions = array("Prosjektnavn", "Prosjekteier", "Innhold (Tar lenger tid)");
     $searchDropdownOptionsIDs = array("project_name", "prosjekteierkommuner", "innhold");
 
@@ -20,6 +22,7 @@ function sc_prosjekter_sok_widget() {
 }
 
 function sc_arrangementer_sok_widget() {
+    if (areElementorBufferingObjects()) return;
     $searchDropdownOptions = array("Tittel", "Kort beskrivelse", "Sted", "Arrangør", "Innhold (Tar lenger tid)");
     $searchDropdownOptionsIDs = array("tittel", "kort_besk", "sted", "arrangor", "innhold");
 
@@ -27,6 +30,7 @@ function sc_arrangementer_sok_widget() {
 }
 
 function sc_dokumenter_sok_widget() {
+    if (areElementorBufferingObjects()) return;
     addSearchWidget("dokumenter", null, null);
 }
 
@@ -97,6 +101,7 @@ function addSearchWidget($nameOfPage, $searchDropdownOptions, $searchDropdownOpt
 add_shortcode('sc_sok_resultater','sc_sok_resultater');
 
 function sc_sok_resultater() {
+    if (areElementorBufferingObjects()) return;
     //it = innholdstype
     if (!isset($_GET['field']) || !isset($_GET['q']) || !isset($_GET['it'])) {
         showErrorMessage("Siden ble ikke lastet på riktig måte");

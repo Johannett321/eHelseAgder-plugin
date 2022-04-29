@@ -200,3 +200,7 @@ function areWeEditingWithElementor() {
         return false;
     }
 }
+
+function areElementorBufferingObjects() {
+    return \Elementor\Plugin::$instance->preview->is_preview_mode();
+}

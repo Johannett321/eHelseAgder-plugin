@@ -3,6 +3,7 @@
 add_shortcode( 'sc_forside_nyheter', 'sc_forside_nyheter');
 
 function sc_forside_nyheter() {
+    if (areElementorBufferingObjects()) return;
     loadForsideNyheter();
 }
 

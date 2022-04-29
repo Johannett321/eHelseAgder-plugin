@@ -2,6 +2,7 @@
 add_shortcode('sc_arrangementer_fra_aar', 'sc_arrangementer_fra_aar');
 
 function sc_arrangementer_fra_aar() {
+    if (areElementorBufferingObjects()) return;
     if (!isset($_GET['year'])) {
         showErrorMessage("Siden har ikke blitt lastet inn på riktig måte!");
         return;

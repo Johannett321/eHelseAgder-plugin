@@ -1,7 +1,6 @@
 <?php
 
 add_action("admin_menu", "addMenu");
-
 add_action( 'wp_dashboard_setup', 'wpdocs_add_dashboard_widgets' );
 
 function wpdocs_add_dashboard_widgets() {

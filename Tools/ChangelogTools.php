@@ -18,6 +18,7 @@ function addEventToChangelog($title, $description, $href) {
 }
 
 function sc_nyeste_oppdateringer() {
+    if (areElementorBufferingObjects()) return;
     global $wpdb;
     $changelog = $wpdb->get_results("SELECT * FROM " . getChangelogDatabaseRef() . " ORDER BY id DESC LIMIT 20");
 

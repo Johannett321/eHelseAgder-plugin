@@ -3,6 +3,7 @@
 add_shortcode('sc_kommende_arrangementer', 'sc_kommende_arrangementer');
 
 function sc_kommende_arrangementer() {
+    if (areElementorBufferingObjects()) return;
     ?>
     <div class = "artikkelKortHolder">
         <?php

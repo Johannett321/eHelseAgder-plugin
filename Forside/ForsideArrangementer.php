@@ -3,6 +3,7 @@
 add_shortcode( 'sc_forside_arrangementer', 'sc_forside_arrangementer');
 
 function sc_forside_arrangementer() {
+    if (areElementorBufferingObjects()) return;
     loadForsideArrangementer();
 }
 

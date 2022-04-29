@@ -3,6 +3,7 @@
 add_shortcode( 'sc_sharebuttons', 'sc_sharebuttons');
 
 function sc_sharebuttons () {
+    if (areElementorBufferingObjects()) return;
     implementAllSMShareButtons();
 }
 

@@ -12,6 +12,7 @@ securePageWithLogin('min-side');
 thisPageRequiresCookies('min-side');
 
 function sc_pabegynt_prosjekt() {
+    if (areElementorBufferingObjects()) return;
     if (areWeEditingWithElementor()) {
         ?>
         <h6>Dersom brukeren har begynt på et prosjekt, vil det vises her</h6>
@@ -57,6 +58,7 @@ function ajax_hent_prosjektnavn() {
 }
 
 function sc_minside_prosjekter() {
+    if (areElementorBufferingObjects()) return;
     global $wpdb;
     $prosjektInfo = $wpdb->get_results("SELECT project_name, id FROM " . getProsjekterDatabaseRef());
     if (sizeof($prosjektInfo) == 0) {
@@ -83,6 +85,7 @@ function sc_minside_prosjekter() {
 }
 
 function sc_minside_arrangementer() {
+    if (areElementorBufferingObjects()) return;
     global $wpdb;
     $arrangementInfo = $wpdb->get_results("SELECT tittel, id FROM " . getArrangementerDatabaseRef() . " ORDER BY id DESC LIMIT 10");
     if (sizeof($arrangementInfo) == 0) {
@@ -109,6 +112,7 @@ function sc_minside_arrangementer() {
 }
 
 function sc_minside_nyhetsartikler() {
+    if (areElementorBufferingObjects()) return;
     global $wpdb;
     $artikkelInfo = $wpdb->get_results("SELECT tittel, id FROM " . getNyhetsartiklerDatabaseRef() . " ORDER BY dato_skrevet DESC LIMIT 10");
     if (sizeof($artikkelInfo) == 0) {
@@ -161,6 +165,7 @@ function makeDeleteButtonsFunctional() {
 }
 
 function sc_logg_ut_knapp() {
+    if (areElementorBufferingObjects()) return;
     if (userIsLoggedIn()) {
         ?>
         <center>

@@ -2,6 +2,7 @@
 add_shortcode("sc_login_knapp", "sc_login_knapp");
 
 function sc_login_knapp() {
+    if (areElementorBufferingObjects()) return;
     $loginButtonHref = get_site_url();
     if (userIsLoggedIn()) {
         //$loginButtonHref .= "/wp-json/ehelseagderplugin/api/logg_ut";

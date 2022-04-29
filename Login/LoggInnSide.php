@@ -7,6 +7,7 @@ add_shortcode( 'sc_loginform', 'sc_loginform');
 thisPageRequiresCookies('logg-inn');
 
 function sc_loginform( $atts ) {
+    if (areElementorBufferingObjects()) return;
     if (!strpos(get_site_url(), "localhost")) {
         if (!useHTTPS()) {
             showLoginError("Du besøker ikke nettsiden på riktig måte. Vennligst besøk nettsiden via denne linken: https://www.ehelseagder.no");

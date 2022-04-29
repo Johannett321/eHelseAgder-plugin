@@ -9,6 +9,7 @@ function getProjects() {
 }
 
 function sc_aktive_prosjekter() {
+    if (areElementorBufferingObjects()) return;
     $projects = getProjects();
     ?>
     <div class = "artikkelKortHolder">

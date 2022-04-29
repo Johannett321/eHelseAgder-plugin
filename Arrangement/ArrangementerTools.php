@@ -2,6 +2,7 @@
 add_shortcode('sc_opprett_arrangement_knapp','sc_opprett_arrangement_knapp');
 
 function sc_opprett_arrangement_knapp() {
+    if (areElementorBufferingObjects()) return;
     if (userIsLoggedIn()) {
         ?>
         <a href = "../../opprett-arrangement"><button>Opprett arrangement<span class = "material-icons">add</span></button></a>

@@ -3,6 +3,7 @@
 add_shortcode('sc_message_display', 'sc_message_display');
 
 function sc_message_display() {
+    if (areElementorBufferingObjects()) return;
     if (areWeEditingWithElementor()) {
         showCompleteMessage("Her vil viktige meldinger vises!");
         return;

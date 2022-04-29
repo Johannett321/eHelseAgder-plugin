@@ -2,6 +2,7 @@
 add_shortcode('sc_opprett_nyhetsartikkel_knapp','sc_opprett_nyhetsartikkel_knapp');
 
 function sc_opprett_nyhetsartikkel_knapp() {
+    if (areElementorBufferingObjects()) return;
     if (userIsLoggedIn()) {
         ?>
         <a href = "../../opprett-nyhetsartikkel"><button>Opprett nyhetsartikkel<span class = "material-icons">add</span></button></a>
