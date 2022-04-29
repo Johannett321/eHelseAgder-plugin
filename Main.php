@@ -52,6 +52,10 @@ require 'Arrangement/ArrangementArkiv.php';
 
 include 'Dokument/DokumenterListe.php';
 
+include 'Forside/ForsideNyheter.php';
+include 'Forside/ForsideProsjekter.php';
+include 'Forside/ForsideArrangementer.php';
+
 include 'Tools/SocialMediaTool.php';
 include 'Login/LoginKnapp.php';
 

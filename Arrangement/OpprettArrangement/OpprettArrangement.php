@@ -74,12 +74,15 @@ function sc_opprett_arrangement() {
             ?>
             <label for="startdato" class = "labelForInput">Starter*</label>
             <input type = "date" id = "startdato" name = "startdato" value="<?php echo $startDato?>">
-            <!--start_klokkeslett-->
-            <label for="start_klokkeslett" class = "labelForInput">Klokkeslettet det starter</label>
-            <?php addInfoBox("klokkeslett", "Her velger du klokkeslettet det starter. Dersom dette ikke er bestemt enda, kan du skrive ca. klokkeslett, og skrive i 'Informasjon om arrangementet' at det ikke er bestemt enda.");?>
+
+            <label for="start_klokkeslett" class = "labelForInput">Klokkeslettet det starter*</label>
+            <?php addInfoBox("startKlokkeslett", "Her velger du klokkeslettet det starter. Dersom dette ikke er bestemt enda, kan du skrive ca. klokkeslett, og skrive i 'Informasjon om arrangementet' at det ikke er bestemt enda.");?>
             <input type = "time" id = "start_klokkeslett" name = "start_klokkeslett" value="<?php echo $loadedArrangement->start_klokkeslett?>">
             <label for="sluttdato" class = "labelForInput">Slutter*</label>
             <input type = "date" id = "sluttdato" name = "sluttdato" value="<?php echo $sluttDato?>">
+            <label for="slutt_klokkeslett" class = "labelForInput">Klokkeslettet det slutter*</label>
+            <?php addInfoBox("sluttKlokkeslett", "Her velger du klokkeslettet det slutter. Dersom dette ikke er bestemt enda, kan du skrive ca. klokkeslett, og skrive i 'Informasjon om arrangementet' at det ikke er bestemt enda.");?>
+            <input type = "time" id = "slutt_klokkeslett" name = "slutt_klokkeslett" value="<?php echo $loadedArrangement->slutt_klokkeslett?>">
 
             <label for="sted" class = "labelForInput">Sted*</label>
             <input type="text" id="sted" name="sted" placeholder="Kristiansand" class = "small_input" maxlength="50" value = "<?php echo $loadedArrangement->sted?>"><?php addCharacterCounter("sted");?>
@@ -105,7 +108,7 @@ function sc_opprett_arrangement() {
 
         <center>
             <?php
-            addSubmitButtonWithVerification("minform", array("tittel", "kort_besk", "sted", "arrangor", "kontaktperson", "kontaktmail", "psummary"), array("pamelding"));
+            addSubmitButtonWithVerification("minform", array("tittel", "kort_besk", "startdato", "sluttdato", "start_klokkeslett",  "slutt_klokkeslett", "sted", "arrangor", "kontaktperson", "kontaktmail", "psummary"), array("pamelding"));
             ?>
         </center>
     </form>

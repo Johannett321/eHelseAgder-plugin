@@ -153,6 +153,7 @@ function createArrangementerTable($formatted_table_name) {
         start_dato date,
         start_klokkeslett varchar(5),
         slutt_dato date,
+        slutt_klokkeslett varchar(5),
         sted varchar(150),
         arrangor varchar(150),
         kontaktperson varchar(150),

@@ -16,7 +16,7 @@ function sc_kommende_arrangementer() {
         foreach ($events as $currentEvent) {
             createLargeListItem($currentEvent->tittel,
                 $currentEvent->kort_besk,
-                date("d-m-Y", strtotime($currentEvent->start_dato)),
+                getNoneImportantDisplayDateFormat($currentEvent->start_dato) . " kl " . $currentEvent->start_klokkeslett,
                 $currentEvent->sted, $currentEvent->bilde,
                 "vis-arrangement/?eventID=" . $currentEvent->id);
         }

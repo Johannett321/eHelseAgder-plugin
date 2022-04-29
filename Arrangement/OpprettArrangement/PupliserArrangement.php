@@ -27,6 +27,7 @@ function lagreArrangementUtkast() {
         "start_dato"=>$_POST["startdato"],
         "start_klokkeslett"=>$_POST["start_klokkeslett"],
         "slutt_dato"=>$_POST["sluttdato"],
+        "slutt_klokkeslett"=>$_POST["slutt_klokkeslett"],
         "sted"=>$_POST['sted'],
         "arrangor"=>$_POST['arrangor'],
         "kontaktperson"=>$_POST['kontaktperson'],
@@ -34,7 +35,7 @@ function lagreArrangementUtkast() {
         "innhold"=>$_POST["psummary"],
         "publisert"=>1);
 
-    $format = array("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%d");
+    $format = array("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%d");
 
     if (isset($_POST['pamelding'])) {
         $data += array("pamelding_link"=>$_POST['pamelding']);

@@ -59,10 +59,10 @@ function sc_vis_arrangement() {
             <div class = "oppsummert">
                 <h4>Kort om arrangementet</h4>
                 <div>
-                    <h5>Starter:</h5><span><?php echo date("d-m-Y", strtotime($eventInfo[0]->start_dato)); if ($eventInfo[0]->start_klokkeslett != null) echo " (" . $eventInfo[0]->start_klokkeslett . ")"?></span>
+                    <h5>Starter:</h5><span><?php echo getNoneImportantDisplayDateFormat($eventInfo[0]->start_dato); if ($eventInfo[0]->start_klokkeslett != null) echo " kl " . $eventInfo[0]->start_klokkeslett?></span>
                 </div>
                 <div>
-                    <h5>Slutter:</h5><span><?php echo date("d-m-Y", strtotime($eventInfo[0]->slutt_dato))?></span>
+                    <h5>Slutter:</h5><span><?php echo getNoneImportantDisplayDateFormat($eventInfo[0]->start_dato); if ($eventInfo[0]->slutt_klokkeslett != null) echo " kl " . $eventInfo[0]->slutt_klokkeslett?></span>
                 </div>
                 <div>
                     <h5>Arrangør:</h5><span><?php echo $eventInfo[0]->arrangor?></span>

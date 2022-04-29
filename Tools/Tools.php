@@ -38,8 +38,36 @@ function getNoneImportantDisplayTimestampFormat($dateString) {
     $difference = floor($datediff/(60*60*24));
     if($difference==0) {
         return 'I dag kl ' . date_create($dateString)->format("H:i");
+    }else if($difference == +1) {
+        return 'I morgen kl ' . date_create($dateString)->format("H:i");
+    }else if($difference == +2) {
+        return 'I overmorgen kl ' . date_create($dateString)->format("H:i");;
     }else if($difference == -1) {
         return 'I går kl ' . date_create($dateString)->format("H:i");
+    }else {
+        return getDisplayTimestampFormat($dateString);
+    }
+}
+
+/**
+ * Returnerer 'i dag', 'i går', eller datoen som blir gitt som parameter UTEN klokkeslett
+ * @param $dateString
+ * @return false|string
+ */
+function getNoneImportantDisplayDateFormat($dateString) {
+    $current = strtotime(date("Y-m-d"));
+    $dateTime = strtotime($dateString);
+
+    $datediff = $dateTime - $current;
+    $difference = floor($datediff/(60*60*24));
+    if($difference==0) {
+        return 'I dag';
+    }else if($difference == -1) {
+        return 'I går';
+    }else if($difference == +1) {
+        return 'I morgen';
+    }else if($difference == +2) {
+        return 'I overmorgen';
     }else {
         return getDisplayDateFormat($dateString);
     }
