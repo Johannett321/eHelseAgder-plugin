@@ -8,14 +8,14 @@ function sc_forside_prosjekter() {
 }
 
 function loadForsideProsjekter() {
-    if (areWeEditingWithElementor()) {
+    global $wpdb;
+    $prosjekter = $wpdb->get_results("SELECT * FROM " . getProsjekterDatabaseRef() . " WHERE prosjektstatus = 1 OR prosjektstatus = 2 ORDER BY project_name ASC");
+    if (areWeEditingWithElementor() && sizeof($prosjekter) == 0) {
         ?>
         <center><h5>Her vil de 6 første prosjektene vises (alfabetisk)</h5></center>
         <?php
         return;
     }
-    global $wpdb;
-    $prosjekter = $wpdb->get_results("SELECT * FROM " . getProsjekterDatabaseRef() . " WHERE prosjektstatus = 1 OR prosjektstatus = 2 ORDER BY project_name ASC");
     ?>
     <div class = "prosjekter">
         <?php

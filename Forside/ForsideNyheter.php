@@ -8,14 +8,14 @@ function sc_forside_nyheter() {
 }
 
 function loadForsideNyheter() {
-    if (areWeEditingWithElementor()) {
+    global $wpdb;
+    $nyheter = $wpdb->get_results("SELECT * FROM " . getNyhetsartiklerDatabaseRef() . " ORDER BY dato_skrevet DESC LIMIT 3");
+    if (areWeEditingWithElementor() && sizeof($nyheter) == 0) {
         ?>
         <center><h5>Her vil siste nyheter vises</h5></center>
         <?php
         return;
     }
-    global $wpdb;
-    $nyheter = $wpdb->get_results("SELECT * FROM " . getNyhetsartiklerDatabaseRef() . " ORDER BY dato_skrevet DESC LIMIT 3");
     ?>
     <div class = "artikkelKortHolder">
         <?php
