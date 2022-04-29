@@ -4,6 +4,12 @@ add_shortcode('sc_mest_populaere_nyheter', 'sc_mest_populaere_nyheter');
 
 function sc_nyheter_fra_aar() {
     if (areElementorBufferingObjects()) return;
+    if (areWeEditingWithElementor()) {
+        ?>
+        <h5>Her vil alle nyhetene fra årstallet leseren velger vises</h5>
+        <?php
+        return;
+    }
     if (!isset($_GET['year'])) {
         showErrorMessage("Siden har ikke blitt lastet inn på riktig måte!");
         return;
@@ -32,6 +38,12 @@ function sc_nyheter_fra_aar() {
 
 function sc_mest_populaere_nyheter() {
     if (areElementorBufferingObjects()) return;
+    if (areWeEditingWithElementor()) {
+        ?>
+        <h5>Her vil de mest populære nyhetene fra årstallet leseren velger vises</h5>
+        <?php
+        return;
+    }
     if (!isset($_GET['year'])) {
         showErrorMessage("Siden har ikke blitt lastet inn på riktig måte!");
         return;
