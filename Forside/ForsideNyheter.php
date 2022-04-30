@@ -20,7 +20,7 @@ function loadForsideNyheter() {
     <div class = "artikkelKortHolder">
         <?php
         foreach ($nyheter as $currentNyhet) {
-            createLargeListItem($currentNyhet->tittel, $currentNyhet->ingress, "Publisert: " . getNoneImportantDisplayDateFormat($currentNyhet->dato_skrevet), null, $currentNyhet->bilde, "http://localhost:8888/nyheter/vis-artikkel/?artikkelID=" . $currentNyhet->id);
+            createLargeListItem($currentNyhet->tittel, $currentNyhet->ingress, "Publisert: " . getNoneImportantDisplayDateFormat($currentNyhet->dato_skrevet), null, $currentNyhet->bilde, "nyheter/vis-artikkel/?artikkelID=" . $currentNyhet->id);
         }
         ?>
     </div>

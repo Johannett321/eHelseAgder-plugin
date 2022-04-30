@@ -367,7 +367,7 @@ function addKategorierSaverTool($onlineRevisionNumber) {
 
             if (prosjektIDFromLocalStorage != null) {
                 if (prosjektIDFromLocalStorage !== editProsjektID) {
-                    if (!confirm("Ved å redigere dette prosjektet, blir de andre utkastene dine overskrevet dersom du har noen. Ønsker du fortsatt å redigere?")) {
+                    if (!confirm("Ved å redigere dette prosjektet, blir alle utkast overskrevet. Ønsker du fortsatt å redigere?")) {
                         history.back();
                         return;
                     }

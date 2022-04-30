@@ -186,5 +186,7 @@ function sc_prosjekt_side() {
             </textBox>
         </div>
         <?php
+    }else {
+        sc_siste_nyhetsartikler($projectInfo[0]->project_name);
     }
 }
