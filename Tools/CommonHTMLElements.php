@@ -26,7 +26,6 @@ function createLargeListItem($title, $description, $uElement1, $uElement2, $imag
             <div class="artikkelkorttekst">
                 <h5><?php echo $title ?></h5>
                 <p><?php echo $description ?></p>
-                <hr>
                 <div id="additInfo"><?php echo $uElement1 . " · " . $uElement2; ?></div>
             </div>
         </div>
@@ -119,20 +118,6 @@ function addInfoBox($randomID, $innhold) {
     <style>
         .infoButton {
             cursor: default;
-        }
-
-        .hovedInfoBox {
-            font-size: 18px;
-
-            position: absolute;
-            padding: 15px;
-            max-width: 300px;
-
-            box-shadow: #444444 2px 2px 10px;
-            border-radius: 10px;
-            background-color: #D6EBCA;
-
-            z-index: 10;
         }
     </style>
     <?php

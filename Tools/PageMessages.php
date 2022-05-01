@@ -40,7 +40,7 @@ function showErrorMessage($message) {
         <span class="material-icons">
             error
         </span>
-        <h5><?php echo $message ?></h5>
+        <h6><?php echo $message ?></h6>
     </div>
     <?php
 }

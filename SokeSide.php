@@ -104,7 +104,7 @@ function sc_sok_resultater() {
     if (areElementorBufferingObjects()) return;
     if (areWeEditingWithElementor()) {
         ?>
-        <center><h5>Her vil resultatene fra et søk vises</h5></center>
+        <div><h5>Her vil resultatene fra et søk vises</h5></div>
         <?php
         return;
     }

@@ -44,16 +44,14 @@ function sc_vis_arrangement() {
     }
 
     ?>
-    <div class = "artikkel">
+    <div class = "artikkel" id="arrangement">
         <?php
         if (userIsLoggedIn() && !lookingAtDraft()) {
             ?>
-            <a href = "../../opprett-arrangement?editEventID=<?php echo $eventID ?>"><button>Rediger arrangement<span class = "material-icons">edit</span></button></a>
+            <a href = "../../opprett-arrangement?editEventID=<?php echo $eventID ?>"><button class="editButton">Rediger arrangement<span class = "material-icons">edit</span></button></a>
             <?php
         }
         ?>
-        <h2 class = "nyhetTittel"><?php echo $eventInfo[0]->tittel; ?></h2>
-        <span class = "ingress">– <?php echo $eventInfo[0]->kort_besk ?></span>
 
         <div class = "topPart">
             <?php
@@ -63,6 +61,7 @@ function sc_vis_arrangement() {
                 <?php
             }
             ?>
+
             <div class = "oppsummert">
                 <h4>Kort om arrangementet</h4>
                 <div>
@@ -81,42 +80,44 @@ function sc_vis_arrangement() {
             </div>
         </div>
 
-        <div class = "artikkelTekst"><?php echo nl2br($eventInfo[0]->innhold); ?></div>
+        <div class = "arrInnhold">
 
-        <?php
-        $vedlegg = $eventInfo[0]->vedlegg;
-        if ($vedlegg != null && $vedlegg != "") {
-            ?>
-            <h5>Nedlastbart innhold</h5>
+            <h1 class = "nyhetTittel"><?php echo $eventInfo[0]->tittel; ?></h1>
+            <span class = "ingress">– <?php echo $eventInfo[0]->kort_besk ?></span>
+
+            <div class = "artikkelTekst"><?php echo nl2br($eventInfo[0]->innhold); ?></div>
+
             <?php
-            $filer = decodeFileUploadList($eventInfo[0]->vedlegg);
-            for ($i = 0; $i < sizeof($filer); $i++) {
+            $vedlegg = $eventInfo[0]->vedlegg;
+            if ($vedlegg != null && $vedlegg != "") {
                 ?>
-                <div><a href="<?php echo getFilesUploadUrl() . $filer[$i] ?>" download><?php echo explode("/", $filer[$i])[1]; ?></a></div>
+                <h5>Nedlastbart innhold</h5>
                 <?php
+                $filer = decodeFileUploadList($eventInfo[0]->vedlegg);
+                for ($i = 0; $i < sizeof($filer); $i++) {
+                    ?>
+                    <div><a href="<?php echo getFilesUploadUrl() . $filer[$i] ?>" download><?php echo explode("/", $filer[$i])[1]; ?></a></div>
+                    <?php
+                }
             }
-        }
-        ?>
+            ?>
 
-        <hr class="divider">
-        <?php
-        if (!lookingAtDraft()) {
-            implementAllSMShareButtons();
-            if ($eventInfo[0]->pamelding_link != null && $eventInfo[0]->pamelding_link != "") {
-                ?>
-                <a href = "<?php echo $eventInfo[0]->pamelding_link ?>" target="_blank"><button type="button" class = "button">Påmelding</button></a>
-                <?php
+            <hr class="divider">
+            <?php
+            if (!lookingAtDraft()) {
+                implementAllSMShareButtons();
+                if ($eventInfo[0]->pamelding_link != null && $eventInfo[0]->pamelding_link != "") {
+                    ?>
+                    <a href = "<?php echo $eventInfo[0]->pamelding_link ?>" target="_blank"><button type="button" class = "button" id="signUpButton">Påmelding<i class="material-icons">
+                                arrow_forward
+                            </i></button></a>
+                    <?php
+                }
             }
-        }
-        ?>
-        <style>
-            .coverPhoto {
-                float: right;
-                background-color: gray;
-                width: 250px;
-                height: 150px;
-            }
-        </style>
+            ?>
+        </div>
+
+
     </div>
     <?php
     if (lookingAtDraft()) {

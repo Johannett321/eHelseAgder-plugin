@@ -194,7 +194,7 @@ function sc_logg_ut_knapp() {
             }
             .button:hover {
                 background:#7cc48c;
-                font-weight: 700;
+                text-decoration: underline;
                 color: #fff;
         </style>
         <?php

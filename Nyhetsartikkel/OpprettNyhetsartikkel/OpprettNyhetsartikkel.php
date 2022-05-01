@@ -23,17 +23,19 @@ function sc_opprett_nyhetsartikkel() {
     <?php
     if ($loadedNyhetsartikkel != null) {
         ?>
-        <button id ="deleteArticle">Slett nyhetsartikkel</button>
-        <script type="text/javascript">
-            const deleteArticleButton = document.getElementById('deleteArticle');
-            const deleteArticleLink = "../../../wp-json/ehelseagderplugin/api/slett_nyhetsartikkel?articleID=<?php echo $_GET['editArticleID']?>";
+            <div class="slettKnapp">
+                <button id ="deleteArticle">Slett nyhetsartikkel<i class="material-icons">close</i></button>
+                <script type="text/javascript">
+                    const deleteArticleButton = document.getElementById('deleteArticle');
+                    const deleteArticleLink = "../../../wp-json/ehelseagderplugin/api/slett_nyhetsartikkel?articleID=<?php echo $_GET['editArticleID']?>";
 
-            deleteArticleButton.onclick = function () {
-                if (confirm("Er du sikker på at du vil slette '<?php echo $loadedNyhetsartikkel->tittel?>'?")) {
-                    window.location.href = deleteArticleLink;
-                }
-            }
-        </script>
+                    deleteArticleButton.onclick = function () {
+                        if (confirm("Er du sikker på at du vil slette '<?php echo $loadedNyhetsartikkel->tittel?>'?")) {
+                            window.location.href = deleteArticleLink;
+                        }
+                    }
+                </script>
+            </div>
         <?php
     }
     ?>
@@ -43,12 +45,14 @@ function sc_opprett_nyhetsartikkel() {
             <!-- OPPLASTING AV BILDE -->
             <h4>Velg forsidebilde</h4>
             <div class="uploadPhoto" id = "uploadPhotoButton">
-                <div>
+                <div class = "lastOppBildeKnapp">
                     <h5>Last opp bilde</h5>
                     <i class="material-icons">upload</i>
                 </div>
-                <input class = "hidden" type="file" name = "bilde" accept="image/*" onchange="loadFile(event)" id = "actualUploadButton">
+
                 <img id="output" src = "<?php echo getPhotoUploadUrl() . $loadedNyhetsartikkel->bilde ?>"/>
+                <input class = "hidden" type="file" name = "bilde" accept="image/*" onchange="loadFile(event)" id = "actualUploadButton">
+
                 <script>
                     const loadFile = function(event) {
                         const output = document.getElementById('output');

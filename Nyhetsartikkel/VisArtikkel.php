@@ -57,7 +57,7 @@ function sc_vis_artikkel() {
     }
 
     ?>
-    <div class = "artikkel">
+    <div class = "artikkel" id = "nyheter">
         <?php
         if (userIsLoggedIn() && !lookingAtDraft()) {
             ?>
@@ -91,14 +91,7 @@ function sc_vis_artikkel() {
             }
             ?>
         </div>
-        <style>
-            .coverPhoto {
-                float: right;
-                background-color: gray;
-                width: 250px;
-                height: 150px;
-            }
-        </style>
+
     </div>
     <?php
     if (lookingAtDraft()) {

@@ -1,54 +1,272 @@
-.inputFieldCounter {
-    float: right;
-    margin-right: 5px;
-    margin-top: 10px;
-    transform: translate(0, -170%);
+/*
 
-    font-size: 12px;
-    color: gray;
+Innhold:
+- Body
+- Ikoner
+- Tekst
+- Knapper
+- Opprett-skjema
+- Collapsibles
+- Side-topp
+- Informasjonsboks
+- Progress bar
+- Forside
+- Responsivt design
+
+*/
+
+
+
+
+
+/* Body –––––––––––––––––––––––––––––––––––––––––*/
+
+/* Ikoner –––––––––––––––––––––––––––––––––––––––*/
+
+/* Vertikal midtstilling */
+
+/* Tekst ––––––––––––––––––––––––––––––––––––––––*/
+
+.ingress {
+    display: block;
+    width: 100%;
+    font-style: italic;
+
+    margin: 10px 0;
 }
 
-.inlineBlock {
+/* Overskrifter */
+
+/* Knapper ––––––––––––––––––––––––––––––––––––––*/
+
+
+/* Rediger-knapp */
+.editButton, #deleteArticle {
+    height: 30px;
+    margin: 10px 0 !important;
+    font-size: 14px;
+    text-transform: none;
+    width: 200px;
+    border-radius: 30px;
+    padding: 0px !important;
+}
+
+.editButton .material-icons {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+/* Tabeller –––––––––––––––––––––––––––––––––––––*/
+
+/* Opprett-skjema –––––––––––––––––––––––––––––––*/
+
+.requiredPart, .addCustomField, .uploadPhoto, .sammendragContainer {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Last opp bilde */
+
+.uploadPhoto h5, .uploadPhoto .material-icons {
+    display: inline-block;
+    height: 25px;
+}
+
+.lastOppBildeKnapp {
+    width: 200px;
+
+    cursor: pointer;
+
+    background-color: #B5DCBB;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px #d9ead4;
+    text-align: center;
+}
+
+.lastOppBildeKnapp:hover {
+    background-color: #cbe6cf;
+}
+
+#output {
+    border-radius: unset;
+    border: none;
+    margin-top: 20px;
+}
+
+.sammendragContainer textarea {
+    border: 1px solid #dbdbdb;
+    min-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Collapsibles –––––––––––––––––––––––––––––––––*/
+
+/* Lag collapsible */
+
+/* Vis collapsible */
+.collapsible {
+    border-radius: 8px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+}
+
+.collapsibles .content{
+    margin: 0 auto;
+    height: auto !important;
+}
+
+.collapsibles {
+    width: 60%;
+    margin: 0 auto;
+}
+
+/* Side-topp ––––––––––––––––––––––––––––––––––––*/
+
+.topPart {
+    display: flex;
+
+    height: auto;
+    min-height: 450px;
+}
+
+.coverPhoto, .oppsummert {
+    border: 1px solid #B5DCBB;
+    border-radius: 8px;
+}
+
+.topPart .coverPhoto {
+    width: 70%;
+    height: 450px;
+
+    position: absolute;
+    left: 0;
+}
+
+.topPart .coverPhoto img {
+    object-fit: cover;
+    width: 100%;
+    height: 450px;
+}
+
+.coverPhoto {
+    background-color: #B5DCBB;
+    overflow: clip;
+}
+
+.oppsummert {
+    position: relative;
+    margin-left: auto;
+    margin-right: 0;
+    background-color: #d9ead4;
+
+    width: 29%;
+    height: auto;
+
+    padding: 35px;
+    overflow: visible;
+}
+
+/*
+
+.topPart .coverPhoto {
+    margin: 0;
+}
+
+#arrangement .topPart {
+    align-items: stretch;
+}
+
+#arrangement .coverPhoto {
+    height: inherit;
+    width: 70%;
+}
+
+#arrangement .oppsummert {
+    min-width: 29%;
+    max-width: 29%;
+    margin: 0 0 0 10px;
+}
+
+.artikkel .oppsummert {
+    float: right;
+    min-height: 300px;
+    height: auto;
+    min-width: 35%;
+    margin-right: 0 !important;
+    margin: 20px;
+}
+
+.artikkel .oppsummert h5, .artikkel .oppsummert span {
+    display: block;
+}
+
+.artikkel .oppsummert h5 {
+    margin-top: 17px;
+}
+
+.artikkel .topPart {
+    margin: 20px 0;
+}
+
+ */
+/* Bilde */
+
+/*
+.artikkel .coverPhoto {
+    float: none;
+    background-color: unset;
+    width: 100%;
+}
+
+@media only screen and (min-width: 1020px) {
+    .coverPhoto, .oppsummert {
+        display: inline-block;}
+}
+
+.coverPhoto img {
+    float: left;
+    width: 100% !important;
+    min-height: 100%;
+    object-fit: cover;
+    border-radius: 8px !important;
+    border: 1px solid #B5DCBB !important;
+}
+
+/* Grønn boks */
+
+.oppsummert h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.oppsummert h5 {
+    margin-top: 7%;
+    margin-bottom: 0;
+    margin-right: 10px;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+}
+
+.oppsummert span, .oppsummert i {
+    font-size: 16px;
+    margin-top: 0;
+}
+
+.oppsummert h5, .oppsummert span {
     display: inline-block;
 }
 
-.savedText {
-    color: grey;
-    font-size: 14px;
-    font-family: Lato, sans-serif;
-    margin: 5px;
-}
 
-.inputBoxAsText {
-    background-color: transparent;
-    border: 0;
-    outline-width: 0;
-    color: black !important;
-}
-
-.inputBoxAsText:focus {
-    border: 0 !important;
-    outline-width: 0 !important;
-}
-
-.removeFileButton:hover {
-    cursor: pointer;
-}
-
-.largeListCard {
-    width: 100%;
-    padding: 5px 20px;
-    border: gray 1px solid !important;
-    border-radius: 20px;
-    margin: 10px 0px !important;
-}
-
-/* Progress bar ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-.infoBlokk, .progressBar {
-    margin-left: auto;
-    margin-right: auto;
-
-}
+/* Informasjonsboks –––––––––––––––––––––––––––––*/
 
 .infoBlokk .material-icons, .infoBlokk h5 {
     display: inline-block;
@@ -60,18 +278,14 @@
     font-weight: bold;
 }
 
-.infoBlokk h5, .infoBlokk h4 {
-    font-weight: 400;
-    margin: 0 5px;
+.infoBlokk h5, .infoBlokk h4, .infoBlokk h6 {
+    margin: 0 11px;
     line-height: 24px;
     vertical-align: middle;
     display: inline-block;
     width: 90%;
 }
 
-.infoBlokk h4 {
-    font-size: 1.8rem !important;
-}
 .infoBlokk p {
     margin-left: 35px;
     margin-bottom: 0;
@@ -87,6 +301,20 @@
     margin-bottom: 60px;
     border: 1px solid #e8f2e5;
 }
+
+/* Bilde */
+
+/* Oppsummert */
+
+/* Progress bar –––––––––––––––––––––––––––––––––*/
+
+.infoBlokk, .progressBar {
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
 
 .progressBar {
     display: block;
@@ -178,6 +406,63 @@
     margin-top: 50px;
 }
 
+/* Forside ––––––––––––––––––––––––––––––––––––––*/
+
+/* Status-bar */
+
+/* Responsivt design ––––––––––––––––––––––––––––*/
+
+
+
+
+.inputFieldCounter {
+    float: right;
+    margin-right: 5px;
+    margin-top: 10px;
+    transform: translate(0, -170%);
+
+    font-size: 12px;
+    color: gray;
+}
+
+.inlineBlock {
+    display: inline-block;
+}
+
+.savedText {
+    color: grey;
+    font-size: 14px;
+    font-family: Lato, sans-serif;
+    margin: 5px;
+}
+
+.inputBoxAsText {
+    background-color: transparent;
+    border: 0;
+    outline-width: 0;
+    color: black !important;
+}
+
+.inputBoxAsText:focus {
+    border: 0 !important;
+    outline-width: 0 !important;
+}
+
+.removeFileButton:hover {
+    cursor: pointer;
+}
+
+.largeListCard {
+    width: 100%;
+    padding: 5px 20px;
+    border: gray 1px solid !important;
+    border-radius: 20px;
+    margin: 10px 0px !important;
+}
+
+/* Progress bar ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+
 /* Innhold -------------------------------------------------------------------*/
 .innhold {
     border: 1px solid #d9ead4;
@@ -195,51 +480,18 @@
     line-height: 1.6;
 }
 
+.projTitle {
+    margin: 0 auto;
+    width: 60%;
+}
+
 
 /* Last opp bilde ------------------------------------------------------------*/
-.uploadPhoto h5, .uploadPhoto .material-icons {
-    position: absolute;
-    text-align: center;
-    left: 0;
-    right: 0;
-    color: #0B843E !important;
-    cursor: pointer;
-}
-/*.uploadPhoto:hover h5,*/
-.uploadPhoto:link h5,
-.uploadPhoto:visited h5,
-/*.uploadPhoto:hover .material-icons,*/
-.uploadPhoto:visited .material-icons,
-.uploadPhoto:link .material-icons {
-    opacity: 0;
-}
 
-.uploadPhoto h5 {
-    margin: 200px auto;
-    text-decoration: underline;
-}
-
-.uploadPhoto .material-icons {
-    margin: 180px auto;
-}
-
-#output {
-    object-fit: cover;
-}
-
-#output, .sammendragContainer textarea {
-    border: 1px solid #dbdbdb;
-    min-width: 100%;
-    height: 419px;
-    border-radius: 5px;
-}
 
 
 /* ProsjektRedigering ––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-.requiredPart, .addCustomField, .uploadPhoto, .sammendragContainer {
-    margin-left: auto;
-    margin-right: auto;
-}
+
 
 #submitButton,
 #backButton,
@@ -247,7 +499,7 @@
 .addInfoButton,
 .editButton,
 #closePopupButton,
-.viewMore{
+.viewMore, #deleteArticle, #editArrang {
     background-color: #0B843E;
     text-transform: capitalize;
     color: #fff;
@@ -260,23 +512,24 @@
 .addInfoButton:hover,
 .editButton:hover,
 #closePopupButton:hover,
-.viewMore:hover {
+.viewMore:hover, #deleteArticle:hover, #editArrang:hover {
     color: #fff;
     background-color: #0B843EBA;
-    font-weight: 700;
+    text-decoration: underline;
+    font-weight: unset;
 }
 
 #submitButton,
-.editButton,
 #closePopupButton,
 #backButton,
 #publishButton,
-.viewMore{
+.viewMore, #deleteArticle, .editArrang {
     height: 50px;
     width: 200px;
     border-radius: 30px;
     margin-top: 7%;
     padding: 0px !important;
+    font-size: 18px;
 }
 
 /* Kort om prosjektet */
@@ -471,6 +724,10 @@
 }
 
 .innhold .collapsible {
+    cursor: unset;
+}
+
+.innhold .collapsible {
     padding: 20px;
     margin: 5em auto;
     background-color: #f3f8f2;
@@ -611,37 +868,10 @@
     margin-bottom: 3rem;
 }
 
-.personLeftCol {
-    display: table-cell;
-    margin: 0em;
-    height: auto;
-    vertical-align: middle;
-    padding-right: 1em;
-}
-
-.personLeftCol h5 {
-    text-align: center;
-    letter_spacing: normal;
-    font-weight: 400;
-}
-
 .personRightCol {
     width: 100%;
-    display: table-cell;
     margin: 0em;
-    padding-left: 1em;
     height: auto;
-    vertical-align: middle;
-}
-
-.personProfilBilde {
-    width: 120px;
-    height: 120px;
-    border-radius: 100%;
-    background-color: #999999;
-
-    margin-left: auto;
-    margin-right: auto;
 }
 
 @keyframes fadein {
@@ -656,101 +886,34 @@
     }
 }
 
-.addPerson hr {
-    border-color: #d9ead4;
+/* Collapsible add files */
+
+.uploadFiles [type = "file"] {
+    width: 30%;
+    margin-bottom: 20px;
 }
 
+.dokumentLink {
+    margin: 20px;
+}
+
+.hovedInfoBox {
+    font-size: 14px;
+
+    position: absolute;
+    padding: 15px;
+    max-width: 300px;
+
+    box-shadow: #444444 2px 2px 10px;
+    border-radius: 8px;
+    background-color: #fffbc3;
+    z-index: 10;
+}
 
 
 /* Vis prosjekt -----------------------------------------------------------*/
 
-/* Style the button that is used to open and close the collapsible content */
-.collapsible {
-    border-radius: 8px;
-    margin-top: 5px;
-    margin-bottom: 0;
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    text-align: left;
-    font-size: 16px;
-}
 
-.collapsibles .content{
-    margin: 0 auto;
-}
-
-.collapsibles {
-    width: 60%;
-    margin: 0 auto;
-}
-
-.topPart {
-    height: auto;
-    overflow: visible;
-    margin-bottom: 100px;
-}
-
-.topPart .coverPhoto {
-    margin: 0;
-}
-
-.coverPhoto {
-    width: 70%;
-    margin: 20px 0;
-    height: auto !important;
-}
-
-@media only screen and (min-width: 1020px) {
-    .coverPhoto, .oppsummert {
-    display: inline-block;}
-}
-
-.coverPhoto img {
-    float: left;
-    width: 100% !important;
-    height: 450px !important;
-    object-fit: cover;
-    border-radius: 8px !important;
-    border: 1px solid #B5DCBB !important;
-}
-
-.oppsummert {
-    float:right;
-    background-color: #d9ead4;
-    max-width: 29%;
-    min-width: 29%;
-    max-height: 450px;
-    overflow: visible;
-    padding: 35px;
-    margin-left: 10px;
-    border-radius: 8px;
-    border: 1px solid #B5DCBB;
-}
-
-.oppsummert h4 {
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.oppsummert h5 {
-    margin-top: 7%;
-    margin-bottom: 0;
-    margin-right: 10px;
-    font-weight: 700 !important;
-    font-size: 14px !important;
-}
-
-.oppsummert span, .oppsummert i {
-    font-size: 14px;
-    margin-top: 0;
-}
-
-.oppsummert h5, .oppsummert span {
-    display: inline-block;
-}
 
 .contentTitle {
     margin-top: 100px;
@@ -760,13 +923,18 @@
     text-align: right;
 }
 
+/* Banner –––––––––––––––– */
+
+
+
+
 /* Collapsibles display*/
 
 .collapsibles {
     margin-top: 20px;
 }
 
-.collapsible span.material-icons {
+.collapsibles .collapsible span.material-icons {
     float: right;
     vertical-align: middle;
 }
@@ -886,7 +1054,7 @@ td {
 }
 
 .active span.material-icons {
-    rotate: 180deg;
+    transform: rotate(180deg);
 }
 
 /* Style the collapsible content. Note: hidden by default */
@@ -917,9 +1085,37 @@ td {
     margin-bottom: 10px;
 }
 
+#backButton {
+    background-color: #84c58e;
+    border: 1px solid #0B843E;
+    color: black;
+}
+
+#backButton:hover {
+    background-color: #a8d6af;
+    color: black;
+}
+
+.slettKnapp {
+    width: 80%;
+    margin: 0 auto;
+    height: 50px;
+}
+
+#deleteArticle {
+    background-color: #e16f6f !important;
+    line-height: 24px;
+    width: 170px;
+}
+
+#deleteArticle:hover {
+    background-color: #ea9999 !important;
+    text-decoration: underline;
+}
+
 /* Vis nyhetsartikkel ––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 
-.artikkel {
+#nyheter {
     width: 60%;
     margin: 0 auto;
 }
@@ -928,7 +1124,7 @@ td {
     display: inline-block;
 }
 
-.artikkel button {
+.artikkel button, .slettKnapp button {
     float: right;
 }
 
@@ -936,30 +1132,9 @@ td {
     margin-bottom: 30px;
 }
 
-.editButton {
-    height: 30px;
-    margin: 10px 0;
-    font-size: 14px;
-    text-transform: none;
-}
 
-.editButton .material-icons {
-    font-size: 14px;
-    margin-bottom: 3px;
-    margin-left: 5px;
-}
 
-.ingress {
-    display: block;
-    width: 100%;
-    font-style: italic;
-}
 
-.artikkel .coverPhoto {
-    float: none;
-    background-color: unset;
-    width: 100%;
-}
 
 .tilknyttetProsjektTekst {
     font-size: 16px;
@@ -967,15 +1142,15 @@ td {
 }
 
 .artikkelTekst {
-    margin: 0 0 50px 0;
+    margin: 20px 0 50px 0;
 }
 
-.artikkel a[href] {
-    color: #0059b3;
+.artikkel a[href], .collapsibles a[href] {
+    color: #0059b3 !important;
     border-bottom: 1.5px solid #c8c8c8;
 }
 
-.artikkel a[href]:hover {
+.artikkel a[href]:hover, .collapsibles a[href]:hover {
     border-bottom: 1.5px solid #0059b3;
 }
 
@@ -1014,7 +1189,7 @@ td {
     transform: scale(1.04);
     box-shadow: 0px 5px 5px lightsteelblue;
     background-color: #274279;
-    font-weight: 700;
+    text-decoration: underline;
 }
 
 #facebookShareButton {
@@ -1032,7 +1207,7 @@ td {
 .buttons {
     margin-right: auto;
     margin-left: auto;
-    width: 464px;
+    width: fit-content;
 }
 
 /* Alle nyheter ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
@@ -1050,12 +1225,14 @@ td {
     padding: 20px;
     border: 1px solid #84C58ED4;
     border-radius: 20px;
-    box-shadow: 5px 5px 10px #d9ead4;
     overflow: hidden;
 }
 
 .artikkelKort:hover {
     background-color: #f3f8f2;
+    box-shadow: 5px 5px 10px #d9ead4;
+    transform: scale(1.01);
+    border-bottom: none !important;
 }
 
 .artikkelkorttekst {
@@ -1116,6 +1293,10 @@ td {
 .viewMore {
     width: 250px;
     margin: 30px;
+}
+
+.collapsibles .artikkelKortHolder a[href] {
+    border-bottom: none;
 }
 
 
@@ -1258,30 +1439,34 @@ td {
 
 
 /* Arrangement –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-.artikkel .oppsummert {
-    float: right;
-    min-height: auto;
-    min-width: 35%;
-    margin-right: 0 !important;
-    margin: 20px;
-}
 
-.artikkel .oppsummert h5, .artikkel .oppsummert span {
-    display: block;
-}
-
-.artikkel .oppsummert h5 {
-    margin-top: 17px;
-}
-
-.artikkel .topPart {
-    display: block;
-    margin: 20px 0;
-}
 
 .artikkel .artikkelTekst {
     min-height: 220px;
 }
+
+#signUpButton {
+    border: none;
+    border-radius: 10px;
+    background-color: #0B843E;
+    width: 170px;
+    color: white;
+}
+
+#signUpButton:hover {
+    background-color: #0B843EBA;
+    font-weight: unset;
+    color: white;
+    text-decoration: underline;
+}
+
+
+
+.arrInnhold {
+    width: 60%;
+    margin: 0 auto;
+}
+
 
 /* Nettleser tilpassning –––––––––––––––––––––––––––––––––––––––––––––––––*/
 
@@ -1405,4 +1590,11 @@ td {
         margin-left: auto;
         margin-right: auto;
     }
+}
+
+
+/* Forside –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+.changelogTitle, #statusPil {
+    display: inline-block;
 }

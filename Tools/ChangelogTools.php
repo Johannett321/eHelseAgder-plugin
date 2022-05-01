@@ -26,7 +26,7 @@ function sc_nyeste_oppdateringer() {
     <div class="changelog">
         <div class = "changelogItem">
             <div class="changelogTitle">Nyeste oppdateringer</div>
-            <span class="material-icons">chevron_right</span>
+            <span class="material-icons" id = "statusPil">chevron_right</span>
         </div>
         <?php
         foreach ($changelog as $changelogItem) {
