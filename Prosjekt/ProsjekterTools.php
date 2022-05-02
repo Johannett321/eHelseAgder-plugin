@@ -16,7 +16,7 @@ function getProsjektStatusAsText($prosjektStatusNumber) {
         case 4:
             return "Avsluttet";
         case 5:
-            return "Kansellert";
+            return "Avbrutt";
     }
     return "";
 }

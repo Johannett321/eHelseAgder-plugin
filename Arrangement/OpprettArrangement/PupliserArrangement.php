@@ -82,7 +82,9 @@ function lagreArrangementUtkast() {
 
 
     $wpdb->insert($formatted_table_name, $data, $format);
-    gotoViewEvent($eventID, "Velkommen til forhåndsvisning!", "Her ser du hvordan arrangementsiden vil bli seende ut når du publiserer arrangementet. Hvis du er fornøyd og ønsker å publisere, blar du ned på siden og klikker «Publiser». Om du vil endre på noe, blar du ned og klikker «Tilbake».", "Dette er bare en forhåndsvisning", true);
+    gotoViewEvent($eventID, "Velkommen til forhåndsvisning!",
+        "Her ser du hvordan arrangementsiden vil bli seende ut når du publiserer arrangementet. Hvis du er fornøyd og ønsker å publisere, blar du ned på siden og klikker «Publiser». Om du vil endre på noe, blar du ned og klikker «Tilbake».",
+        "Dette er en forhåndsvisning av arrangementet. Ønsker du å gjøre endringer kan du gå tilbake å redigere innholdet. Er du ferdig med å redigere, kan du publisere arrangementet for å offentliggjøre den.", true);
 }
 
 function publiserArrangement() {

@@ -70,7 +70,10 @@ function lagreNyhetsUtkast() {
     $articleJustAdded = $wpdb->get_results("SELECT * FROM $formatted_table_name WHERE id = (SELECT MAX(ID) FROM $formatted_table_name)");
     $articleID = $articleJustAdded[0]->id;
     error_log("La til nyhetsartikkel med artikkelID: " . $articleID, 0);
-    gotoViewArticle($articleID, "Velkommen til forhåndsvisning!", "Her ser du hvordan nyhetssiden vil bli seende ut når du publiserer artikkelen. Hvis du er fornøyd og ønsker å publisere, blar du ned på siden og klikker «Publiser». Om du vil endre på noe, blar du ned og klikker «Tilbake».", "Dette er bare en forhåndsvisning", true);
+    gotoViewArticle($articleID, "Velkommen til forhåndsvisning!",
+        "Her ser du hvordan nyhetssiden vil bli seende ut når du publiserer artikkelen. Hvis du er fornøyd og ønsker å publisere, blar du ned på siden og klikker «Publiser». Om du vil endre på noe, blar du ned og klikker «Tilbake».",
+        "Dette er en forhåndsvisning av nyhetsartikkelen. Ønsker du å gjøre endringer kan du gå tilbake å redigere innholdet. Er du ferdig med å redigere, kan du publisere nyhetsartikkelen for å offentliggjøre den.",
+        true);
 }
 
 function publiserNyhetsartikkel() {
