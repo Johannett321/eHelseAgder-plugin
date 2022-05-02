@@ -29,6 +29,6 @@ function sc_kommende_arrangementer() {
 function getLastEventsList($limit) {
     global $wpdb;
     $dagensDato = date('Y-m-d');
-    $query = "SELECT * FROM " . getArrangementerDatabaseRef() . " WHERE start_dato > '" . $dagensDato . "'  ORDER BY start_dato ASC LIMIT " . $limit;
+    $query = "SELECT * FROM " . getArrangementerDatabaseRef() . " WHERE start_dato >= '" . $dagensDato . "'  ORDER BY start_dato ASC LIMIT " . $limit;
     return $wpdb->get_results($query);
 }
