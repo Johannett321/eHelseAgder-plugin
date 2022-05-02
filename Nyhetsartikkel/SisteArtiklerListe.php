@@ -17,7 +17,7 @@ function getLastNyheterList() {
 }
 
 function loadSisteNyhetsartikler($projectName) {
-    if (isset($_GET['message'])) {
+    if (isset($_GET['message']) && !isset($_GET['prosjektID'])) {
         showCompleteMessage($_GET['message']);
     }
 
