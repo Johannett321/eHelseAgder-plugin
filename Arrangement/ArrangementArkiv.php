@@ -23,7 +23,7 @@ function loadArrangementer() {
         for ($i = $startYear; $i <= $endYear; $i++) {
             error_log($i . " " . $startYear . " " . $endYear);
 
-            $query = "SELECT id, tittel, kort_besk, start_dato, bilde FROM " . getArrangementerDatabaseRef() .
+            $query = "SELECT id, tittel, kort_besk, start_dato, start_klokkeslett, bilde FROM " . getArrangementerDatabaseRef() .
                 " WHERE start_dato >= '" . intval($i) . "-01-01'" .
                 " AND start_dato < '" . (intval($i) + 1) . "-01-01'" .
                 " ORDER BY start_dato DESC LIMIT 3";
@@ -43,15 +43,12 @@ function loadArrangementer() {
                     foreach($results as $result) {
                         $specialClass = "";
                         if ($result->start_dato < date("Y-m-d")) {
-                                error_log("MERKELIG!!!!");
                             $specialClass = "inaktiv";
-                        }else {
-                            error_log("MERKELIGIKKE!!!!");
                         }
                         $eventCounter++;
                         createSmallListItem($result->tittel,
                             $result->kort_besk,
-                            getDisplayDateFormat($result->start_dato),
+                            getNoneImportantDisplayDateFormat($result->start_dato) . " kl " . $result->start_klokkeslett,
                             $result->bilde,
                             "vis-arrangement/?eventID=" . $result->id,
                             $specialClass);
