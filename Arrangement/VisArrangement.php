@@ -44,7 +44,9 @@ function sc_vis_arrangement() {
     }
 
     ?>
-    <div class = "artikkel" id="arrangement">
+
+    <div class="edit">
+
         <?php
         if (userIsLoggedIn() && !lookingAtDraft()) {
             ?>
@@ -52,6 +54,10 @@ function sc_vis_arrangement() {
             <?php
         }
         ?>
+
+    </div>
+
+    <div class = "artikkel" id="arrangement">
 
         <div class = "topPart">
             <?php
