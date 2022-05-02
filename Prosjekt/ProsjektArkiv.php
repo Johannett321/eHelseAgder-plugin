@@ -20,7 +20,7 @@ function loadProsjekter() {
         <?php
         for ($i = $startYear; $i <= $endYear; $i++) {
 
-            $query = "SELECT id, project_name, undertittel, prosjektstart, bilde FROM " . getProsjekterDatabaseRef() .
+            $query = "SELECT id, project_name, undertittel, prosjektstart, bilde, prosjektstatus FROM " . getProsjekterDatabaseRef() .
                 " WHERE prosjektstart >= " . $i .
                 " AND prosjektstart < " . ($i + 1) .
                 " ORDER BY project_name ASC LIMIT 5";
@@ -39,17 +39,16 @@ function loadProsjekter() {
                     <?php
                     foreach($results as $result) {
                         $specialClass = "";
-                        if ($result->prosjektstatus != "1" && $result->prosjektstatus != "2") {
-                            error_log("RAWWR: " . $result->prosjektstatus);
+                        if ($result->prosjektstatus != 1 && $result->prosjektstatus != 2) {
                             $specialClass = "inaktiv";
                         }
 
                         $eventCounter++;
                         createSmallListItem($result->project_name,
                             $result->undertittel,
-                            getDisplayDateFormat($result->prosjektstart),
+                            $result->prosjektstart,
                             $result->bilde,
-                            "prosjekter/prosjektside/?prosjektID=" . $result->id,
+                            "prosjektside/?prosjektID=" . $result->id,
                             $specialClass);
                         if ($eventCounter > 4) {
                             ?>

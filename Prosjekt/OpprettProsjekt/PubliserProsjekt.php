@@ -57,6 +57,13 @@ function lagreProsjektUtkast() {
         "project_text" => $_SESSION["psummary"],
         "revision"=>$_SESSION["correctLocalRevision"]);
 
+    if ($data["prosjektstart"] == "0") {
+        $data["prosjektstart"] = "2022";
+    }
+    if ($data["prosjektslutt"] == "0") {
+        $data["prosjektslutt"] = "2022";
+    }
+
     $format = array("%d",
         "%s",
         "%s",

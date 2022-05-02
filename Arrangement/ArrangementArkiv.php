@@ -43,7 +43,7 @@ function loadArrangementer() {
                     foreach($results as $result) {
                         $specialClass = "";
                         if ($result->start_dato < date("Y-m-d")) {
-                            error_log("MERKELIG!!!!");
+                                error_log("MERKELIG!!!!");
                             $specialClass = "inaktiv";
                         }else {
                             error_log("MERKELIGIKKE!!!!");
