@@ -15,9 +15,26 @@ function sc_kommende_arrangementer() {
             return;
         }
         foreach ($events as $currentEvent) {
+            $visningsDato = getNoneImportantDisplayDateFormat($currentEvent->start_dato) . " kl " . $currentEvent->start_klokkeslett;
+
+            $startDato = strtotime($currentEvent->start_dato);
+            $sluttDato = strtotime($currentEvent->slutt_dato);
+
+            $datediff = $sluttDato - $startDato;
+            $difference = floor($datediff/(60*60*24));
+
+            if ($difference > 0) {
+                $visningsDato = "Fra " .
+                    getNoneImportantDisplayDateFormat($currentEvent->start_dato) .
+                    " kl " .
+                    $currentEvent->start_klokkeslett .
+                    " til " .
+                    getNoneImportantDisplayDateFormat($currentEvent->slutt_dato);
+            }
+
             createLargeListItem($currentEvent->tittel,
                 $currentEvent->kort_besk,
-                getNoneImportantDisplayDateFormat($currentEvent->start_dato) . " kl " . $currentEvent->start_klokkeslett,
+                $visningsDato,
                 $currentEvent->sted, $currentEvent->bilde,
                 "vis-arrangement/?eventID=" . $currentEvent->id);
         }

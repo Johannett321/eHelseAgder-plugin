@@ -64,7 +64,7 @@ function loadProsjekter() {
             }else {
                 ?>
                 <button type="button" class="collapsible">
-                    <?php echo $i?>
+                    <?php echo "Prosjekter med oppstart i " . $i?>
                 </button>
 
                 <div class="content">

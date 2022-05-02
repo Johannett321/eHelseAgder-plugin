@@ -9,13 +9,24 @@ function sc_nyhetsarkiv() {
 }
 
 function loadNyhetsartikler() {
-    $startYear = 2022;
-    $endYar = date("Y");
+    global $wpdb;
+    $startYear = $wpdb->get_results("SELECT dato_skrevet FROM " . getNyhetsartiklerDatabaseRef() . " ORDER BY dato_skrevet ASC LIMIT 1")[0]->dato_skrevet;
+    $endYear = $wpdb->get_results("SELECT dato_skrevet FROM " . getNyhetsartiklerDatabaseRef() . " ORDER BY dato_skrevet DESC LIMIT 1")[0]->dato_skrevet;
+
+    error_log("Start: " . $startYear);
+    error_log("End: " . $endYear);
+    $startYear = date_create($startYear);
+    $endYear = date_create($endYear);
+    $startYear = date_format($startYear, "Y");
+    $endYear = date_format($endYear, "Y");
+    error_log("Start: " . $startYear);
+    error_log("End: " . $endYear);
 
     ?>
     <div class = "collapsibles" id = "displayCol">
         <?php
-        for ($i = $startYear; $i <= $endYar; $i++) {
+        for ($i = $startYear; $i <= $endYear; $i++) {
+            error_log("Year: " . $i);
             ?>
             <button type="button" class="collapsible">
                 <?php echo $i?>
@@ -24,7 +35,6 @@ function loadNyhetsartikler() {
 
             <div class="content">
                 <?php
-                global $wpdb;
                 $query = "SELECT * FROM " . getNyhetsartiklerDatabaseRef() .
                     " WHERE dato_skrevet >= '" . $i . "-01-01'" .
                     " AND dato_skrevet < '" . ($i+1) . "-01-01'" .
