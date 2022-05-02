@@ -52,7 +52,7 @@ function sc_mest_populaere_nyheter() {
 
     $year = $_GET['year'];
     ?>
-    <center><h3>Mest populære nyhetsartikler <?php if (isset($_GET['year'])) echo "fra " . $year ?></h3></center>
+    <center><h3>Mest leste nyhetsartikler <?php if (isset($_GET['year'])) echo "fra " . $year ?></h3></center>
     <?php
     $query = "SELECT * FROM " . getNyhetsartiklerDatabaseRef();
 
