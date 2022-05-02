@@ -349,6 +349,7 @@ Innhold:
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
+    position: relative;
 }
 
 .changelogItem {
@@ -365,6 +366,7 @@ Innhold:
 
     width: auto;
     height: inherit;
+    padding-left: 15px;
 
     vertical-align: top;
 
@@ -412,14 +414,14 @@ Innhold:
     width: 100%;
 }
 
-.artikkelKortHolder .artikkelKort {
+.artikkelKortHolder2 .artikkelKort {
     width: 90%;
 }
 
 /* Arrangementer */
 
 .arrangementer {
-    height: 580px;
+    height: 540px;
     border: 1px solid #84C58ED4;
     border-radius: 20px;
     overflow-x: hidden;
@@ -514,7 +516,7 @@ Innhold:
     height: 126px;
 
     background-color: rgba(217, 234, 212, 0.80);
-    border-radius: 20px;
+    border-radius: 10px;
 
     padding: 15px;
 }
@@ -562,7 +564,7 @@ Innhold:
 }
 
 
-/* Min sine –––––––––––––––––––––––––––––––––––––*/
+/* Min side –––––––––––––––––––––––––––––––––––––*/
 
 
 
