@@ -24,16 +24,16 @@ function sc_nyeste_oppdateringer() {
 
     ?>
     <div class="changelog">
-        <div class = "changelogItem">
-            <div class="changelogTitle">Nyeste oppdateringer</div>
-            <span class="material-icons">chevron_right</span>
+        <div class = "changelogTitle">
+            <div>Nyeste oppdateringer</div>
+            <span class="material-icons" id = "statusPil">chevron_right</span>
         </div>
         <?php
         foreach ($changelog as $changelogItem) {
             ?>
             <div class = "verticalLine"></div>
-            <a href = "<?php echo $changelogItem->href ?>">
-                <div class = "changelogItem">
+            <a href = "<?php echo $changelogItem->href ?>" class = "changelogItem">
+                <div>
                     <h5><?php echo $changelogItem->tittel ?></h5>
                     <p><?php echo $changelogItem->beskrivelse ?></p>
                     <div class = "changelogTime"> <?php echo getNoneImportantDisplayTimestampFormat($changelogItem->dato) ?></div>

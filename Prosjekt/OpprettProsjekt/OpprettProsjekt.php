@@ -52,7 +52,7 @@ function lagFelter($loadedProsjekt) {
             <div id="photoPlaceholder">
                 <h3>Velg forsidebilde</h3>
                 <div class="uploadPhoto" id = "uploadPhotoButton">
-                    <div>
+                    <div class="lastOppBildeKnapp">
                         <h5>Last opp bilde</h5>
                         <i class="material-icons">upload</i>
                     </div>

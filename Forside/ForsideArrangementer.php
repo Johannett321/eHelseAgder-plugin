@@ -24,9 +24,9 @@ function loadForsideArrangementer() {
             ?>
             <a href = "arrangementer/vis-arrangement/?eventID=<?php echo $currentArrangement->id?>">
                 <div class ="arrangement">
-                    <h5><?php echo $currentArrangement->tittel ?></h5>
+                    <h5 class="arrTittel"><?php echo $currentArrangement->tittel ?></h5>
                     <div class = "datoBoks">
-                        <h5><?php echo getNoneImportantDisplayDateFormat($currentArrangement->start_dato) . " kl " . $currentArrangement->start_klokkeslett ?></h5>
+                        <h5><?php echo "Tid: " . getNoneImportantDisplayDateFormat($currentArrangement->start_dato) . " kl " . $currentArrangement->start_klokkeslett ?></h5>
                     </div>
                     <p><?php echo $currentArrangement->kort_besk ?></p>
                     <div class = "LesMer">

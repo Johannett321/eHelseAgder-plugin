@@ -26,7 +26,7 @@ function sc_prosjekt_side() {
     if (areElementorBufferingObjects()) return;
     if (areWeEditingWithElementor()) {
         ?>
-        <center><h5>Her vil prosjektet man er inne på vises</h5></center>
+        <div><h5>Her vil prosjektet man er inne på vises</h5></div>
         <?php
         return;
     }
@@ -74,9 +74,9 @@ function sc_prosjekt_side() {
             <div>
                 <h5>Prosjektleder:</h5>
                 <div>
-                    <i>Navn: <?php echo $projectInfo[0]->ledernavn?></i>
+                    <i><?php echo $projectInfo[0]->ledernavn?></i>
                     <br>
-                    <i>Epost: <?php echo $projectInfo[0]->ledermail?></i>
+                    <i><?php echo $projectInfo[0]->ledermail?></i>
                     <br>
                     <?php
                     if ($projectInfo[0]->ledertlf != null) {
@@ -124,7 +124,7 @@ function sc_prosjekt_side() {
             </div>
         </div>
     </div>
-    <center><h1><?php echo $projectInfo[0]->project_name; ?></h1></center>
+    <div class = "projTitle"><h1><?php echo $projectInfo[0]->project_name; ?></h1></div>
     <div class = "projectText"><?php echo nl2br($projectInfo[0]->project_text); ?></div>
     <div class = "collapsibles" id = "displayCol">
         <?php
@@ -132,7 +132,7 @@ function sc_prosjekt_side() {
 
         if ($collapsibles != null) {
             ?>
-            <center><h4 class = "contentTitle">Vil du vite mer?</h4></center>
+            <div><h4 class = "contentTitle">Vil du vite mer?</h4></div>
             <?php
         }
 

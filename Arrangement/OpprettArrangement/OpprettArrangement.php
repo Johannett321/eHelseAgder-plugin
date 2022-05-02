@@ -23,7 +23,9 @@ function sc_opprett_arrangement() {
     <?php
     if ($loadedArrangement != null) {
         ?>
-        <a href = "../../../wp-json/ehelseagderplugin/api/slett_arrangement?eventID=<?php echo $_GET['editEventID']?>"><button>Slett arrangement</button></a>
+        <div class="slettKnapp">
+        <a href = "../../../wp-json/ehelseagderplugin/api/slett_arrangement?eventID=<?php echo $_GET['editEventID']?>"><button id = "deleteArticle">Slett arrangement<i class="material-icons">close</i></button></a>
+        </div>
         <?php
     }
     ?>
@@ -33,7 +35,7 @@ function sc_opprett_arrangement() {
             <!-- OPPLASTING AV BILDE -->
             <h4>Velg forsidebilde</h4>
             <div class="uploadPhoto" id = "uploadPhotoButton">
-                <div>
+                <div class="lastOppBildeKnapp">
                     <h5>Last opp bilde</h5>
                     <i class="material-icons">upload</i>
                 </div>
