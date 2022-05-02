@@ -515,6 +515,12 @@ Innhold:
 
 .arrTittel {
     font-weight: 700 !important;
+
+    width: 85%;
+
+    text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .datoBoks {
@@ -643,10 +649,18 @@ Innhold:
 
 .deleteButtons:hover {
     background-color: #ea9999 !important;
+
+    text-decoration: none !important;
 }
 
 .editButtonTB {
+    background-color: #f3f8f2 !important;
+    text-align: center;
+    font-weight: 700;
+}
 
+.minSideTB td:hover {
+    text-decoration: underline;
 }
 
 
