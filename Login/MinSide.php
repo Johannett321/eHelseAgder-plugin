@@ -68,13 +68,13 @@ function sc_minside_prosjekter() {
         return;
     }
     ?>
-    <table>
+    <table class = "minSideTB">
         <?php
         foreach ($prosjektInfo as $currentProsjekt) {
             ?>
             <tr>
-                <td><a href = "../prosjekter/prosjektside/?prosjektID=<?php echo $currentProsjekt->id ?>"><?php echo $currentProsjekt->project_name?></a></td>
-                <td><a href = "../opprett-prosjekt/?editProsjektID=<?php echo $currentProsjekt->id ?>">Rediger</a></td>
+                <td class="titleTB"><a href = "../prosjekter/prosjektside/?prosjektID=<?php echo $currentProsjekt->id ?>"><?php echo $currentProsjekt->project_name?></a></td>
+                <td class="editButtonTB"><a href = "../opprett-prosjekt/?editProsjektID=<?php echo $currentProsjekt->id ?>">Rediger</a></td>
                 <td class="deleteButtons" id="<?php echo $currentProsjekt->project_name ?>" data-tilhorer="<?php echo $currentProsjekt->id?>" data-type="prosjekt" style="cursor: pointer;">Slett</td>
             </tr>
             <?php
@@ -95,13 +95,13 @@ function sc_minside_arrangementer() {
         return;
     }
     ?>
-    <table>
+    <table class = "minSideTB">
         <?php
         foreach ($arrangementInfo as $currentArrangement) {
             ?>
             <tr>
-                <td><a href = "../vis-arrangement/?eventID=<?php echo $currentArrangement->id ?>"><?php echo $currentArrangement->tittel?></a></td>
-                <td><a href = "../opprett-arrangement/?editEventID=<?php echo $currentArrangement->id ?>">Rediger</a></td>
+                <td class="titleTB"><a href = "../vis-arrangement/?eventID=<?php echo $currentArrangement->id ?>"><?php echo $currentArrangement->tittel?></a></td>
+                <td class="editButtonTB"><a href = "../opprett-arrangement/?editEventID=<?php echo $currentArrangement->id ?>">Rediger</a></td>
                 <td class="deleteButtons" id="<?php echo $currentArrangement->tittel ?>" data-tilhorer="<?php echo $currentArrangement->id?>" data-type="arrangement" style="cursor: pointer;">Slett</td>
             </tr>
             <?php
@@ -122,13 +122,13 @@ function sc_minside_nyhetsartikler() {
         return;
     }
     ?>
-    <table>
+    <table class = "minSideTB">
         <?php
         foreach ($artikkelInfo as $currentArtikkel) {
             ?>
             <tr>
-                <td><a href = "../nyheter/vis-artikkel/?artikkelID=<?php echo $currentArtikkel->id ?>"><?php echo $currentArtikkel->tittel?></a></td>
-                <td><a href = "../opprett-nyhetsartikkel/?editArticleID=<?php echo $currentArtikkel->id ?>">Rediger</a></td>
+                <td class="titleTB"><a href = "../nyheter/vis-artikkel/?artikkelID=<?php echo $currentArtikkel->id ?>"><?php echo $currentArtikkel->tittel?></a></td>
+                <td class="editButtonTB"><a href = "../opprett-nyhetsartikkel/?editArticleID=<?php echo $currentArtikkel->id ?>">Rediger</a></td>
                 <td class="deleteButtons" id="<?php echo $currentArtikkel->tittel ?>" data-tilhorer="<?php echo $currentArtikkel->id?>" data-type="nyhetsartikkel" style="cursor: pointer;">Slett</td>
             </tr>
             <?php
@@ -170,7 +170,7 @@ function sc_logg_ut_knapp() {
         ?>
         <center>
             <a href = "/wp-json/ehelseagderplugin/api/logg_ut">
-                <button>
+                <button id="loggUtButton">
                     Logg ut
                 </button>
             </a>

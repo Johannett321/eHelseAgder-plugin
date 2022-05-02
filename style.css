@@ -39,6 +39,55 @@ Innhold:
 
 /* Knapper ––––––––––––––––––––––––––––––––––––––*/
 
+/* Felles-attributter */
+
+#submitButton,
+#backButton,
+#publishButton,
+.addInfoButton,
+.editButton,
+#closePopupButton,
+.viewMore,
+#deleteArticle,
+#editArrang,
+#loggUtButton {
+    background-color: #0B843E;
+    text-transform: capitalize;
+    color: #fff;
+    margin: 0 15px;
+}
+
+#submitButton:hover,
+#backButton:hover,
+#publishButton:hover,
+.addInfoButton:hover,
+.editButton:hover,
+#closePopupButton:hover,
+.viewMore:hover,
+#deleteArticle:hover,
+#editArrang:hover,
+#loggUtButton:hover {
+    color: #fff;
+    background-color: #0B843EBA;
+    text-decoration: underline;
+    font-weight: unset;
+}
+
+#submitButton,
+#closePopupButton,
+#backButton,
+#publishButton,
+.viewMore,
+.editArrang,
+#loggUtButton {
+    height: 50px;
+    width: 200px;
+    border-radius: 30px;
+    margin-top: 7%;
+    padding: 0px !important;
+    font-size: 18px;
+}
+
 
 /* Rediger-knapp */
 .editButton, #deleteArticle {
@@ -47,7 +96,7 @@ Innhold:
     font-size: 14px;
     text-transform: none;
     width: 200px;
-    border-radius: 30px;
+    border-radius: 30px !important;
     padding: 0px !important;
 }
 
@@ -343,13 +392,18 @@ Innhold:
 /* Status-bar */
 
 .changelog {
-    border-bottom: 1px solid darkgrey;
+    border-bottom: 1px solid #d9ead4;
+    box-shadow: 0px 18px 10px -15px #d9ead4;
+
     width: 100%;
     height: 70px;
+
+    z-index: 1;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
-    position: relative;
+
+    position: absolute;
 }
 
 .changelogItem {
@@ -367,10 +421,14 @@ Innhold:
     width: auto;
     height: inherit;
     padding-left: 15px;
+    margin-right: -3px;
 
     vertical-align: top;
 
     line-height: 70px;
+    background-color: #e8f2e5;
+
+    box-shadow: 10px 0px 15px -10px #d9ead4;
 }
 
 .changelog span {
@@ -416,6 +474,9 @@ Innhold:
 
 .artikkelKortHolder2 .artikkelKort {
     width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 /* Arrangementer */
@@ -566,7 +627,27 @@ Innhold:
 
 /* Min side –––––––––––––––––––––––––––––––––––––*/
 
+.minSideTB, td {
+    background-color: white;
+    font-size: 16px !important;
 
+    height: 50px;
+    padding: 15px !important;
+}
+
+.deleteButtons {
+    background-color: #e16f6f !important;
+    text-align: center;
+    font-weight: 700;
+}
+
+.deleteButtons:hover {
+    background-color: #ea9999 !important;
+}
+
+.editButtonTB {
+
+}
 
 
 /* Responsivt design ––––––––––––––––––––––––––––*/
@@ -650,46 +731,6 @@ Innhold:
 
 
 /* ProsjektRedigering ––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-
-
-#submitButton,
-#backButton,
-#publishButton,
-.addInfoButton,
-.editButton,
-#closePopupButton,
-.viewMore, #deleteArticle, #editArrang {
-    background-color: #0B843E;
-    text-transform: capitalize;
-    color: #fff;
-    margin: 0 15px;
-}
-
-#submitButton:hover,
-#backButton:hover,
-#publishButton:hover,
-.addInfoButton:hover,
-.editButton:hover,
-#closePopupButton:hover,
-.viewMore:hover, #deleteArticle:hover, #editArrang:hover {
-    color: #fff;
-    background-color: #0B843EBA;
-    text-decoration: underline;
-    font-weight: unset;
-}
-
-#submitButton,
-#closePopupButton,
-#backButton,
-#publishButton,
-.viewMore, #deleteArticle, .editArrang {
-    height: 50px;
-    width: 200px;
-    border-radius: 30px;
-    margin-top: 7%;
-    padding: 0px !important;
-    font-size: 18px;
-}
 
 /* Kort om prosjektet */
 .requiredPart h3, .sammendragContainer h3, #photoPlaceholder h3, .innhold h3 {
@@ -1124,7 +1165,7 @@ th {
     width: 17%;
 }
 
-td {
+.collapsible td {
     height: 50px;
     background-color:#E7F0E2;
     padding: 15px !important;
