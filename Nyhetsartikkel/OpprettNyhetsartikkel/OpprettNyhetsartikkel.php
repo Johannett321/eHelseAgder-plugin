@@ -10,6 +10,10 @@ thisPageRequiresCookies('opprett-nyhetsartikkel');
 
 function sc_opprett_nyhetsartikkel() {
     if (areElementorBufferingObjects()) return;
+    if (areWeVisitingFromMobileDevice()) {
+        showErrorMessage("Du kan ikke opprette et prosjekt fra din mobil. Vennligst benytt en datamaskin");
+        return;
+    }
     error_log("Redigerer nå opprett nyhetsartikkel");
     $loadedNyhetsartikkel = getEditingNewsArticle();
 

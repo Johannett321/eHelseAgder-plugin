@@ -10,6 +10,11 @@ securePageWithLogin('opprett-prosjekt');
 thisPageRequiresCookies('opprett-prosjekt');
 
 function startverktoy( $atts ) {
+    if (areElementorBufferingObjects()) return;
+    if (areWeVisitingFromMobileDevice()) {
+        showErrorMessage("Du kan ikke opprette et prosjekt fra din mobil. Vennligst benytt en datamaskin");
+        return;
+    }
     $loadedProsjekt = loadProsjekt();
     lagFelter($loadedProsjekt);
 }

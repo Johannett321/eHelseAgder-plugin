@@ -9,6 +9,11 @@ securePageWithLogin('opprett-prosjekt/kategorier');
 thisPageRequiresCookies('opprett-prosjekt/kategorier');
 
 function prosjektredigeringkategorier() {
+    if (areElementorBufferingObjects()) return;
+    if (areWeVisitingFromMobileDevice()) {
+        showErrorMessage("Du kan ikke opprette et prosjekt fra din mobil. Vennligst benytt en datamaskin");
+        return;
+    }
     session_start();
     validateFieldsFromPage1();
     leggTilInformasjonFelt();

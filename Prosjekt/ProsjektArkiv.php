@@ -9,16 +9,21 @@ function sc_prosjektarkiv() {
 function loadProsjekter() {
     global $wpdb;
 
+    $nowYear = date('Y');
     $query = "SELECT prosjektstart FROM " . getProsjekterDatabaseRef() . " ORDER BY prosjektstart ASC LIMIT 1";
     $startYear = $wpdb->get_results($query)[0]->prosjektstart;
 
     $query = "SELECT prosjektstart FROM " . getProsjekterDatabaseRef() . " ORDER BY prosjektstart DESC LIMIT 1";
     $endYear = $wpdb->get_results($query)[0]->prosjektstart;
 
+    if ($endYear > $nowYear + 20) {
+        $endYear = $nowYear+20;
+    }
+
     ?>
     <div class = "collapsibles" id = "displayCol">
         <?php
-        for ($i = $startYear; $i <= $endYear; $i++) {
+        for ($i = $endYear; $i >= $startYear; $i--) {
 
             $query = "SELECT id, project_name, undertittel, prosjektstart, bilde, prosjektstatus FROM " . getProsjekterDatabaseRef() .
                 " WHERE prosjektstart >= " . $i .
@@ -53,7 +58,7 @@ function loadProsjekter() {
                         if ($eventCounter > 4) {
                             ?>
                             <center>
-                                <a href = "aarstall?year=<?php echo $i ?>"><button class = "viewMore">Vis alle prosjekter fra <?php echo $i?></button></a>
+                                <a href = "aarstall?it=prosjekter&year=<?php echo $i ?>"><button class = "viewMore">Vis alle prosjekter fra <?php echo $i?></button></a>
                             </center>
                             <?php
                         }

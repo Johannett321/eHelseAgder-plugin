@@ -4,6 +4,24 @@ add_shortcode('sc_nyhets_sok_widget', 'sc_nyhets_sok_widget');
 add_shortcode('sc_prosjekter_sok_widget', 'sc_prosjekter_sok_widget');
 add_shortcode('sc_arrangementer_sok_widget', 'sc_arrangementer_sok_widget');
 add_shortcode('sc_dokumenter_sok_widget', 'sc_dokumenter_sok_widget');
+add_shortcode('sc_auto_search_widget', 'sc_auto_search_widget');
+
+function sc_auto_search_widget() {
+    if (areElementorBufferingObjects()) return;
+    if (isset($_GET['it'])) {
+        switch ($_GET['it']) {
+            case "prosjekter":
+                sc_prosjekter_sok_widget();
+                break;
+            case "arrangementer":
+                sc_arrangementer_sok_widget();
+                break;
+            case "nyhetsartikler":
+                sc_nyhets_sok_widget();
+                break;
+        }
+    }
+}
 
 function sc_nyhets_sok_widget() {
     if (areElementorBufferingObjects()) return;
@@ -139,8 +157,20 @@ function sc_sok_resultater() {
 
     if (isset($_GET['year'])) {
         $year = $_GET['year'];
-        $query .= " AND dato_skrevet >= '" . $year . "-01-01'" .
-            " AND dato_skrevet < '" . ($year+1) . "-01-01'";
+        switch ($_GET['it']) {
+            case "nyhetsartikler":
+                $query .= " AND dato_skrevet >= '" . $year . "-01-01'" .
+                    " AND dato_skrevet < '" . ($year+1) . "-01-01'";
+                break;
+            case "prosjekter":
+                $query .= " AND prosjektstart >= " . $year .
+                    " AND prosjektstart < " . ($year+1);
+                break;
+            case "arrangementer":
+                $query .= " AND start_dato >= '" . $year . "-01-01'" .
+                    " AND start_dato < '" . ($year+1) . "-01-01'";
+                break;
+        }
     }
 
     global $wpdb;
