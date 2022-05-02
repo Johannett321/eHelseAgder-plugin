@@ -32,6 +32,7 @@ function loadProsjekter() {
                 ?>
                 <button type="button" class="collapsible">
                     <?php echo $i?>
+                    <span class="material-icons">expand_more</span>
                 </button>
 
                 <div class="content artikkelKortHolder">
