@@ -38,12 +38,19 @@ function loadProsjekter() {
                 <div class="content artikkelKortHolder">
                     <?php
                     foreach($results as $result) {
+                        $specialClass = "";
+                        if ($result->prosjektstatus != "1" && $result->prosjektstatus != "2") {
+                            error_log("RAWWR: " . $result->prosjektstatus);
+                            $specialClass = "inaktiv";
+                        }
+
                         $eventCounter++;
                         createSmallListItem($result->project_name,
                             $result->undertittel,
                             getDisplayDateFormat($result->prosjektstart),
                             $result->bilde,
-                            "prosjekter/prosjektside/?prosjektID=" . $result->id);
+                            "prosjekter/prosjektside/?prosjektID=" . $result->id,
+                            $specialClass);
                         if ($eventCounter > 4) {
                             ?>
                             <center>

@@ -8,12 +8,13 @@
  * @param $uElement2 string det andre elementet under linjen. Kan f.eks være sted
  * @param $image string linken til bilde som skal brukes. Trenger ikke starten av linken, kun slutten
  * @param $linkHref string linken som elementet skal ta deg til.
+ * @param string $specialClass dersom det skal være noe ekstra klasser på elementet.
  * @return void
  */
-function createLargeListItem($title, $description, $uElement1, $uElement2, $image, $linkHref) {
+function createLargeListItem($title, $description, $uElement1, $uElement2, $image, $linkHref, $specialClass = "") {
     ?>
     <a href = "<?php echo $linkHref?>">
-        <div class = "artikkelKort">
+        <div class = "artikkelKort <?php echo $specialClass?>">
             <?php
             if ($image != null) {
                 ?>
@@ -40,12 +41,13 @@ function createLargeListItem($title, $description, $uElement1, $uElement2, $imag
  * @param $bottomElement string et lite tekstelement som vises i bunn
  * @param $image string linken til bilde som skal vises. Trenger ikke starten av linken
  * @param $href string linken brukeren skal bli tatt til når de trykker på listeelementet.
+ * @param string $specialClass dersom det skal være noe ekstra klasser på elementet.
  * @return void
  */
-function createSmallListItem($title, $description, $bottomElement, $image, $href) {
+function createSmallListItem($title, $description, $bottomElement, $image, $href, $specialClass = "") {
     ?>
     <a href = "<?php echo $href ?>">
-        <div class = "artikkelKort">
+        <div class = "artikkelKort <?php echo $specialClass?>">
             <div class="photoSmall">
                 <img src = "<?php echo getPhotoUploadUrl() . $image ?>"/>
             </div>

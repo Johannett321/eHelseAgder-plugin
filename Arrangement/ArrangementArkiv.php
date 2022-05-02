@@ -26,7 +26,7 @@ function loadArrangementer() {
             $query = "SELECT id, tittel, kort_besk, start_dato, bilde FROM " . getArrangementerDatabaseRef() .
                 " WHERE start_dato >= '" . intval($i) . "-01-01'" .
                 " AND start_dato < '" . (intval($i) + 1) . "-01-01'" .
-                " ORDER BY start_dato ASC LIMIT 3";
+                " ORDER BY start_dato DESC LIMIT 3";
 
             $results =  $wpdb->get_results($query);
             $eventCounter = 0;
@@ -41,12 +41,20 @@ function loadArrangementer() {
                 <div class="content artikkelKortHolder">
                     <?php
                     foreach($results as $result) {
+                        $specialClass = "";
+                        if ($result->start_dato < date("Y-m-d")) {
+                            error_log("MERKELIG!!!!");
+                            $specialClass = "inaktiv";
+                        }else {
+                            error_log("MERKELIGIKKE!!!!");
+                        }
                         $eventCounter++;
                         createSmallListItem($result->tittel,
                             $result->kort_besk,
                             getDisplayDateFormat($result->start_dato),
                             $result->bilde,
-                            "vis-arrangement/?eventID=" . $result->id);
+                            "vis-arrangement/?eventID=" . $result->id,
+                            $specialClass);
                         if ($eventCounter >= 3) {
                             ?>
                             <center>

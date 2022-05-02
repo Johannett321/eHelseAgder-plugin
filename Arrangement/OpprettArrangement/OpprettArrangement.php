@@ -10,7 +10,7 @@ thisPageRequiresCookies('opprett-arrangement');
 
 function sc_opprett_arrangement() {
     if (areElementorBufferingObjects()) return;
-    error_log("Redigerer nå opprett nyhetsartikkel");
+    error_log("Redigerer nå opprett arrangement");
     $loadedArrangement = getEditingEvent();
 
     if (isset($_GET['editEventID'])) {
