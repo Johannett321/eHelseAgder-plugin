@@ -17,7 +17,7 @@ function loadForsideNyheter() {
         return;
     }
     ?>
-    <div class = "artikkelKortHolder">
+    <div class = "artikkelKortHolder2">
         <?php
         foreach ($nyheter as $currentNyhet) {
             createLargeListItem($currentNyhet->tittel, $currentNyhet->ingress, "Publisert: " . getNoneImportantDisplayDateFormat($currentNyhet->dato_skrevet), null, $currentNyhet->bilde, "nyheter/vis-artikkel/?artikkelID=" . $currentNyhet->id);
