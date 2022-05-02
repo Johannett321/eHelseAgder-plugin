@@ -105,6 +105,96 @@ Innhold:
     margin-bottom: 3px;
 }
 
+/* Artikkel-kort –––––––––––––––––––––––––––––––––––––––––*/
+
+.artikkelKortHolder {
+    text-align: center;
+}
+
+.artikkelKort {
+    display: inline-block;
+    text-align: left;
+    width: 60%;
+    height: 150px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #84C58ED4;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.artikkelKort:hover {
+    background-color: #f3f8f2;
+    box-shadow: 5px 5px 10px #d9ead4;
+    transform: scale(1.01);
+    border-bottom: none !important;
+}
+
+.artikkelkorttekst {
+    width: 70%;
+}
+
+.artikkelkorttekst p {
+    min-height: 60px;
+}
+
+.collapsibles .artikkelkorttekst {
+    width: 65%;
+}
+
+.artikkelkorttekst, .photoSmall {
+    display: inline-block;
+}
+
+.photoSmall {
+    float: right;
+    margin: -20px;
+}
+
+.photoSmall img {
+    object-fit: cover !important;
+    height: 150px !important;
+    width: 190px !important;
+}
+
+.artikkelKort h5 {
+    margin: 0 0 3px 0;
+    font-weight: 700 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.artikkelKort p {
+    font-size: 14px;
+    color: black;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
+}
+
+#additInfo {
+    font-size: 14px;
+    color: #0B843E;
+    text-align: right;
+}
+
+.viewMore {
+    width: 250px;
+    margin: 30px;
+}
+
+.collapsibles .artikkelKortHolder a[href] {
+    border-bottom: none;
+}
+
+
 /* Tabeller –––––––––––––––––––––––––––––––––––––*/
 
 /* Opprett-skjema –––––––––––––––––––––––––––––––*/
@@ -392,11 +482,11 @@ Innhold:
 /* Status-bar */
 
 .changelog {
-    border-bottom: 1px solid #d9ead4;
-    box-shadow: 0px 18px 10px -15px #d9ead4;
+    border-bottom: 1px solid #84C58ED4;
+    box-shadow: 0 0 7px #d9ead4;
 
     width: 100%;
-    height: 70px;
+    height: 85px;
 
     z-index: 1;
     overflow-x: scroll;
@@ -409,7 +499,7 @@ Innhold:
 .changelogItem {
     height: inherit;
     display: inline-block;
-    padding: 0 10px;
+    padding: 5px 10px;
 
     vertical-align: top;
 }
@@ -432,19 +522,22 @@ Innhold:
 }
 
 .changelog span {
-    line-height: 70px !important;
+    line-height: 85px !important;
     font-size: 30px !important;
 }
 
-.changelogTitle div, .changelogTitle span {
+.changelogTitle div,
+.changelogTitle span,
+.changelogTitle,
+#statusPil {
     display: inline-block;
 }
 
 .changelog .verticalLine {
     display: inline-block;
-    height: 80px;
+    height: 85px;
     width: 1px;
-    background-color: darkgrey;
+    background-color: #84C58ED4;
     opacity: 40%;
 }
 
@@ -476,13 +569,13 @@ Innhold:
     width: 90%;
     margin-left: auto;
     margin-right: auto;
-
 }
 
 /* Arrangementer */
 
 .arrangementer {
-    height: 540px;
+    max-height: 540px;
+    height: auto;
     border: 1px solid #84C58ED4;
     border-radius: 20px;
     overflow-x: hidden;
@@ -493,7 +586,7 @@ Innhold:
 }
 
 .arrangement {
-    height: 130px;
+    height: 135px;
     border-bottom: 1px solid #84C58ED4;
     padding: 15px 0;
     background-color: white;
@@ -529,6 +622,7 @@ Innhold:
 
 .datoBoks h5 {
     font-size: 12px !important;
+    color: #0B843E !important;
 }
 
 .arrangement p {
@@ -547,8 +641,14 @@ Innhold:
 }
 
 .LesMer {
-    text-align: right;
+    width: fit-content;
+    float: right;
     color: #0B843E;
+    font-size: 14px;
+}
+
+.LesMer:hover {
+    text-decoration: underline;
 }
 
 /* Prosjekter */
@@ -641,25 +741,35 @@ Innhold:
     padding: 15px !important;
 }
 
-.deleteButtons {
-    background-color: #e16f6f !important;
+.deleteButtons,
+.editButtonTB {
+    background-color: #ea9999 !important;
     text-align: center;
     font-weight: 700;
+
+    width: 15%;
 }
 
 .deleteButtons:hover {
-    background-color: #ea9999 !important;
+    background-color: #e16f6f !important;
 
-    text-decoration: none !important;
 }
 
 .editButtonTB {
     background-color: #f3f8f2 !important;
-    text-align: center;
-    font-weight: 700;
+
+    width: 15%;
+
 }
 
-.minSideTB td:hover {
+.editButtonTB a {
+    color: black !important;
+}
+
+.editButtonTB:hover {
+    background-color: #d9ead4 !important;
+}
+.titleTB:hover {
     text-decoration: underline;
 }
 
@@ -1426,92 +1536,7 @@ th {
 
 /* Alle nyheter ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 
-.artikkelKortHolder {
-    text-align: center;
-}
 
-.artikkelKort {
-    display: inline-block;
-    text-align: left;
-    width: 60%;
-    height: 150px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #84C58ED4;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.artikkelKort:hover {
-    background-color: #f3f8f2;
-    box-shadow: 5px 5px 10px #d9ead4;
-    transform: scale(1.01);
-    border-bottom: none !important;
-}
-
-.artikkelkorttekst {
-    width: 70%;
-}
-
-.artikkelkorttekst p {
-    min-height: 60px;
-}
-
-.collapsibles .artikkelkorttekst {
-    width: 65%;
-}
-
-.artikkelkorttekst, .photoSmall {
-    display: inline-block;
-}
-
-.photoSmall {
-    float: right;
-    margin: -20px;
-}
-
-.photoSmall img {
-    object-fit: cover !important;
-    height: 150px !important;
-    width: 190px !important;
-}
-
-.artikkelKort h5 {
-    margin: 0 0 3px 0;
-    font-weight: 700 !important;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.artikkelKort p {
-    font-size: 14px;
-    color: black;
-    text-align: justify;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 20px;
-}
-
-#additInfo {
-    font-size: 14px;
-    color: #0B843E;
-    text-align: right;
-}
-
-.viewMore {
-    width: 250px;
-    margin: 30px;
-}
-
-.collapsibles .artikkelKortHolder a[href] {
-    border-bottom: none;
-}
 
 
 /* Søkefunksjon ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
@@ -1537,12 +1562,6 @@ th {
 #søkTittel {
     width: 60%;
 }
-
-
-/* Changelog ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-
-
-
 
 
 /* Logg inn side –––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
@@ -1773,11 +1792,4 @@ th {
         margin-left: auto;
         margin-right: auto;
     }
-}
-
-
-/* Forside –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-
-.changelogTitle, #statusPil {
-    display: inline-block;
 }
