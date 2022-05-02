@@ -109,6 +109,7 @@ function sc_minside_arrangementer() {
         ?>
     </table>
     <?php
+    makeDeleteButtonsFunctional();
 }
 
 function sc_minside_nyhetsartikler() {
@@ -136,7 +137,6 @@ function sc_minside_nyhetsartikler() {
         ?>
     </table>
     <?php
-    makeDeleteButtonsFunctional();
 }
 
 function makeDeleteButtonsFunctional() {
