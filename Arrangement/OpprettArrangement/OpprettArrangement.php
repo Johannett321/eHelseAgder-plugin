@@ -24,10 +24,6 @@ function sc_opprett_arrangement() {
     if ($loadedArrangement != null) {
         ?>
         <div class="slettKnapp">
-        <a href = "../../../wp-json/ehelseagderplugin/api/slett_arrangement?eventID=<?php echo $_GET['editEventID']?>"><button id = "deleteArticle">Slett arrangement<i class="material-icons">close</i></button></a>
-        </div>
-
-        <div class="slettKnapp">
             <button id ="deleteArticle">Slett arrangement<i class="material-icons">close</i></button>
             <script type="text/javascript">
                 const deleteArticleButton = document.getElementById('deleteArticle');
