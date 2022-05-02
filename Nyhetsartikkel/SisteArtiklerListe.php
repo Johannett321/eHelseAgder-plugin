@@ -25,7 +25,7 @@ function loadSisteNyhetsartikler($projectName) {
 
     if (sizeof($nyheter) > 0 && isset($_GET['prosjektID']) && $projectName != null) {
         ?>
-        <center><h4 class = "contentTitle">Nyheter for <?php echo $projectName?></h4></center>
+        <div><h4 class = "contentTitle" id="nyheterNederst">Nyheter om: <?php echo $projectName?></h4></div>
         <?php
     }
     ?>

@@ -26,12 +26,14 @@ function sc_login_knapp() {
             border-width: 1px 1px 0px 1px;
             border-color: #84c58e;
             width: 130px;
+            height: 50px;
             font-family: 'Lato' sans-serif;
             font-weight: 400;
             font-size: 14px;
             text-transform: uppercase;
             padding-top: 1.3em;
             text-align: center;
+            vertical-align: bottom;
         }
         .button:hover {
             background:#7cc48c;
