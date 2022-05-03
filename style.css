@@ -234,9 +234,15 @@ Table of content:
 }
 
 .dok:hover {
-    transform: scale(1.01);
+    transform: scale(1);
 
-    box-shadow: 5px 5px 10px lightgrey;
+    box-shadow: unset;
+
+    border: 1px solid transparent !important;
+}
+
+.dok:hover h5 {
+    text-decoration: underline !important;
 }
 
 .dok h5 {
@@ -310,6 +316,15 @@ Table of content:
 
 .excel:hover {
     background-color: #daebd3;
+}
+
+.ukjentDok {
+    background-color: white;
+    border: 1px solid #f9f9f9;
+}
+
+.ukjentDok:hover {
+    background-color: #fbfbfb;
 }
 
 /* Tabeller –––––––––––––––––––––––––––––––––––––*/
