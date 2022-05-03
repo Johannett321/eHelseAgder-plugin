@@ -1,6 +1,6 @@
 <?php
 
-add_action("wp", "check_cookies_not_important");
+add_action("wp_body_open", "check_cookies_not_important");
 add_action("init", "check_cookies_very_important");
 
 function check_cookies_very_important() {
