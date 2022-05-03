@@ -54,7 +54,7 @@ function sc_opprett_nyhetsartikkel() {
                     <i class="material-icons">upload</i>
                 </div>
 
-                <img id="output" src = "<?php echo getPhotoUploadUrl() . $loadedNyhetsartikkel->bilde ?>"/>
+                <img id="output" src = "<?php if ($loadedNyhetsartikkel->bilde != null) echo getPhotoUploadUrl() . $loadedNyhetsartikkel->bilde ?>"/>
                 <input class = "hidden" type="file" name = "bilde" accept="image/*" onchange="loadFile(event)" id = "actualUploadButton">
 
                 <script>

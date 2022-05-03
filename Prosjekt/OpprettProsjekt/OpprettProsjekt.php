@@ -61,7 +61,7 @@ function lagFelter($loadedProsjekt) {
                         <h5>Last opp bilde</h5>
                         <i class="material-icons">upload</i>
                     </div>
-                    <img id="output" src = "<?php echo getPhotoUploadUrl() . $loadedProsjekt->bilde ?>"/>
+                    <img id="output" src = "<?php if ($loadedProsjekt->bilde != null) echo getPhotoUploadUrl() . $loadedProsjekt->bilde ?>"/>
                     <input class = "hidden" type="file" name = "bilde" accept="image/*" onchange="loadFile(event)" id = "actualUploadButton">
 
                     <script>
