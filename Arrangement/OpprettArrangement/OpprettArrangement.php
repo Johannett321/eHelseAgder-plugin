@@ -54,7 +54,7 @@ function sc_opprett_arrangement() {
                     <i class="material-icons">upload</i>
                 </div>
                 <input class = "hidden" type="file" name = "bilde" accept="image/*" onchange="loadFile(event)" id = "actualUploadButton">
-                <img id="output" src = "<?php echo getPhotoUploadUrl() . $loadedArrangement->bilde ?>"/>
+                <img id="output" src = "<?php if ($loadedArrangement->bilde != null) echo getPhotoUploadUrl() . $loadedArrangement->bilde ?>"/>
                 <script>
                     const loadFile = function(event) {
                         const output = document.getElementById('output');

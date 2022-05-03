@@ -233,21 +233,26 @@ function dokumentSok() {
         foreach ($results as $result) {
             $fileNameSeparated = explode(".", $result['filename']);
             $fileType = $fileNameSeparated[sizeof($fileNameSeparated)-1];
+            $specialClass = "";
             switch ($fileType) {
                 case "pdf":
                     $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/pdf.jpg";
+                    $specialClass = "pdf";
                     break;
                 case "pptx":
                     $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/powerpoint.jpg";
+                    $specialClass = "powerpoint";
                     break;
                 case "docx":
                     $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/word.jpg";
+                    $specialClass = "word";
                     break;
                 case "xlsx":
                     $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/excel.jpg";
+                    $specialClass = "excel";
                     break;
             }
-            createLargeListItem($result['filename'], "Trykk her for å laste ned", $result['dateModified'], $result['fileSizeMB'] . " MB", $photoUrl, getFilesUploadUrl() . $result['path']);
+            createLargeListItem($result['filename'], "Trykk her for å laste ned", $result['dateModified'], $result['fileSizeMB'] . " MB", $photoUrl, getFilesUploadUrl() . $result['path'], $specialClass);
         }
         ?>
     </div>
