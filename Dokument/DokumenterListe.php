@@ -36,6 +36,10 @@ function sc_dokumenter_stor_liste() {
                     $specialClass = "excel dok";
                     break;
             }
+            if ($specialClass == "") {
+                $specialClass = "ukjentDok dok";
+                $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/otherdoc.jpg";
+            }
             createLargeListItem($currentDoc['filename'], "Trykk her for å laste ned", $currentDoc['dateModified'], $currentDoc['fileSizeMB'] . " MB", $photoUrl, getFilesUploadUrl() . $currentDoc['path'], $specialClass);
         }
         ?>

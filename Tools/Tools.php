@@ -99,7 +99,7 @@ function runningOnLocalHost() {
  * @return bool returnerer true dersom nettsiden fortsatt er under utvikling
  */
 function pageIsInDevelopment() {
-    return false;
+    return true;
 }
 
 /**
