@@ -38,8 +38,12 @@ function sc_pabegynt_prosjekt() {
             });
 
             request.done(function(response) {
-                pabegyntProsjekt.innerText = "Fortsett å redigere utkast for " + response + "";
-                pabegyntProsjektLink.href = "opprett-prosjekt/?editProsjektID=" + localStorage.getItem("prosjektID");
+                if (response === "") {
+                    pabegyntProsjekt.innerText = "Fortsett å redigere utkast";
+                }else {
+                    pabegyntProsjekt.innerText = "Fortsett å redigere utkast for " + response + "";
+                    pabegyntProsjektLink.href = "opprett-prosjekt/?editProsjektID=" + localStorage.getItem("prosjektID");
+                }
 
                 pabegyntProsjektSlettKnapp.onclick = function () {
                     if (confirm("Er du sikker på at du vil slette utkastet ditt for " + response + "?")) {
