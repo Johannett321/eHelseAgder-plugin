@@ -17,10 +17,6 @@ function getLastNyheterList() {
 }
 
 function loadSisteNyhetsartikler($projectName) {
-    if (isset($_GET['message']) && !isset($_GET['prosjektID'])) {
-        showCompleteMessage($_GET['message']);
-    }
-
     $nyheter = getLastNyheterList();
 
     if (sizeof($nyheter) > 0 && isset($_GET['prosjektID']) && $projectName != null) {
