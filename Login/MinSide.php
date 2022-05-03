@@ -22,8 +22,9 @@ function sc_pabegynt_prosjekt() {
     $ajaxurl = admin_url('admin-ajax.php');
     //localStorage.getItem("prosjektID");
     ?>
-    <center><a id = "pabegyntProsjektLink"><button id = "pabegyntProsjekt"></button></a></center>
-    <center><button id = "pabegyntProsjektSlettKnapp">Slett</button></center>
+    <div id="påbegyntLinje" >
+        <a id = "pabegyntProsjektLink"><button id = "pabegyntProsjekt"></button></a>
+        <button id = "pabegyntProsjektSlettKnapp">Slett</button></div>
     <script type="text/javascript">
         const pabegyntProsjektLink = document.getElementById('pabegyntProsjektLink');
         const pabegyntProsjekt = document.getElementById('pabegyntProsjekt');

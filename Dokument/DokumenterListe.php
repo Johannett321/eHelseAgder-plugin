@@ -21,19 +21,19 @@ function sc_dokumenter_stor_liste() {
             switch ($fileType) {
                 case "pdf":
                     $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/pdf.jpg";
-                    $specialClass = "pdf";
+                    $specialClass = "pdf dok";
                     break;
                 case "pptx":
                     $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/powerpoint.jpg";
-                    $specialClass = "powerpoint";
+                    $specialClass = "powerpoint dok";
                     break;
                 case "docx":
                     $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/word.jpg";
-                    $specialClass = "word";
+                    $specialClass = "word dok";
                     break;
                 case "xlsx":
                     $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/excel.jpg";
-                    $specialClass = "excel";
+                    $specialClass = "excel dok";
                     break;
             }
             createLargeListItem($currentDoc['filename'], "Trykk her for å laste ned", $currentDoc['dateModified'], $currentDoc['fileSizeMB'] . " MB", $photoUrl, getFilesUploadUrl() . $currentDoc['path'], $specialClass);
