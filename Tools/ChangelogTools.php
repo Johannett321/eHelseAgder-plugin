@@ -4,12 +4,29 @@ add_shortcode('sc_nyeste_oppdateringer', 'sc_nyeste_oppdateringer');
 
 /**
  * Legger til en hendelse i endringsloggen som vises på forsiden av nettsiden. For eksemptel ved opprettelse av prosjekt.
+ * Legger ikke til hendelsen dersom den er for lik den forrige, og skjedde i samme døgn
  * @param $title mixed
  * @param $description mixed
  * @param $href mixed
  */
 function addEventToChangelog($title, $description, $href) {
     global $wpdb;
+
+    $lastEntry = $wpdb->get_results("SELECT * FROM " . getChangelogDatabaseRef() . " ORDER BY id DESC LIMIT 1")[0];
+
+    $startDato = strtotime(date('Y-m-d H:i:s'));
+    $sluttDato = strtotime($lastEntry->dato);
+
+    $datediff = $sluttDato - $startDato;
+    $difference = floor($datediff/(60*60*24));
+
+    if ($lastEntry->tittel == $title
+        && $lastEntry->beskrivelse == $description
+        && $difference == 0) {
+        error_log("For likt forrige entry. Sletter forrige entry");
+        $wpdb->delete(getChangelogDatabaseRef(), array("id"=>$lastEntry->id), array("%d"));
+    }
+
     $data = array("tittel" => $title,
         "beskrivelse"=>$description,
         "href"=>$href);
