@@ -358,29 +358,39 @@ function addKategorierSaverTool($onlineRevisionNumber) {
                 }, 300);
             });
         }
+    </script>
+    <?php
+}
 
+function addLocalStorageClearupIfWrongProject() {
+    ?>
+    <script type="text/javascript">
         function clearLocalStorageIfWrongProjectOrTooOld(onlineRevisionNumber) {
+            console.log("Sjekker om vi har cachet noe prosjekt")
             const urlParams = new URLSearchParams(window.location.search);
             const editProsjektID = urlParams.get('editProsjektID');
             var prosjektIDFromLocalStorage = localStorage.getItem("prosjektID");
             var localRevisionNumber = localStorage.getItem("revision");
 
-            if (prosjektIDFromLocalStorage != null) {
+            if (prosjektIDFromLocalStorage != null && prosjektIDFromLocalStorage !== "" && prosjektIDFromLocalStorage !== "null") {
+                console.log("ProsjektID er IKKE null: " + prosjektIDFromLocalStorage);
                 if (prosjektIDFromLocalStorage !== editProsjektID) {
-                    if (!confirm("Du har et utkast i et annet prosjekt! Trykk avbryt og gå til min side for å se utkastet. Ved å redigere dette prosjektet, blir utkastet ditt slettet. Ønsker du fortsatt å redigere?")) {
-                        history.back();
-                        return;
-                    }
-
-                    console.log("Clearer localstorage fordi local prosjektID ikke matcher prosjektID som vi redigerer")
-                    localStorage.clear();
+                    console.log("ProsjektID er ikke det samme som editProsjektID: " + prosjektIDFromLocalStorage + " : " + editProsjektID);
+                    warnUserAndDeletelocalStorage();
+                    localRevisionNumber = null;
+                }
+            }else {
+                console.log("ProsjektID er null!: " + prosjektIDFromLocalStorage + " : " + editProsjektID);
+                if (editProsjektID != null && editProsjektID !== "" && editProsjektID !== "null") {
+                    //BRUKEREN HAR LAGRET ET UTKAST FOR ET NYTT PROSJEKT, MEN REDIGERER ET ANNET PROSJEKT
+                    console.log("ProsjektID er null,  men det er ikke editProsjektID!!: " + prosjektIDFromLocalStorage + " : " + editProsjektID);
+                    warnUserAndDeletelocalStorage()
                     localRevisionNumber = null;
                 }
             }
 
             if (localRevisionNumber != null) {
                 if (parseInt(onlineRevisionNumber) >= parseInt(localRevisionNumber)) {
-                    console.log("Clearer localstorage fordi noen har redigert online versjonen, og min versjon er derfor utdatert.")
                     alert("Noen har redigert dette prosjektet etter deg, og ditt utkast er derfor utdatert.")
                     localStorage.clear();
                 }
@@ -392,6 +402,15 @@ function addKategorierSaverTool($onlineRevisionNumber) {
             localStorage.setItem("revision", "<?php echo $_SESSION['correctLocalRevision']?>");
         }
 
+        function warnUserAndDeletelocalStorage() {
+            if (!confirm("Du har et utkast i et annet prosjekt! Trykk avbryt og gå til min side for å se utkastet. Ved å redigere dette prosjektet, blir utkastet ditt slettet. Ønsker du fortsatt å redigere?")) {
+                history.back();
+                return;
+            }
+
+            console.log("Clearer localstorage fordi local prosjektID ikke matcher prosjektID som vi redigerer")
+            localStorage.clear();
+        }
     </script>
     <?php
 }

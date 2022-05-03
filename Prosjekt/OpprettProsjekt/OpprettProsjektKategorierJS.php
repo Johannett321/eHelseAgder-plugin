@@ -24,6 +24,8 @@ function prosjektRedigeringKategorierJS() {
     if (isset($_GET['editProsjektID'])) {
         $editingProjectRevision = getProjectRevision($_GET['editProsjektID']);
     }
+
+    addLocalStorageClearupIfWrongProject();
     addKategorierSaverTool($editingProjectRevision);
 
     //Collapsibles

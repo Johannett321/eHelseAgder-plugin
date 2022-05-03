@@ -16,6 +16,12 @@ function startverktoy( $atts ) {
         return;
     }
     $loadedProsjekt = loadProsjekt();
+    addLocalStorageClearupIfWrongProject();
+    ?>
+    <script type="text/javascript">
+        clearLocalStorageIfWrongProjectOrTooOld();
+    </script>
+    <?php
     lagFelter($loadedProsjekt);
 }
 
