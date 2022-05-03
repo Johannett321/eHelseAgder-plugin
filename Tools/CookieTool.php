@@ -89,32 +89,76 @@ function addImportantCookieConfirmDialog() {
 function addCookieConfirmDialog() {
     ?>
     <div id="cookieConfirmDialog">
-        <div id = "backgroundColor"></div>
-        <h5>Om informasjonskapsler (cookies)</h5>
-        <p>
-            Ved å trykke 'godkjenn og lukk', godkjenner du at vi kan lagre informasjonskapsler på din enhet for å forbedre din opplevelse av siden
-        </p>
-        <button type="button" id = "acceptCookies">Godkjenn og lukk</button>
+        <div id = "backgroundColor">
+
+            <div id="cookieTekst">
+                <h5>Vi bruker informasjonskapsler:</h5>
+                <p>Ehelseagder.no bruker informsjonskapsler for å lagre data midlertidig lokalt på din datamaskin. Dette er kun relevant for personer som skal opprette innhold på nettsiden. Informasjonskapslene påvirker ikke lesere av nettsiden. Det benyttes ingen tredjeparts-informasjonskapsler, så din datta er trygg.</p>
+                <br>
+                Ved å trykke "Jeg forstår" samtykker du til bruken av informasjonskapsler. Ønsker du ikke å samtykke kan du ignorere feltet. Vær obs på at brukeropplevelsen vil bli redusert.</p>
+            </div>
+        <button type="button" id = "acceptCookies">Jeg forstår</button>
+        </div>
     </div>
 
     <style>
         #cookieConfirmDialog {
             z-index: 2;
             position: fixed;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            padding: 30px 0px;
+            bottom: 20px;
+            padding: 20px 30px;
+
+            width: 80%;
+            background-color: #d9ead4;
+
+            left: 10%;
+
+            border-radius: 20px;
+            border: 1px solid lightgray;
+
+            box-shadow: 5px 5px 10px grey;
+
         }
 
         #backgroundColor {
-            position: absolute;
-            width: inherit;
+            width: 100%;
             height: 100%;
             z-index: -1;
-            background-color: #7cc48c;
-            opacity: 80%;
+
+
         }
+
+        #acceptCookies {
+            position: absolute;
+            background-color: #76b17f;
+            border-radius: 8px;
+            color: black;
+            margin-top: 20px;
+            bottom: 40px;
+            right: 50px;
+
+        }
+
+        #acceptCookies:hover {
+            background-color: #84C58ED4;
+            transform: scale(1.05);
+            box-shadow: 5px 5px 10px lightgray;
+        }
+
+        #cookieConfirmDialog p {
+            font-size: 16px;
+            text-align: left;
+        }
+
+        #cookieConfirmDialog h5 {
+            font-weight: 700;
+        }
+
+        #cookieTekst {
+            display: inline-block;
+            width: 80%;
+        }
+
     </style>
 
     <script type="text/javascript">
