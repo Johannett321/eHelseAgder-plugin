@@ -3,10 +3,36 @@
 include ("CookieTool.php");
 
 add_action('wp', 'check_page_in_dev');
+add_action('wp_head', 'add_correct_meta');
 add_action('wp_body_open', 'add_jquery');
 add_action('wp_body_open', 'add_ajaxurl');
 add_action('wp_body_open', 'add_single_field_creepy_character_monitor');
 
+function add_correct_meta() {
+    if (isset($_GET['artikkelID'])) {
+        global $wpdb;
+        $articleInfo = $wpdb->get_results("SELECT tittel, ingress, bilde, innhold FROM " . getNyhetsartiklerDatabaseRef() . " WHERE id = " . $_GET['artikkelID'])[0];
+        $bilde = $articleInfo->bilde;
+        if ($bilde == null) {
+
+        }
+        setMetas($articleInfo->tittel, $articleInfo->ingress, getPhotoUploadUrl() . $bilde, get_site_url() . "/nyheter/vis-artikkel/?artikkelID=" . $_GET['artikkelID']);
+    }
+}
+
+function setMetas($title, $description, $image, $url) {
+    ?>
+    <meta property='og:title' content='<?php echo $title?>'/>
+    <meta property='og:image' content='<?php echo $image?>'/>
+    <meta property='og:description' content='<?php echo $description?>'/>
+    <meta property='og:url' content='<?php echo $url?>'/>
+    <meta property="og:type" content="article"/>
+    <?php
+}
+
+/**
+ * Legger til ajax på nettsiden.
+ */
 function add_ajaxurl() {
     echo '<script type="text/javascript">
            var ajaxurl = "' . admin_url('admin-ajax.php') . '";
