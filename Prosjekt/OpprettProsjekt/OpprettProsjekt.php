@@ -16,6 +16,12 @@ function startverktoy( $atts ) {
         return;
     }
     $loadedProsjekt = loadProsjekt();
+    addLocalStorageClearupIfWrongProject();
+    ?>
+    <script type="text/javascript">
+        clearLocalStorageIfWrongProjectOrTooOld();
+    </script>
+    <?php
     lagFelter($loadedProsjekt);
 }
 
@@ -85,31 +91,31 @@ function lagFelter($loadedProsjekt) {
             <div class = "requiredPart">
                 <h3 class = "mainTitle">Kort om prosjektet</h3>
                 <label for="pname" class = "labelForInput">Prosjektets navn*</label>
-                <input type="text" id="pname" name="pname" placeholder="Digital Hjemmeoppfølging" class = "small_input" maxlength="55" value = "<?php echo $loadedProsjekt->project_name ?>"><?php addCharacterCounter("pname");?>
+                <input type="text" id="pname" name="pname" placeholder="Digital Hjemmeoppfølging" class = "small_input" maxlength="55"><?php addCharacterCounter("pname");loadFieldFromLocalStorageOrEditProject("pname",$loadedProsjekt->project_name);?>
                 <label for="psubtitle" class = "labelForInput">En setning om prosjektet (beskrivende undertittel)*</label>
                 <?php addInfoBox("subtitleInfo", "Eksempel: Et EU prosjekt for å øke livskvalitet for pasienter med kronisk sykdom");?>
-                <input type="text" id="psubtitle" name="psubtitle" placeholder="Et EU prosjekt for å øke livskvalitet for pasienter med kronisk sykdom." class = "small_input" maxlength="100" value = "<?php echo $loadedProsjekt->undertittel?>"><?php addCharacterCounter("psubtitle");?>
+                <input type="text" id="psubtitle" name="psubtitle" placeholder="Et EU prosjekt for å øke livskvalitet for pasienter med kronisk sykdom." class = "small_input" maxlength="100"><?php addCharacterCounter("psubtitle");loadFieldFromLocalStorageOrEditProject("psubtitle",$loadedProsjekt->undertittel);?>
                 <div class = "uthevetBoksForm" id = "prosjektLederBoks">
                     <h4>Prosjektleder</h4>
                     <ul id="prosjLederInputList">
                         <li><label for="pleadername" class = "labelForInput">Fullt navn*</label>
-                            <input type="text" id="pleadername" name="pleadername" placeholder="Navn Navnesen" class = "small_input" maxlength="35" value = "<?php echo $loadedProsjekt->ledernavn ?>"></li><?php addCharacterCounter("pleadername");?>
+                            <input type="text" id="pleadername" name="pleadername" placeholder="Navn Navnesen" class = "small_input" maxlength="35"></li><?php addCharacterCounter("pleadername");loadFieldFromLocalStorageOrEditProject("pleadername",$loadedProsjekt->ledernavn);?>
                         <li><label for="pleaderemail" class = "labelForInput">Epost*</label>
-                            <input type="text" id="pleaderemail" name="pleaderemail" placeholder="navn.navnesen@gmail.com" class = "small_input" maxlength="60" value = "<?php echo $loadedProsjekt->ledermail ?>"></li><?php addCharacterCounter("pleaderemail");?>
+                            <input type="text" id="pleaderemail" name="pleaderemail" placeholder="navn.navnesen@gmail.com" class = "small_input" maxlength="60"></li><?php addCharacterCounter("pleaderemail");loadFieldFromLocalStorageOrEditProject("pleaderemail",$loadedProsjekt->ledermail);?>
                         <li><label for="pleaderphone" class = "labelForInput">Mobil</label>
-                            <input type="text" id="pleaderphone" name="pleaderphone" placeholder="40640382" class = "small_input" maxlength="15" value = "<?php echo $loadedProsjekt->ledertlf ?>"></li><?php addCharacterCounter("pleaderphone");?>
+                            <input type="text" id="pleaderphone" name="pleaderphone" placeholder="40640382" class = "small_input" maxlength="15"></li><?php addCharacterCounter("pleaderphone");loadFieldFromLocalStorageOrEditProject("pleaderphone",$loadedProsjekt->ledertlf);?>
                     </ul>
                 </div>
                 <label for="prosjekteierkommuner" class = "labelForInput">Prosjekteier*</label>
-                <input type="text" id="prosjekteierkommuner" name="prosjekteierkommuner" placeholder="Kristiansand" class = "small_input" maxlength="40" value = "<?php echo $loadedProsjekt->prosjekteierkommuner ?>"><?php addCharacterCounter("prosjekteierkommuner");?>
+                <input type="text" id="prosjekteierkommuner" name="prosjekteierkommuner" placeholder="Kristiansand" class = "small_input" maxlength="40"><?php addCharacterCounter("prosjekteierkommuner");loadFieldFromLocalStorageOrEditProject("prosjekteierkommuner",$loadedProsjekt->prosjekteierkommuner);?>
                 <label for="sokerkommuner" class = "labelForInput">Søkerkommune(r)</label>
-                <input type="text" id="sokerkommuner" name="sokerkommuner" placeholder="Grimstad, Arendal" class = "small_input" maxlength="200" value = "<?php echo $loadedProsjekt->sokerkommuner ?>"><?php addCharacterCounter("sokerkommuner");?>
+                <input type="text" id="sokerkommuner" name="sokerkommuner" placeholder="Grimstad, Arendal" class = "small_input" maxlength="200"><?php addCharacterCounter("sokerkommuner");loadFieldFromLocalStorageOrEditProject("sokerkommuner",$loadedProsjekt->sokerkommuner);?>
                 <label for="samarbeidspartnere" class = "labelForInput">Samarbeidspartner(e)</label>
-                <input type="text" id="samarbeidspartnere" name="samarbeidspartnere" placeholder="Grimstad, Arendal" class = "small_input" maxlength="200" value = "<?php echo $loadedProsjekt->samarbeidspartnere ?>"><?php addCharacterCounter("samarbeidspartnere");?>
+                <input type="text" id="samarbeidspartnere" name="samarbeidspartnere" placeholder="Grimstad, Arendal" class = "small_input" maxlength="200"><?php addCharacterCounter("samarbeidspartnere");loadFieldFromLocalStorageOrEditProject("samarbeidspartnere",$loadedProsjekt->samarbeidspartnere);?>
                 <label for="project_start" class = "labelForInput">Prosjektstart*</label><?php addInfoBox("prosjektStartInfo", "Her fyller du ut årstallet som prosjektet starter/startet");?>
-                <input type="text" id="project_start" name="project_start" placeholder="2025" class = "small_input" maxlength="4" value = "<?php echo $loadedProsjekt->prosjektstart ?>"><?php addCharacterCounter("project_start");?>
+                <input type="text" id="project_start" name="project_start" placeholder="2025" class = "small_input" maxlength="4"><?php addCharacterCounter("project_start");loadFieldFromLocalStorageOrEditProject("project_start",$loadedProsjekt->prosjektstart);?>
                 <label for="project_end" class = "labelForInput">Estimert prosjektslutt</label>
-                <input type="text" id="project_end" name="project_end" placeholder="2032" class = "small_input" maxlength="14" value = "<?php echo $loadedProsjekt->prosjektslutt ?>"><?php addCharacterCounter("project_end");?>
+                <input type="text" id="project_end" name="project_end" placeholder="2032" class = "small_input" maxlength="14"><?php addCharacterCounter("project_end");loadFieldFromLocalStorageOrEditProject("project_end",$loadedProsjekt->prosjektslutt);?>
 
                 <label for="prosjektstatus" class = "labelForInput">Prosjektets status*</label><?php addInfoBox("prosjektStatusInfoBox", "Her velger du hvor i prosessen prosjektet er akkurat nå. Dette påvirker hvor prosjektet blir vist på nettsiden");?>
                 <select id="prosjektstatus" name="prosjektstatus">
@@ -126,7 +132,7 @@ function lagFelter($loadedProsjekt) {
             <div class = "sammendragContainer">
                 <label for = "psummary" class = "labelForInput"><h3>Sammendrag*</h3></label>
                 <?php addInfoBox("prosjektSammendrag", "Her skriver du en kort forklaring på hva prosjektet går ut på. OBS: Mer informasjon om prosjektet legges til på neste trinn");?>
-                <textarea id = "psummary" name="psummary" form="minform" maxlength="1700" placeholder="Her kan du skrive en kort tekst om prosjektet"><?php echo $loadedProsjekt->project_text ?></textarea><?php addCharacterCounter("psummary");?>
+                <textarea id = "psummary" name="psummary" form="minform" maxlength="1700" placeholder="Her kan du skrive en kort tekst om prosjektet"></textarea><?php addCharacterCounter("psummary");loadFieldFromLocalStorageOrEditProject("psummary",$loadedProsjekt->project_text);?>
             </div>
 
         </div>
@@ -159,4 +165,25 @@ function lagFelter($loadedProsjekt) {
     </form>
     <?php
     addCreepyCharactersMonitorToWholePage();
+}
+
+function loadFieldFromLocalStorageOrEditProject($inputID, $editProjectValue) {
+    ?>
+    <script type="text/javascript">
+        if (localStorage.getItem('<?php echo $inputID?>') != null) {
+            document.getElementById('<?php echo $inputID?>').value = localStorage.getItem('<?php echo $inputID?>');
+        }else {
+            document.getElementById('<?php echo $inputID?>').value = '<?php echo $editProjectValue?>';
+        }
+
+        $("#<?php echo $inputID?>").on("input", function(){
+            localStorage.setItem('<?php echo $inputID?>', document.getElementById('<?php echo $inputID?>').value);
+            if ((new URLSearchParams(window.location.search)).get('editProjectID') == null) {
+                localStorage.setItem('prosjektID', 'null');
+            }else {
+                localStorage.setItem('prosjektID', (new URLSearchParams(window.location.search)).get('editProjectID'));
+            }
+        });
+    </script>
+    <?php
 }
