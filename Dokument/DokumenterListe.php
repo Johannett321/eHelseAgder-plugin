@@ -17,21 +17,26 @@ function sc_dokumenter_stor_liste() {
         foreach ($documents as $currentDoc) {
             $fileNameSeparated = explode(".", $currentDoc['filename']);
             $fileType = $fileNameSeparated[sizeof($fileNameSeparated)-1];
+            $specialClass = "";
             switch ($fileType) {
                 case "pdf":
                     $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/pdf.jpg";
+                    $specialClass = "pdf";
                     break;
                 case "pptx":
                     $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/powerpoint.jpg";
+                    $specialClass = "powerpoint";
                     break;
                 case "docx":
                     $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/word.jpg";
+                    $specialClass = "word";
                     break;
                 case "xlsx":
                     $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/excel.jpg";
+                    $specialClass = "excel";
                     break;
             }
-            createLargeListItem($currentDoc['filename'], "Trykk her for å laste ned", $currentDoc['dateModified'], $currentDoc['fileSizeMB'] . " MB", $photoUrl, getFilesUploadUrl() . $currentDoc['path']);
+            createLargeListItem($currentDoc['filename'], "Trykk her for å laste ned", $currentDoc['dateModified'], $currentDoc['fileSizeMB'] . " MB", $photoUrl, getFilesUploadUrl() . $currentDoc['path'], $specialClass);
         }
         ?>
     </div>
