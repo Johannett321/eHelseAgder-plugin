@@ -80,9 +80,14 @@ function sc_vis_arrangement() {
                     <h5>Arrangør:</h5><span><?php echo $eventInfo[0]->arrangor?></span>
                 </div>
                 <div>
-                    <h5>Kontaktperson:</h5><span><?php echo $eventInfo[0]->kontaktperson?></span>
-                    <span>Epost: <?php echo $eventInfo[0]->kontaktperson_mail?></span>
+                    <h5>Kontaktperson:</h5><br><i><?php echo $eventInfo[0]->kontaktperson?></i><br>
+                    <i> <?php echo $eventInfo[0]->kontaktperson_mail?></i>
                 </div>
+
+                <a href = "<?php echo $eventInfo[0]->pamelding_link ?>" target="_blank"><button type="button" class = "button" id="signUpButton">Påmelding<i class="material-icons">
+                            arrow_forward
+                        </i></button></a>
+
             </div>
         </div>
 
