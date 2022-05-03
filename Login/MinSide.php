@@ -23,9 +23,11 @@ function sc_pabegynt_prosjekt() {
     //localStorage.getItem("prosjektID");
     ?>
     <center><a id = "pabegyntProsjektLink"><button id = "pabegyntProsjekt"></button></a></center>
+    <center><button id = "pabegyntProsjektSlettKnapp">Slett</button></center>
     <script type="text/javascript">
         const pabegyntProsjektLink = document.getElementById('pabegyntProsjektLink');
         const pabegyntProsjekt = document.getElementById('pabegyntProsjekt');
+        const pabegyntProsjektSlettKnapp = document.getElementById('pabegyntProsjektSlettKnapp');
 
         if (localStorage.getItem("prosjektID") != null) {
             var request = $.ajax({
@@ -38,10 +40,20 @@ function sc_pabegynt_prosjekt() {
             request.done(function(response) {
                 pabegyntProsjekt.innerText = "Fortsett å redigere utkast for " + response + "";
                 pabegyntProsjektLink.href = "opprett-prosjekt/?editProsjektID=" + localStorage.getItem("prosjektID");
+
+                pabegyntProsjektSlettKnapp.onclick = function () {
+                    if (confirm("Er du sikker på at du vil slette utkastet ditt for " + response + "?")) {
+                        console.log("Clearer localstorage etter brukerens ønske");
+                        localStorage.clear();
+                        alert("Utkastet er nå slettet")
+                        location.reload();
+                    }
+                }
             });
         }else {
             pabegyntProsjektLink.classList.add("hidden");
             pabegyntProsjekt.classList.add("hidden");
+            pabegyntProsjektSlettKnapp.classList.add('hidden');
         }
     </script>
     <?php
