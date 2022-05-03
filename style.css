@@ -178,9 +178,10 @@ Table of content:
 }
 
 .photoSmall img {
-    object-fit: cover !important;
-    height: 150px !important;
-    width: 190px !important;
+    object-fit: cover;
+    min-height: 150px;
+    max-height: 150px;
+    width: 190px;
 }
 
 .artikkelKort h5 {
@@ -221,6 +222,110 @@ Table of content:
     border-bottom: none !important;
 }
 
+/* Dokument-side */
+
+.dok {
+    height: auto;
+    border-radius: 8px;
+
+    margin: 10px;
+    padding: 7px;
+        padding-left: 20px;
+}
+
+.dok:hover {
+    transform: scale(1);
+
+    box-shadow: unset;
+
+    border: 1px solid transparent !important;
+}
+
+.dok:hover h5 {
+    text-decoration: underline !important;
+}
+
+.dok h5 {
+    font-size: 14px !important;
+    margin: 0 !important;
+    height: auto;
+}
+
+.dok p {
+    max-height: 20px;
+    min-height: 20px;
+
+    margin: 7px 0;
+}
+
+.dok .artikkelkorttekst {
+    height: 55px;
+}
+
+.dok #additInfo {
+    color: gray;
+    text-align: left;
+}
+
+.dok .photoSmall {
+    border-radius: unset;
+}
+
+.dok .photoSmall img {
+    max-height: max-content;
+    min-height: auto;
+    max-width: 100px;
+    min-width: 100px;
+
+    overflow: clip;
+
+    transform: scale(0.5);
+}
+
+.word {
+    background-color: #ebf3fa;
+    border: 1px solid #CFE2F3;
+}
+
+.word:hover {
+    background-color: #CFE2F3;
+}
+
+.pdf {
+    background-color: #f3f3f3;
+    border: 1px solid lightgrey;
+}
+
+.pdf:hover {
+    background-color: #dadada !important;
+}
+
+.powerpoint {
+    background-color: #fef4ee;
+    border: 1px solid #fedfce;
+}
+
+.powerpoint:hover {
+    background-color: #fedfce;
+}
+
+.excel {
+    background-color: #f0f7ed;
+    border: 1px solid #daebd3;
+}
+
+.excel:hover {
+    background-color: #daebd3;
+}
+
+.ukjentDok {
+    background-color: white;
+    border: 1px solid #f9f9f9;
+}
+
+.ukjentDok:hover {
+    background-color: #fbfbfb;
+}
 
 /* Tabeller –––––––––––––––––––––––––––––––––––––*/
 
@@ -818,6 +923,38 @@ th {
 
 
 /* Min side –––––––––––––––––––––––––––––––––––––*/
+
+/* Redigere utkast-knapp */
+
+#pabegyntProsjekt, #pabegyntProsjektSlettKnapp {
+    font-size: 18px;
+    color: black;
+
+    display: inline-block;
+}
+
+#pabegyntProsjekt {
+    background-color: #d9ead4;
+}
+
+#pabegyntProsjektSlettKnapp {
+    background-color: #ea9999;
+}
+
+#pabegyntProsjekt:hover {
+    background-color: #B5DCBB;
+}
+
+#pabegyntProsjektSlettKnapp:hover {
+    background-color: #e16f6f;
+}
+
+#påbegyntLinje {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+/* Tabeller */
 
 .minSideTB td {
     background-color: white;
