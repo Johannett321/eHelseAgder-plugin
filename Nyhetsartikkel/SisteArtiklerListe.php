@@ -21,7 +21,7 @@ function loadSisteNyhetsartikler($projectName) {
 
     if (sizeof($nyheter) > 0 && isset($_GET['prosjektID']) && $projectName != null) {
         ?>
-        <div><h4 class = "contentTitle" id="nyheterNederst">Nyheter om: <?php echo $projectName?></h4></div>
+        <div><h4 class = "contentTitle" id="nyheterNederst">Siste nyheter for: <?php echo $projectName?></h4></div>
         <?php
     }
     ?>
@@ -33,4 +33,9 @@ function loadSisteNyhetsartikler($projectName) {
         ?>
     </div>
     <?php
+    if (sizeof($nyheter) > 0 && isset($_GET['prosjektID']) && $projectName != null) {
+        ?>
+        <a href = "../../nyheter/aarstall/?it=nyhetsartikler&id=<?php echo $_GET['prosjektID']?>&pn=<?php echo $projectName?>"><button class="button" id = "nyheterForProsjektKnapp">Alle nyheter for <?php echo $projectName?></button></a>
+        <?php
+    }
 }
