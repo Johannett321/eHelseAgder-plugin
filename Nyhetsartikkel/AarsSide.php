@@ -10,7 +10,7 @@ function sc_nyheter_fra_aar() {
         <?php
         return;
     }
-    if (!isset($_GET['year']) || !isset($_GET['it'])) {
+    if (!isset($_GET['it'])) {
         showErrorMessage("Siden har ikke blitt lastet inn på riktig måte!");
         return;
     }
@@ -20,9 +20,9 @@ function sc_nyheter_fra_aar() {
     switch ($it) {
         case "nyhetsartikler":
             ?>
-            <center><h3>Alle nyhetsartikler <?php if (isset($_GET['year'])) echo "fra " . $year ?></h3></center>
+            <center><h3>Alle nyhetsartikler <?php if (isset($_GET['year'])) echo "fra " . $year; if (isset($_GET['pn'])) echo "for " . $_GET['pn'];?></h3></center>
             <?php
-            createYearNyhetsartikler($year);
+            createYearNyhetsartikler($year, $_GET['id']);
             break;
         case "arrangementer":
             ?>
@@ -39,12 +39,21 @@ function sc_nyheter_fra_aar() {
     }
 }
 
-function createYearNyhetsartikler($year) {
+function createYearNyhetsartikler($year, $id) {
     global $wpdb;
+    if ($year != null) {
+
+    }
     $query = "SELECT * FROM " . getNyhetsartiklerDatabaseRef() .
         " WHERE dato_skrevet > '" . $year . "-01-01'" .
         " AND dato_skrevet < '" . ($year+1) . "-01-01'" .
         " ORDER BY dato_skrevet";
+
+    if ($id != null) {
+        $query = "SELECT * FROM " . getNyhetsartiklerDatabaseRef() .
+            " WHERE tilknyttet_prosjekt = " . $id .
+            " ORDER BY dato_skrevet";
+    }
 
     $results = $wpdb->get_results($query);
 
@@ -60,6 +69,10 @@ function createYearNyhetsartikler($year) {
 }
 
 function createYearArrangementer($year) {
+    if (!isset($_GET['year'])) {
+        showErrorMessage("Siden har ikke blitt lastet inn på riktig måte!");
+        return;
+    }
     global $wpdb;
     $query = "SELECT * FROM " . getArrangementerDatabaseRef() .
         " WHERE start_dato > '" . $year . "-01-01'" .
@@ -85,6 +98,10 @@ function createYearArrangementer($year) {
 }
 
 function createYearProsjekter($year) {
+    if (!isset($_GET['year'])) {
+        showErrorMessage("Siden har ikke blitt lastet inn på riktig måte!");
+        return;
+    }
     global $wpdb;
     $query = "SELECT * FROM " . getProsjekterDatabaseRef() .
         " WHERE prosjektstart >= " . $year .
@@ -110,7 +127,7 @@ function createYearProsjekter($year) {
 }
 
 function sc_mest_populaere_nyheter() {
-    if (!(isset($_GET['it']) && $_GET['it'] == "nyhetsartikler")) {
+    if (!(isset($_GET['it']) && $_GET['it'] == "nyhetsartikler") || isset($_GET['id'])) {
         return;
     }
     if (areElementorBufferingObjects()) return;

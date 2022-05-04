@@ -82,6 +82,7 @@ function sc_nyeste_oppdateringer() {
     <script type="text/javascript">
         const changelogCanScrollViewRight = document.getElementById('changelogCanScrollViewRight');
         const changelogCanScrollViewLeft = document.getElementById('changelogCanScrollViewLeft');
+        $(changelogCanScrollViewLeft).fadeOut("fast");
         const changelog = document.getElementById('changelog');
 
         changelogCanScrollViewRight.onclick = function () {
@@ -111,10 +112,7 @@ function sc_nyeste_oppdateringer() {
         }
 
         changelog.onscroll = function () {
-            console.log("scrolleft: " + changelog.scrollLeft);
-            console.log("width: " + $(changelog).width());
-
-            if (changelog.scrollLeft >= $(changelog).width()-900) {
+            if ((changelog.scrollWidth-changelog.scrollLeft) < $(window).innerWidth()+100) {
                 $(changelogCanScrollViewRight).fadeOut("fast");
             }else {
                 $(changelogCanScrollViewRight).fadeIn("fast");

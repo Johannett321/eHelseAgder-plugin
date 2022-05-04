@@ -45,7 +45,7 @@ function userSignedInSuccessfully() {
         wp_redirect($prevPage);
     }else {
         error_log("Attempting to redirect user to front page");
-        error_log("RedirectID5");
+        wp_redirect(get_site_url() . "/min-side");
         error_log("User should now have been redirected. Exiting script...");
     }
     exit;
