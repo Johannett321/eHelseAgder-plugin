@@ -112,7 +112,7 @@ function sc_nyeste_oppdateringer() {
         }
 
         changelog.onscroll = function () {
-            if ((changelog.scrollWidth-changelog.scrollLeft) < $(window).innerWidth()) {
+            if ((changelog.scrollWidth-changelog.scrollLeft) < $(window).innerWidth()+100) {
                 $(changelogCanScrollViewRight).fadeOut("fast");
             }else {
                 $(changelogCanScrollViewRight).fadeIn("fast");
