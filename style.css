@@ -684,6 +684,15 @@ th {
     white-space: nowrap;
 
     position: absolute;
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.changelog::-webkit-scrollbar {
+    display: none;
 }
 
 .changelogItem {
