@@ -84,15 +84,21 @@ function createPopupBox($title, $message) {
         <div class = "popupBox">
             <h3><?php echo $title ?></h3>
             <p><?php echo $message ?></p>
+            <button type="button" id = "backButtonPopup">Tilbake</button>
             <button type="button" id = "closePopupButton">Til forhåndsvisning</button>
         </div>
     </div>
 
     <script type = "text/javascript">
         const closebutton = document.getElementById("closePopupButton");
+        const backButtonPopup = document.getElementById('backButtonPopup');
         const popupHolder = document.getElementById("popupHolder");
 
         document.body.classList.add("noscroll");
+
+        backButtonPopup.onclick = function () {
+            history.back();
+        }
 
         closebutton.onclick = function () {
             popupHolder.classList.add("hidden");
