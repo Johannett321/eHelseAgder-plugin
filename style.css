@@ -685,6 +685,8 @@ th {
 
     position: absolute;
 
+    scroll-behavior: smooth;
+
     /* Hide scrollbar for IE, Edge and Firefox */
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
@@ -761,6 +763,46 @@ th {
     font-size: 12px !important;
     color: #0B843E !important;
     text-align: right;
+}
+
+.changelogBeginningArrow {
+    left: 0px;
+}
+
+.changelogEndArrow {
+    right: 0px;
+}
+
+.changelogEndArrow .material-icons {
+    text-align: right;
+}
+
+.changelogBeginningArrow .changelogArrowBackground {
+    background: linear-gradient(-90deg, #FFFFFF00 20%, #FFFFFFFF 58%);
+}
+
+.changelogEndArrow .changelogArrowBackground {
+    background: linear-gradient(90deg, #FFFFFF00 20%, #FFFFFFFF 58%);
+}
+
+.changelogArrows {
+    position: absolute;
+    width: 80px !important;
+    height: 90px !important;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.changelogArrowBackground {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+.changelogArrows .material-icons {
+    width: 100%;
+    margin-top: 15px;
 }
 
 /* Nyheter */
