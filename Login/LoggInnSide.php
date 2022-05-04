@@ -20,7 +20,7 @@ function sc_loginform( $atts ) {
     }
 
     ?>
-    <form action = "../wp-json/ehelseagderplugin/api/login?prevpage=<?php echo $_GET["prevpage"] ?>" method = "post">
+    <form action = "../wp-json/ehelseagderplugin/api/login<?php if (isset($_GET[$_GET["prevpage"]])) echo "?prevpage=" . $_GET["prevpage"] ?>" method = "post">
         <div class = "requiredPart" id = "loginBox">
             <h3 class = "mainTitle">Logg inn</h3>
             <label for="username">Brukernavn:</label>
