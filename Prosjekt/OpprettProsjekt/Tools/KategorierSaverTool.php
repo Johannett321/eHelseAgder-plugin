@@ -163,9 +163,9 @@ function addKategorierSaverTool($onlineRevisionNumber) {
             var prosjektIDFromLocalStorage = localStorage.getItem("prosjektID");
             var sistLagretStorage = localStorage.getItem(localsave + "_time");
 
-            if (editProsjektID == null) editProsjektID = "";
-            if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "";
-            if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "";
+            if (editProsjektID == null) editProsjektID = "ny";
+            if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "ny";
+            if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "ny";
 
             if (editProsjektID == prosjektIDFromLocalStorage) {
                 if (localStorage.getItem(localsave) != null) {
@@ -197,10 +197,10 @@ function addKategorierSaverTool($onlineRevisionNumber) {
 
                         let hours = dt.getHours().toString();
                         let minutes = dt.getMinutes().toString();
-                        if (minutes.length == 1) {
+                        if (minutes.length === 1) {
                             minutes = "0" + minutes;
                         }
-                        if (hours.length == 1) {
+                        if (hours.length === 1) {
                             hours = "0" + hours;
                         }
                         var time = hours + ":" + minutes;
@@ -264,7 +264,11 @@ function addKategorierSaverTool($onlineRevisionNumber) {
 
         function saveSpecialFields(arrayWithBrothers,savedLabel,localsave) {
             const urlParams = new URLSearchParams(window.location.search);
-            const editProsjektID = urlParams.get('editProsjektID');
+            var editProsjektID = urlParams.get('editProsjektID');
+
+            if (editProsjektID == null) {
+                editProsjektID = "ny";
+            }
 
             const dt = new Date();
             let year = dt.getFullYear();
@@ -308,9 +312,9 @@ function addKategorierSaverTool($onlineRevisionNumber) {
 
             //arrayWithBrothers[arrayWithBrothers.length] = textbox;
 
-            if (editProsjektID == null) editProsjektID = "";
-            if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "";
-            if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "";
+            if (editProsjektID == null) editProsjektID = "ny";
+            if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "ny";
+            if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "ny";
 
             if (editProsjektID === prosjektIDFromLocalStorage) {
                 if (localStorage.getItem(localsave) != null) {
@@ -368,11 +372,23 @@ function addLocalStorageClearupIfWrongProject() {
         function clearLocalStorageIfWrongProjectOrTooOld(onlineRevisionNumber) {
             console.log("Sjekker om vi har cachet noe prosjekt")
             const urlParams = new URLSearchParams(window.location.search);
-            const editProsjektID = urlParams.get('editProsjektID');
+            var editProsjektID = urlParams.get('editProsjektID');
             var prosjektIDFromLocalStorage = localStorage.getItem("prosjektID");
             var localRevisionNumber = localStorage.getItem("revision");
 
-            if (prosjektIDFromLocalStorage != null && prosjektIDFromLocalStorage !== "" && prosjektIDFromLocalStorage !== "null") {
+            if (editProsjektID == null) {
+                editProsjektID = "ny";
+            }
+
+            if (prosjektIDFromLocalStorage === "ny") {
+                if (editProsjektID !== "ny") {
+                    console.log("Brukeren prøver å redigere et prosjekt som allerede er publisert, men har et utkast for et nytt prosjekt")
+                    warnUserAndDeletelocalStorage();
+                    localRevisionNumber = null;
+                }else {
+                    return;
+                }
+            }else if (prosjektIDFromLocalStorage != null && prosjektIDFromLocalStorage !== "" && prosjektIDFromLocalStorage !== "null") {
                 console.log("ProsjektID er IKKE null: " + prosjektIDFromLocalStorage);
                 if (prosjektIDFromLocalStorage !== editProsjektID) {
                     console.log("ProsjektID er ikke det samme som editProsjektID: " + prosjektIDFromLocalStorage + " : " + editProsjektID);
@@ -380,13 +396,8 @@ function addLocalStorageClearupIfWrongProject() {
                     localRevisionNumber = null;
                 }
             }else {
-                console.log("ProsjektID er null!: " + prosjektIDFromLocalStorage + " : " + editProsjektID);
-                if (editProsjektID != null && editProsjektID !== "" && editProsjektID !== "null") {
-                    //BRUKEREN HAR LAGRET ET UTKAST FOR ET NYTT PROSJEKT, MEN REDIGERER ET ANNET PROSJEKT
-                    console.log("ProsjektID er null,  men det er ikke editProsjektID!!: " + prosjektIDFromLocalStorage + " : " + editProsjektID);
-                    warnUserAndDeletelocalStorage()
-                    localRevisionNumber = null;
-                }
+                console.log("ProsjektID er null")
+                localRevisionNumber = null;
             }
 
             if (localRevisionNumber != null) {

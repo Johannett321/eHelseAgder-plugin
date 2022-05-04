@@ -24,7 +24,7 @@ function sc_pabegynt_prosjekt() {
     ?>
     <div id="påbegyntLinje" >
         <a id = "pabegyntProsjektLink"><button id = "pabegyntProsjekt"></button></a>
-        <button id = "pabegyntProsjektSlettKnapp">Slett</button></div>
+        <button id = "pabegyntProsjektSlettKnapp">Slett utkast</button></div>
     <script type="text/javascript">
         const pabegyntProsjektLink = document.getElementById('pabegyntProsjektLink');
         const pabegyntProsjekt = document.getElementById('pabegyntProsjekt');
@@ -41,6 +41,7 @@ function sc_pabegynt_prosjekt() {
             request.done(function(response) {
                 if (response === "") {
                     pabegyntProsjekt.innerText = "Fortsett å redigere utkast";
+                    pabegyntProsjektLink.href = "opprett-prosjekt/";
                 }else {
                     pabegyntProsjekt.innerText = "Fortsett å redigere utkast for " + response + "";
                     pabegyntProsjektLink.href = "opprett-prosjekt/?editProsjektID=" + localStorage.getItem("prosjektID");

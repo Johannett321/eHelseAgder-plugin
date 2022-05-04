@@ -16,6 +16,21 @@ function startverktoy( $atts ) {
         return;
     }
     $loadedProsjekt = loadProsjekt();
+
+    if (isset($_GET['editProsjektID'])) {
+        $currentRevision = getProjectRevision($_GET['editProsjektID']);
+        if ($currentRevision != null) {
+            $_SESSION['correctLocalRevision'] = $currentRevision + 1;
+            error_log("Oppretter revision: " . $_SESSION['correctLocalRevision']);
+        }else {
+            $_SESSION['correctLocalRevision'] = 1;
+            error_log("Setter revision til: " . $_SESSION['correctLocalRevision']);
+        }
+    }else {
+        $_SESSION['correctLocalRevision'] = 1;
+        error_log("Setter revision til 1 nå: " . $_SESSION['correctLocalRevision']);
+    }
+
     addLocalStorageClearupIfWrongProject();
     ?>
     <script type="text/javascript">
@@ -178,10 +193,10 @@ function loadFieldFromLocalStorageOrEditProject($inputID, $editProjectValue) {
 
         $("#<?php echo $inputID?>").on("input", function(){
             localStorage.setItem('<?php echo $inputID?>', document.getElementById('<?php echo $inputID?>').value);
-            if ((new URLSearchParams(window.location.search)).get('editProjectID') == null) {
-                localStorage.setItem('prosjektID', 'null');
+            if ((new URLSearchParams(window.location.search)).get('editProsjektID') == null) {
+                localStorage.setItem('prosjektID', 'ny');
             }else {
-                localStorage.setItem('prosjektID', (new URLSearchParams(window.location.search)).get('editProjectID'));
+                localStorage.setItem('prosjektID', (new URLSearchParams(window.location.search)).get('editProsjektID'));
             }
         });
     </script>

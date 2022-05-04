@@ -77,6 +77,9 @@ function sc_vis_arrangement() {
                     <h5>Slutter:</h5><span><?php echo getNoneImportantDisplayDateFormat($eventInfo[0]->slutt_dato); if ($eventInfo[0]->slutt_klokkeslett != null) echo " kl " . $eventInfo[0]->slutt_klokkeslett?></span>
                 </div>
                 <div>
+                    <h5>Sted:</h5><span><?php echo $eventInfo[0]->sted?></span>
+                </div>
+                <div>
                     <h5>Arrangør:</h5><span><?php echo $eventInfo[0]->arrangor?></span>
                 </div>
                 <div>

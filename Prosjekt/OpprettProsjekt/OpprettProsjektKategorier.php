@@ -33,19 +33,6 @@ function validateFieldsFromPage1() {
     saveFieldToSession("psummary");
     saveFieldToSession("sokerkommuner");
     saveImageUploaded();
-    if (isset($_GET['editProsjektID'])) {
-        $currentRevision = getProjectRevision($_GET['editProsjektID']);
-        if ($currentRevision != null) {
-            $_SESSION['correctLocalRevision'] = $currentRevision + 1;
-            error_log("Oppretter revision: " . $_SESSION['correctLocalRevision']);
-        }else {
-            $_SESSION['correctLocalRevision'] = 1;
-            error_log("Setter revision til: " . $_SESSION['correctLocalRevision']);
-        }
-    }else {
-        $_SESSION['correctLocalRevision'] = 1;
-        error_log("Setter revision til 1 nå: " . $_SESSION['correctLocalRevision']);
-    }
 }
 
 function saveFieldToSession($fieldToSave) {

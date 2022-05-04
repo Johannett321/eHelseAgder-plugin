@@ -23,7 +23,7 @@ function loadForsideProsjekter() {
             ?>
             <a href = "prosjekter/prosjektside/?prosjektID=<?php echo $currentProsjekt->id ?>">
                 <div class ="prosjektCard">
-                    <img src = "<?php echo getPhotoUploadUrl() . $currentProsjekt->bilde ?>"/>
+                    <img src = "<?php if ($currentProsjekt->bilde != null) echo getPhotoUploadUrl() . $currentProsjekt->bilde ?>"/>
                     <div class = "greenBackground">
                         <div class = "pCardTitleDesc">
                             <h5><?php echo $currentProsjekt->project_name ?></h5>

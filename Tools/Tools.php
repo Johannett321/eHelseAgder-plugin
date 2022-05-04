@@ -170,7 +170,7 @@ function makeCollapsiblesWork() {
                 if (content.style.display === "block") {
                     $(content).animate({
                         height: "0px"
-                    }, 200, function() {
+                    }, 400, function() {
                         content.style.display = "none";
                     })
                 } else {
