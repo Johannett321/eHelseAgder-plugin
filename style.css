@@ -211,6 +211,10 @@ Table of content:
     font-size: 14px;
     color: #0B843E;
     text-align: right;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .viewMore {
@@ -901,12 +905,14 @@ th {
 
 .prosjektCard {
     position: relative;
-    width: 33%;
+    width: 30%;
     display: inline-block;
     border-radius: 20px;
+    border: 1px solid #84C58ED4;
+
     overflow: hidden;
 
-    margin: 20px;
+    margin: 17px;
 }
 
 .prosjektCard:hover {
@@ -926,7 +932,7 @@ th {
     top: 0;
     left: 0;
 
-    height: 126px;
+    height: 132.8px;
 
     background-color: rgba(217, 234, 212, 0.80);
     border-radius: 10px;
