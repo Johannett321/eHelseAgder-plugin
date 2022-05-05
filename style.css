@@ -87,6 +87,42 @@ Table of content:
     font-size: 18px;
 }
 
+/* Tilbake-knapp */
+#backButtonPopup {
+    background-color: unset;
+    padding-left: 0;
+    padding-bottom: 0;
+    padding-top: 30px;
+    color: #4267B2;
+    text-decoration: underline;
+}
+
+#backButtonPopup:hover {
+    color: #6785c1;
+}
+
+    /* Logg-inn-knapp */
+
+#loginButton {
+    padding: 10px;
+    height: 60px;
+}
+
+#loginButton .material-icons {
+    font-size: 18px;
+    margin-bottom: 1 !important;
+    line-height: 29px;
+}
+
+#loginButton .material-icons, #loginButton p {
+    display: inline-block;
+}
+
+#loginButton p {
+    font-size: 14px;
+    line-height: 29px;
+    margin-bottom: 0;
+}
 
 /* Rediger-knapp */
 .editButton, #deleteArticle {
@@ -723,7 +759,7 @@ th {
     vertical-align: top;
 
     line-height: 70px;
-    background-color: #e8f2e5;
+    background-color: #f3f8f2;
 
     box-shadow: 10px 0px 15px -10px #d9ead4;
 }
@@ -770,31 +806,30 @@ th {
 }
 
 .changelogBeginningArrow {
-    left: 0px;
+    left: 0;
 }
 
 .changelogEndArrow {
-    right: 0px;
+    right: 0;
 }
 
 .changelogEndArrow .material-icons {
     text-align: right;
 }
 
-.changelogBeginningArrow .changelogArrowBackground {
-    background: linear-gradient(-90deg, #FFFFFF00 20%, #FFFFFFFF 58%);
-}
-
 .changelogEndArrow .changelogArrowBackground {
-    background: linear-gradient(90deg, #FFFFFF00 20%, #FFFFFFFF 58%);
+    float: right;
 }
 
 .changelogArrows {
     position: absolute;
-    width: 80px !important;
-    height: 90px !important;
+    width: 45px;
+    height: 84px;
     z-index: 2;
     cursor: pointer;
+    padding: 22px 0;
+
+    background: rgba(251,252,251, 0.9);
 }
 
 .changelogArrowBackground {
@@ -806,7 +841,6 @@ th {
 
 .changelogArrows .material-icons {
     width: 100%;
-    margin-top: 15px;
 }
 
 /* Nyheter */
