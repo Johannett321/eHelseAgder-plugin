@@ -9,7 +9,7 @@ function sc_forside_prosjekter() {
 
 function loadForsideProsjekter() {
     global $wpdb;
-    $prosjekter = $wpdb->get_results("SELECT * FROM " . getProsjekterDatabaseRef() . " WHERE prosjektstatus = 2 ORDER BY id DESC");
+    $prosjekter = $wpdb->get_results("SELECT * FROM " . getProsjekterDatabaseRef() . " WHERE prosjektstatus = 2 ORDER BY id DESC LIMIT 6");
     if (areWeEditingWithElementor() && sizeof($prosjekter) == 0) {
         ?>
         <center><h5>Her vil de 6 første prosjektene vises (alfabetisk)</h5></center>
