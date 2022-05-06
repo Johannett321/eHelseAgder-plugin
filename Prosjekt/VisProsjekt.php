@@ -123,15 +123,7 @@ function sc_prosjekt_side() {
                 <h5>Prosjektets status:</h5><span><?php echo getProsjektStatusAsText($projectInfo[0]->prosjektstatus)?></span>
             </div>
         </div>
-        <script type="text/javascript">
-            const coverPhoto = document.getElementById('coverPhoto');
-            const coverPhotoImg = document.getElementById('coverPhotoImg');
-            const oppsummert = document.getElementById('oppsummert');
-
-            console.log("Setting heigth to: " + $(oppsummert).height())
-            $(coverPhotoImg).height($(oppsummert).innerHeight());
-            $(coverPhoto).height($(oppsummert).innerHeight());
-        </script>
+        <?php insertSyncCoverPhotoAndSummaryJS()?>
     </div>
     <div class = "projTitle"><h1><?php echo $projectInfo[0]->project_name; ?></h1></div>
     <div class = "projectText"><?php echo nl2br($projectInfo[0]->project_text); ?></div>

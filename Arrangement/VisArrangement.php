@@ -63,12 +63,12 @@ function sc_vis_arrangement() {
             <?php
             if ($eventInfo[0]->bilde != null && $eventInfo[0]->bilde != "") {
                 ?>
-                <div class = "coverPhoto"><img src = "<?php echo getPhotoUploadUrl() . $bildeUrl ?>"></div>
+                <div class = "coverPhoto" id = "coverPhoto"><img src = "<?php echo getPhotoUploadUrl() . $bildeUrl ?>" id = "coverPhotoImg"></div>
                 <?php
             }
             ?>
 
-            <div class = "oppsummert">
+            <div class = "oppsummert" id = "oppsummert">
                 <h4>Kort om arrangementet</h4>
                 <div>
                     <h5>Starter:</h5><span><?php echo getNoneImportantDisplayDateFormat($eventInfo[0]->start_dato); if ($eventInfo[0]->start_klokkeslett != null) echo " kl " . $eventInfo[0]->start_klokkeslett?></span>
@@ -87,11 +87,9 @@ function sc_vis_arrangement() {
                     <i> <?php echo $eventInfo[0]->kontaktperson_mail?></i>
                 </div>
 
-                <a href = "<?php echo $eventInfo[0]->pamelding_link ?>" target="_blank"><button type="button" class = "button" id="signUpButton">Påmelding<i class="material-icons">
-                            arrow_forward
-                        </i></button></a>
-
+                <a href = "<?php echo $eventInfo[0]->pamelding_link ?>" target="_blank"><button type="button" class = "button" id="signUpButton">Påmelding<i class="material-icons">arrow_forward</i></button></a>
             </div>
+            <?php insertSyncCoverPhotoAndSummaryJS();?>
         </div>
 
         <div class = "arrInnhold">

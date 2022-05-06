@@ -176,3 +176,17 @@ function addSubmitButtonWithVerification($formId, $requiredFields, $notRequiredF
     </script>
     <?php
 }
+
+function insertSyncCoverPhotoAndSummaryJS() {
+    ?>
+    <script type="text/javascript">
+        const coverPhoto = document.getElementById('coverPhoto');
+        const coverPhotoImg = document.getElementById('coverPhotoImg');
+        const oppsummert = document.getElementById('oppsummert');
+
+        console.log("Setting heigth to: " + $(oppsummert).height())
+        $(coverPhotoImg).height($(oppsummert).innerHeight());
+        $(coverPhoto).height($(oppsummert).innerHeight());
+    </script>
+    <?php
+}
