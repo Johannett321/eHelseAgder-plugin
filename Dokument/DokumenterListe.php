@@ -18,7 +18,6 @@ function sc_dokumenter_stor_liste() {
         foreach ($documents as $currentDoc) {
             $fileNameSeparated = explode(".", $currentDoc['filename']);
             $fileType = $fileNameSeparated[sizeof($fileNameSeparated)-1];
-            $specialClass = "";
             switch ($fileType) {
                 case "pdf":
                     $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/pdf.png";
@@ -33,12 +32,14 @@ function sc_dokumenter_stor_liste() {
                     $specialClass = "word dok";
                     break;
                 case "xlsx":
+                case "xls":
                     $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/excel.png";
                     $specialClass = "excel dok";
                     break;
-            }
-            if ($specialClass == "") {
-                $specialClass = "ukjentDok dok";
+                default:
+                    $photoUrl = null;
+                    $specialClass = "ukjentDok dok";
+                    break;
             }
             createLargeListItem($currentDoc['filename'], "Trykk her for å laste ned", $currentDoc['dateModified'], $currentDoc['fileSizeMB'] . " MB", $photoUrl, getFilesUploadUrl() . $currentDoc['path'], $specialClass);
         }

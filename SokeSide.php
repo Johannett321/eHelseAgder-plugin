@@ -233,7 +233,6 @@ function dokumentSok() {
         foreach ($results as $result) {
             $fileNameSeparated = explode(".", $result['filename']);
             $fileType = $fileNameSeparated[sizeof($fileNameSeparated)-1];
-            $specialClass = "";
             switch ($fileType) {
                 case "pdf":
                     $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/pdf.png";
@@ -248,8 +247,13 @@ function dokumentSok() {
                     $specialClass = "word dok";
                     break;
                 case "xlsx":
+                case "xls":
                     $photoUrl = "../../../wp-content/uploads/eHelseAgderPlus/excel.png";
                     $specialClass = "excel dok";
+                    break;
+                default:
+                    $photoUrl = null;
+                    $specialClass = "ukjentDok dok";
                     break;
             }
             createLargeListItem($result['filename'], "Trykk her for å laste ned", $result['dateModified'], $result['fileSizeMB'] . " MB", $photoUrl, getFilesUploadUrl() . $result['path'], $specialClass);
