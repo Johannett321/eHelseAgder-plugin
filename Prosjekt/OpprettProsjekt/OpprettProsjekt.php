@@ -146,8 +146,13 @@ function lagFelter($loadedProsjekt) {
 
             <div class = "sammendragContainer">
                 <label for = "psummary" class = "labelForInput"><h3>Sammendrag*</h3></label>
+                <?php
+                $sammendragLoadedText = $loadedProsjekt->project_text;
+                $sammendragLoadedText = str_replace("\r", '', $sammendragLoadedText);
+                $sammendragLoadedText = str_replace("\n", '\n', $sammendragLoadedText);
+                ?>
                 <?php addInfoBox("prosjektSammendrag", "Her skriver du en kort forklaring på hva prosjektet går ut på. OBS: Mer informasjon om prosjektet legges til på neste trinn");?>
-                <textarea id = "psummary" name="psummary" form="minform" maxlength="1700" placeholder="Her kan du skrive en kort tekst om prosjektet"></textarea><?php addCharacterCounter("psummary");loadFieldFromLocalStorageOrEditProject("psummary",$loadedProsjekt->project_text);?>
+                <textarea id = "psummary" name="psummary" form="minform" maxlength="1700" placeholder="Her kan du skrive en kort tekst om prosjektet"></textarea><?php addCharacterCounter("psummary");loadFieldFromLocalStorageOrEditProject("psummary", $sammendragLoadedText);?>
             </div>
 
         </div>
