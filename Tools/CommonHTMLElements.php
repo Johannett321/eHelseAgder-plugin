@@ -19,7 +19,14 @@ function createLargeListItem($title, $description, $uElement1, $uElement2, $imag
             if ($image != null) {
                 ?>
                 <div class="photoSmall">
-                    <img src = "<?php echo getPhotoUploadUrl() . $image ?>"/>
+                    <?php
+                    if (strpos($image, "wp-content")) {
+                        $photoUrl = $image;
+                    }else {
+                        $photoUrl = getPhotoUploadUrl() . $image;
+                    }
+                    ?>
+                    <img src = "<?php echo $photoUrl ?>"/>
                 </div>
                 <?php
             }
