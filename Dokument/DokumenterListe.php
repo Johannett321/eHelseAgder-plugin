@@ -14,6 +14,7 @@ function sc_dokumenter_stor_liste() {
     <div class = "artikkelKortHolder">
         <?php
         $documents = getAllFilesInFolderAndSubfolders("", "", 10);
+
         foreach ($documents as $currentDoc) {
             $fileNameSeparated = explode(".", $currentDoc['filename']);
             $fileType = $fileNameSeparated[sizeof($fileNameSeparated)-1];
