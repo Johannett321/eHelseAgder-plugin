@@ -135,7 +135,7 @@ function lagFelter($loadedProsjekt) {
                 <label for="prosjektstatus" class = "labelForInput">Prosjektets status*</label><?php addInfoBox("prosjektStatusInfoBox", "Her velger du hvor i prosessen prosjektet er akkurat nå. Dette påvirker hvor prosjektet blir vist på nettsiden");?>
                 <select id="prosjektstatus" name="prosjektstatus">
                     <?php
-                    for ($i = 1; $i <=5; $i++) {
+                    for ($i = 1; $i <=3; $i++) {
                         ?>
                         <option value = "<?php echo $i?>" <?php if ($loadedProsjekt->prosjektstatus == $i) echo "selected"?>><?php echo getProsjektStatusAsText($i)?></option>
                         <?php

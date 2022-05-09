@@ -11,7 +11,7 @@ function getProsjektStatusAsText($prosjektStatusNumber) {
             return "Ikke startet";
         case 2:
             return "Påbegynt";
-        case 4:
+        case 3:
             return "Avsluttet";
     }
     return "";

@@ -221,3 +221,18 @@ function areWeVisitingFromMobileDevice() {
     }
     return false;
 }
+
+
+/**
+ * Tillater at en POST request blir sendt to ganger for å se siden.
+ */
+function allowPagePOSTReqDuplication() {
+    ?>
+    <script type="text/javascript">
+        if ( window.history.replaceState ) {
+            //Sørger for at Google Chrome ikke viser varsel om at siden blir vist på nytt
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
+    <?php
+}
