@@ -86,29 +86,11 @@ function sc_nyeste_oppdateringer() {
         const changelog = document.getElementById('changelog');
 
         changelogCanScrollViewRight.onclick = function () {
-            changelog.scrollLeft = changelog.scrollLeft+100;
-
-            let scrollAmount = 0;
-            let slideTimer = setInterval(function(){
-                changelog.scrollLeft += 50;
-                scrollAmount += 50;
-                if(scrollAmount >= 500){
-                    window.clearInterval(slideTimer);
-                }
-            }, 25);
+            changelog.scrollLeft = changelog.scrollLeft+500;
         }
 
         changelogCanScrollViewLeft.onclick = function () {
-            changelog.scrollLeft = changelog.scrollLeft-100;
-
-            let scrollAmount = 0;
-            let slideTimer = setInterval(function(){
-                changelog.scrollLeft -= 50;
-                scrollAmount -= 50;
-                if(scrollAmount <= -500){
-                    window.clearInterval(slideTimer);
-                }
-            }, 25);
+            changelog.scrollLeft = changelog.scrollLeft-500;
         }
 
         changelog.onscroll = function () {
