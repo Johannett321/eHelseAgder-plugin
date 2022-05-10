@@ -97,7 +97,8 @@ function sc_vis_arrangement() {
             <h1 class = "nyhetTittel"><?php echo $eventInfo[0]->tittel; ?></h1>
             <span class = "ingress">– <?php echo $eventInfo[0]->kort_besk ?></span>
 
-            <div class = "artikkelTekst"><?php echo nl2br($eventInfo[0]->innhold); ?></div>
+            <div class = "artikkelTekst" id = "artikkelTekst"><?php echo nl2br($eventInfo[0]->innhold); ?></div>
+            <?php transformLinkInTextToClickable("artikkelTekst");?>
 
             <?php
             $vedlegg = $eventInfo[0]->vedlegg;

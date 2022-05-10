@@ -74,7 +74,9 @@ function sc_vis_artikkel() {
             <?php
         }
         ?>
-        <div class = "artikkelTekst"><?php echo nl2br($artikkelInfo[0]->innhold); ?></div>
+        <div class = "artikkelTekst" id = "artikkelTekst"><?php echo nl2br($artikkelInfo[0]->innhold); ?></div>
+        <?php transformLinkInTextToClickable("artikkelTekst");?>
+
         <div class = "tilknyttetProsjektTekst"><?php echo getTilknyttetProsjektTekst($artikkelInfo[0])?></div>
         <hr class="divider">
         <div class="infoBunn">
