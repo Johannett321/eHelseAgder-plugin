@@ -19,7 +19,7 @@ function getCollapsibles($projectID) {
         $database = getDraftCollapsibleDatabaseRef();
     }
     global $wpdb;
-    return $wpdb->get_results("SELECT * FROM " . $database . " WHERE prosjekt_id = " . $projectID);
+    return $wpdb->get_results("SELECT * FROM " . $database . " WHERE prosjekt_id = " . $projectID . " ORDER BY egendefinert_navn ASC");
 }
 
 function sc_prosjekt_side() {

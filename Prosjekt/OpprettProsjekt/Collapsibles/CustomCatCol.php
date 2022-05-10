@@ -8,6 +8,13 @@ function addCustomCatCol() {
             if (innhold == null) innhold = "";
             if (egendefinertNavn == null) egendefinertNavn = "";
 
+            let imageUrl = "";
+
+            if (innhold.includes("#ADDIMAGE;")) {
+                imageUrl = innhold.split("#ADDIMAGE;")[1];
+                innhold = innhold.split("#ADDIMAGE;")[0];
+            }
+
             const collapsible = createCollapsibleWithoutTitle();
 
             customColCounter += 1;
@@ -31,7 +38,7 @@ function addCustomCatCol() {
             });
             collapsible.appendChild(field);
 
-            collapsible.appendChild(getImageUploadButton());
+            collapsible.appendChild(getImageUploadButton(imageUrl));
 
             const textField = document.createElement('textarea');
             textField.name = "cvcustomdesc" + customColCounter;
@@ -46,7 +53,7 @@ function addCustomCatCol() {
             scrollToView(collapsible);
         }
 
-        function getImageUploadButton() {
+        function getImageUploadButton(preloadedImageUrl) {
             let holder = document.createElement('div');
             holder.classList.add('uploadPhoto');
             holder.id = "customCol" + customColCounter + "_uploadPhotoButton";
@@ -86,7 +93,19 @@ function addCustomCatCol() {
 
             let output = document.createElement('img');
             output.id = "customColPhotoOutput" + customColCounter;
+            if (preloadedImageUrl !== "") {
+                output.src = "<?php echo getPhotoUploadUrl()?>" + preloadedImageUrl;
+            }
+
             holder.appendChild(output);
+
+            let pathToOldPhoto = document.createElement('input');
+            pathToOldPhoto.type = "text";
+            pathToOldPhoto.name = "CustomCatOldImage" + customColCounter;
+            pathToOldPhoto.value = preloadedImageUrl;
+            pathToOldPhoto.classList.add('hidden');
+
+            holder.appendChild(pathToOldPhoto);
 
             const loadFile = function(event) {
                 const output = document.getElementById('customColPhotoOutput' + event.currentTarget.id.split("customColActualUploadButton")[1]);

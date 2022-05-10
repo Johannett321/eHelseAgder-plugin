@@ -245,6 +245,11 @@ function lagreCustomCollapsibles($projectID) {
         $counter += 1;
         if (isset($_POST["cvcustomtitle" . $counter])) {
             $foundAnyCustomCollapsibles = true;
+
+            if (isset($_GET['editProsjektID'])) {
+
+            }
+
             $formatted_table_name = getDraftCollapsibleDatabaseRef();
 
             //Legg til bilde
@@ -254,6 +259,10 @@ function lagreCustomCollapsibles($projectID) {
             if ($imagePath != null) {
                 $colInnhold .= "#ADDIMAGE;";
                 $colInnhold .= $imagePath;
+            }else if (isset($_POST['CustomCatOldImage' . $counter])) {
+                $customCatOldImage = $_POST['CustomCatOldImage' . $counter];
+                $colInnhold .= "#ADDIMAGE;";
+                $colInnhold .= $customCatOldImage;
             }
 
             $wpdb->insert($formatted_table_name,
