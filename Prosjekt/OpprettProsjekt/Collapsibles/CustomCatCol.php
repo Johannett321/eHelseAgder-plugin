@@ -53,8 +53,13 @@ function addCustomCatCol() {
 
             let fakeButton = document.createElement('div');
             fakeButton.classList.add('lastOppBildeKnapp');
+            fakeButton.id = "customColFakeUploadButton" + customColCounter;
 
-            fakeButton.onclick = uploadFilePressed(1);
+            $(fakeButton).click(function (event) {
+                let numberClicked = event.currentTarget.id.split("customColFakeUploadButton")[1];
+                console.log("Button was clicked");
+                $('#customColActualUploadButton' + numberClicked).click();
+            });
 
             let fakeButtonText = document.createElement('h5');
             fakeButtonText.innerText = "Last opp bilde";
@@ -71,30 +76,25 @@ function addCustomCatCol() {
             let customCatImage = document.createElement('input');
             customCatImage.type = "file";
             customCatImage.classList.add('hidden');
-            customCatImage.name = "CustomCat" + customColCounter + "_image";
+            customCatImage.name = "CustomCatImage" + customColCounter;
             customCatImage.accept = "image/*";
-            customCatImage.id = "customCol" + customColCounter + "_actualUploadButton";
+            customCatImage.id = "customColActualUploadButton" + customColCounter;
             customCatImage.onchange=function (event) {
                 loadFile(event)
             }
             holder.appendChild(customCatImage);
 
             let output = document.createElement('img');
-            output.id = "output";
+            output.id = "customColPhotoOutput" + customColCounter;
             holder.appendChild(output);
 
             const loadFile = function(event) {
-                const output = document.getElementById('output');
+                const output = document.getElementById('customColPhotoOutput' + event.currentTarget.id.split("customColActualUploadButton")[1]);
                 output.src = URL.createObjectURL(event.target.files[0]);
                 output.onload = function() {
                     URL.revokeObjectURL(output.src) // free memory
                 }
             };
-
-            function uploadFilePressed(number) {
-                console.log("CLIIICKED: " + number)
-                $('#customCol1_uploadPhotoButton').click();
-            }
             return holder;
         }
     </script>

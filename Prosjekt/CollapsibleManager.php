@@ -28,14 +28,29 @@ function getCollapsibleName($collapsibleType, $customName) {
 }
 
 function getHtmlContentForCollapsible($collapsible) {
-    if ($collapsible->collapsible_type == 1 || $collapsible->collapsible_type == 2 || $collapsible->collapsible_type == 4) {
-        return nl2br($collapsible->innhold);
+    if ($collapsible->collapsible_type == 1) {
+        getCustomCollapsible($collapsible);
+    }else if ($collapsible->collapsible_type == 2 || $collapsible->collapsible_type == 4) {
+        return nl2br(stripcslashes($collapsible->innhold));
     }else if ($collapsible->collapsible_type == 5) {
         getMilepaelerCollapsible($collapsible);
     }else if ($collapsible->collapsible_type == 3) {
         getProsjektTeametCollapsible($collapsible);
     }else if ($collapsible->collapsible_type == 6) {
         getNedlastbareDokumenterViewCollapsible($collapsible);
+    }
+}
+
+function getCustomCollapsible($collapsible) {
+    $innhold = nl2br(stripcslashes($collapsible->innhold));
+    if (strpos($innhold, "#ADDIMAGE;")) {
+        $imageUrl = substr($innhold, strpos($innhold, "#ADDIMAGE;")+10, strlen($innhold)-1);
+        $innhold = substr($innhold, 0, strpos($innhold, "#ADDIMAGE;"));
+
+        ?>
+        <img class = "collapsibleLargeImage" src = "<?php echo getPhotoUploadUrl() . $imageUrl ?>"/>
+        <p><?php echo $innhold?></p>
+        <?php
     }
 }
 
