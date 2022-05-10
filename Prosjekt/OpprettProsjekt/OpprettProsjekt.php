@@ -132,7 +132,7 @@ function lagFelter($loadedProsjekt) {
                 <label for="project_end" class = "labelForInput">Estimert prosjektslutt</label>
                 <input type="text" id="project_end" name="project_end" placeholder="2032" class = "small_input" maxlength="14"><?php addCharacterCounter("project_end");loadFieldFromLocalStorageOrEditProject("project_end",$loadedProsjekt->prosjektslutt);?>
 
-                <label for="prosjektstatus" class = "labelForInput">Prosjektets status*</label><?php addInfoBox("prosjektStatusInfoBox", "Her velger du hvor i prosessen prosjektet er akkurat nå. Dette påvirker hvor prosjektet blir vist på nettsiden");?>
+                <label for="prosjektstatus" class = "labelForInput">Prosjektstatus*</label><?php addInfoBox("prosjektStatusInfoBox", "Her velger du hvor i prosessen prosjektet er akkurat nå. Dette påvirker hvor prosjektet blir vist på nettsiden");?>
                 <select id="prosjektstatus" name="prosjektstatus">
                     <?php
                     for ($i = 1; $i <=3; $i++) {

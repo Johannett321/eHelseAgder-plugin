@@ -120,7 +120,7 @@ function sc_prosjekt_side() {
             }
             ?>
             <div>
-                <h5>Prosjektets status:</h5><span><?php echo getProsjektStatusAsText($projectInfo[0]->prosjektstatus)?></span>
+                <h5>Prosjektstatus:</h5><span><?php echo getProsjektStatusAsText($projectInfo[0]->prosjektstatus)?></span>
             </div>
         </div>
         <?php insertSyncCoverPhotoAndSummaryJS()?>
