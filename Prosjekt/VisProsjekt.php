@@ -126,7 +126,7 @@ function sc_prosjekt_side() {
         <?php insertSyncCoverPhotoAndSummaryJS()?>
     </div>
     <div class = "projTitle"><h1><?php echo $projectInfo[0]->project_name; ?></h1></div>
-    <div class = "projectText" id = "projectText"><?php echo nl2br($projectInfo[0]->project_text); ?></div>
+    <div class = "projectText" id = "projectText"><?php echo nl2br(stripcslashes($projectInfo[0]->project_text)); ?></div>
     <?php transformLinkInTextToClickable("projectText");?>
     <div class = "collapsibles" id = "displayCol">
         <?php
