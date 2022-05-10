@@ -54,6 +54,8 @@ function addCustomCatCol() {
             let fakeButton = document.createElement('div');
             fakeButton.classList.add('lastOppBildeKnapp');
 
+            fakeButton.onclick = uploadFilePressed(1);
+
             let fakeButtonText = document.createElement('h5');
             fakeButtonText.innerText = "Last opp bilde";
 
@@ -88,8 +90,6 @@ function addCustomCatCol() {
                     URL.revokeObjectURL(output.src) // free memory
                 }
             };
-
-            fakeButton.onclick = uploadFilePressed(1);
 
             function uploadFilePressed(number) {
                 console.log("CLIIICKED: " + number)
