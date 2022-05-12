@@ -62,11 +62,11 @@ function sc_prosjekt_side() {
         <?php
         if ($bildeUrl != null) {
             ?>
-            <div class = "coverPhoto"><img src = "<?php echo getPhotoUploadUrl() . $bildeUrl ?>"></div>
+            <div class = "coverPhoto" id = "coverPhoto"><img src = "<?php echo getPhotoUploadUrl() . $bildeUrl ?>" id = "coverPhotoImg"></div>
             <?php
         }
         ?>
-        <div class = "oppsummert">
+        <div class = "oppsummert" id = "oppsummert">
             <h4>Kort om prosjektet</h4>
             <div>
                 <h5>Prosjektnavn:</h5><span><?php echo $projectInfo[0]->project_name?></span>
@@ -120,12 +120,14 @@ function sc_prosjekt_side() {
             }
             ?>
             <div>
-                <h5>Prosjektets status:</h5><span><?php echo getProsjektStatusAsText($projectInfo[0]->prosjektstatus)?></span>
+                <h5>Prosjektstatus:</h5><span><?php echo getProsjektStatusAsText($projectInfo[0]->prosjektstatus)?></span>
             </div>
         </div>
+        <?php insertSyncCoverPhotoAndSummaryJS()?>
     </div>
     <div class = "projTitle"><h1><?php echo $projectInfo[0]->project_name; ?></h1></div>
-    <div class = "projectText"><?php echo nl2br($projectInfo[0]->project_text); ?></div>
+    <div class = "projectText" id = "projectText"><?php echo nl2br(stripcslashes($projectInfo[0]->project_text)); ?></div>
+    <?php transformLinkInTextToClickable("projectText");?>
     <div class = "collapsibles" id = "displayCol">
         <?php
         $collapsibles = getCollapsibles($prosjektID);
@@ -142,7 +144,8 @@ function sc_prosjekt_side() {
                 echo getCollapsibleName($collapsibles[$i]->collapsible_type, $collapsibles[$i]->egendefinert_navn);
                 ?><span class="material-icons">expand_more</span></button>
             <div class="content">
-                <p><?php echo getHtmlContentForCollapsible($collapsibles[$i]);?></p>
+                <p id = "collapsibleContent<?php echo $i?>"><?php echo getHtmlContentForCollapsible($collapsibles[$i]);?></p>
+                <?php transformLinkInTextToClickable("collapsibleContent" . $i);?>
             </div>
             <?php
         }

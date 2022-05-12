@@ -296,6 +296,13 @@ function getAllFilesInFolderAndSubfolders($folderPath, $filter, $limit) {
             array_push($filesToReturn, getFileInfo($folderPath . "/" . $elementsFound[$i]));
         }
     }
+
+    $fileDate = array();
+    foreach ($filesToReturn as $key => $row)
+    {
+        $fileDate[$key] = strtotime($row['dateModified']);
+    }
+    if (!array_multisort($fileDate, SORT_DESC, $filesToReturn)) error_log("Failed to sort");
     return $filesToReturn;
 }
 

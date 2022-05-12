@@ -17,6 +17,10 @@ function add_correct_meta() {
 
         }
         setMetas($articleInfo->tittel, $articleInfo->ingress, getPhotoUploadUrl() . $bilde, get_site_url() . "/nyheter/vis-artikkel/?artikkelID=" . $_GET['artikkelID']);
+    }else {
+        global $wp;
+        $url =  home_url( $wp->request );
+        setMetas("eHelse Agder", "Regional koordineringsgruppe e-helse og velferdsteknologi Agder", wp_upload_dir()['baseurl'] . "/ehelseagderplus/nettsidelogo.png", $url);
     }
 }
 

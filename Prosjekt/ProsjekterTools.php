@@ -10,13 +10,9 @@ function getProsjektStatusAsText($prosjektStatusNumber) {
         case 1:
             return "Ikke startet";
         case 2:
-            return "Påbegynt";
+            return "Pågående";
         case 3:
-            return "I drift";
-        case 4:
             return "Avsluttet";
-        case 5:
-            return "Avbrutt";
     }
     return "";
 }

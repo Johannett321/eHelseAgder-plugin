@@ -132,10 +132,10 @@ function lagFelter($loadedProsjekt) {
                 <label for="project_end" class = "labelForInput">Estimert prosjektslutt</label>
                 <input type="text" id="project_end" name="project_end" placeholder="2032" class = "small_input" maxlength="14"><?php addCharacterCounter("project_end");loadFieldFromLocalStorageOrEditProject("project_end",$loadedProsjekt->prosjektslutt);?>
 
-                <label for="prosjektstatus" class = "labelForInput">Prosjektets status*</label><?php addInfoBox("prosjektStatusInfoBox", "Her velger du hvor i prosessen prosjektet er akkurat nå. Dette påvirker hvor prosjektet blir vist på nettsiden");?>
+                <label for="prosjektstatus" class = "labelForInput">Prosjektstatus*</label><?php addInfoBox("prosjektStatusInfoBox", "Her velger du hvor i prosessen prosjektet er akkurat nå. Dette påvirker hvor prosjektet blir vist på nettsiden");?>
                 <select id="prosjektstatus" name="prosjektstatus">
                     <?php
-                    for ($i = 1; $i <=5; $i++) {
+                    for ($i = 1; $i <=3; $i++) {
                         ?>
                         <option value = "<?php echo $i?>" <?php if ($loadedProsjekt->prosjektstatus == $i) echo "selected"?>><?php echo getProsjektStatusAsText($i)?></option>
                         <?php
@@ -146,8 +146,13 @@ function lagFelter($loadedProsjekt) {
 
             <div class = "sammendragContainer">
                 <label for = "psummary" class = "labelForInput"><h3>Sammendrag*</h3></label>
+                <?php
+                $sammendragLoadedText = $loadedProsjekt->project_text;
+                $sammendragLoadedText = str_replace("\r", '', $sammendragLoadedText);
+                $sammendragLoadedText = str_replace("\n", '\n', $sammendragLoadedText);
+                ?>
                 <?php addInfoBox("prosjektSammendrag", "Her skriver du en kort forklaring på hva prosjektet går ut på. OBS: Mer informasjon om prosjektet legges til på neste trinn");?>
-                <textarea id = "psummary" name="psummary" form="minform" maxlength="1700" placeholder="Her kan du skrive en kort tekst om prosjektet"></textarea><?php addCharacterCounter("psummary");loadFieldFromLocalStorageOrEditProject("psummary",$loadedProsjekt->project_text);?>
+                <textarea id = "psummary" name="psummary" form="minform" maxlength="1700" placeholder="Her kan du skrive en kort tekst om prosjektet"></textarea><?php addCharacterCounter("psummary");loadFieldFromLocalStorageOrEditProject("psummary", $sammendragLoadedText);?>
             </div>
 
         </div>

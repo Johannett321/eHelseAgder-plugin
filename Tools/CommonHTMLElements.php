@@ -19,7 +19,14 @@ function createLargeListItem($title, $description, $uElement1, $uElement2, $imag
             if ($image != null) {
                 ?>
                 <div class="photoSmall">
-                    <img src = "<?php echo getPhotoUploadUrl() . $image ?>"/>
+                    <?php
+                    if (strpos($image, "wp-content")) {
+                        $photoUrl = $image;
+                    }else {
+                        $photoUrl = getPhotoUploadUrl() . $image;
+                    }
+                    ?>
+                    <img src = "<?php echo $photoUrl ?>"/>
                 </div>
                 <?php
             }
@@ -173,6 +180,37 @@ function addSubmitButtonWithVerification($formId, $requiredFields, $notRequiredF
             }
             return false;
         }
+    </script>
+    <?php
+}
+
+/**
+ * Synkroniserer høyden på bilde med kort oppsummert boksen ved siden av på for eksempel prosjektsiden.
+ */
+function insertSyncCoverPhotoAndSummaryJS() {
+    ?>
+    <script type="text/javascript">
+        const coverPhoto = document.getElementById('coverPhoto');
+        const coverPhotoImg = document.getElementById('coverPhotoImg');
+        const oppsummert = document.getElementById('oppsummert');
+
+        console.log("Setting heigth to: " + $(oppsummert).height())
+        $(coverPhotoImg).height($(oppsummert).innerHeight());
+        $(coverPhoto).height($(oppsummert).innerHeight());
+    </script>
+    <?php
+}
+
+/**
+ * Setter inn en a tag foran linker i tekst, slik at disse blir klikkbare.
+ * @param $elementID
+ */
+function transformLinkInTextToClickable($elementID) {
+    ?>
+    <script type="text/javascript">
+        console.log("Transforming...")
+        document.getElementById('<?php echo $elementID?>').innerHTML = document.getElementById('<?php echo $elementID?>').innerHTML.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, "<a href='$1'>$1</a>");
+        console.log(document.getElementById('<?php echo $elementID?>').innerHTML);
     </script>
     <?php
 }

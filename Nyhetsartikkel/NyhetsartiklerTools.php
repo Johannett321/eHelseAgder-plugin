@@ -32,7 +32,7 @@ function getTilknyttetProsjektTekst($artikkelInfo) {
  */
 function createShortArticle($article) {
     ?>
-    <a href = "<?php echo "vis-artikkel?artikkelID=" . $article->id; ?>">
+    <a href = "<?php echo "../../../nyheter/vis-artikkel?artikkelID=" . $article->id; ?>">
         <div class = "artikkelKort">
             <?php if ($article->bilde != null) {
                 ?>

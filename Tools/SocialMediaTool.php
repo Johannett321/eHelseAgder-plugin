@@ -10,7 +10,7 @@ function sc_sharebuttons () {
 function implementAllSMShareButtons() {
     implementTwitterInShareButton();
     implementFacebookShareButton();
-    implementLinkedinShareButton();
+    //implementLinkedinShareButton();
 }
 
 function implementFacebookShareButton() {

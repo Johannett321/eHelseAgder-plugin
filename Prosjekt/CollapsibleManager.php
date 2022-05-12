@@ -29,7 +29,7 @@ function getCollapsibleName($collapsibleType, $customName) {
 
 function getHtmlContentForCollapsible($collapsible) {
     if ($collapsible->collapsible_type == 1 || $collapsible->collapsible_type == 2 || $collapsible->collapsible_type == 4) {
-        return nl2br($collapsible->innhold);
+        return nl2br(stripcslashes($collapsible->innhold));
     }else if ($collapsible->collapsible_type == 5) {
         getMilepaelerCollapsible($collapsible);
     }else if ($collapsible->collapsible_type == 3) {

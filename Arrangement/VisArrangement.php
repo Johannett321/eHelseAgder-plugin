@@ -63,12 +63,12 @@ function sc_vis_arrangement() {
             <?php
             if ($eventInfo[0]->bilde != null && $eventInfo[0]->bilde != "") {
                 ?>
-                <div class = "coverPhoto"><img src = "<?php echo getPhotoUploadUrl() . $bildeUrl ?>"></div>
+                <div class = "coverPhoto" id = "coverPhoto"><img src = "<?php echo getPhotoUploadUrl() . $bildeUrl ?>" id = "coverPhotoImg"></div>
                 <?php
             }
             ?>
 
-            <div class = "oppsummert">
+            <div class = "oppsummert" id = "oppsummert">
                 <h4>Kort om arrangementet</h4>
                 <div>
                     <h5>Starter:</h5><span><?php echo getNoneImportantDisplayDateFormat($eventInfo[0]->start_dato); if ($eventInfo[0]->start_klokkeslett != null) echo " kl " . $eventInfo[0]->start_klokkeslett?></span>
@@ -87,11 +87,9 @@ function sc_vis_arrangement() {
                     <i> <?php echo $eventInfo[0]->kontaktperson_mail?></i>
                 </div>
 
-                <a href = "<?php echo $eventInfo[0]->pamelding_link ?>" target="_blank"><button type="button" class = "button" id="signUpButton">Påmelding<i class="material-icons">
-                            arrow_forward
-                        </i></button></a>
-
+                <a href = "<?php echo $eventInfo[0]->pamelding_link ?>" target="_blank"><button type="button" class = "button" id="signUpButton">Påmelding<i class="material-icons">arrow_forward</i></button></a>
             </div>
+            <?php insertSyncCoverPhotoAndSummaryJS();?>
         </div>
 
         <div class = "arrInnhold">
@@ -99,7 +97,8 @@ function sc_vis_arrangement() {
             <h1 class = "nyhetTittel"><?php echo $eventInfo[0]->tittel; ?></h1>
             <span class = "ingress">– <?php echo $eventInfo[0]->kort_besk ?></span>
 
-            <div class = "artikkelTekst"><?php echo nl2br($eventInfo[0]->innhold); ?></div>
+            <div class = "artikkelTekst" id = "artikkelTekst"><?php echo nl2br(stripcslashes($eventInfo[0]->innhold)); ?></div>
+            <?php transformLinkInTextToClickable("artikkelTekst");?>
 
             <?php
             $vedlegg = $eventInfo[0]->vedlegg;
