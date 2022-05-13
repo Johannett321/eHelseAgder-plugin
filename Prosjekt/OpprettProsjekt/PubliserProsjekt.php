@@ -189,7 +189,7 @@ function lagreMilepaeler($projectID) {
             "collapsible_type" => 5,
             "id" => generateRandomString(15)),
         array("%d", "%s", "%d", "%s"));
-    error_log("Added custom collapsible: " . $_POST["cvcustomtitle" . $counter], 0);
+    error_log("Added milepaeler collapsible");
 }
 
 function lagreProsjektTeam($projectID) {
@@ -245,11 +245,30 @@ function lagreCustomCollapsibles($projectID) {
         $counter += 1;
         if (isset($_POST["cvcustomtitle" . $counter])) {
             $foundAnyCustomCollapsibles = true;
+
+            if (isset($_GET['editProsjektID'])) {
+
+            }
+
             $formatted_table_name = getDraftCollapsibleDatabaseRef();
+
+            //Legg til bilde
+            $colInnhold = $_POST["cvcustomdesc" . $counter];
+
+            $imagePath = uploadImageAndGetName("CustomCatImage" . $counter);
+            if ($imagePath != null) {
+                $colInnhold .= "#ADDIMAGE;";
+                $colInnhold .= $imagePath;
+            }else if (isset($_POST['CustomCatOldImage' . $counter])) {
+                $customCatOldImage = $_POST['CustomCatOldImage' . $counter];
+                $colInnhold .= "#ADDIMAGE;";
+                $colInnhold .= $customCatOldImage;
+            }
+
             $wpdb->insert($formatted_table_name,
                 array("prosjekt_id" => $projectID,
                     "egendefinert_navn" => $_POST["cvcustomtitle" . $counter],
-                    "innhold" => $_POST["cvcustomdesc" . $counter],
+                    "innhold" => $colInnhold,
                     "collapsible_type" => 1,
                     "id" => generateRandomString(15)),
                 array("%d", "%s", "%s", "%d", "%s"));

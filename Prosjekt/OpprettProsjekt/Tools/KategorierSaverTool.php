@@ -10,6 +10,8 @@ function addKategorierSaverTool($onlineRevisionNumber) {
 
             const fjernedeCollapsibles = fjernedeCollapsiblesString.split(";");
 
+            console.log("Sjekker om har blitt slettet lokalt: " + colname);
+
             if (fjernedeCollapsibles.includes(colname)) return true;
             return false;
         }
