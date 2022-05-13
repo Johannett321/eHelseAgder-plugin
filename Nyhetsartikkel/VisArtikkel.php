@@ -75,7 +75,7 @@ function sc_vis_artikkel() {
         }
         ?>
         <div class = "artikkelTekst" id = "artikkelTekst"><?php echo nl2br(stripcslashes($artikkelInfo[0]->innhold)); ?></div>
-        <?php transformLinkInTextToClickable("artikkelTekst");?>
+        <?php transformLinkInTextToClickableJS("artikkelTekst");?>
 
         <div class = "tilknyttetProsjektTekst"><?php echo getTilknyttetProsjektTekst($artikkelInfo[0])?></div>
         <hr class="divider">

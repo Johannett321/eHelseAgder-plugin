@@ -127,7 +127,7 @@ function sc_prosjekt_side() {
     </div>
     <div class = "projTitle"><h1><?php echo $projectInfo[0]->project_name; ?></h1></div>
     <div class = "projectText" id = "projectText"><?php echo nl2br(stripcslashes($projectInfo[0]->project_text)); ?></div>
-    <?php transformLinkInTextToClickable("projectText");?>
+    <?php transformLinkInTextToClickableJS("projectText");?>
     <div class = "collapsibles" id = "displayCol">
         <?php
         $collapsibles = getCollapsibles($prosjektID);
@@ -144,8 +144,7 @@ function sc_prosjekt_side() {
                 echo getCollapsibleName($collapsibles[$i]->collapsible_type, $collapsibles[$i]->egendefinert_navn);
                 ?><span class="material-icons">expand_more</span></button>
             <div class="content">
-                <p id = "collapsibleContent<?php echo $i?>"><?php echo getHtmlContentForCollapsible($collapsibles[$i]);?></p>
-                <?php transformLinkInTextToClickable("collapsibleContent" . $i);?>
+                <p id = "collapsibleContent<?php echo $i?>"><?php echoHtmlContentForCollapsible($collapsibles[$i]);?></p>
             </div>
             <?php
         }

@@ -27,11 +27,16 @@ function getCollapsibleName($collapsibleType, $customName) {
     }
 }
 
-function getHtmlContentForCollapsible($collapsible) {
+function echoHtmlContentForCollapsible($collapsible) {
     if ($collapsible->collapsible_type == 1) {
         getCustomCollapsible($collapsible);
     }else if ($collapsible->collapsible_type == 2 || $collapsible->collapsible_type == 4) {
-        return nl2br(stripcslashes($collapsible->innhold));
+        ?>
+        <div id = "transformedContent">
+            <?php echo nl2br(stripcslashes($collapsible->innhold));?>
+        </div>
+        <?php
+        transformLinkInTextToClickableJS("transformedContent");
     }else if ($collapsible->collapsible_type == 5) {
         getMilepaelerCollapsible($collapsible);
     }else if ($collapsible->collapsible_type == 3) {
@@ -48,10 +53,11 @@ function getCustomCollapsible($collapsible) {
         $innhold = substr($innhold, 0, strpos($innhold, "#ADDIMAGE;"));
         $innhold = nl2br(stripcslashes($innhold));
 
+        $randomID = generateRandomString(5);
         ?>
         <img class = "collapsibleLargeImage" src = "<?php echo getPhotoUploadUrl() . $imageUrl ?>"/>
-        <p><?php echo $innhold?></p>
-        <?php
+        <p id = "<?php echo $randomID?>"><?php echo $innhold?></p>
+        <?php transformLinkInTextToClickableJS($randomID);
     }else {
         return nl2br(stripcslashes($innhold));
     }
