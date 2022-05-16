@@ -174,11 +174,10 @@ function makeCollapsiblesWork() {
                         content.style.display = "none";
                     })
                 } else {
-                    $(content).height(0);
-                    var curHeight = $(content).height();
                     $(content).css('height', 'auto');
-                    var autoHeight = $(content).height() + 40;
-                    $(content).height(curHeight);
+                    var autoHeight = $(content).innerHeight();
+                    console.log("Inner heoight: " + autoHeight)
+                    $(content).height(0);
 
                     content.style.display = "block";
                     $(content).animate({
