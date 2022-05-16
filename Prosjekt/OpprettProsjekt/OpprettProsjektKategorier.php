@@ -80,6 +80,10 @@ function leggTilInformasjonFelt() {
         </div>
 
         <div class="innhold">
+            <h3 class = "mainTitle">Ekstra kategorier</h3>
+            <div id="collapsibles">
+
+            </div>
             <h4>Legg til kategori</h4>
             <div class="addCustomField">
                 <div id="chooseLine">
@@ -107,10 +111,6 @@ function leggTilInformasjonFelt() {
                         <h5 class = "inlineBlock" id = "categoryAlreadyAddedText">Allerede lagt til</h5>
                     </div>
                 </div>
-
-            </div>
-            <div id="collapsibles">
-
             </div>
         </div>
 
