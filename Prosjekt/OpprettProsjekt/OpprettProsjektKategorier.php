@@ -16,6 +16,9 @@ function prosjektredigeringkategorier() {
     }
     session_start();
     validateFieldsFromPage1();
+
+    createPopupBox("Legg til ekstra kategorier", "Under kan du legge til informasjon du ønsker å dele om prosjektet ved hjelp av ulike kategorier. Finner du ikke kategorien du leter etter kan du velge «legg til egen kategori» for å definere kategori selv. Den nye kategorien vil dukke opp under.", "Den er god!", null);
+
     leggTilInformasjonFelt();
 }
 

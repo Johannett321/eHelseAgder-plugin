@@ -77,15 +77,21 @@ function removePageMessageIfPresent() {
     }
 }
 
-function createPopupBox($title, $message) {
+function createPopupBox($title, $message, $greenButtonValue = "Til forhåndsvisning", $backButtonText = "Tilbake til redigering") {
     ?>
     <div class = "popupHolder" id = "popupHolder">
         <div style="background-color: black; width: 100%; height: 100%; opacity: 30%;"></div>
         <div class = "popupBox">
             <h3><?php echo $title ?></h3>
             <p><?php echo $message ?></p>
-            <button type="button" id = "backButtonPopup"><i class="material-icons">arrow_back</i>Tilbake til redigering</button>
-            <button type="button" id = "closePopupButton">Til forhåndsvisning</button>
+            <?php
+            if ($backButtonText != null) {
+                ?>
+                <button type="button" id = "backButtonPopup"><i class="material-icons">arrow_back</i><?php echo $backButtonText?></button>
+                <?php
+            }
+            ?>
+            <button type="button" id = "closePopupButton"><?php echo $greenButtonValue?></button>
         </div>
     </div>
 
@@ -96,8 +102,10 @@ function createPopupBox($title, $message) {
 
         document.body.classList.add("noscroll");
 
-        backButtonPopup.onclick = function () {
-            history.back();
+        if (backButtonPopup != null) {
+            backButtonPopup.onclick = function () {
+                history.back();
+            }
         }
 
         closebutton.onclick = function () {
