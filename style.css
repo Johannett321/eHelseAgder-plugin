@@ -66,8 +66,7 @@ Table of content:
 .viewMore:hover,
 #deleteArticle:hover,
 #editArrang:hover,
-#loggUtButton:hover,
-#visAlleDok:hover {
+#loggUtButton:hover {
     color: #fff;
     background-color: #0B843EBA;
     text-decoration: underline;
@@ -191,9 +190,18 @@ Table of content:
 
 /* Til alle dok */
 #visAlleDok {
-    border-radius: 35px;
-    padding: 21.15px 30px;
+    border-radius: 8px;
     line-height: 24px;
+    height: 40px;
+    padding: 0 20px;
+
+    font-size: 14px;
+
+    transition: all .2s ease-in-out;
+}
+
+#visAlleDok:hover {
+    transform: scale(1.05);
 }
 
 #knappDok {
