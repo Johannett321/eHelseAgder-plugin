@@ -19,7 +19,9 @@ function sc_dokumenter_stor_liste_tittel() {
 function sc_dokumenter_stor_liste_knapp() {
     if (!isset($_GET['alledokumenter'])) {
         ?>
-        <a href = "?alledokumenter=true"><button type = "button">Vis alle dokumenter</button></a>
+        <div id="knappDok">
+            <a href = "?alledokumenter=true"><button type = "button" id="visAlleDok">Vis alle dokumenter <i class="material-icons">arrow_forward</i></button></a>
+        </div>
         <?php
     }
 }

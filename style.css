@@ -49,7 +49,8 @@ Table of content:
 .viewMore,
 #deleteArticle,
 #editArrang,
-#loggUtButton {
+#loggUtButton,
+#visAlleDok {
     background-color: #0B843E;
     text-transform: capitalize;
     color: #fff;
@@ -65,7 +66,8 @@ Table of content:
 .viewMore:hover,
 #deleteArticle:hover,
 #editArrang:hover,
-#loggUtButton:hover {
+#loggUtButton:hover,
+#visAlleDok:hover {
     color: #fff;
     background-color: #0B843EBA;
     text-decoration: underline;
@@ -83,25 +85,25 @@ Table of content:
     width: 200px;
     border-radius: 30px;
     margin-top: 7%;
-    padding: 0px !important;
+    padding: 0 !important;
     font-size: 18px;
 }
 
 /* Tilbake-knapp */
 #backButtonPopup {
     background-color: unset;
-    padding-left: 0;
-    padding-bottom: 0;
-    padding-top: 30px;
     color: #4267B2;
-    text-decoration: underline;
+    border-bottom: 1.5px solid #7691c7;
+    width: auto;
+    padding: 0;
+    padding-top: 25px;
 }
 
 #backButtonPopup:hover {
-    color: #6785c1;
+    border-bottom: 1.5px solid #4267B2;
+    color: #4267B2;
 }
-
-    /* Logg-inn-knapp */
+/* Logg-inn-knapp */
 
 #loginButton {
     padding: 10px;
@@ -110,7 +112,7 @@ Table of content:
 
 #loginButton .material-icons {
     font-size: 18px;
-    margin-bottom: 1 !important;
+    margin-bottom: 5px !important;
     line-height: 29px;
 }
 
@@ -157,13 +159,48 @@ Table of content:
     background-color: #cbe6cf;
 }
 
+.lastOppBildeKnapp h5 {
+    padding-bottom: 0 !important;
+}
+
 /* Påmeldings-knapp */
 
 .oppsummert #signUpButton {
-    position: absolute;
     float: left;
     bottom: 35px;
+    margin-top: 30px;
 }
+
+/* Til alle nyheter-knapp */
+#nyheterForProsjektKnapp {
+    border: none;
+    width: auto;
+    border-bottom: 1.5px solid #cccccc;
+    padding: 0;
+    height: auto;
+    text-transform: initial;
+    color: #4267B2;
+    margin-top: 10px;
+}
+
+#nyheterForProsjektKnapp:hover {
+    background-color: unset;
+    font-weight: unset;
+    border-bottom: 1px solid #4267B2;
+}
+
+/* Til alle dok */
+#visAlleDok {
+    border-radius: 35px;
+    padding: 21.15px 30px;
+    line-height: 24px;
+}
+
+#knappDok {
+    width: fit-content;
+    margin: 0 auto;
+}
+
 
 /* Artikkel-kort –––––––––––––––––––––––––––––––––––––––––*/
 
@@ -262,6 +299,20 @@ Table of content:
     border-bottom: none !important;
 }
 
+.nophoto {
+    width: 100% !important;
+}
+
+/* Nyheter – prosjekt */
+.nyheterProsjekt {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.nyheterProsjekt .artikkelKort {
+    width: 100%;
+}
+
 /* Dokument-side */
 
 .dok {
@@ -332,12 +383,12 @@ Table of content:
 }
 
 .pdf {
-    background-color: #f3f3f3;
-    border: 1px solid lightgrey;
+    background-color: #fbefef;
+    border: 1px solid #f5d1d1;
 }
 
 .pdf:hover {
-    background-color: #dadada !important;
+    background-color: #f5d1d1 !important;
 }
 
 .powerpoint {
@@ -360,7 +411,7 @@ Table of content:
 
 .ukjentDok {
     background-color: white;
-    border: 1px solid #f9f9f9;
+    border: 1px solid lightgrey;
 }
 
 .ukjentDok .photoSmall img {
@@ -368,7 +419,7 @@ Table of content:
 }
 
 .ukjentDok:hover {
-    background-color: #fbfbfb;
+    background-color: #efefef;
 }
 
 /* Tabeller –––––––––––––––––––––––––––––––––––––*/
@@ -498,6 +549,11 @@ th {
     margin: 0 auto;
 }
 
+.collapsibleLargeImage {
+    max-height: 600px;
+    min-height: 200px;
+}
+
 /* Side-topp ––––––––––––––––––––––––––––––––––––*/
 
 .topPart {
@@ -529,6 +585,10 @@ th {
 .coverPhoto {
     background-color: #B5DCBB;
     overflow: hidden;
+}
+
+.coverPhoto img {
+    min-width: 100% !important;
 }
 
 .oppsummert {
@@ -568,6 +628,15 @@ th {
     display: inline-block;
 }
 
+.ingenPamelding {
+    margin-top: 30px;
+    border: 1px solid darkgrey;
+    border-radius: 8px;
+    color: gray;
+    padding: 8px 10px;
+    background-color: #e5e5e5;
+}
+
 
 /* Informasjonsboks –––––––––––––––––––––––––––––*/
 
@@ -601,7 +670,8 @@ th {
     padding: 20px;
     background-color: #f3f8f2;
     border-radius: 18px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
+    margin-top: 30px;
     border: 1px solid #e8f2e5;
 }
 
@@ -1011,7 +1081,6 @@ th {
 
     margin: 0;
 
-    text-align: justify;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -1167,12 +1236,6 @@ th {
 
 
 /* Nyheter (ekstra) ––––––––––––––––––––––––––––––*/
-
-#nyheterNederst {
-    width: 60%;
-}
-
-
 
 .inputFieldCounter {
     float: right;
@@ -1970,7 +2033,7 @@ th {
 
 
 .artikkel .artikkelTekst {
-    min-height: 220px;
+    min-height: 150px;
 }
 
 #signUpButton {

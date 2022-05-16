@@ -21,7 +21,7 @@ function loadSisteNyhetsartikler($projectName) {
 
     if (sizeof($nyheter) > 0 && isset($_GET['prosjektID']) && $projectName != null) {
         ?>
-        <div><h4 class = "contentTitle" id="nyheterNederst">Siste nyheter for: <?php echo $projectName?></h4></div>
+        <div class = "nyheterProsjekt"><h4 class = "contentTitle" id="nyheterNederst">Siste nyheter for: <?php echo $projectName?></h4>
         <?php
     }
     ?>
@@ -35,7 +35,8 @@ function loadSisteNyhetsartikler($projectName) {
     <?php
     if (sizeof($nyheter) > 0 && isset($_GET['prosjektID']) && $projectName != null) {
         ?>
-        <a href = "../../nyheter/aarstall/?it=nyhetsartikler&id=<?php echo $_GET['prosjektID']?>&pn=<?php echo $projectName?>"><button class="button" id = "nyheterForProsjektKnapp">Alle nyheter for <?php echo $projectName?></button></a>
+        <a href = "../../nyheter/aarstall/?it=nyhetsartikler&id=<?php echo $_GET['prosjektID']?>&pn=<?php echo $projectName?>"><button class="button" id = "nyheterForProsjektKnapp">Vis alle nyheter for <?php echo $projectName?><i class="material-icons">arrow_forward</i></button></a>
+        </div>
         <?php
     }
 }

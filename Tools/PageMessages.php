@@ -84,7 +84,7 @@ function createPopupBox($title, $message) {
         <div class = "popupBox">
             <h3><?php echo $title ?></h3>
             <p><?php echo $message ?></p>
-            <button type="button" id = "backButtonPopup">Tilbake</button>
+            <button type="button" id = "backButtonPopup"><i class="material-icons">arrow_back</i>Tilbake til redigering</button>
             <button type="button" id = "closePopupButton">Til forhåndsvisning</button>
         </div>
     </div>
