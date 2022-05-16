@@ -20,6 +20,9 @@ function addCustomCatCol() {
             customColCounter += 1;
 
             collapsible.name = "cegenkategori" + customColCounter;
+            if (innhold == "") {
+                saveAddedCategory(collapsible.name);
+            }
 
             const field = document.createElement('input');
             field.classList.add("collapsibleCustomTitle");

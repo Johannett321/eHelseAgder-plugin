@@ -10,7 +10,7 @@ function sc_forside_arrangementer() {
 function loadForsideArrangementer() {
     global $wpdb;
     $dagensDato = date('Y-m-d');
-    $arrangementer = $wpdb->get_results("SELECT * FROM " . getArrangementerDatabaseRef() . "  WHERE start_dato > '" . $dagensDato . "'  ORDER BY start_dato ASC LIMIT 5");
+    $arrangementer = $wpdb->get_results("SELECT * FROM " . getArrangementerDatabaseRef() . "  WHERE start_dato >= '" . $dagensDato . "'  ORDER BY start_dato ASC LIMIT 5");
     if (areWeEditingWithElementor() && sizeof($arrangementer) == 0) {
         ?>
         <center><h5>Her vil arrangementene vises</h5></center>
