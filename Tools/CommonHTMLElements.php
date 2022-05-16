@@ -31,7 +31,7 @@ function createLargeListItem($title, $description, $uElement1, $uElement2, $imag
                 <?php
             }
             ?>
-            <div class="artikkelkorttekst">
+            <div class="artikkelkorttekst<?php if ($image == null) echo " nophoto"?>">
                 <h5><?php echo $title ?></h5>
                 <p><?php echo $description ?></p>
                 <div id="additInfo"><?php echo $uElement1 . " · " . $uElement2; ?></div>
@@ -55,10 +55,23 @@ function createSmallListItem($title, $description, $bottomElement, $image, $href
     ?>
     <a href = "<?php echo $href ?>">
         <div class = "artikkelKort <?php echo $specialClass?>">
-            <div class="photoSmall">
-                <img src = "<?php echo getPhotoUploadUrl() . $image ?>"/>
-            </div>
-            <div class="artikkelkorttekst">
+            <?php
+            if ($image != null) {
+                ?>
+                <div class="photoSmall">
+                    <?php
+                    if (strpos($image, "wp-content")) {
+                        $photoUrl = $image;
+                    }else {
+                        $photoUrl = getPhotoUploadUrl() . $image;
+                    }
+                    ?>
+                    <img src = "<?php echo $photoUrl ?>"/>
+                </div>
+                <?php
+            }
+            ?>
+            <div class="artikkelkorttekst<?php if ($image == null) echo " nophoto"?>">
                 <h5><?php echo $title ?></h5>
                 <p><?php echo $description ?></p>
                 <div id="additInfo"><?php echo $bottomElement?></div>
