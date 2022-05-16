@@ -20,8 +20,18 @@ function addKategorierTools() {
                     return ["cmerinfo_ls", "cmerinfo_ls_time"];
                     break;
                 case "cnedlastbaredokumenter":
-                    return "";
-                    break
+                default:
+                    if (collapsibleName.includes("cegenkategori")) {
+                        let customColNumber = collapsibleName.split("cegenkategori")[1];
+                        return ["ccvcustomtitle" + customColNumber + "_ls",
+                            "ccvcustomtitle" + customColNumber + "_ls_time",
+                            "ccvcustomdesc" + customColNumber + "_ls",
+                            "ccvcustomdesc" + customColNumber + "_ls_time"];
+                    }
+
+                    console.log("Fant ikke innhold som skulle slettes for denne collapsible: " + collapsibleName)
+                    return [""]
+                    break;
             }
         }
 

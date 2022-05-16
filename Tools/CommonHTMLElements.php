@@ -205,7 +205,7 @@ function insertSyncCoverPhotoAndSummaryJS() {
  * Setter inn en a tag foran linker i tekst, slik at disse blir klikkbare.
  * @param $elementID
  */
-function transformLinkInTextToClickable($elementID) {
+function transformLinkInTextToClickableJS($elementID) {
     ?>
     <script type="text/javascript">
         console.log("Transforming...")

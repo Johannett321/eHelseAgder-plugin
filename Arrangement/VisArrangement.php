@@ -98,7 +98,7 @@ function sc_vis_arrangement() {
             <span class = "ingress">– <?php echo $eventInfo[0]->kort_besk ?></span>
 
             <div class = "artikkelTekst" id = "artikkelTekst"><?php echo nl2br(stripcslashes($eventInfo[0]->innhold)); ?></div>
-            <?php transformLinkInTextToClickable("artikkelTekst");?>
+            <?php transformLinkInTextToClickableJS("artikkelTekst");?>
 
             <?php
             $vedlegg = $eventInfo[0]->vedlegg;

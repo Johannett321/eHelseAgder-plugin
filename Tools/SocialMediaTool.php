@@ -10,7 +10,7 @@ function sc_sharebuttons () {
 function implementAllSMShareButtons() {
     implementTwitterInShareButton();
     implementFacebookShareButton();
-    //implementLinkedinShareButton();
+    implementLinkedinShareButton();
 }
 
 function implementFacebookShareButton() {
@@ -22,7 +22,10 @@ function implementTwitterInShareButton() {
 }
 
 function implementLinkedinShareButton() {
-    implementSingleShareButton("Del på Linkedin", "https://www.linkedin.com/sharing/share-offsite/?url=" . home_url(add_query_arg(NULL,NULL )), "linkedinShareButton");
+    $buttonLinkBeginning = "https://www.linkedin.com/sharing/share-offsite/?url=";
+    $pageLinkEncoded = urlencode(home_url(add_query_arg(NULL,NULL )));
+    $buttonLink = $buttonLinkBeginning . $pageLinkEncoded;
+    implementSingleShareButton("Del på Linkedin", $buttonLink, "linkedinShareButton");
 }
 
 function implementSingleShareButton($buttonText, $buttonLink, $cssID) {

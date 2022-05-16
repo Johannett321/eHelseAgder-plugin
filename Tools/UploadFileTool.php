@@ -280,17 +280,23 @@ function getAllFilesInFolderAndSubfolders($folderPath, $filter, $limit) {
     $elementsFound = scandir($filesUploadDir . $folderPath);
     for ($i = 0; $i < sizeof($elementsFound); $i++) {
         if ($limit != -1 && sizeof($filesToReturn)>=$limit) {
+            error_log("--!Maksimalt antall filer funnet!--");
             break;
         }
         if ($elementsFound[$i] == "." || $elementsFound[$i] == ".." || $elementsFound[$i] == "..." || $elementsFound[$i] == ".DS_Store") {
             continue;
         }
         if (is_dir($filesUploadDir. $folderPath . "/" . $elementsFound[$i])) {
-            $foundFilesInSubfolder = getAllFilesInFolderAndSubfolders($folderPath . "/" . $elementsFound[$i], $filter, $limit-sizeof($filesToReturn));
+            error_log("Scanner direktory: " . $filesUploadDir. $folderPath . "/" . $elementsFound[$i]);
+            $limitForSubFolder = $limit;
+            if ($limit != -1) {
+                $limitForSubFolder = $limit-sizeof($filesToReturn);
+            }
+            $foundFilesInSubfolder = getAllFilesInFolderAndSubfolders($folderPath . "/" . $elementsFound[$i], $filter, $limitForSubFolder);
             $filesToReturn = array_merge($filesToReturn, $foundFilesInSubfolder);
         }else {
             if ($filter != null && stripos($elementsFound[$i], $filter) === false) {
-                error_log($filter . " Matcher ikke " . $elementsFound[$i]);
+                //error_log($filter . " Matcher ikke " . $elementsFound[$i]);
                 continue;
             }
             array_push($filesToReturn, getFileInfo($folderPath . "/" . $elementsFound[$i]));
