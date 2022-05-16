@@ -73,10 +73,10 @@ function sc_opprett_arrangement() {
             </div>
 
             <label for="tittel" class = "labelForInput">Navn på arrangement*</label>
-            <input type="text" id="tittel" name="tittel" placeholder="Webinar: Digitale helsetjenester for alle" class = "small_input" maxlength="55" value = "<?php echo stripcslashes($loadedArrangement->tittel)?>"><?php addCharacterCounter("tittel");?>
+            <input type="text" id="tittel" name="tittel" placeholder="Eks.: Webinar: Digitale helsetjenester for alle" class = "small_input" maxlength="55" value = "<?php echo stripcslashes($loadedArrangement->tittel)?>"><?php addCharacterCounter("tittel");?>
             <label for="kort_besk" class = "labelForInput">En kort setning om arrangementet*</label>
             <?php addInfoBox("kortsetning", "Denne setningen skal gi leseren en kort forståelse av hva arrangementet handler om");?>
-            <input type="text" id="kort_besk" name="kort_besk" placeholder="Navn navnesen kaster lys på fremtiden for legemidler i et nytt webinar om digital legemiddelhåndtering" class = "small_input" maxlength="200" value = "<?php echo stripcslashes($loadedArrangement->kort_besk)?>"><?php addCharacterCounter("kort_besk");?>
+            <input type="text" id="kort_besk" name="kort_besk" placeholder="Eks.: Navn navnesen kaster lys på fremtiden for legemidler i et nytt webinar om digital legemiddelhåndtering" class = "small_input" maxlength="200" value = "<?php echo stripcslashes($loadedArrangement->kort_besk)?>"><?php addCharacterCounter("kort_besk");?>
 
             <?php
             $dagensDato = date("Y-m-d");
@@ -102,13 +102,13 @@ function sc_opprett_arrangement() {
             <input type = "time" id = "slutt_klokkeslett" name = "slutt_klokkeslett" value="<?php echo $loadedArrangement->slutt_klokkeslett?>">
 
             <label for="sted" class = "labelForInput">Sted*</label>
-            <input type="text" id="sted" name="sted" placeholder="Kristiansand" class = "small_input" maxlength="50" value = "<?php echo stripcslashes($loadedArrangement->sted)?>"><?php addCharacterCounter("sted");?>
+            <input type="text" id="sted" name="sted" placeholder="Eks.: Kristiansand" class = "small_input" maxlength="50" value = "<?php echo stripcslashes($loadedArrangement->sted)?>"><?php addCharacterCounter("sted");?>
             <label for="arrangor" class = "labelForInput">Arrangør*</label>
-            <input type="text" id="arrangor" name="arrangor" placeholder="Kristiansand kommune" class = "small_input" maxlength="100" value = "<?php echo stripcslashes($loadedArrangement->arrangor)?>"><?php addCharacterCounter("arrangor");?>
+            <input type="text" id="arrangor" name="arrangor" placeholder="Eks.: Kristiansand kommune" class = "small_input" maxlength="100" value = "<?php echo stripcslashes($loadedArrangement->arrangor)?>"><?php addCharacterCounter("arrangor");?>
             <label for="kontaktperson" class = "labelForInput">Kontaktperson*</label>
-            <input type="text" id="kontaktperson" name="kontaktperson" placeholder="Navn Navnesen" class = "small_input" maxlength="100" value = "<?php echo stripcslashes($loadedArrangement->kontaktperson)?>"><?php addCharacterCounter("kontaktperson");?>
+            <input type="text" id="kontaktperson" name="kontaktperson" placeholder="Eks.: Navn Navnesen" class = "small_input" maxlength="100" value = "<?php echo stripcslashes($loadedArrangement->kontaktperson)?>"><?php addCharacterCounter("kontaktperson");?>
             <label for="kontaktmail" class = "labelForInput">E-post til Kontaktperson*</label>
-            <input type="text" id="kontaktmail" name="kontaktmail" placeholder="navn.navnesen@gmail.com" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->kontaktperson_mail?>"><?php addCharacterCounter("kontaktmail");?>
+            <input type="text" id="kontaktmail" name="kontaktmail" placeholder="Eks.: navn.navnesen@gmail.com" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->kontaktperson_mail?>"><?php addCharacterCounter("kontaktmail");?>
 
             <div class = "sammendragContainer">
                 <label for = "psummary" class = "labelForInput">Informasjon om arrangementet*</label>
@@ -118,7 +118,7 @@ function sc_opprett_arrangement() {
 
             <label for="pamelding" class = "labelForInput">Link til ekstern påmelding</label>
             <?php addInfoBox("eksternpamelding", "Hvis du ikke enda har noen link til ekstern påmelding, kan dette legges til senere ved å redigere arrangementet og legge til link. Det kan være lurt å legge til informasjon om  dette i «Informasjon om arrangementet». ");?>
-            <input type="text" id="pamelding" name="pamelding" placeholder="https://www.ticketmaster.no/event/webinar-dhfa-2033-billetter/614599" class = "small_input" maxlength="500" value = "<?php echo $loadedArrangement->pamelding_link?>"><?php addCharacterCounter("pamelding");?>
+            <input type="text" id="pamelding" name="pamelding" placeholder="Eks.: https://www.ticketmaster.no/event/webinar-dhfa-2033-billetter/614599" class = "small_input" maxlength="500" value = "<?php echo $loadedArrangement->pamelding_link?>"><?php addCharacterCounter("pamelding");?>
             <label for = "uploadFiles" class = "labelForInput">Program/andre eksterne vedlegg</label>
             <?php getMultiFileUploadListHTMLElement(5, $loadedArrangement->vedlegg); ?>
         </div>
