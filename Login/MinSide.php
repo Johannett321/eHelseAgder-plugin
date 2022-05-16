@@ -5,6 +5,7 @@ add_shortcode( 'sc_pabegynt_prosjekt', 'sc_pabegynt_prosjekt');
 add_shortcode('sc_minside_prosjekter', 'sc_minside_prosjekter');
 add_shortcode('sc_minside_arrangementer', 'sc_minside_arrangementer');
 add_shortcode('sc_minside_nyhetsartikler', 'sc_minside_nyhetsartikler');
+add_shortcode('sc_activate_delete_buttons', 'sc_activate_delete_buttons');
 add_action( 'wp_ajax_action', 'ajax_hent_prosjektnavn' );
 add_action( 'wp_ajax_nopriv_action', 'ajax_hent_prosjektnavn' );
 
@@ -93,7 +94,7 @@ function sc_minside_prosjekter() {
             <tr>
                 <td class="titleTB"><a href = "../prosjekter/prosjektside/?prosjektID=<?php echo $currentProsjekt->id ?>"><?php echo $currentProsjekt->project_name?></a></td>
                 <td class="editButtonTB"><a href = "../opprett-prosjekt/?editProsjektID=<?php echo $currentProsjekt->id ?>">Rediger</a></td>
-                <td class="deleteButtons" id="<?php echo $currentProsjekt->project_name ?>" data-tilhorer="<?php echo $currentProsjekt->id?>" data-type="prosjekt" style="cursor: pointer;">Slett</td>
+                <td class="deleteButtons" data-tittel="<?php echo $currentProsjekt->project_name ?>" data-tilhorer="<?php echo $currentProsjekt->id?>" data-type="prosjekt" style="cursor: pointer;">Slett</td>
             </tr>
             <?php
         }
@@ -120,14 +121,13 @@ function sc_minside_arrangementer() {
             <tr>
                 <td class="titleTB"><a href = "../vis-arrangement/?eventID=<?php echo $currentArrangement->id ?>"><?php echo $currentArrangement->tittel?></a></td>
                 <td class="editButtonTB"><a href = "../opprett-arrangement/?editEventID=<?php echo $currentArrangement->id ?>">Rediger</a></td>
-                <td class="deleteButtons" id="<?php echo $currentArrangement->tittel ?>" data-tilhorer="<?php echo $currentArrangement->id?>" data-type="arrangement" style="cursor: pointer;">Slett</td>
+                <td class="deleteButtons" data-tittel="<?php echo $currentArrangement->tittel ?>" data-tilhorer="<?php echo $currentArrangement->id?>" data-type="arrangement" style="cursor: pointer;">Slett</td>
             </tr>
             <?php
         }
         ?>
     </table>
     <?php
-    makeDeleteButtonsFunctional();
 }
 
 function sc_minside_nyhetsartikler() {
@@ -148,7 +148,7 @@ function sc_minside_nyhetsartikler() {
             <tr>
                 <td class="titleTB"><a href = "../nyheter/vis-artikkel/?artikkelID=<?php echo $currentArtikkel->id ?>"><?php echo $currentArtikkel->tittel?></a></td>
                 <td class="editButtonTB"><a href = "../opprett-nyhetsartikkel/?editArticleID=<?php echo $currentArtikkel->id ?>">Rediger</a></td>
-                <td class="deleteButtons" id="<?php echo $currentArtikkel->tittel ?>" data-tilhorer="<?php echo $currentArtikkel->id?>" data-type="nyhetsartikkel" style="cursor: pointer;">Slett</td>
+                <td class="deleteButtons" data-tittel="<?php echo $currentArtikkel->tittel ?>" data-tilhorer="<?php echo $currentArtikkel->id?>" data-type="nyhetsartikkel" style="cursor: pointer;">Slett</td>
             </tr>
             <?php
         }
@@ -157,13 +157,22 @@ function sc_minside_nyhetsartikler() {
     <?php
 }
 
-function makeDeleteButtonsFunctional() {
+function sc_activate_delete_buttons() {
+    if (areWeEditingWithElementor()) {
+        ?>
+        <center><h5>Denne boksen vil ikke vises på siden. Denne er allikevel nødvendig for at man skal kunne slette prosjekter, arrangementer eller nyheter.</h5></center>
+        <?php
+        return;
+    }
     ?>
     <script type="text/javascript">
+        const defineCheck = "defined";
         const deleteButtons = document.getElementsByClassName('deleteButtons');
+        console.log("Gjør slette knappene klikkbare");
         for (let i = 0; i < deleteButtons.length; i++) {
+            console.log("Gjør slette knappen klikkbar: " + deleteButtons[i].dataset.tittel);
             deleteButtons[i].onclick = function () {
-                if (confirm("Er du sikker på at du vil slette " + deleteButtons[i].id)) {
+                if (confirm("Er du sikker på at du vil slette " + deleteButtons[i].dataset.tittel)) {
                     switch (deleteButtons[i].dataset.type) {
                         case "arrangement":
                             window.location.href = "../../../wp-json/ehelseagderplugin/api/slett_arrangement?eventID=" + deleteButtons[i].dataset.tilhorer;
