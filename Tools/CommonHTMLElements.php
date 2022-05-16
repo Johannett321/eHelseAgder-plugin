@@ -222,7 +222,7 @@ function transformLinkInTextToClickableJS($elementID) {
     ?>
     <script type="text/javascript">
         console.log("Transforming...")
-        document.getElementById('<?php echo $elementID?>').innerHTML = document.getElementById('<?php echo $elementID?>').innerHTML.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, "<a href='$1'>$1</a>");
+        document.getElementById('<?php echo $elementID?>').innerHTML = document.getElementById('<?php echo $elementID?>').innerHTML.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+ÆØÅ&@#\/%?=~_|!:,.;]*[-A-Z0-9+ÆØÅ&@#\/%=~_|])/ig, "<a href='$1'>$1</a>");
         console.log(document.getElementById('<?php echo $elementID?>').innerHTML);
     </script>
     <?php
