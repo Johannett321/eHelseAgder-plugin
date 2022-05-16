@@ -73,10 +73,10 @@ function sc_opprett_arrangement() {
             </div>
 
             <label for="tittel" class = "labelForInput">Navn på arrangement*</label>
-            <input type="text" id="tittel" name="tittel" placeholder="Webinar: Digitale helsetjenester for alle" class = "small_input" maxlength="55" value = "<?php echo $loadedArrangement->tittel?>"><?php addCharacterCounter("tittel");?>
+            <input type="text" id="tittel" name="tittel" placeholder="Webinar: Digitale helsetjenester for alle" class = "small_input" maxlength="55" value = "<?php echo stripcslashes($loadedArrangement->tittel)?>"><?php addCharacterCounter("tittel");?>
             <label for="kort_besk" class = "labelForInput">En kort setning om arrangementet*</label>
             <?php addInfoBox("kortsetning", "Denne setningen skal gi leseren en kort forståelse av hva arrangementet handler om");?>
-            <input type="text" id="kort_besk" name="kort_besk" placeholder="Navn navnesen kaster lys på fremtiden for legemidler i et nytt webinar om digital legemiddelhåndtering" class = "small_input" maxlength="200" value = "<?php echo $loadedArrangement->kort_besk?>"><?php addCharacterCounter("kort_besk");?>
+            <input type="text" id="kort_besk" name="kort_besk" placeholder="Navn navnesen kaster lys på fremtiden for legemidler i et nytt webinar om digital legemiddelhåndtering" class = "small_input" maxlength="200" value = "<?php echo stripcslashes($loadedArrangement->kort_besk)?>"><?php addCharacterCounter("kort_besk");?>
 
             <?php
             $dagensDato = date("Y-m-d");
@@ -102,18 +102,18 @@ function sc_opprett_arrangement() {
             <input type = "time" id = "slutt_klokkeslett" name = "slutt_klokkeslett" value="<?php echo $loadedArrangement->slutt_klokkeslett?>">
 
             <label for="sted" class = "labelForInput">Sted*</label>
-            <input type="text" id="sted" name="sted" placeholder="Kristiansand" class = "small_input" maxlength="50" value = "<?php echo $loadedArrangement->sted?>"><?php addCharacterCounter("sted");?>
+            <input type="text" id="sted" name="sted" placeholder="Kristiansand" class = "small_input" maxlength="50" value = "<?php echo stripcslashes($loadedArrangement->sted)?>"><?php addCharacterCounter("sted");?>
             <label for="arrangor" class = "labelForInput">Arrangør*</label>
-            <input type="text" id="arrangor" name="arrangor" placeholder="Kristiansand kommune" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->arrangor?>"><?php addCharacterCounter("arrangor");?>
+            <input type="text" id="arrangor" name="arrangor" placeholder="Kristiansand kommune" class = "small_input" maxlength="100" value = "<?php echo stripcslashes($loadedArrangement->arrangor)?>"><?php addCharacterCounter("arrangor");?>
             <label for="kontaktperson" class = "labelForInput">Kontaktperson*</label>
-            <input type="text" id="kontaktperson" name="kontaktperson" placeholder="Navn Navnesen" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->kontaktperson?>"><?php addCharacterCounter("kontaktperson");?>
+            <input type="text" id="kontaktperson" name="kontaktperson" placeholder="Navn Navnesen" class = "small_input" maxlength="100" value = "<?php echo stripcslashes($loadedArrangement->kontaktperson)?>"><?php addCharacterCounter("kontaktperson");?>
             <label for="kontaktmail" class = "labelForInput">E-post til Kontaktperson*</label>
             <input type="text" id="kontaktmail" name="kontaktmail" placeholder="navn.navnesen@gmail.com" class = "small_input" maxlength="100" value = "<?php echo $loadedArrangement->kontaktperson_mail?>"><?php addCharacterCounter("kontaktmail");?>
 
             <div class = "sammendragContainer">
                 <label for = "psummary" class = "labelForInput">Informasjon om arrangementet*</label>
                 <?php addInfoBox("informasjonOmArrangementInfo", "Her skriver du informasjon om arrangementet. Om du har et program i eget dokument kan dette lastes opp i feltet for program/andre eksterne vedlegg. Om arrangementet ditt foreløpig ikke har noe påmeldingslink, kan dette være lurt å informere om her");?>
-                <textarea id = "psummary" name="psummary" form="minform" maxlength="3400" placeholder="Her kan du skrive selve artikkelen"><?php echo $loadedArrangement->innhold?></textarea><?php addCharacterCounter("psummary");?>
+                <textarea id = "psummary" name="psummary" form="minform" maxlength="3400" placeholder="Her kan du skrive selve artikkelen"><?php echo stripcslashes($loadedArrangement->innhold)?></textarea><?php addCharacterCounter("psummary");?>
             </div>
 
             <label for="pamelding" class = "labelForInput">Link til ekstern påmelding</label>

@@ -74,14 +74,14 @@ function sc_opprett_nyhetsartikkel() {
                 </script>
             </div>
             <label for="tittel" class = "labelForInput">Tittel*</label>
-            <input type="text" id="tittel" name="tittel" placeholder="Vi har signert kontrakt!" class = "small_input" maxlength="55" value = "<?php echo $loadedNyhetsartikkel->tittel?>"><?php addCharacterCounter("tittel");?>
+            <input type="text" id="tittel" name="tittel" placeholder="Vi har signert kontrakt!" class = "small_input" maxlength="55" value = "<?php echo stripcslashes($loadedNyhetsartikkel->tittel)?>"><?php addCharacterCounter("tittel");?>
 
             <label for="ingress" class = "labelForInput">Ingress*</label>
-            <input type="text" id="ingress" name="ingress" placeholder="Etter mange måneder med venting, har endelig kontrakten med Min Bedrift AS blitt signert." class = "small_input" maxlength="200" value = "<?php echo $loadedNyhetsartikkel->ingress?>"><?php addCharacterCounter("ingress");?>
+            <input type="text" id="ingress" name="ingress" placeholder="Etter mange måneder med venting, har endelig kontrakten med Min Bedrift AS blitt signert." class = "small_input" maxlength="200" value = "<?php echo stripcslashes($loadedNyhetsartikkel->ingress)?>"><?php addCharacterCounter("ingress");?>
 
             <div class = "sammendragContainer">
                 <label for = "psummary" class = "labelForInput">Innhold*</label><?php addInfoBox("innholdInfo", "Her skrives selve nyhetsinnlegget. Hvordan du vil at artikkelen skal bygges opp er opp til deg")?>
-                <textarea id = "psummary" name="psummary" form="minform" maxlength="3400" placeholder="Her kan du skrive selve artikkelen"><?php echo $loadedNyhetsartikkel->innhold?></textarea><?php addCharacterCounter("psummary");?>
+                <textarea id = "psummary" name="psummary" form="minform" maxlength="3400" placeholder="Her kan du skrive selve artikkelen"><?php echo stripcslashes($loadedNyhetsartikkel->innhold)?></textarea><?php addCharacterCounter("psummary");?>
             </div>
 
             <!-- Kildeboks -->
@@ -90,15 +90,15 @@ function sc_opprett_nyhetsartikkel() {
                 if ($loadedNyhetsartikkel == null) {
                     ?>
                     <label for="skrevet_av" class = "labelForInput">Forfatter/skrevet av*</label>
-                    <input type="text" id="skrevet_av" name="skrevet_av" placeholder="Navn Navnesen" class = "small_input" maxlength="40" value = "<?php echo $loadedNyhetsartikkel->skrevet_av?>"><?php addCharacterCounter("skrevet_av");?>
+                    <input type="text" id="skrevet_av" name="skrevet_av" placeholder="Navn Navnesen" class = "small_input" maxlength="40" value = "<?php echo stripcslashes($loadedNyhetsartikkel->skrevet_av)?>"><?php addCharacterCounter("skrevet_av");?>
                     <label for="rolle" class = "labelForInput">Rolle/stilling</label>
-                    <input type="text" id="rolle" name="rolle" placeholder="Prosjektleder" class = "small_input" maxlength="40" value = "<?php echo $loadedNyhetsartikkel->rolle?>"><?php addCharacterCounter("rolle");?>
+                    <input type="text" id="rolle" name="rolle" placeholder="Prosjektleder" class = "small_input" maxlength="40" value = "<?php echo stripcslashes($loadedNyhetsartikkel->rolle)?>"><?php addCharacterCounter("rolle");?>
                     <?php
                 }else {
                     ?>
                     <label for="endret_av" class = "labelForInput">Hvem gjør endringer?*</label>
                     <?php addInfoBox("endringerFelt", "Her fyller du ut DITT navn, slik at en leser ser hvem som gjorde endringer sist.") ?>
-                    <input type="text" id="endret_av" name="endret_av" placeholder="Navn Navnesen" class = "small_input" maxlength="100" value = "<?php echo $loadedNyhetsartikkel->endret_av?>"><?php addCharacterCounter("endret_av");?>
+                    <input type="text" id="endret_av" name="endret_av" placeholder="Navn Navnesen" class = "small_input" maxlength="100" value = "<?php echo stripcslashes($loadedNyhetsartikkel->endret_av)?>"><?php addCharacterCounter("endret_av");?>
                     <?php
                 }
                 ?>
