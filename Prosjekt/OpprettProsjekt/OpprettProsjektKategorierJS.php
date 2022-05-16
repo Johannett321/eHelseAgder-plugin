@@ -49,7 +49,9 @@ function prosjektRedigeringKategorierJS() {
             addCategoryButton.addEventListener("click", function () {
                 createCollapsibleType(categoryChooser.value);
                 selectionOptionChanged();
-                saveAddedCategory(categoryChooser.value);
+                if (categoryChooser.value !== "cegenkategori") {
+                    saveAddedCategory(categoryChooser.value);
+                }
             });
 
             <?php

@@ -9,8 +9,6 @@ function addCategoryCreatorIndex() {
             }else if (name === 'cprosjektteam') {
                 removeCategoryFromRemovedCollapsibles('cprosjektteam');
                 createProsjektTeamCol();
-            }else if (name === 'cegenkategori') {
-                createCustomCatCol();
             }else if (name === 'cmerinfo') {
                 removeCategoryFromRemovedCollapsibles('cmerinfo');
                 createMerInfoCol();
@@ -20,6 +18,8 @@ function addCategoryCreatorIndex() {
             }else if (name === 'cnedlastbaredokumenter') {
                 removeCategoryFromRemovedCollapsibles('cnedlastbaredokumenter');
                 createNedlastbareDokumenterCol();
+            }else if (name.includes('cegenkategori')) {
+                createCustomCatCol();
             }
         }
     </script>

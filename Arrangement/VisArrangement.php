@@ -86,8 +86,17 @@ function sc_vis_arrangement() {
                     <h5>Kontaktperson:</h5><br><i><?php echo $eventInfo[0]->kontaktperson?></i><br>
                     <i> <?php echo $eventInfo[0]->kontaktperson_mail?></i>
                 </div>
-
-                <a href = "<?php echo $eventInfo[0]->pamelding_link ?>" target="_blank"><button type="button" class = "button" id="signUpButton">Påmelding<i class="material-icons">arrow_forward</i></button></a>
+                <?php
+                if ($eventInfo[0]->pamelding_link != null && $eventInfo[0]->pamelding_link != "") {
+                    ?>
+                    <a href = "<?php echo $eventInfo[0]->pamelding_link ?>" target="_blank"><button type="button" class = "button" id="signUpButton">Påmelding<i class="material-icons">arrow_forward</i></button></a>
+                    <?php
+                }else {
+                    ?>
+                    <div class = "ingenPamelding">Dette arrangementet har ingen påmelding</div>
+                    <?php
+                }
+                ?>
             </div>
             <?php insertSyncCoverPhotoAndSummaryJS();?>
         </div>

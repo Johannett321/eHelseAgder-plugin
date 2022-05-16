@@ -257,9 +257,12 @@ function lagreCustomCollapsibles($projectID) {
 
             $imagePath = uploadImageAndGetName("CustomCatImage" . $counter);
             if ($imagePath != null) {
+                error_log("Publiserer custom collapsible med nytt bilde");
                 $colInnhold .= "#ADDIMAGE;";
                 $colInnhold .= $imagePath;
-            }else if (isset($_POST['CustomCatOldImage' . $counter])) {
+            }else if (isset($_POST['CustomCatOldImage' . $counter]) &&
+                $_POST['CustomCatOldImage' . $counter] != "") {
+                error_log("Publiserer custom collapsible med gammelt bilde");
                 $customCatOldImage = $_POST['CustomCatOldImage' . $counter];
                 $colInnhold .= "#ADDIMAGE;";
                 $colInnhold .= $customCatOldImage;
