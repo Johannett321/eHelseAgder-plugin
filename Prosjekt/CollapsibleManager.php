@@ -48,18 +48,24 @@ function echoHtmlContentForCollapsible($collapsible) {
 
 function getCustomCollapsible($collapsible) {
     $innhold = $collapsible->innhold;
+
+    $randomID = generateRandomString(5);
+
     if (strpos($innhold, "#ADDIMAGE;")) {
         $imageUrl = substr($innhold, strpos($innhold, "#ADDIMAGE;")+10, strlen($innhold)-1);
         $innhold = substr($innhold, 0, strpos($innhold, "#ADDIMAGE;"));
         $innhold = nl2br(stripcslashes($innhold));
 
-        $randomID = generateRandomString(5);
         ?>
         <img class = "collapsibleLargeImage" src = "<?php echo getPhotoUploadUrl() . $imageUrl ?>"/>
         <p id = "<?php echo $randomID?>"><?php echo $innhold?></p>
         <?php transformLinkInTextToClickableJS($randomID);
     }else {
-        return nl2br(stripcslashes($innhold));
+        $innhold = nl2br(stripcslashes($innhold));
+        ?>
+        <p id = "<?php echo $randomID?>"><?php echo $innhold?></p>
+        <?php
+        transformLinkInTextToClickableJS($randomID);
     }
 }
 

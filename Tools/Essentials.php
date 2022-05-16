@@ -121,9 +121,9 @@ function check_page_in_dev() {
         ?>
         <img class = "pageBackground" src = "<?php echo wp_upload_dir()['baseurl'] . "/eHelseAgderPlus/background.jpg" ?>"/>
         <div class = "bigMessage">
-            <h2>Under konstruksjon</h2>
+            <h2>Vi er tilbake 23. mai!</h2>
             <p>
-                eHelse Agder blir for tiden oppdatert. Nettsiden er derfor utilgjengelig for øyeblikket. Nettsiden er forventet ferdig innen juni 2022.
+                eHelse Agder blir for tiden oppgradert. Nettsiden er derfor utilgjengelig for øyeblikket. Den nye nettsiden lanseres 23. mai med et helt nytt design og nye funksjoner! Det er bare å glede seg!
             </p>
             <p>
                 Beklager ulempene dette medfører.
