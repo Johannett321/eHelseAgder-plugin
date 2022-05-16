@@ -34,7 +34,7 @@ function sc_nyhets_sok_widget() {
 function sc_prosjekter_sok_widget() {
     if (areElementorBufferingObjects()) return;
     $searchDropdownOptions = array("Prosjektnavn", "Prosjektleder",  "Prosjekteier", "Innhold (Tar lenger tid)");
-    $searchDropdownOptionsIDs = array("project_name", "ledernavn", "prosjekteierkommuner", "innhold");
+    $searchDropdownOptionsIDs = array("project_name", "ledernavn", "prosjekteierkommuner", "project_text");
 
     addSearchWidget("prosjekter", $searchDropdownOptions, $searchDropdownOptionsIDs);
 }
