@@ -33,8 +33,8 @@ function sc_nyhets_sok_widget() {
 
 function sc_prosjekter_sok_widget() {
     if (areElementorBufferingObjects()) return;
-    $searchDropdownOptions = array("Prosjektnavn", "Prosjekteier", "Innhold (Tar lenger tid)");
-    $searchDropdownOptionsIDs = array("project_name", "prosjekteierkommuner", "innhold");
+    $searchDropdownOptions = array("Prosjektnavn", "Prosjektleder",  "Prosjekteier", "Innhold (Tar lenger tid)");
+    $searchDropdownOptionsIDs = array("project_name", "ledernavn", "prosjekteierkommuner", "project_text");
 
     addSearchWidget("prosjekter", $searchDropdownOptions, $searchDropdownOptionsIDs);
 }
@@ -61,6 +61,7 @@ function addSearchWidget($nameOfPage, $searchDropdownOptions, $searchDropdownOpt
         if ($searchDropdownOptions != null) {
             ?>
             <select id = "dropdown">
+                <option value="nocat" disabled selected>Velg kategori å søke i</option>
                 <?php
                 for ($i = 0; $i < sizeof($searchDropdownOptions); $i++) {
                     ?>
@@ -89,6 +90,10 @@ function addSearchWidget($nameOfPage, $searchDropdownOptions, $searchDropdownOpt
             })
         });
         submitButton.onclick = function () {
+            if (dropdown.value === "nocat") {
+                alert("Husk å velge en kategori før du søker :)")
+                return;
+            }
             submitPressed();
         }
 
