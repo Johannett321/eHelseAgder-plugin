@@ -4,7 +4,7 @@ add_shortcode( 'sc_aktive_prosjekter', 'sc_aktive_prosjekter');
 
 function getProjects() {
     global $wpdb;
-    $query = "SELECT * FROM " . getProsjekterDatabaseRef() . " WHERE prosjektstatus = 2 ORDER BY id DESC";
+    $query = "SELECT * FROM " . getProsjekterDatabaseRef() . " WHERE prosjektstatus = 2 ORDER BY project_name ASC";
     return $wpdb->get_results($query);
 }
 
