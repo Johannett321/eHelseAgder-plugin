@@ -549,7 +549,7 @@ th {
 
 .collapsibles .content{
     margin: 0 auto;
-    height: auto !important;
+    height: auto;
 }
 
 .collapsibles {
@@ -676,11 +676,11 @@ th {
     height: auto;
     width: 80%;
     padding: 20px;
-    background-color: #f3f8f2;
+    background-color: #e9f2e7;
     border-radius: 18px;
     margin-bottom: 50px;
     margin-top: 30px;
-    border: 1px solid #e8f2e5;
+    border: 1px solid #0B843E;
 }
 
 /* Bilde */
@@ -1775,6 +1775,7 @@ th {
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .collapsibles .collapsible:hover {
     background-color: #ccc;
+    font-weight: 700;
 }
 
 .active span.material-icons {

@@ -61,6 +61,8 @@ function lagFelter($loadedProsjekt) {
             <i class="material-icons">info</i>
             <h5>Denne prosessen skjer i tre steg. For å gå videre til neste steg trykker du fortsett nederst på siden.</h5>
             <br>
+        </div>
+        <div class="infoBlokk" id="topProgress">
             <textBox class="progressBar" id="steg1">
                 <p class="stegText" id="step1">Grunnleggende info</p>
                 <p class="stegText" id="step2">Ekstra kategorier</p>
