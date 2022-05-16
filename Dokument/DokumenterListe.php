@@ -1,6 +1,28 @@
 <?php
 
 add_shortcode('sc_dokumenter_stor_liste', 'sc_dokumenter_stor_liste');
+add_shortcode('sc_dokumenter_stor_liste_tittel', 'sc_dokumenter_stor_liste_tittel');
+add_shortcode('sc_dokumenter_stor_liste_knapp', 'sc_dokumenter_stor_liste_knapp');
+
+function sc_dokumenter_stor_liste_tittel() {
+    if (!isset($_GET['alledokumenter'])) {
+        ?>
+        <center><h2>Siste 10 dokumenter</h2></center>
+        <?php
+    }else {
+        ?>
+        <center><h2>Alle dokumenter</h2></center>
+        <?php
+    }
+}
+
+function sc_dokumenter_stor_liste_knapp() {
+    if (!isset($_GET['alledokumenter'])) {
+        ?>
+        <center><a href = "?alledokumenter=true"><button type = "button">Vis alle dokumenter</button></a></center>
+        <?php
+    }
+}
 
 function sc_dokumenter_stor_liste() {
     if (areElementorBufferingObjects()) return;
@@ -13,7 +35,11 @@ function sc_dokumenter_stor_liste() {
     ?>
     <div class = "artikkelKortHolder">
         <?php
-        $documents = getAllFilesInFolderAndSubfolders("", "", 10);
+        $limit = -1;
+        if (!isset($_GET['alledokumenter'])) {
+            $limit = 10;
+        }
+        $documents = getAllFilesInFolderAndSubfolders("", "", $limit);
 
         foreach ($documents as $currentDoc) {
             $fileNameSeparated = explode(".", $currentDoc['filename']);
