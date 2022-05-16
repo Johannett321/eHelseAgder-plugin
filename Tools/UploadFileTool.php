@@ -279,10 +279,6 @@ function getAllFilesInFolderAndSubfolders($folderPath, $filter, $limit) {
     $filesUploadDir = "wp-content/uploads/minefiler/";
     $elementsFound = scandir($filesUploadDir . $folderPath);
     for ($i = 0; $i < sizeof($elementsFound); $i++) {
-        if ($limit != -1 && sizeof($filesToReturn)>=$limit) {
-            error_log("--!Maksimalt antall filer funnet!--");
-            break;
-        }
         if ($elementsFound[$i] == "." || $elementsFound[$i] == ".." || $elementsFound[$i] == "..." || $elementsFound[$i] == ".DS_Store") {
             continue;
         }
@@ -309,6 +305,9 @@ function getAllFilesInFolderAndSubfolders($folderPath, $filter, $limit) {
         $fileDate[$key] = strtotime($row['dateModified']);
     }
     if (!array_multisort($fileDate, SORT_DESC, $filesToReturn)) error_log("Failed to sort");
+    if ($limit != -1 && sizeof($filesToReturn)>$limit) {
+        array_splice($filesToReturn, 10);
+    }
     return $filesToReturn;
 }
 

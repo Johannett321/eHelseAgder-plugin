@@ -108,7 +108,6 @@ function lagFelter($loadedProsjekt) {
                 <label for="pname" class = "labelForInput">Prosjektets navn*</label>
                 <input type="text" id="pname" name="pname" placeholder="Digital Hjemmeoppfølging" class = "small_input" maxlength="55"><?php addCharacterCounter("pname");loadFieldFromLocalStorageOrEditProject("pname",stripcslashes($loadedProsjekt->project_name));?>
                 <label for="psubtitle" class = "labelForInput">En setning om prosjektet (beskrivende undertittel)*</label>
-                <?php addInfoBox("subtitleInfo", "Eksempel: Et EU prosjekt for å øke livskvalitet for pasienter med kronisk sykdom");?>
                 <input type="text" id="psubtitle" name="psubtitle" placeholder="Et EU prosjekt for å øke livskvalitet for pasienter med kronisk sykdom." class = "small_input" maxlength="100"><?php addCharacterCounter("psubtitle");loadFieldFromLocalStorageOrEditProject("psubtitle",stripcslashes($loadedProsjekt->undertittel));?>
                 <div class = "uthevetBoksForm" id = "prosjektLederBoks">
                     <h4>Prosjektleder</h4>
