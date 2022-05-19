@@ -88,9 +88,11 @@ function sc_vis_arrangement() {
                 </div>
                 <?php
                 if ($eventInfo[0]->pamelding_link != null && $eventInfo[0]->pamelding_link != "") {
-                    ?>
-                    <a href = "<?php echo $eventInfo[0]->pamelding_link ?>" target="_blank"><button type="button" class = "button" id="signUpButton">Påmelding<i class="material-icons">arrow_forward</i></button></a>
-                    <?php
+                    if ($eventInfo[0]->slutt_dato >= date("Y-m-d")) {
+                        ?>
+                        <a href = "<?php echo $eventInfo[0]->pamelding_link ?>" target="_blank"><button type="button" class = "button" id="signUpButton">Påmelding<i class="material-icons">arrow_forward</i></button></a>
+                        <?php
+                    }
                 }else {
                     ?>
                     <div class = "ingenPamelding">Dette arrangementet har ingen påmelding</div>
