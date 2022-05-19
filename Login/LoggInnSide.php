@@ -15,6 +15,11 @@ function sc_loginform( $atts ) {
         }
     }
 
+    if (areWeVisitingFromMobileDevice()) {
+        showLoginError("Du kan ikke logge inn på mobiletelefonen. Handlingen må gjennomføres via en datamaskin eller nettbrett");
+        return;
+    }
+
     if (isset($_GET['errorMessage'])) {
         showLoginError($_GET['errorMessage']);
     }
