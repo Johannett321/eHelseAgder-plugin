@@ -32,7 +32,7 @@ function createLargeListItem($title, $description, $uElement1, $uElement2, $imag
             }
             ?>
             <div class="artikkelkorttekst<?php if ($image == null) echo " nophoto"?>">
-                <h5><?php echo $title ?></h5>
+                <h4><?php echo $title ?></h4>
                 <p><?php echo $description ?></p>
                 <div id="additInfo"><?php echo $uElement1 . " · " . $uElement2; ?></div>
             </div>
@@ -72,7 +72,7 @@ function createSmallListItem($title, $description, $bottomElement, $image, $href
             }
             ?>
             <div class="artikkelkorttekst<?php if ($image == null) echo " nophoto"?>">
-                <h5><?php echo $title ?></h5>
+                <h4><?php echo $title ?></h4>
                 <p><?php echo $description ?></p>
                 <div id="additInfo"><?php echo $bottomElement?></div>
             </div>

@@ -210,6 +210,29 @@ Table of content:
     margin: 0 auto;
 }
 
+/* Annet-side knapper */
+.undersiderListe {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.undersiderListe button {
+    border-radius: 0;
+    background-color: #84c58e;
+    color: #000;
+
+    width: 300px;
+    height: 70px;
+    margin: 10px auto;
+
+    font-family: "Lato", sans-serif;
+
+}
+
+.undersiderListe button:hover {
+    background-color: #B5DCBB;
+}
+
 
 /* Artikkel-kort –––––––––––––––––––––––––––––––––––––––––*/
 
@@ -242,8 +265,6 @@ Table of content:
 
 .artikkelkorttekst p {
     height: 60px !important;
-
-    font-size: 14px !important;
 }
 
 .collapsibles .artikkelkorttekst {
@@ -266,19 +287,18 @@ Table of content:
     width: 190px;
 }
 
-.artikkelKort h5 {
+.artikkelKort h4 {
     margin: 0 0 3px 0;
-    font-weight: 700 !important;
 
     width: 100%;
     height: 25px;
 
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .artikkelKort p {
-    font-size: 14px;
     color: black;
 
     display: -webkit-box;
@@ -1269,7 +1289,7 @@ th {
         margin-right: auto;
     }
     .changelogArrows {
-        display: none;
+        display: none !important;
     }
     .changelog {height: 70px;}
     .changelogItem h5 {
