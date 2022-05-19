@@ -308,8 +308,8 @@ Table of content:
     border-bottom: none !important;
 }
 
-.nophoto {
-    width: 100% !important;
+.artikkelKort .nophoto {
+    width: 100%;
 }
 
 /* Nyheter – prosjekt */
@@ -612,6 +612,10 @@ th {
 
     padding: 35px;
     overflow: visible;
+}
+
+.topPart .nophoto {
+    margin-right: auto;
 }
 
 /* Grønn boks */
