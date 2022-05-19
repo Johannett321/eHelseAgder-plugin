@@ -56,7 +56,7 @@ function loadNyhetsartikler() {
                     if ($articleCounter > 2) {
                         ?>
                         <center>
-                            <a href = "aarstall?it=nyhetsartikler&year=<?php echo $i ?>"><button class = "viewMore">Vis alle nyheter fra <?php echo $i?></button></a>
+                            <a href = "../aarstall?it=nyhetsartikler&aar=<?php echo $i ?>"><button class = "viewMore">Vis alle nyheter fra <?php echo $i?></button></a>
                         </center>
                         <?php
                     }

@@ -3,6 +3,7 @@ add_shortcode('sc_nyheter_fra_aar', 'sc_nyheter_fra_aar');
 add_shortcode('sc_mest_populaere_nyheter', 'sc_mest_populaere_nyheter');
 
 function sc_nyheter_fra_aar() {
+    error_log("Forsøker å laste inn aarside");
     if (areElementorBufferingObjects()) return;
     if (areWeEditingWithElementor()) {
         ?>
@@ -14,25 +15,25 @@ function sc_nyheter_fra_aar() {
         showErrorMessage("Siden har ikke blitt lastet inn på riktig måte!");
         return;
     }
-    $year = $_GET['year'];
+    $year = $_GET['aar'];
     $it = $_GET['it'];
 
     switch ($it) {
         case "nyhetsartikler":
             ?>
-            <center><h3>Alle nyhetsartikler <?php if (isset($_GET['year'])) echo "fra " . $year; if (isset($_GET['pn'])) echo "for " . $_GET['pn'];?></h3></center>
+            <center><h3>Alle nyhetsartikler <?php if (isset($_GET['aar'])) echo "fra " . $year; if (isset($_GET['pn'])) echo "for " . $_GET['pn'];?></h3></center>
             <?php
             createYearNyhetsartikler($year, $_GET['id']);
             break;
         case "arrangementer":
             ?>
-            <center><h3>Alle arrangementer <?php if (isset($_GET['year'])) echo "fra " . $year ?></h3></center>
+            <center><h3>Alle arrangementer <?php if (isset($_GET['aar'])) echo "fra " . $year ?></h3></center>
             <?php
             createYearArrangementer($year);
             break;
         case "prosjekter":
             ?>
-            <center><h3>Alle prosjekter <?php if (isset($_GET['year'])) echo "fra " . $year ?></h3></center>
+            <center><h3>Alle prosjekter <?php if (isset($_GET['aar'])) echo "fra " . $year ?></h3></center>
             <?php
             createYearProsjekter($year);
             break;
@@ -69,7 +70,7 @@ function createYearNyhetsartikler($year, $id) {
 }
 
 function createYearArrangementer($year) {
-    if (!isset($_GET['year'])) {
+    if (!isset($_GET['aar'])) {
         showErrorMessage("Siden har ikke blitt lastet inn på riktig måte!");
         return;
     }
@@ -98,7 +99,7 @@ function createYearArrangementer($year) {
 }
 
 function createYearProsjekter($year) {
-    if (!isset($_GET['year'])) {
+    if (!isset($_GET['aar'])) {
         showErrorMessage("Siden har ikke blitt lastet inn på riktig måte!");
         return;
     }
@@ -127,9 +128,7 @@ function createYearProsjekter($year) {
 }
 
 function sc_mest_populaere_nyheter() {
-    if (!(isset($_GET['it']) && $_GET['it'] == "nyhetsartikler") || isset($_GET['id'])) {
-        return;
-    }
+    error_log("Her loades mest populære nyheter");
     if (areElementorBufferingObjects()) return;
     if (areWeEditingWithElementor()) {
         ?>
@@ -137,19 +136,24 @@ function sc_mest_populaere_nyheter() {
         <?php
         return;
     }
-    if (!isset($_GET['year'])) {
+
+    if (!(isset($_GET['it']) && $_GET['it'] == "nyhetsartikler") || isset($_GET['id'])) {
+        return;
+    }
+
+    if (!isset($_GET['aar'])) {
         showErrorMessage("Siden har ikke blitt lastet inn på riktig måte!");
         return;
     }
 
-    $year = $_GET['year'];
+    $year = $_GET['aar'];
     ?>
-    <center><h3>Mest leste nyhetsartikler <?php if (isset($_GET['year'])) echo "fra " . $year ?></h3></center>
+    <center><h3>Mest leste nyhetsartikler <?php if (isset($_GET['aar'])) echo "fra " . $year ?></h3></center>
     <?php
     $query = "SELECT * FROM " . getNyhetsartiklerDatabaseRef();
 
-    if (isset($_GET['year'])) {
-        $year = $_GET['year'];
+    if (isset($_GET['aar'])) {
+        $year = $_GET['aar'];
         $query .= " WHERE dato_skrevet > '" . $year . "-01-01'" .
             " AND dato_skrevet < '" . ($year+1) . "-01-01'";
     }

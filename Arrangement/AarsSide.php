@@ -3,13 +3,13 @@ add_shortcode('sc_arrangementer_fra_aar', 'sc_arrangementer_fra_aar');
 
 function sc_arrangementer_fra_aar() {
     if (areElementorBufferingObjects()) return;
-    if (!isset($_GET['year'])) {
+    if (!isset($_GET['aar'])) {
         showErrorMessage("Siden har ikke blitt lastet inn på riktig måte!");
         return;
     }
-    $year = $_GET['year'];
+    $year = $_GET['aar'];
     ?>
-    <center><h3>Alle arrangementer  <?php if (isset($_GET['year'])) echo "fra " . $year ?></h3></center>
+    <center><h3>Alle arrangementer  <?php if (isset($_GET['aar'])) echo "fra " . $year ?></h3></center>
     <div class = "artikkelKortHolder">
         <?php
         global $wpdb;

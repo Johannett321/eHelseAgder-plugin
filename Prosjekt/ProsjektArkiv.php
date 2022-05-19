@@ -58,7 +58,7 @@ function loadProsjekter() {
                         if ($eventCounter > 4) {
                             ?>
                             <center>
-                                <a href = "aarstall?it=prosjekter&year=<?php echo $i ?>"><button class = "viewMore">Vis alle prosjekter fra <?php echo $i?></button></a>
+                                <a href = "aarstall?it=prosjekter&aar=<?php echo $i ?>"><button class = "viewMore">Vis alle prosjekter fra <?php echo $i?></button></a>
                             </center>
                             <?php
                         }

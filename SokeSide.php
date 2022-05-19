@@ -7,7 +7,13 @@ add_shortcode('sc_dokumenter_sok_widget', 'sc_dokumenter_sok_widget');
 add_shortcode('sc_auto_search_widget', 'sc_auto_search_widget');
 
 function sc_auto_search_widget() {
+    error_log("Trying to load auto search");
     if (areElementorBufferingObjects()) return;
+    if (areWeEditingWithElementor()) {
+        ?>
+        <center><h5>Her vil det vises en søkeboks</h5></center>
+        <?php
+    }
     if (isset($_GET['it'])) {
         switch ($_GET['it']) {
             case "prosjekter":
@@ -55,7 +61,7 @@ function sc_dokumenter_sok_widget() {
 function addSearchWidget($nameOfPage, $searchDropdownOptions, $searchDropdownOptionsIDs) {
     ?>
     <form class = "searchField requiredPart" method="POST" id = "myform">
-        <h3>Søk i alle <?php echo $nameOfPage ?> <?php if (isset($_GET['year'])) echo "fra " . $_GET['year']?></h3>
+        <h3>Søk i alle <?php echo $nameOfPage ?> <?php if (isset($_GET['aar'])) echo "fra " . $_GET['aar']?></h3>
         <input type = "text" class = "small_input" id = "searchfield" name = "searchfield" placeholder="Søk"/>
         <?php
         if ($searchDropdownOptions != null) {
@@ -112,9 +118,9 @@ function addSearchWidget($nameOfPage, $searchDropdownOptions, $searchDropdownOpt
 
             form.action = "../../../../../../sok?q=" + searchfield.value + "&field=" + field + "&it=<?php echo $nameOfPage?>";
 
-            const year = (new URLSearchParams(window.location.search)).get("year");
+            const year = (new URLSearchParams(window.location.search)).get("aar");
             if (year != null) {
-                form.action += "&year=" + year;
+                form.action += "&aar=" + year;
             }
 
             form.submit();
@@ -142,7 +148,7 @@ function sc_sok_resultater() {
     $searchFor = $_GET['q'];
 
     ?>
-    <h3 id="søkTittel">Søkeresultater for <?php echo $searchFor?> <?php if (isset($_GET['year'])) echo " fra " . $_GET['year']?></h3>
+    <h3 id="søkTittel">Søkeresultater for <?php echo $searchFor?> <?php if (isset($_GET['aar'])) echo " fra " . $_GET['aar']?></h3>
     <?php
     $innholdsType = $_GET['it'];
     switch ($innholdsType) {
@@ -162,8 +168,8 @@ function sc_sok_resultater() {
 
     $query = "SELECT * FROM " . $tableName . " WHERE " . $_GET['field'] . " LIKE '%" . $searchFor . "%'";
 
-    if (isset($_GET['year'])) {
-        $year = $_GET['year'];
+    if (isset($_GET['aar'])) {
+        $year = $_GET['aar'];
         switch ($_GET['it']) {
             case "nyhetsartikler":
                 $query .= " AND dato_skrevet >= '" . $year . "-01-01'" .

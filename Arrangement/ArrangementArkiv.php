@@ -62,7 +62,7 @@ function loadArrangementer() {
                         if ($eventCounter >= 3) {
                             ?>
                             <center>
-                                <a href = "aarstall?it=arrangementer&year=<?php echo $i ?>"><button class = "viewMore">Vis alle arrangementer fra <?php echo $i?></button></a>
+                                <a href = "aarstall?it=arrangementer&aar=<?php echo $i ?>"><button class = "viewMore">Vis alle arrangementer fra <?php echo $i?></button></a>
                             </center>
                             <?php
                         }
