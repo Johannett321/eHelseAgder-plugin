@@ -10,7 +10,7 @@ function sc_kommende_arrangementer() {
         $events = getLastEventsList(5);
         if (sizeof($events) == 0) {
             ?>
-            <center><h5>Fant ingen arrangementer</h5></center>
+            <center><h5>Det er ingen kommende arrangementer</h5></center>
             <?php
             return;
         }

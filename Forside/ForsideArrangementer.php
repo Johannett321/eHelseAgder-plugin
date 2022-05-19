@@ -17,6 +17,14 @@ function loadForsideArrangementer() {
         <?php
         return;
     }
+
+    if ($arrangementer == null || sizeof($arrangementer) == 0) {
+        ?>
+        <h5>Det er ingen kommende arrangementer</h5>
+        <?php
+        return;
+    }
+
     ?>
     <div class = "arrangementer">
         <?php
