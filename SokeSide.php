@@ -91,7 +91,7 @@ function addSearchWidget($nameOfPage, $searchDropdownOptions, $searchDropdownOpt
         });
         submitButton.onclick = function () {
             if (dropdown.value === "nocat") {
-                alert("Husk å velge en kategori før du søker :)")
+                alert("Du må velge en kategori å søke i")
                 return;
             }
             submitPressed();
