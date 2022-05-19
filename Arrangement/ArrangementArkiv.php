@@ -31,6 +31,13 @@ function loadArrangementer() {
             $results =  $wpdb->get_results($query);
             $eventCounter = 0;
 
+            if (sizeof($results) == 0) {
+                ?>
+                <h5>Fant ingen arrangementer</h5>
+                <?php
+                return;
+            }
+
             if ($results != null) {
                 ?>
                 <button type="button" class="collapsible">
