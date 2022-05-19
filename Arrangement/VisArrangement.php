@@ -68,7 +68,7 @@ function sc_vis_arrangement() {
             }
             ?>
 
-            <div class = "oppsummert" id = "oppsummert">
+            <div class = "oppsummert<?php if ($bildeUrl == null) echo " nophoto"?>" id = "oppsummert">
                 <h4>Kort om arrangementet</h4>
                 <div>
                     <h5>Starter:</h5><span><?php echo getNoneImportantDisplayDateFormat($eventInfo[0]->start_dato); if ($eventInfo[0]->start_klokkeslett != null) echo " kl " . $eventInfo[0]->start_klokkeslett?></span>
