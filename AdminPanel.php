@@ -27,34 +27,104 @@ function prosjekterMenu() {
                 showAdminMessage($_GET['message']);
             }
             ?>
-            <div class="innholdsBox">
-                <div class = "centerer">
-                    <img src = "../../../wp-content/uploads/eHelseAgderPlus/PluginLogo.png"/>
-                    <h1>Viktig informasjon!</h1>
-                    <form id = "myform" action = "../wp-json/ehelseagderplugin/api/installerPlugin" method ="POST">
-                        <p>
-                            Denne siden resetter pluginen og all data som er fylt ut. Ved å fortsette blir alle prosjekter,
-                            nyhetsartikler og arrangementer slettet. For å bekrefte at du ønsker å slette alt, må du skrive
-                            <i>"Slett alt"</i> (uten anførselstegn) i tekstboksen under.
-                        </p>
-                        <h3>Vil du slette alt?</h3>
-                        <input id = "confirmField" type="text" placeholder="Skriv her"/>
-                        <div class="resetContainer">
-                            <input id = "slettAltKnapp" type = "button" class = "button" value="Reinstaller plugin"/>
-                        </div>
-                        <?php
-                        if (pageIsInDevelopment()) {
-                            ?>
-                            <br/>
-                            <button type="button" id = "enrollButton" class="button">Registrer dev enhet</button>
-                            <?php
-                        }
+            <img class = "pageImage" src = "../../../wp-content/uploads/eHelseAgderPlus/PluginLogo.png"/>
+            <div class = "tittelLine">Statistikk</div>
+
+            <div class = "innholdsBox">
+                <h1>Generelt</h1>
+                <p>Dette er litt generell statistikk om nettsiden</p>
+                <table>
+                    <tr>
+                        <th>Artikkelens navn</th>
+                        <th>Lesertall</th>
+                    </tr>
+                    <?php
+                    global $wpdb;
+                    $prosjekter = $wpdb->get_results("SELECT id FROM " . getProsjekterDatabaseRef());
+                    $nyhetsartikler = $wpdb->get_results("SELECT id FROM " . getNyhetsartiklerDatabaseRef());
+                    $arrangementer = $wpdb->get_results("SELECT id FROM " . getArrangementerDatabaseRef());
+
+                    ?>
+                    <tr>
+                        <td>Antall prosjekter</td>
+                        <td><?php echo sizeof($prosjekter)?></td>
+                    </tr>
+                    <tr>
+                        <td>Antall nyhetsartikler</td>
+                        <td><?php echo sizeof($nyhetsartikler)?></td>
+                    </tr>
+                    <tr>
+                        <td>Antall arrangementer</td>
+                        <td><?php echo sizeof($arrangementer)?></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class = "innholdsBox">
+                <h1>Topp 10 nyhetsartikler</h1>
+                <p>Her er en liste over nyhetsartikler og deres lesertall, i synkende rekkefølge.</p>
+                <table>
+                    <tr>
+                        <th>Artikkelens navn</th>
+                        <th>Lesertall</th>
+                    </tr>
+                    <?php
+                    global $wpdb;
+                    $query = "SELECT tittel, antall_lesere FROM " . getNyhetsartiklerDatabaseRef() . " ORDER BY antall_lesere DESC LIMIT 10";
+                    $resultater = $wpdb->get_results($query);
+                    foreach ($resultater as $resultat) {
                         ?>
-                    </form>
-                </div>
-                <div class = "credits">
-                    Copyright © <?php echo date("Y"); ?> NextGen. Alle rettigheter forbeholdes.
-                </div>
+                        <tr>
+                            <td><?php echo $resultat->tittel ?></td>
+                            <td><?php echo $resultat->antall_lesere ?></td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                </table>
+            </div>
+
+            <div class = "tittelLine">Sletting</div>
+
+            <div class = "innholdsBox">
+                <h1>Sletting av dokumenter</h1>
+                <p>Dersom du ønsker å slett noen dokumenter blir du nødt til å koble til FTP området.</p>
+                <p>
+                    Dersom du ønsker å slette noen filer som har blitt lastet opp før den nye nettside, åpner du denne mappen på FTP området:
+                    <br/>
+                    www/wp-content/uploads/minefiler/
+                </p>
+                <p>
+                    Dersom du ønsker å slette noen filer som er fra den gamle nettsiden, åpner du denne mappen på FTP området:
+                    <br/>
+                    www/wp-content/uploads/minefiler/GamleFiler/
+                </p>
+            </div>
+            <div class="innholdsBox">
+                <h1>Slette alt</h1>
+                <form id = "myform" action = "../wp-json/ehelseagderplugin/api/installerPlugin" method ="POST">
+                    <p>
+                        Dersom du ønsker å resette eHelseAgder+ og all data som er fylt ut, gjør du dette her. Ved å fortsette blir alle prosjekter,
+                        nyhetsartikler og arrangementer slettet. For å bekrefte at du ønsker å slette alt, må du skrive
+                        <i>"Slett alt"</i> (uten anførselstegn) i tekstboksen under.
+                    </p>
+                    <h3>Vil du slette alt?</h3>
+                    <input id = "confirmField" type="text" placeholder="Skriv her"/>
+                    <div class="resetContainer">
+                        <input id = "slettAltKnapp" type = "button" class = "button" value="Reinstaller plugin"/>
+                    </div>
+                    <?php
+                    if (pageIsInDevelopment()) {
+                        ?>
+                        <br/>
+                        <button type="button" id = "enrollButton" class="button">Registrer dev enhet</button>
+                        <?php
+                    }
+                    ?>
+                </form>
+            </div>
+            <div class = "credits">
+                Copyright © <?php echo date("Y"); ?> NextGen. Alle rettigheter forbeholdes.
             </div>
         </div>
 
@@ -63,17 +133,59 @@ function prosjekterMenu() {
                 background-color: #EEEEEE !important;
             }
 
+            table {
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                background-color: #DDDDDD;
+            }
+
+            th {
+                min-width: 100px;
+                border: 1px solid #888888;
+                background-color: #AAAAAA;
+            }
+
+            tr {
+                height: 30px;
+            }
+
+            td {
+                border: 1px solid #888888;
+                padding: 10px;
+            }
+
             .pageCenter {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                text-align: center;
+            }
+
+            .pageImage {
+                width: 400px;
+                margin-top: 100px;
+                margin-bottom: 50px;
+            }
+
+            .tittelLine {
+                width: 700px;
+                padding: 20px;
+
+                margin-top: 20px;
+                margin-left: auto;
+                margin-right: auto;
+
+                text-align: center;
+                border-radius: 10px;
+                font-size: 20px;
+                font-weight: bold;
             }
 
             .innholdsBox {
                 width: 700px;
-                height: 500px;
                 padding: 20px;
+
+                margin-top: 20px;
+                margin-left: auto;
+                margin-right: auto;
 
                 text-align: center;
                 background-color: white;
