@@ -37,7 +37,7 @@ function addImportantCookieConfirmDialog() {
     <div class = "cookiesRequired">
         <h2>Siden du forsøker å besøke krever cookies (informasjonskapsler)</h2>
         <p>
-            Ved å trykke 'godkjenn og lukk', godkjenner du at vi kan lagre informasjonskapsler på din enhet for å forbedre din opplevelse av siden
+            Ved å trykke 'Godkjenn cookies', godkjenner du at vi kan lagre informasjonskapsler på din enhet for å forbedre din opplevelse av siden.
         </p>
         <button type="button" id = "rejectCookies">Tilbake</button>
         <button type="button" id = "acceptCookies">Godkjenn cookies</button>
@@ -45,15 +45,21 @@ function addImportantCookieConfirmDialog() {
 
     <style>
         .cookiesRequired {
-            background-color: #7cc48c;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            padding: 30px 30px;
+            font-family: 'Lato', sans-serif;
+
+            position: fixed;
+            left: 17%;
+            bottom: 40%;
+            padding: 40px 30px;
+
+            width: 60%;
+            background-color: #cbe6cf;
+
             border-radius: 20px;
-            box-shadow: #666666 2px 2px 20px;
+            border: 1px solid lightgray;
+            box-shadow: 5px 5px 10px grey;
+
+            text-align: center;
         }
     </style>
     <script type="text/javascript">
@@ -95,7 +101,7 @@ function addCookieConfirmDialog() {
                 <h5>Vi bruker informasjonskapsler:</h5>
                 <p>Ehelseagder.no bruker informsjonskapsler for å lagre data midlertidig lokalt på din datamaskin. Dette er kun relevant for personer som skal opprette innhold på nettsiden. Informasjonskapslene påvirker ikke lesere av nettsiden. Det benyttes ingen tredjeparts-informasjonskapsler, så din datta er trygg.</p>
                 <br>
-                Ved å trykke "Jeg forstår" samtykker du til bruken av informasjonskapsler. Ønsker du ikke å samtykke kan du ignorere feltet. Vær obs på at brukeropplevelsen vil bli redusert.</p>
+                <p>Ved å trykke "Jeg forstår" samtykker du til bruken av informasjonskapsler. Ønsker du ikke å samtykke kan du ignorere feltet. Vær obs på at brukeropplevelsen vil bli redusert.</p>
             </div>
         <button type="button" id = "acceptCookies">Jeg forstår</button>
         </div>
@@ -103,7 +109,7 @@ function addCookieConfirmDialog() {
 
     <style>
         #cookieConfirmDialog {
-            z-index: 2;
+            z-index: 3;
             position: fixed;
             bottom: 20px;
             padding: 20px 30px;
@@ -158,6 +164,26 @@ function addCookieConfirmDialog() {
             display: inline-block;
             width: 80%;
         }
+        @media only screen and (max-width: 500px) {
+            #cookieConfirmDialog {
+                width: 98%;
+                left: 1%;
+                padding: 10px 10px;
+                overflow: scroll;
+            }
+            #cookieTekst {
+                width: 100%;
+                display: block;
+            }
+            #cookieConfirmDialog h5 {
+                margin: 10px 0;
+            }
+            #acceptCookies {
+                position: unset;
+                margin: 10px 0;
+            }
+        }
+
 
     </style>
 

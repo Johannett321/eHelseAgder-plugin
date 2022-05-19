@@ -14,6 +14,7 @@ Table of content:
 - Forside
 - Responsivt design
 - Nyheter (ekstra)
+- Cookies
 
 */
 
@@ -240,7 +241,7 @@ Table of content:
 }
 
 .artikkelkorttekst p {
-    min-height: 60px;
+    height: 60px !important;
 
     font-size: 14px !important;
 }
@@ -597,6 +598,7 @@ th {
 
 .coverPhoto img {
     min-width: 100% !important;
+    min-height: 100% !important;
 }
 
 .oppsummert {
@@ -643,6 +645,7 @@ th {
     color: gray;
     padding: 8px 10px;
     background-color: #e5e5e5;
+    cursor: default;
 }
 
 
@@ -736,7 +739,7 @@ th {
 }
 
 #step2 {
-    color: #B5DCBB;
+    color: #84c58e;
 
 }
 
@@ -747,7 +750,7 @@ th {
 
 #step3 {
     float: right;
-    color: #B5DCBB;
+    color: #84c58e;
 
 }
 
@@ -794,7 +797,7 @@ th {
     box-shadow: 0px 15px 10px -15px #84C58ED4;
 
     width: 100%;
-    height: 85px;
+    height: 80px;
 
     z-index: 1;
     overflow-x: scroll;
@@ -843,7 +846,7 @@ th {
 }
 
 .changelog span {
-    line-height: 85px !important;
+    line-height: inherit !important;
     font-size: 30px !important;
 }
 
@@ -929,8 +932,7 @@ th {
 
 .artikkelKortHolder2 .artikkelKort {
     width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 17px;
 }
 
 /* Arrangementer */
@@ -1196,6 +1198,15 @@ th {
     .photoSmall img {display: none}
     .artikkelkorttekst {min-width: 100%}
     .artikkelKort {height: auto;}
+    .prosjektCard {
+        width: 47%;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    #nyheterForProsjektKnapp {
+        border-bottom: unset;
+        text-decoration: underline;
+    }
 }
 
 /* Mobil */
@@ -1204,19 +1215,33 @@ th {
     .oppsummert {
         margin-left: 0;
         margin-right: 0;
-        min-width: 100%;}
+        min-width: 100%;
+        position: unset;
+        margin-top: 10px;
+    }
+    .topPart .coverPhoto {
+        position: unset;
+        height: 200px !important;
+    }
     .projectText {
         margin-left: 0;
         margin-right: 0;
         min-width: 100%;
         font-size: 16px;
     }
+    .projTitle {width: 100% !important;}
     .collapsibles {
         margin-left: 0;
         margin-right: 0;
         min-width: 100%;
     }
-    .topPart {margin-bottom: unset;}
+    .nyheterProsjekt {width: 100%;}
+    #nyheterForProsjektKnapp {text-decoration: underline;}
+    .topPart {
+        margin-bottom: unset;
+        max-width: 100%;
+        flex-direction: column;
+    }
     .inliner img {display: none;}
     .inliner {
         margin-bottom: 20px;
@@ -1229,7 +1254,6 @@ th {
         font-size: 22px !important;
         margin: 30px 0;
     }
-    .artikkelKort {min-width: 100%;}
     .searchField {
         min-width: 100%;
         margin-top: 50px;
@@ -1239,6 +1263,48 @@ th {
     .searchField #submitButton {
         margin-left: auto;
         margin-right: auto;
+    }
+    .changelogArrows {
+        display: none;
+    }
+    .changelog {height: 70px;}
+    .changelogItem h5 {
+        margin-top: 0 !important;
+        height: inherit;
+    }
+    .artikkelKortHolder2 .artikkelKort {
+        width: 100%;
+        margin: 7px 0;
+    }
+    .prosjektCard {
+        width: 100%;
+        display: block;
+        margin-left: 0;
+    }
+    .deleknapp {
+        width: 98%;
+        margin-left: 0 !important;
+    }
+    .arrInnhold {width: 100% !important}
+    .arrInnhold #signUpButton {display: none}
+    .artikkelKort {
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .collapsibles .artikkelKort {
+        padding: 10px 15px;
+        margin: 5px 0;
+    }
+    .viewMore {
+        font-size: 14px;
+        height: 30px;
+    }
+    .artikkelkorttekst p {max-height: 40px !important;}
+    .searchField {margin-top: 20px !important;}
+    .searchField #submitButton {
+        height: 40px;
+        margin-left: 5px;
     }
 }
 
@@ -1483,7 +1549,7 @@ th {
 
 #chooseLine {
     margin: 40px auto;
-    border-bottom: 1px solid #D6EBCA;
+    border-top: 1px solid #D6EBCA;
     padding: 0 0 70px 0;
     height: 40px;
 }
@@ -1701,8 +1767,20 @@ th {
     z-index: 10;
 }
 
+.uploadedFile {
+    margin: 5px 0;
+}
 
-/* Vis prosjekt -----------------------------------------------------------*/
+.uploadedFile .removeFileButton, .uploadedFile div {
+    display: inline-block;
+}
+
+.uploadedFile .removeFileButton {
+    font-weight: 900;
+}
+
+
+    /* Vis prosjekt -----------------------------------------------------------*/
 
 
 .contentTitle {
@@ -1775,11 +1853,14 @@ th {
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .collapsibles .collapsible:hover {
     background-color: #ccc;
-    font-weight: 700;
 }
 
 .active span.material-icons {
     transform: rotate(180deg);
+}
+
+.active, button {
+    font-weight: 700;
 }
 
 /* Style the collapsible content. Note: hidden by default */
@@ -1886,7 +1967,7 @@ th {
 
 #kildeinfo, #endretInfo {
     font-size: 14px;
-    color: #898F9C;
+    color: grey;
 }
 
 #endretInfo {
