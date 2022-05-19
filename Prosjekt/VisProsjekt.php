@@ -66,7 +66,7 @@ function sc_prosjekt_side() {
             <?php
         }
         ?>
-        <div class = "oppsummert" id = "oppsummert">
+        <div class = "oppsummert<?php if ($bildeUrl == null) echo " nophoto"?>" id = "oppsummert">
             <h4>Kort om prosjektet</h4>
             <div>
                 <h5>Prosjektnavn:</h5><span><?php echo $projectInfo[0]->project_name?></span>

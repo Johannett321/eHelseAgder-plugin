@@ -43,6 +43,7 @@ function prosjekterMenu() {
                     $prosjekter = $wpdb->get_results("SELECT id FROM " . getProsjekterDatabaseRef());
                     $nyhetsartikler = $wpdb->get_results("SELECT id FROM " . getNyhetsartiklerDatabaseRef());
                     $arrangementer = $wpdb->get_results("SELECT id FROM " . getArrangementerDatabaseRef());
+                    $changes = $wpdb->get_results("SELECT id FROM " . getChangelogDatabaseRef() . " ORDER BY id DESC LIMIT 1");
 
                     ?>
                     <tr>
@@ -56,6 +57,10 @@ function prosjekterMenu() {
                     <tr>
                         <td>Antall arrangementer</td>
                         <td><?php echo sizeof($arrangementer)?></td>
+                    </tr>
+                    <tr>
+                        <td>Antall endringer på siden</td>
+                        <td><?php echo $changes[0]->id?></td>
                     </tr>
                 </table>
             </div>
