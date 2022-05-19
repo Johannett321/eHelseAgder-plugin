@@ -12,7 +12,7 @@ function getLastNyheterList() {
         $limitToProject = " WHERE tilknyttet_prosjekt = " . $_GET['prosjektID'];
     }
     global $wpdb;
-    $query = "SELECT * FROM " . getNyhetsartiklerDatabaseRef() . $limitToProject . " ORDER BY dato_skrevet DESC LIMIT 4";
+    $query = "SELECT * FROM " . getNyhetsartiklerDatabaseRef() . $limitToProject . " ORDER BY dato_skrevet DESC, id DESC LIMIT 4";
     return $wpdb->get_results($query);
 }
 

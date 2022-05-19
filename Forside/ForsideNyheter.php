@@ -9,7 +9,7 @@ function sc_forside_nyheter() {
 
 function loadForsideNyheter() {
     global $wpdb;
-    $nyheter = $wpdb->get_results("SELECT * FROM " . getNyhetsartiklerDatabaseRef() . " ORDER BY dato_skrevet DESC LIMIT 3");
+    $nyheter = $wpdb->get_results("SELECT * FROM " . getNyhetsartiklerDatabaseRef() . " ORDER BY dato_skrevet DESC, id DESC LIMIT 3");
     if (areWeEditingWithElementor() && sizeof($nyheter) == 0) {
         ?>
         <center><h5>Her vil siste nyheter vises</h5></center>
