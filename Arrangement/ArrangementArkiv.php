@@ -33,7 +33,7 @@ function loadArrangementer() {
 
             if (sizeof($results) == 0) {
                 ?>
-                <h5>Fant ingen arrangementer</h5>
+                <center><h5>Fant ingen arrangementer</h5></center>
                 <?php
                 return;
             }
