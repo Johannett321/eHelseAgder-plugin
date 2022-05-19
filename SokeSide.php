@@ -90,9 +90,11 @@ function addSearchWidget($nameOfPage, $searchDropdownOptions, $searchDropdownOpt
             })
         });
         submitButton.onclick = function () {
-            if (dropdown.value === "nocat") {
-                alert("Du må velge en kategori å søke i")
-                return;
+            if (dropdown != null) {
+                if (dropdown.value === "nocat") {
+                    alert("Du må velge en kategori å søke i")
+                    return;
+                }
             }
             submitPressed();
         }
