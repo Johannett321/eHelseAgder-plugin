@@ -79,8 +79,8 @@ function prepareNyhetsartiklerDraftsTable() {
  */
 function generateNewsArticleID() {
     global $wpdb;
-    $result = $wpdb->get_results("SELECT id FROM " . getNyhetsartiklerDatabaseRef());
-    return sizeof($result)+1;
+    $result = $wpdb->get_results("SELECT id FROM " . getNyhetsartiklerDatabaseRef() . " ORDER BY id DESC LIMIT 1");
+    return $result[0]->id + 1;
 }
 
 /**
