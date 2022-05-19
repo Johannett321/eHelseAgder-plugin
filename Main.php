@@ -23,6 +23,7 @@ require 'Tools/Tools.php';
 require 'Tools/CommonHTMLElements.php';
 
 include "SokeSide.php";
+include 'AnnetSide.php';
 
 include 'Tools/PageMessages.php';
 require 'Tools/JavascriptCheckerTool.php';
