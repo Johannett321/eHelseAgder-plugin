@@ -164,6 +164,12 @@ function sc_vis_arrangement() {
                         location.href = "../../../../wp-json/ehelseagderplugin/api/publiser_arrangement?eventID=<?php echo $_GET['eventID'] ?>";
                     }
                 }
+
+                setTimeout(
+                    function() {
+                        alert("Økten din har utløpt. Vennligst gå til forhåndsvisning på nytt!");
+                        history.back();
+                    }, 600000);
             </script>
         </div>
         <?php

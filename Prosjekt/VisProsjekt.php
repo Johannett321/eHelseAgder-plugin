@@ -184,6 +184,12 @@ function sc_prosjekt_side() {
                             location.href = "../../../../wp-json/ehelseagderplugin/api/publiser_prosjekt?prosjektID=<?php echo $_GET['prosjektID'] ?>";
                         }
                     }
+
+                    setTimeout(
+                        function() {
+                            alert("Økten din har utløpt. Vennligst gå til forhåndsvisning på nytt!");
+                            history.back();
+                        }, 600000);
                 </script>
             </textBox>
         </div>

@@ -119,6 +119,12 @@ function sc_vis_artikkel() {
                     location.href = "../../../../wp-json/ehelseagderplugin/api/publiser_nyhetsartikkel?articleID=<?php echo $_GET['artikkelID'] ?>";
                 }
             }
+
+            setTimeout(
+                function() {
+                    alert("Økten din har utløpt. Vennligst gå til forhåndsvisning på nytt!");
+                    history.back();
+                }, 600000);
         </script>
         <?php
     }else {
