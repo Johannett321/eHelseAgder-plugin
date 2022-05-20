@@ -22,7 +22,7 @@ function createShortEvent($article) {
                 <img src = "<?php echo getPhotoUploadUrl() . $article->bilde ?>"/>
             </div>
             <div class="artikkelkorttekst">
-                <h5><?php echo $article->tittel; ?></h5>
+                <h4><?php echo $article->tittel; ?></h4>
                 <p><?php echo $article->ingress; ?></p>
                 <div id="additInfo">Publisert: <?php echo getDisplayDateFormat($article->dato_skrevet); ?></div>
             </div>

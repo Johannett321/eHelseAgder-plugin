@@ -43,7 +43,7 @@ function createShortArticle($article) {
             }
             ?>
             <div class="artikkelkorttekst<?php if ($article->bilde == null) echo " nophoto"?>">
-                <h5><?php echo $article->tittel; ?></h5>
+                <h4><?php echo $article->tittel; ?></h4>
                 <p><?php echo $article->ingress; ?></p>
                 <div id="additInfo">Publisert: <?php echo getNoneImportantDisplayDateFormat($article->dato_skrevet); ?></div>
             </div>
