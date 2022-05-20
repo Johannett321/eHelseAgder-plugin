@@ -5,6 +5,7 @@ add_shortcode('sc_dokumenter_stor_liste_tittel', 'sc_dokumenter_stor_liste_titte
 add_shortcode('sc_dokumenter_stor_liste_knapp', 'sc_dokumenter_stor_liste_knapp');
 
 function sc_dokumenter_stor_liste_tittel() {
+    if (areElementorBufferingObjects()) return;
     if (!isset($_GET['alledokumenter'])) {
         ?>
         <center><h2>Siste 10 dokumenter</h2></center>
@@ -17,6 +18,7 @@ function sc_dokumenter_stor_liste_tittel() {
 }
 
 function sc_dokumenter_stor_liste_knapp() {
+    if (areElementorBufferingObjects()) return;
     if (!isset($_GET['alledokumenter'])) {
         ?>
         <div id="knappDok">
