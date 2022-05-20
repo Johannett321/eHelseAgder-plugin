@@ -929,7 +929,7 @@ th {
 .changelogArrows {
     position: absolute;
     width: 45px;
-    height: 84px;
+    height: 79px;
     z-index: 2;
     cursor: pointer;
     padding: 22px 0;
