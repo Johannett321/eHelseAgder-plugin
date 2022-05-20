@@ -10,8 +10,8 @@ function wpdocs_add_dashboard_widgets() {
 function dashboard_widget_function() {
     ?>
     <h1>Velkommen til adminpanelet for eHelseAgder!</h1>
-    <p>Her kan du laste ned admin guiden som beskriver hvordan man gjør en rekke ting i admin panelet.</p>
-    <a href="<?php echo wp_upload_dir()['baseurl'] . "/eHelseAgderPlus/adminguide.pdf"?>" download>Last ned adminguide</a>
+    <p>Her kan du laste ned administrator manualen som beskriver hvordan man gjør en rekke ting i admin panelet.</p>
+    <a href="<?php echo wp_upload_dir()['baseurl'] . "/eHelseAgderPlus/Administratormanual.pdf"?>" download>Last ned administratormanual</a>
     <?php
 }
 
@@ -28,6 +28,23 @@ function prosjekterMenu() {
             }
             ?>
             <img class = "pageImage" src = "../../../wp-content/uploads/eHelseAgderPlus/PluginLogo.png"/>
+
+            <div class = "tittelLine">Manualer</div>
+            <div class = "innholdsBox">
+                <h1>Neslastbare manualer</h1>
+                <p>Her kan du laste ned brukermanual og adminmanual for eHelseAgder+ pluginen. Merk at brukermanualen også er tilgjengelig fra min side</p>
+                <table>
+                    <tr>
+                        <td>Adminmanual (til administrator)</td>
+                        <td><a href = "<?php echo wp_upload_dir()['baseurl'] . "/eHelseAgderPlus/Administratormanual.pdf"?>" download>Last ned</a></td>
+                    </tr>
+                    <tr>
+                        <td>Brukermanual (til prosjektledere)</td>
+                        <td><a href = "<?php echo wp_upload_dir()['baseurl'] . "/eHelseAgderPlus/Brukermanual.pdf"?>" download>Last ned</a></td>
+                    </tr>
+                </table>
+            </div>
+
             <div class = "tittelLine">Statistikk</div>
 
             <div class = "innholdsBox">

@@ -23,8 +23,8 @@ function prepareCollapsibleDraftsTable() {
  */
 function generateProjectID() {
     global $wpdb;
-    $result = $wpdb->get_results("SELECT id FROM " . getProsjekterDatabaseRef());
-    return sizeof($result)+1;
+    $result = $wpdb->get_results("SELECT id FROM " . getProsjekterDatabaseRef() . " ORDER BY id DESC LIMIT 1");
+    return $result[0]->id + 1;
 }
 
 /**
