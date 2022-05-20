@@ -34,10 +34,6 @@ function prosjekterMenu() {
                 <h1>Generelt</h1>
                 <p>Dette er litt generell statistikk om nettsiden</p>
                 <table>
-                    <tr>
-                        <th>Artikkelens navn</th>
-                        <th>Lesertall</th>
-                    </tr>
                     <?php
                     global $wpdb;
                     $prosjekter = $wpdb->get_results("SELECT id FROM " . getProsjekterDatabaseRef());
