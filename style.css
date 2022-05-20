@@ -32,7 +32,7 @@ Table of content:
     width: 100%;
     font-style: italic;
 
-    margin: 10px 0;
+    margin-bottom: 25px;
 }
 
 /* Overskrifter */
@@ -1959,7 +1959,7 @@ th {
 }
 
 .nyhetTittel {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 
@@ -1969,7 +1969,7 @@ th {
 }
 
 .artikkelTekst {
-    margin: 20px 0 50px 0;
+    margin: 20px 0;
 }
 
 .artikkel a[href], .collapsibles a[href] {
@@ -1986,7 +1986,7 @@ th {
     width: 100%;
     color: #8CBE7E;
     margin: 20px 0;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 #kildeinfo, #endretInfo {
