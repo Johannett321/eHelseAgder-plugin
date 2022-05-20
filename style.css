@@ -1565,6 +1565,7 @@ th {
     line-height: 0;
     padding: 0;
     text-transform: none;
+    color: white;
 }
 
 .addInfoButton i, .addInfoButton p {
