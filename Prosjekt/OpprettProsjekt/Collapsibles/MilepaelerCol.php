@@ -82,7 +82,7 @@ function addMilepaelerCol() {
                 currentMilepael.classList.add("milepael");
                 currentMilepael.name = milepaelCounter;
 
-                if (milepaelCounter != 1) {
+                if (milepaelCounter !== 1) {
                     const line = document.createElement('hr');
                     currentMilepael.appendChild(line);
                 }

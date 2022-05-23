@@ -131,8 +131,7 @@ function addKategorierSaverTool($onlineRevisionNumber) {
                 prosjektIDFromLocalStorage = localStorage.getItem(prosjektIDSpecialSaveLocation);
             }
 
-
-            if (editProsjektID == null) editProsjektID = "";
+            if (editProsjektID == null) editProsjektID = "ny";
             if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "";
             if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "";
 
@@ -166,8 +165,8 @@ function addKategorierSaverTool($onlineRevisionNumber) {
             var sistLagretStorage = localStorage.getItem(localsave + "_time");
 
             if (editProsjektID == null) editProsjektID = "ny";
-            if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "ny";
-            if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "ny";
+            if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "";
+            if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "";
 
             if (editProsjektID == prosjektIDFromLocalStorage) {
                 if (localStorage.getItem(localsave) != null) {
@@ -225,7 +224,7 @@ function addKategorierSaverTool($onlineRevisionNumber) {
 
             arrayWithBrothers[arrayWithBrothers.length] = textbox;
 
-            if (editProsjektID == null) editProsjektID = "";
+            if (editProsjektID == null) editProsjektID = "ny";
             if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "";
             if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "";
 
@@ -315,8 +314,8 @@ function addKategorierSaverTool($onlineRevisionNumber) {
             //arrayWithBrothers[arrayWithBrothers.length] = textbox;
 
             if (editProsjektID == null) editProsjektID = "ny";
-            if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "ny";
-            if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "ny";
+            if (prosjektIDFromLocalStorage == null) prosjektIDFromLocalStorage = "";
+            if (prosjektIDFromLocalStorage === "null") prosjektIDFromLocalStorage = "";
 
             if (editProsjektID === prosjektIDFromLocalStorage) {
                 if (localStorage.getItem(localsave) != null) {
