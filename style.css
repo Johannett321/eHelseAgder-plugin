@@ -110,6 +110,10 @@ Table of content:
     height: 60px;
 }
 
+#loginButton:hover {
+    text-decoration: none;
+}
+
 #loginButton .material-icons {
     font-size: 18px;
     margin-bottom: 5px !important;
@@ -124,6 +128,10 @@ Table of content:
     font-size: 14px;
     line-height: 29px;
     margin-bottom: 0;
+}
+
+#loginButton:hover p {
+    color: white !important;
 }
 
 /* Rediger-knapp */
