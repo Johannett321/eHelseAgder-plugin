@@ -153,6 +153,7 @@ Table of content:
     border-radius: 8px;
     box-shadow: 5px 5px 10px #d9ead4;
     text-align: center;
+    color: black;
 }
 
 .lastOppBildeKnapp:hover {
@@ -175,6 +176,7 @@ Table of content:
 #nyheterForProsjektKnapp {
     border: none;
     width: auto;
+    border-radius: unset;
     border-bottom: 1.5px solid #cccccc;
     padding: 0;
     height: auto;
@@ -291,11 +293,7 @@ Table of content:
     margin: 0 0 3px 0;
 
     width: 100%;
-    height: 25px;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    height: auto;
 }
 
 .artikkelKort p {
@@ -464,7 +462,7 @@ th {
 }
 
 #milepælTittel {
-    width: 20%;
+    width: 30%;
 }
 
 #milepælKontakt {
@@ -1260,7 +1258,10 @@ th {
         min-width: 100%;
     }
     .nyheterProsjekt {width: 100%;}
-    #nyheterForProsjektKnapp {text-decoration: underline;}
+    #nyheterForProsjektKnapp {
+        text-decoration: underline;
+        background-color: white;
+    }
     .topPart {
         margin-bottom: unset;
         max-width: 100%;
@@ -1330,6 +1331,7 @@ th {
         height: 40px;
         margin-left: 5px;
     }
+    .content .inliner img {display: none;}
 }
 
 

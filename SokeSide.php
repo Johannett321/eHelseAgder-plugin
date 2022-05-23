@@ -67,7 +67,7 @@ function addSearchWidget($nameOfPage, $searchDropdownOptions, $searchDropdownOpt
         if ($searchDropdownOptions != null) {
             ?>
             <select id = "dropdown">
-                <option value="nocat" disabled selected>Velg kategori å søke i</option>
+                <option value="nocat" disabled selected>Velg kategori</option>
                 <?php
                 for ($i = 0; $i < sizeof($searchDropdownOptions); $i++) {
                     ?>

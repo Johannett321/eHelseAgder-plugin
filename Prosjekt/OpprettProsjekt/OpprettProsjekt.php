@@ -59,7 +59,7 @@ function lagFelter($loadedProsjekt) {
     <form action = "kategorier<?php if (isset($_GET['editProsjektID'])) echo "?editProsjektID=" . $_GET['editProsjektID']?>" method = "post" id = "minform" enctype="multipart/form-data">
         <div class="infoBlokk">
             <i class="material-icons">info</i>
-            <h5>Denne prosessen skjer i tre steg. For å gå videre til neste steg trykker du fortsett nederst på siden. Alle felter markert med * må fylles ut</h5>
+            <h5>Denne prosessen skjer i tre steg. For å gå videre til neste steg trykker du fortsett nederst på siden. Alle felter markert med stjerne (*) må fylles ut.</h5>
             <br>
         </div>
         <div class="infoBlokk" id="topProgress">
