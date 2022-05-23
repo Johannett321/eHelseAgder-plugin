@@ -24,7 +24,6 @@ function loadProsjekter() {
     <div class = "collapsibles" id = "displayCol">
         <?php
         for ($i = $endYear; $i >= $startYear; $i--) {
-
             $query = "SELECT id, project_name, undertittel, prosjektstart, bilde, prosjektstatus FROM " . getProsjekterDatabaseRef() .
                 " WHERE prosjektstart >= " . $i .
                 " AND prosjektstart < " . ($i + 1) .
@@ -55,13 +54,18 @@ function loadProsjekter() {
                             $result->bilde,
                             "prosjektside/?prosjektID=" . $result->id,
                             $specialClass);
-                        if ($eventCounter > 4) {
+                        if ($eventCounter >= 5) {
                             ?>
                             <center>
                                 <a href = "aarstall?it=prosjekter&aar=<?php echo $i ?>"><button class = "viewMore">Vis alle prosjekter fra <?php echo $i?></button></a>
                             </center>
                             <?php
                         }
+                    }
+                    if ($eventCounter < 5 ) {
+                        ?>
+                        <h5>Det finnes ikke flere prosjekter i <?php echo $i ?></h5>
+                        <?php
                     }
                     ?>
                 </div>

@@ -20,7 +20,7 @@ function loadArrangementer() {
     ?>
     <div class = "collapsibles" id = "displayCol">
         <?php
-        for ($i = $startYear; $i <= $endYear; $i++) {
+        for ($i = $endYear; $i >= $startYear; $i--) {
             error_log($i . " " . $startYear . " " . $endYear);
 
             $query = "SELECT id, tittel, kort_besk, start_dato, start_klokkeslett, bilde FROM " . getArrangementerDatabaseRef() .
@@ -66,6 +66,11 @@ function loadArrangementer() {
                             </center>
                             <?php
                         }
+                    }
+                    if ($eventCounter < 3 ) {
+                        ?>
+                        <h5>Det finnes ikke flere arrangementer i <?php echo $i ?></h5>
+                        <?php
                     }
                     ?>
                 </div>
