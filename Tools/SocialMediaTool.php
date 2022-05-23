@@ -18,7 +18,10 @@ function implementFacebookShareButton() {
 }
 
 function implementTwitterInShareButton() {
-    implementSingleShareButton("Del på Twitter", "https://twitter.com/intent/tweet?text=" . home_url(add_query_arg(NULL,NULL )), "twitterShareButton");
+    $buttonLinkBeginning = "https://twitter.com/intent/tweet?text=";
+    $pageLinkEncoded = urlencode(home_url(add_query_arg(NULL,NULL )));
+    $buttonLink = $buttonLinkBeginning . $pageLinkEncoded;
+    implementSingleShareButton("Del på Twitter", $buttonLink, "twitterShareButton");
 }
 
 function implementLinkedinShareButton() {
