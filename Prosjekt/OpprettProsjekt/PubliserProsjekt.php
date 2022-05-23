@@ -113,7 +113,7 @@ function lagreProsjektUtkast() {
 
     gotoViewProject($prosjektID, "Velkommen til forhåndsvisning!", "Her ser du hvordan prosjektsiden vil bli seende ut når du publiserer prosjektet.
      Hvis du er fornøyd og ønsker å publisere, blar du ned på siden og klikker «Publiser».
-     Om du vil endre på noe, klikker du «Tilbake».",
+     Om du vil endre på noe, klikker du «Tilbake til redigering».",
         "Dette er en forhåndsvisning av prosjektet. Ønsker du å gjøre endringer kan du gå tilbake å redigere innholdet. Er du ferdig med å redigere kan du publisere prosjektet for å offentliggjøre det.", true);
 }
 

@@ -71,7 +71,7 @@ function lagreNyhetsUtkast() {
     $articleID = $articleJustAdded[0]->id;
     error_log("La til nyhetsartikkel med artikkelID: " . $articleID, 0);
     gotoViewArticle($articleID, "Velkommen til forhåndsvisning!",
-        "Her ser du hvordan nyhetssiden vil bli seende ut når du publiserer artikkelen. Hvis du er fornøyd og ønsker å publisere, blar du ned på siden og klikker «Publiser». Om du vil endre på noe, klikker du «Tilbake».",
+        "Her ser du hvordan nyhetssiden vil bli seende ut når du publiserer artikkelen. Hvis du er fornøyd og ønsker å publisere, blar du ned på siden og klikker «Publiser». Om du vil endre på noe, klikker du «Tilbake til redigering».",
         "Dette er en forhåndsvisning av nyhetsartikkelen. Ønsker du å gjøre endringer kan du gå tilbake å redigere innholdet. Er du ferdig med å redigere, kan du publisere nyhetsartikkelen for å offentliggjøre den.",
         true);
 }
